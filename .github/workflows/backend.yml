@@ -32,12 +32,18 @@ jobs:
           "$RUNNER_TEMP/flowbridge-wheel/bin/python" - <<'PY'
           import io
           from FlowBridgeBackend import CodeManager, FlowBridgePipeline
+          from FlowBridgeBackend.source_mapping import SourceMappingLayer
           from flowbridge import CodeManager as LegacyManager
           assert LegacyManager is CodeManager
           manager = CodeManager()
-          manager.loadFile(io.BytesIO(b"def f():\n    return 1\n"), fileName="main.py")
+          manager.loadFile(io.BytesIO(b"def f():\n    return 1\ntotal: int = 0\ntotal += f()\n"), fileName="main.py")
           result = FlowBridgePipeline(manager).analyze_current()
           assert result["status"] == "success"
           assert result["flowchart"]["graphs"]
           assert result["mapping"]["sourceMappings"]
+          assert any(graph["graphType"] == "module" for graph in result["flowchart"]["graphs"].values())
+          mappings = SourceMappingLayer()
+          mappings.loadMappingOutput(result["mapping"])
+          for entry in result["mapping"]["sourceMappings"]:
+              assert mappings.getSourceLocation(entry["graphId"], entry["nodeId"]).fileId == manager.getProject().files[0].fileID
           PY

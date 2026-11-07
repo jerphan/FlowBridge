@@ -36,6 +36,14 @@ opaque graphId; never decode IDs or derive labels from them. Node IDs are local 
 a graph. Edges connect nodes only inside that graph and describe control flow.
 Kevin owns layout, coordinates, styling and rendering.
 
+November 6 update: handle `graphType=module` alongside project/file/function.
+Files with top-level execution gain a file-view navigation node pointing to their
+module CFG. Module function-definition nodes can navigate to function CFGs using
+the same graphReferences contract. Render their real nodes/edges and retain their
+IDs for Grace's source lookup. Do not assume every CFG has a normal End node.
+Module-level callReferences use lexical targets; they do not prove runtime
+definition order or model import side effects.
+
 Selecting a project file node: find the graphReference matching sourceGraphId
 and sourceNodeId, then open graphs[targetGraphId]. Selecting a file function node
 uses the same procedure to open its function CFG. References are navigation,

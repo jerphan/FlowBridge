@@ -1,5 +1,27 @@
 # Decisions
 
+## D027 — procedural module views and integration review (2026-11-06)
+
+Decision: incorporate Harsha's procedural-CFG update in the requested reviewed
+merge. Extend graphType with `module`, preserving existing input fields, JSON
+keys, project/file IDs, revision scoping, and source-coordinate conventions.
+File overviews remain structural; a separate module graph carries bounded
+top-level flow. Function definitions navigate to existing function graphs.
+This supersedes the module-execution deferral in D008/D023.
+
+Rationale: scripts with executable statements need a view of their control flow;
+joining independent function bodies with ordinary edges would misrepresent it.
+Consumers must recognize the new graph type and tolerate an absent unreachable
+normal End node. Module calls are lexical candidates, not a runtime-order proof.
+Exception edges are limited to protected operations/handler bodies. Supported
+try/loop-else metadata is traversed; omitted try clauses/aliases keep incomplete
+scope diagnostics. Full Python semantics and source execution remain excluded.
+
+Review corrections preserve the bounded subset: reject returns anywhere outside
+functions, avoid guessed call targets in incomplete scopes, and commit each
+file's analysis only when its graph construction succeeds. Retain a failed file
+view and useful sibling results on failure. No new wire fields or dependencies.
+
 Entries D001–D016 are dated 2026-10-29; later entries carry their own dates. Required choices come from the supplied master prompt;
 provisional choices are recommendations, not finalized integration agreements.
 

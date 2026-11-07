@@ -1,14 +1,15 @@
 # Progress
 
 ## Actual implementation status
-Phases 1–3 foundations/metadata, phase 4 sequence/branch CFGs, phase 5 loop CFGs
-and the bounded phase 9 try/except CFG subset are implemented. Phase 9's graph
-algorithm was implemented ahead of overview/service integration at the user's
-explicit request. Bounded call resolution is also implemented. Hierarchy, service and consumer projections are implemented. The complete suite passes 219 tests on Python 3.12.14.
+Function and bounded module CFGs, assignments (including annotated/augmented),
+branches, loops/loop-else, basic try/except, lexical metadata, hierarchy, service,
+and consumer projections are implemented. The current parser suite passes
+273 tests on Python 3.12.14. The combined repository passes 219 backend tests
+and 273 parser tests. See the November 6 integration review below.
 
 The preceding CFG task changed CFGBuilder.py, FeatureValidator and package exports; added
 33 CFG tests and updated earlier feature/integration tests for the expanded subset.
-- CFGBuilder builds function GraphModel, FlowNodes, FlowEdges and SourceMappings.
+- CFGBuilder builds function/module GraphModels, FlowNodes, FlowEdges and SourceMappings.
 - Sequences, Assign/Expr/Pass, if/elif/else and return use pending normal predecessors.
 - For/while use nearest-loop contexts; back, exit, break and continue paths are explicit.
 - For iterator setup is separate from repeated advancement. Literal boolean while
@@ -19,8 +20,8 @@ The preceding CFG task changed CFGBuilder.py, FeatureValidator and package expor
   are diagnosed/omitted. IDs agree with ASTAnalyzer and are revision-scoped.
 - Source-backed nodes receive AST locations immediately; synthetic nodes are unmapped.
 
-No uploaded code is executed. Input JSON and enums are unchanged. Phase 2 intentionally changes graph JSON
-viewType to graphType and adds nullable edge label (D019).
+No uploaded code is executed. Input JSON is unchanged. graphType additionally
+accepts `module` (D027); the earlier graphType rename/edge label remain (D019).
 CFG_DESIGN.md explains the predecessor strategy, supported subset and approximations.
 
 ## Verification
@@ -31,18 +32,37 @@ alongside the new conservative-exception warning. Final run: zero failures/error
 See TESTING.md for the command and coverage.
 
 ## Remaining limitations
-ASTAnalyzer extracts ordinary for/while bindings and calls; try and loop-else
-binding subtrees remain incomplete. CFG support is still broader for try. Exceptions are conservative
+ASTAnalyzer extracts supported try and loop-else bindings/calls. Unsupported
+try else/finally clauses and exception aliases keep their scopes incomplete.
+Exceptions are conservative
 may-flow, not inferred runtime types. No nested try, aliases, finally, try/else,
-try-star or explicit raise. Loop-else CFGs are supported; lexical extraction
-for loop-else remains incomplete. Expression-level short-circuit paths are
+try-star or explicit raise. Loop-else CFGs and lexical traversal are supported.
+Expression-level short-circuit paths are
 atomic. Implicit exceptions are expanded only for functions containing try.
 Compiler-context validation, resource isolation and full source-bound checks remain
 incomplete. Starter code/tests remain reference-only.
 
 ## Next recommended task
 Harden compiler-context and resource validation, then verify consumer integration.
-Preserve incomplete lexical-analysis diagnostics for try and loop-else subtrees.
+Preserve incomplete lexical-analysis diagnostics for unsupported try clauses and aliases.
+
+## Parser update integration review — 2026-11-06
+
+Reviewed Harsha's `d7d74ec` procedural-CFG update against shared main. His 51
+additional tests pass. Added three parser regression tests and two API cases;
+expanded the six existing file/ZIP/GitHub handoff cases to cover module graphs,
+annotated/augmented assignments, module calls, loop-else, navigation, and original
+source lookup at revisions 0 and 7.
+
+Review corrections: reject module returns inside containers; mark omitted
+try else/finally and exception aliases incomplete before resolving calls; publish
+per-file analysis only after its graphs are built, preserving valid siblings
+when construction fails. No Code Manager acquisition or Source Mapping changes.
+
+Actual verification: 219 backend pytest cases and 273 parser unittest cases pass;
+backend lint and source/wheel builds pass. Contract, feature, architecture,
+consumer integration, testing, and decision documentation updated. Full Python
+semantics, browser rendering/highlighting, and resource hardening remain separate.
 
 ## History
 Documentation and scaffold setup preceded model/input validation, parsing/feature

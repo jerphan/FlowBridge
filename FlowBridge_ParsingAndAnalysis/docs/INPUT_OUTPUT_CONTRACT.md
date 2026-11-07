@@ -39,10 +39,18 @@ ProjectAnalysis fields:
 - graphReferences: GraphReference array.
 - diagnostics: Diagnostic array.
 
-GraphModel: graphId; graphType (`project`, `file`, `function`); fileId and functionId
+GraphModel: graphId; graphType (`project`, `file`, `function`, `module`); fileId and functionId
 (nullable owners); status (`complete`, `unsupported`, `failed`); nodes; edges.
-Unsupported/failed function graphs are non-executable, with empty nodes/edges.
+Module graphs require fileId and have null functionId. Their IDs are scoped to
+the same project/revision as other graphs. File overviews link to them through
+graphReferences. Only function graphs have a functionId.
+Unsupported/failed function/module graphs are non-executable, with empty nodes/edges.
 Graph IDs remain available for accurate metadata/navigation without fabricating control flow.
+
+The November 6 procedural update adds the `module` graphType value; existing JSON
+keys and input fields remain unchanged. Consumers must support this additional
+view type. A normal End node may be absent for nonterminating flow. Source mappings
+continue to use `(graphId, nodeId)` and unchanged UTF-8 byte-coordinate semantics.
 
 FlowNode: nodeId, nodeType, label, sourceLocation (SourceLocation or null).
 Model node types: `file`, `function`, `start`, `end`, `statement`, `condition`,

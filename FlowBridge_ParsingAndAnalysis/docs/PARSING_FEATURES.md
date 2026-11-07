@@ -16,8 +16,9 @@ Unsupported features never change syntax_valid or destroy the AST. Call the feat
 validator only after a successful parse. CFGBuilder uses it before emitting paths.
 
 ## Current supported subset
-Direct FunctionDef at module level; function-body Assign, Expr, Pass, If/elif/else,
-Return, For, While, Break, Continue, and bounded Try/ExceptHandler. Empty files,
+Direct FunctionDef at module level; module/function Assign, AnnAssign, AugAssign,
+Expr, Pass, If/elif/else, For, While, Break, Continue, and bounded Try/ExceptHandler.
+Return is allowed only inside functions, including inside their containers. Empty files,
 comments and a leading module docstring are accepted. Break/continue require a loop.
 For/while else is supported. Nested function definitions are unsupported.
 
@@ -33,8 +34,17 @@ containers, unpacking, conditional expressions and f-strings. All expression chi
 are checked. Comprehensions, lambda, walrus, yield and await cannot hide in statements,
 arguments, defaults or annotations. Expressions remain atomic in statement CFGs.
 
-Module execution, imports, classes/async, with/match, assert, del, global/nonlocal,
-annotated/augmented assignment and all unlisted constructs remain unsupported.
+Direct absolute imports are supported as metadata and statement nodes in module
+CFGs; no imports are executed. Relative/star/future/conditional/local imports,
+classes/async, with/match, assert, del, global/nonlocal, and all unlisted constructs
+remain unsupported. Direct eval/exec/compile calls receive unsupported diagnostics.
+
+Files with supported top-level executable statements get a separate graph with
+`graphType: module`. File views remain structural overviews. Function definition
+nodes in a module CFG link to the corresponding function graph rather than
+inserting its body. An unreachable normal End node is omitted. Exception edges
+are expanded for protected operations and handler bodies, not arbitrary statements
+outside a try. This is a bounded approximation, not runtime simulation.
 
 ## Explicit inspection algorithm
 A local stack visits AST children in source order, carrying module/function scope,
@@ -48,7 +58,9 @@ Diagnostics use severity error/code UNSUPPORTED_FEATURE with file/source context
 and a scope description. The standalone validator leaves graphId null; CFGBuilder
 adds the affected graph ID. The input AST is unchanged and no visitor state persists.
 Feature support and symbol-table completeness remain different: lexical extraction
-still conservatively skips try subtrees, even when their CFGs can be built.
+traverses supported try and loop-else subtrees. Omitted try else/finally clauses
+and unsupported exception aliases mark their scopes incomplete and prevent
+confident call-target resolution.
 
 ## Coordinates and failures
 AST offsets are copied as UTF-8 bytes. SyntaxError character offsets are converted

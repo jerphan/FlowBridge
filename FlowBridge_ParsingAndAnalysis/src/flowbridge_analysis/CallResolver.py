@@ -66,8 +66,8 @@ class CallResolver:
         parts = call.callee_expression.split('.')
         if not all(part.isidentifier() for part in parts):
             return 'unresolved', 'Dynamic callee expression', None
-        if call.caller_function_id is None:
-            return 'unresolved', 'Module execution order is not modeled', None
+
+
         lookup = analysis.symbol_table.lookup(call.scope_id, parts[0])
         if not lookup.is_complete:
             return 'unresolved', 'Incomplete lexical scope', None

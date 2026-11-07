@@ -14,12 +14,13 @@ class ProjectGraphResult:
     graph_references: list[GraphReference] = field(default_factory=list)
     source_mappings: list[SourceMapping] = field(default_factory=list)
     function_graphs: dict[str, GraphModel] = field(default_factory=dict)
+    module_graphs: dict[str, GraphModel] = field(default_factory=dict)
 
     @property
     def graphs(self) -> dict[str, GraphModel]:
         """Return all hierarchy graphs with collision checks."""
         combined = {self.project_graph.graph_id: self.project_graph}
-        for collection in (self.file_graphs, self.function_graphs):
+        for collection in (self.file_graphs, self.function_graphs, self.module_graphs):
             for key, graph in collection.items():
                 if key != graph.graph_id or key in combined:
                     raise ValueError('Graph identity collision')
@@ -46,7 +47,8 @@ class ProjectGraphBuilder:
     def build(self, files: list[FileInput] | list[FileMetadata], functions: list[FunctionInfo],
               function_graphs: dict[str, GraphModel] | list[GraphModel], ids: RevisionIds,
               file_statuses: dict[str, GraphStatus] | None = None,
-              project_status: GraphStatus = 'complete') -> ProjectGraphResult:
+              project_status: GraphStatus = 'complete',
+              module_graphs: dict[str, GraphModel] | list[GraphModel] | None = None) -> ProjectGraphResult:
         """Accept metadata or input files and validated existing function CFGs.
 
         Lists retain the service API; dictionaries retain the overview API.
@@ -57,6 +59,14 @@ class ProjectGraphBuilder:
             function_graphs = {graph.graph_id: graph for graph in graph_list}
             if len(function_graphs) != len(graph_list):
                 raise ValueError('Duplicate graph identity')
+        mod_map: dict[str, GraphModel] = {}
+        if module_graphs:
+            if isinstance(module_graphs, list):
+                mod_map = {g.graph_id: g for g in module_graphs}
+                if len(mod_map) != len(module_graphs):
+                    raise ValueError('Duplicate module graph identity')
+            else:
+                mod_map = dict(module_graphs)
         file_ids = {file.file_id for file in files}
         if len(file_ids) != len(files):
             raise ValueError('Duplicate file identity')
@@ -74,7 +84,7 @@ class ProjectGraphBuilder:
                 raise ValueError('Function graph ownership mismatch')
             functions_by_file.setdefault(function.file_id, []).append(function)
         project = GraphModel(graph_id=ids.make('graph', 'project'), graph_type='project', status=project_status)
-        result = ProjectGraphResult(project, {}, [], function_graphs=dict(function_graphs))
+        result = ProjectGraphResult(project, {}, [], function_graphs=dict(function_graphs), module_graphs=mod_map)
         statuses = file_statuses or {}
         for file in files:
             file_graph_id = ids.make('graph', 'file', file.file_id)
@@ -108,6 +118,13 @@ class ProjectGraphBuilder:
                     node_id=node.node_id, location=location))
                 result.graph_references.append(GraphReference(source_graph_id=overview.graph_id,
                     source_node_id=node.node_id, target_graph_id=function.graph_id))
+            mod_graph = next((g for g in mod_map.values() if g.file_id == file.file_id), None)
+            if mod_graph is not None and status != 'failed':
+                node = FlowNode(node_id=ids.make('node', overview.graph_id, 'module'),
+                                node_type='statement', label=f'{file.file_name} execution')
+                overview.nodes.append(node)
+                result.graph_references.append(GraphReference(source_graph_id=overview.graph_id,
+                    source_node_id=node.node_id, target_graph_id=mod_graph.graph_id))
         for graph in result.graphs.values():
             graph.__post_init__()
         return result

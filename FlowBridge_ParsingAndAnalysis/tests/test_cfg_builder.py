@@ -212,7 +212,8 @@ class ExceptionCFGTests(unittest.TestCase):
         self.assertIn(('break', 'done()', 'break'), links(result))
         self.assertIn(('continue', 'Next: x', 'continue'), links(result))
         self.assertNotIn('dead()', [n.label for n in result.graph.nodes])
-        self.assertIn(('Next: x', 'Exceptional End', 'exception'), links(result))
+        self.assertNotIn(('Next: x', 'Exceptional End', 'exception'), links(result))
+        self.assertNotIn(('done()', 'Exceptional End', 'exception'), links(result))
 
     def test_loop_inside_try_routes_setup_and_next_exceptions(self):
         result = build('def f(xs):\n    try:\n        for x in source(xs):\n            use(x)\n'

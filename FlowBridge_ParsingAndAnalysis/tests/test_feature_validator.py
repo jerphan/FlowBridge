@@ -49,7 +49,7 @@ class FeatureValidatorTests(unittest.TestCase):
                 self.assertIn('UNSUPPORTED_FEATURE', [item.code for item in result.diagnostics])
 
     def test_other_unsupported_statements(self):
-        for statement in ['x += 1', 'x: int = 1', 'raise ValueError()',
+        for statement in ['raise ValueError()',
                           'import os', 'global x', 'assert x', 'del x',
                           'with open("x") as f:\n        return f',
                           'match x:\n        case 1:\n            return 1']:
@@ -75,9 +75,14 @@ class FeatureValidatorTests(unittest.TestCase):
             with self.subTest(source=source):
                 self.assertFalse(inspect_source(source).is_supported)
 
-    def test_module_execution_is_separate(self):
-        for source in ['x = 1', 'print(1)', 'if True:\n    x = 1', 'return 1',
+    def test_module_execution_is_supported(self):
+        for source in ['x = 1', 'print(1)', 'if True:\n    x = 1',
                        '"doc"\n"another string"']:
+            result = inspect_source(source)
+            self.assertTrue(result.is_supported)
+
+    def test_module_unsupported_statements(self):
+        for source in ['return 1', 'class C:\n    pass']:
             result = inspect_source(source)
             self.assertFalse(result.is_supported)
             self.assertIn('<module>', result.diagnostics[0].message)

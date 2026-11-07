@@ -48,6 +48,11 @@ class ProjectNotFound(CodeManagerError):
     status = 404
 
 
+class SourceMappingNotFound(CodeManagerError):
+    code = "SOURCE_MAPPING_NOT_FOUND"
+    status = 404
+
+
 class ImportLimitExceeded(CodeManagerError):
     code = "IMPORT_LIMIT_EXCEEDED"
     status = 413

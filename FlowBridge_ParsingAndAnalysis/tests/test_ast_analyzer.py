@@ -66,7 +66,7 @@ class ASTAnalyzerTests(unittest.TestCase):
         self.assertEqual(table.bindings(result.module_scope_id, 'x')[0].kind, 'module')
         scope = result.functions[0].scope_id
         self.assertEqual([s.name for s in table.symbols if s.scope_id == scope], ['x', 'y', 'rest'])
-        self.assertTrue(any(d.code == 'UNSUPPORTED_FEATURE' for d in result.diagnostics))
+        self.assertFalse(any(d.code == 'UNSUPPORTED_FEATURE' for d in result.diagnostics))
 
     def test_duplicate_definitions_keep_distinct_ids(self):
         result = analyze('def f():\n    return 1\ndef f():\n    return 2')

@@ -61,6 +61,9 @@ class FeatureValidator:
             is_first = visit.is_first
             loop_depth = visit.loop_depth
             try_depth = visit.try_depth
+            if isinstance(node, ast.Return) and scope == '<module>':
+                reject(node, scope, 'return statement outside function')
+                continue
             if isinstance(node, ast.FunctionDef):
                 if not at_module:
                     reject(node, scope, 'only direct module-level functions are supported')
@@ -102,7 +105,40 @@ class FeatureValidator:
                 if (is_first and isinstance(node, ast.Expr)
                         and isinstance(node.value, ast.Constant) and isinstance(node.value.value, str)):
                     continue
-                reject(node, scope, 'module execution and non-function declarations are not modeled')
+                if isinstance(node, (ast.Break, ast.Continue)):
+                    reject(node, scope, 'break/continue requires an enclosing loop')
+                    continue
+                if isinstance(node, (ast.For, ast.While)):
+                    for child in reversed(node.orelse):
+                        pending.append(_Visit(child, scope, loop_depth=loop_depth, try_depth=try_depth))
+                    for child in reversed(node.body):
+                        pending.append(_Visit(child, scope, loop_depth=loop_depth + 1, try_depth=try_depth))
+                    header_nodes = [node.target, node.iter] if isinstance(node, ast.For) else [node.test]
+                    for child in reversed(header_nodes):
+                        pending.append(_Visit(child, scope, loop_depth=loop_depth, try_depth=try_depth))
+                    continue
+                if isinstance(node, ast.Try):
+                    if try_depth or node.orelse or node.finalbody or not node.handlers:
+                        reject(node, scope, 'only non-nested try/except without else/finally is modeled')
+                        continue
+                    try_depth += 1
+                    children = list(ast.iter_child_nodes(node))
+                    for index, handler in enumerate(node.handlers):
+                        if handler.type is None and index != len(node.handlers) - 1:
+                            reject(handler, scope, 'bare except must be last')
+                    result.diagnostics.append(Diagnostic(
+                        severity='warning', code='CONSERVATIVE_EXCEPTIONS', file_id=file_id,
+                        source_location=ast_location(node, file_id),
+                        message=f'{scope}: exception types are not inferred; ordered handler matches are possible alternatives.'))
+                    for child in reversed(children):
+                        pending.append(_Visit(child, scope, loop_depth=loop_depth, try_depth=try_depth))
+                    continue
+                if type(node) not in _SUPPORTED_AST_TYPES:
+                    reject(node, scope, 'outside the documented statement/expression subset')
+                    continue
+                children = list(ast.iter_child_nodes(node))
+                for child in reversed(children):
+                    pending.append(_Visit(child, scope, loop_depth=loop_depth, try_depth=try_depth))
                 continue
             elif isinstance(node, (ast.For, ast.While)):
                 # The else suite runs after this loop has finished. Validate it
@@ -143,6 +179,11 @@ class FeatureValidator:
                     reject(node, scope, 'handler types must be names or tuples of names')
                     continue
                 children = list(ast.iter_child_nodes(node))
+            elif isinstance(node, ast.Call):
+                if isinstance(node.func, ast.Name) and node.func.id in ('eval', 'exec', 'compile'):
+                    reject(node, scope, f'dynamic execution through {node.func.id}() is unsupported')
+                    continue
+                children = list(ast.iter_child_nodes(node))
             elif type(node) not in _SUPPORTED_AST_TYPES:
                 reject(node, scope, 'outside the documented statement/expression subset')
                 continue
@@ -158,7 +199,7 @@ class FeatureValidator:
 # Expressions are atomic for statement CFGs, but their children are still
 # inspected so a comprehension, lambda, yield or await cannot hide inside a call.
 _SUPPORTED_AST_TYPES = frozenset({
-    ast.Assign, ast.Expr, ast.If, ast.Return, ast.Pass,
+    ast.Assign, ast.AnnAssign, ast.AugAssign, ast.Expr, ast.If, ast.Return, ast.Pass,
     ast.Name, ast.Constant, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare,
     ast.Call, ast.Attribute, ast.Subscript, ast.Slice, ast.List, ast.Tuple,
     ast.Set, ast.Dict, ast.Starred, ast.IfExp, ast.JoinedStr, ast.FormattedValue,

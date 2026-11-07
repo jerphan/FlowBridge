@@ -63,8 +63,8 @@ class GraphModel(JsonModel):
             raise ValueError('Unsupported/failed graphs must be empty')
         if self.graph_type == 'project' and (self.file_id is not None or self.function_id is not None):
             raise ValueError('Project graph cannot have file/function owners')
-        if self.graph_type in ('file', 'function') and self.file_id is None:
-            raise ValueError('File/function graph requires file_id')
+        if self.graph_type in ('file', 'function', 'module') and self.file_id is None:
+            raise ValueError('File/function/module graph requires file_id')
         if (self.graph_type == 'function') != (self.function_id is not None):
             raise ValueError('Only function graphs require function_id')
 

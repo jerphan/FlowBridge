@@ -7,18 +7,31 @@ At that earlier documentation-only update, the latest suite was 117 passing test
 See the Phases 9/10 execution section for current evidence.
 
 ## Current evidence
-207 active unittest tests pass on Python 3.12.14. Coverage includes validation,
+273 active unittest tests pass on Python 3.12.14. Coverage includes validation,
 IDs, parsing, feature checks, metadata/symbols, calls, exact CFG connectivity,
 hierarchy, models, projections and full-snapshot editing. See Phases 9/10 actual
 execution results below for baseline failures and final verification. Earlier
 milestone counts are historical. Starter tests remain unexecuted reference material.
+
+November 6 integration review: `uv run python scripts/check_modules.py` from the
+shared repository root passed 219 backend pytest cases and 273 parser unittest
+cases (492 total). Parser discovery runs from its own folder. Backend Ruff and
+source/wheel builds also passed. The existing Starlette/HTTPX deprecation warning
+does not fail the backend suite.
+
+The procedural update adds 51 parser cases. Three review regressions cover nested
+module returns, unsafe resolution with omitted try bindings, and injected
+function/module CFG failures in both file orders. The failure checks verify no
+partial symbols, calls, mappings, or function graphs leak from the failed file.
+Backend tests also check module graph/source lookup through file, ZIP, and mocked
+GitHub imports with unchanged CRLF/tabs, encoding declarations, and revision IDs.
 
 Executed from the repository root in PowerShell:
 ```powershell
 $env:PYTHONPATH = (Join-Path (Get-Location) 'src')
 & 'C:/Users/bhars/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -m unittest discover -s tests -v
 ```
-Current result: `Ran 170 tests` / `OK`, zero failures or errors. No dependency installation
+Historical phase-5 result: `Ran 170 tests` / `OK`, zero failures or errors. No dependency installation
 was needed. Tests cover fields, duplicate IDs/keys, missing references, source
 coordinates, roundtrip, serialization, nonfinite JSON, isolation and deterministic IDs.
 

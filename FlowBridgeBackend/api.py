@@ -13,11 +13,12 @@ from pydantic import BaseModel, ConfigDict
 from starlette.exceptions import HTTPException
 
 from .config import GitHubSettings, ImportLimits, RegistryLimits
-from .errors import CodeManagerError
-from .models import PyProject, SourceFile
+from .errors import CodeManagerError, SourceMappingNotFound
+from .models import PyProject, SourceFile, SourceLocation
 from .pipeline import FlowBridgePipeline
 from .registry import ProjectRegistry
 from .service import CodeManager
+from .source_mapping import SourceMappingLayer
 
 
 # These models describe the request and error JSON exchanged with the UI.
@@ -35,6 +36,13 @@ class ErrorDetail(BaseModel):
 
 class ErrorResponse(BaseModel):
     error: ErrorDetail
+
+
+class SourceSelection(BaseModel):
+    projectId: str
+    revisionId: int
+    location: SourceLocation
+    file: SourceFile
 
 
 def get_registry(request: Request) -> ProjectRegistry:
@@ -198,6 +206,29 @@ def create_app(
         pipeline = FlowBridgePipeline()
         result = pipeline.analyze_project(project, revision_id=revisionId)
         return result["mapping"]
+
+    # A diagram node resolves to its original file and the parser's source range.
+    @app.get("/api/projects/{projectID}/source-location", responses=ERROR_RESPONSES)
+    def get_source_location(
+        projectID: str,
+        graphId: str,
+        nodeId: str,
+        registry: Registry,
+        revisionId: Annotated[int, Query(ge=0)] = 1,
+    ) -> SourceSelection:
+        project = registry.getProject(projectID)
+        result = FlowBridgePipeline().analyze_project(project, revision_id=revisionId)
+        mappings = SourceMappingLayer(projectId=projectID)
+        mappings.loadMappingOutput(result["mapping"])
+        location = mappings.getSourceLocation(graphId, nodeId)
+        if location is None:
+            raise SourceMappingNotFound("This node has no source range in the selected revision.")
+        return SourceSelection(
+            projectId=projectID,
+            revisionId=revisionId,
+            location=location,
+            file=registry.getSourceFile(projectID, location.fileId),
+        )
 
     return app
 

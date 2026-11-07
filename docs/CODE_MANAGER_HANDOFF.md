@@ -53,6 +53,7 @@ existing static frontend files are unchanged.
 | `FlowBridgeBackend/registry.py` | Locked application-owned project snapshots and source access |
 | `FlowBridgeBackend/api.py` | FastAPI routes, dependency injection, error handling, CORS |
 | `FlowBridgeBackend/pipeline.py` | Code Manager to parser handoff and matching consumer outputs |
+| `FlowBridgeBackend/source_mapping.py` | Graph/node source lookups for one project and its current revision |
 | `flowbridge/`, `CodeManager.py` | Original import names pointing to the current backend |
 | `FlowBridgeBackend/cli.py` | File/ZIP/GitHub import demonstration, real project JSON |
 | `tests/` | Offline automated model, loader, GitHub, API, registry, and CLI tests |
@@ -209,6 +210,7 @@ See the [HTTP contract](#http-contract) for the exact payload.
 | `POST /api/projects/{projectID}/analyze` | Project ID, optional `revisionId` query parameter | 200, analysis plus flowchart and mapping JSON |
 | `GET /api/projects/{projectID}/flowchart` | Project ID, optional `revisionId` query parameter | 200, flowchart JSON |
 | `GET /api/projects/{projectID}/mapping` | Project ID, optional `revisionId` query parameter | 200, source-mapping JSON |
+| `GET /api/projects/{projectID}/source-location` | Required `graphId` and `nodeId` query parameters, optional `revisionId` | 200, project/revision IDs, location, original file |
 
 The import response is the project itself:
 
@@ -344,6 +346,7 @@ passed the relative-path policy.
 | `NO_PROJECT_LOADED` | 404 | Service used before its first successful import |
 | `PROJECT_NOT_FOUND` | 404 | Project not retained in this app instance |
 | `FILE_NOT_FOUND` | 404 | File not in the specified project |
+| `SOURCE_MAPPING_NOT_FOUND` | 404 | Node has no source range in the selected project/revision |
 | `IMPORT_LIMIT_EXCEEDED` | 413 | Configured size/count budget exceeded |
 | `NO_PYTHON_FILES` | 422 | Empty repository/archive or no eligible Python files |
 | `GITHUB_RATE_LIMITED` | 429 | Upstream primary/secondary rate-limit response |
@@ -383,10 +386,10 @@ const imported = await fetch("http://127.0.0.1:8000/api/projects/github", {
 
 New backend defaults allow local UI origins on ports 5173 and 3000 for localhost
 and 127.0.0.1. Set `create_app(cors_origins=("https://actual-ui-origin",))` when
-integrating another origin. The `codex/code-manager` branch still includes the
-original static frontend prototype. The team's newer React/Vite frontend is in
-`FlowBridgeFrontend/` on `main`; connect that UI to these routes after integrating
-the backend branch.
+integrating another origin. The React/Vite frontend is in `FlowBridgeFrontend/`.
+Its file/ZIP requests use these routes, but the current app still displays a
+placeholder diagram and an embedded editor. The file-view component must be
+mounted and the Start button must call analysis.
 
 ## Parser and source-mapping handoff
 
@@ -422,15 +425,43 @@ not overwrite original source. Unsupported features also produce explicit status
 and diagnostics. See the parser's [integration guide](../FlowBridge_ParsingAndAnalysis/docs/INTEGRATION_GUIDE.md)
 and [supported subset](../FlowBridge_ParsingAndAnalysis/docs/PARSING_FEATURES.md).
 
-The future Source-Mapping Layer finds a mapping using `graphId` and `nodeId`,
-then uses its `location.fileId` with the original project ID:
+Grace's Source Mapping Layer loads the pipeline's `mapping` output, finds a node
+using both `graphId` and `nodeId`, and returns its location:
 
 ```python
-file_id = selected_mapping["location"]["fileId"]
-original = registry.getSourceFile(project_id, file_id)
+from FlowBridgeBackend.source_mapping import SourceMappingLayer
+
+layer = SourceMappingLayer(projectId=result["projectId"])
+layer.loadMappingOutput(result["mapping"])
+location = layer.getSourceLocation(graph_id, node_id)
+if location is not None:
+    original = registry.getSourceFile(result["projectId"], location.fileId)
 ```
 
-The browser equivalent is `GET /api/projects/{projectID}/files/{fileID}`.
+Use one layer per project. Full mapping outputs require `projectId`, a nonnegative
+integer `revisionId`, and `sourceMappings`. Older revisions and another project's
+output are rejected. Invalid or duplicate entries leave the previous mappings
+intact. `updateMappings(list)` is the lower-level replacement method; revision
+checks belong to `loadMappingOutput`.
+
+For the browser, `GET /api/projects/{projectID}/source-location` accepts `graphId`,
+`nodeId`, and optional `revisionId` query parameters. It reanalyzes the saved
+snapshot, uses the layer, and returns:
+
+```javascript
+{
+  projectId, revisionId,
+  location: { fileId, startLine, endLine, startColumn, endColumn },
+  file: { fileID, fileName, filePath, fileContent }
+}
+```
+
+`location.fileId` equals `file.fileID`; the different ID spellings follow the two
+existing contracts. `getSourceLocation` returns `None` for an unmapped node. The
+HTTP route returns 404 `SOURCE_MAPPING_NOT_FOUND`, including for synthetic Start/End
+nodes and graph IDs from another revision. Original-file retrieval is also
+available independently at `GET /api/projects/{projectID}/files/{fileID}`.
+
 Mapping locations use one-based lines, zero-based UTF-8 byte columns, and
 exclusive end positions. Convert those columns to the editor's coordinates
 before highlighting; JavaScript string indexes are not UTF-8 byte offsets.
@@ -452,14 +483,18 @@ Selecting nodes and applying highlights remain UI/connection-management work.
 
 ## Remaining team integration work
 
-1. Connect upload/repository controls in the real UI to the working API.
-2. Display the pipeline's graphs and diagnostics, keeping project/revision IDs paired.
-3. Carry file IDs into SourceLocation metadata, then connect graph selection to
-   project-scoped original-file retrieval and highlighting.
-4. Complete diagram generation/rendering/export in the relevant modules.
-5. Conduct intended-user validation and record actual observations/feedback.
-6. Decide on durable storage, authentication, deployment origins, and proxy limits
-   before deploying beyond the local capstone demo.
+1. Finish UI input/state: add public GitHub input, mount the file viewer, surface
+   upload errors, and send the optional project name as `projectName`.
+2. Connect Start to analysis and retain matching project/revision outputs.
+3. Implement Diagram Manager layout, interactive rendering, view navigation, and export.
+4. Connect node clicks to source lookup, display the returned original file, and
+   convert UTF-8 byte columns before highlighting in the editor.
+5. Run browser integration tests once upload → diagram → node click → source
+   highlight works. Backend integration tests can run now.
+6. Conduct intended-user validation and record actual observations/feedback.
+
+The current single-worker demo uses in-memory storage. Persistence and any
+authentication needed beyond that demo remain separate scope decisions.
 
 No unfinished placeholder logic remains in the Code Manager import/retrieval
 module. External module integration and intended-user validation remain separate

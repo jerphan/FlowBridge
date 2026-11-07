@@ -188,9 +188,9 @@ class _FileAnalyzer:
             if isinstance(node, (ast.For, ast.While)):
                 # Loops do not create Python scopes. Inspect their targets/tests
                 # and bodies in the current scope, but keep loop-else conservative.
-                if node.orelse:
-                    self._incomplete(node, scope_id, 'loop else subtree omitted from binding analysis')
-                    continue
+                # Inspect header, body and else in current scope
+
+
                 pending.extend(reversed(list(ast.iter_child_nodes(node))))
                 continue
             if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Store):
@@ -204,6 +204,22 @@ class _FileAnalyzer:
                     caller_function_id=self.table.scope(scope_id).function_id, location=location,
                     expression=self._text(node), callee_expression=self._text(node.func),
                     direct_name=node.func.id if isinstance(node.func, ast.Name) else None))
+            if isinstance(node, ast.Try):
+                if node.orelse or node.finalbody:
+                    self._incomplete(node, scope_id, 'try else/finally subtrees omitted from binding analysis')
+                for handler in reversed(node.handlers):
+                    pending.append(handler)
+                for child in reversed(node.body):
+                    pending.append(child)
+                continue
+            if isinstance(node, ast.ExceptHandler):
+                if node.name is not None:
+                    self._incomplete(node, scope_id, 'exception alias binding and cleanup are not modeled')
+                for child in reversed(node.body):
+                    pending.append(child)
+                if node.type is not None:
+                    pending.append(node.type)
+                continue
             if isinstance(node, ast.stmt) and not isinstance(node, (ast.Assign, ast.AnnAssign, ast.AugAssign,
                                                                  ast.Expr, ast.If, ast.Return, ast.Pass,
                                                                  ast.Break, ast.Continue)):
@@ -214,7 +230,7 @@ class _FileAnalyzer:
                 continue
             if isinstance(node, ast.AnnAssign):
                 # An annotation binds a local name even without a runtime value.
-                children = [node.target] + ([node.value] if node.value is not None else [])
+                children = [node.target, node.annotation] + ([node.value] if node.value is not None else [])
             else:
                 children = list(ast.iter_child_nodes(node))
             pending.extend(reversed(children))

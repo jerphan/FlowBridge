@@ -3,7 +3,7 @@ import ast
 from dataclasses import dataclass, field, replace
 
 from .RevisionIds import RevisionIds
-from .models import Diagnostic, EdgeType, FileInput, FlowEdge, FlowNode, GraphModel, NodeType, SourceMapping
+from .models import Diagnostic, EdgeType, FileInput, FlowEdge, FlowNode, GraphModel, GraphReference, NodeType, SourceMapping
 from .PythonParser import ast_location
 from .FeatureValidator import FeatureValidator
 
@@ -14,6 +14,7 @@ class CFGResult:
     graph: GraphModel
     source_mappings: list[SourceMapping] = field(default_factory=list)
     diagnostics: list[Diagnostic] = field(default_factory=list)
+    graph_references: list[GraphReference] = field(default_factory=list)
 
 
 # A pending path is a node plus the edge label to use when its successor is known.
@@ -51,6 +52,23 @@ class CFGBuilder:
             return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
                 function, 'CFG_LIMIT', 'Function exceeds CFG construction recursion capacity.')])
 
+    def build_module(self, tree: ast.Module, file_input: FileInput, ids: RevisionIds) -> CFGResult:
+        """Build a fresh execution CFG for top-level module statements."""
+        if not isinstance(tree, ast.Module):
+            raise TypeError('CFGBuilder.build_module requires an ast.Module')
+        file_input.__post_init__()
+        worker = _ModuleBuilder(tree, file_input, ids)
+        features = FeatureValidator().validate(tree, file_input.file_id)
+        diagnostics = [replace(item, graph_id=worker.graph_id) for item in features.diagnostics]
+        if any(item.severity == 'error' for item in diagnostics):
+            return CFGResult(worker.graph('unsupported'), diagnostics=diagnostics)
+        worker.diagnostics.extend(diagnostics)
+        try:
+            return worker.build()
+        except RecursionError:
+            return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
+                tree, 'CFG_LIMIT', 'Module exceeds CFG construction recursion capacity.')])
+
 
 class _FunctionBuilder:
     def __init__(self, function: ast.FunctionDef, file: FileInput, ids: RevisionIds) -> None:
@@ -64,10 +82,12 @@ class _FunctionBuilder:
         self.edges: list[FlowEdge] = []
         self.mappings: list[SourceMapping] = []
         self.diagnostics: list[Diagnostic] = []
+        self.graph_references: list[GraphReference] = []
         self.loops: list[_Loop] = []
         self.node_count = 0
         self.exception_target: str | None = None
         self.exceptional_end: str | None = None
+        self.in_handler = False
         self.track_exceptions = any(isinstance(node, ast.Try) for node in ast.walk(function))
 
     def graph(self, status: str, empty: bool = False) -> GraphModel:
@@ -109,7 +129,8 @@ class _FunctionBuilder:
                   incoming: Predecessors, may_raise: bool = True) -> str:
         current = self.node(kind, label, source)
         self.connect(incoming, current)
-        if self.track_exceptions and may_raise:
+        can_raise = (self.exception_target is not None) or self.in_handler
+        if self.track_exceptions and may_raise and can_raise:
             self.edge(current, self.exception_target or self.exception_end(), 'exception')
         return current
 
@@ -119,7 +140,10 @@ class _FunctionBuilder:
         self.end = self.node('end', 'End')
         remaining = self.block(self.function.body, [(start, 'next')])
         self.connect(remaining, self.end)
-        return CFGResult(self.graph('complete'), self.mappings, self.diagnostics)
+        if not any(edge.target_id == self.end for edge in self.edges):
+            self.nodes = [n for n in self.nodes if n.node_id != self.end]
+            self.mappings = [m for m in self.mappings if m.node_id != self.end]
+        return CFGResult(self.graph('complete'), self.mappings, self.diagnostics, self.graph_references)
 
     def block(self, statements: list[ast.stmt], incoming: Predecessors) -> Predecessors:
         """Build a sequence, carrying only paths that can reach its next statement.
@@ -146,10 +170,16 @@ class _FunctionBuilder:
             return self.build_if(statement, incoming)
         if isinstance(statement, ast.Return):
             return self.build_return(statement, incoming)
-        if isinstance(statement, (ast.Assign, ast.Expr, ast.Pass)):
+        if isinstance(statement, (ast.Assign, ast.AnnAssign, ast.AugAssign, ast.Expr, ast.Pass)):
             current = self.operation('statement', self.text(statement), statement, incoming,
                                      may_raise=not isinstance(statement, ast.Pass))
             return [(current, 'next')]
+        if isinstance(statement, (ast.Import, ast.ImportFrom)):
+            current = self.operation('statement', self.text(statement), statement, incoming,
+                                     may_raise=False)
+            return [(current, 'next')]
+        if isinstance(statement, ast.FunctionDef):
+            return self.build_function_def(statement, incoming)
         raise ValueError(f'Unexpected statement after feature validation: {type(statement).__name__}')
 
     def build_if(self, statement: ast.If, incoming: Predecessors) -> Predecessors:
@@ -170,7 +200,8 @@ class _FunctionBuilder:
         """Connect a terminal return to End and provide no normal successor."""
         # Preserve the existing exception abstraction: evaluating a return value
         # may fail, but the return transfer itself never falls through.
-        if self.track_exceptions and statement.value is not None:
+        can_raise = (self.exception_target is not None) or self.in_handler
+        if self.track_exceptions and can_raise and statement.value is not None:
             evaluated = self.operation('statement', 'Evaluate return: ' + self.text(statement.value),
                                        statement.value, incoming)
             incoming = [(evaluated, 'next')]
@@ -180,6 +211,17 @@ class _FunctionBuilder:
         # Empty exits stop subsequent statements on this path. In an if, the
         # other branch may still supply exits and keep the outer block reachable.
         return []
+
+    def build_function_def(self, statement: ast.FunctionDef, incoming: Predecessors) -> Predecessors:
+        key = (self.file.file_id, statement.lineno, statement.col_offset, statement.name)
+        target_graph_id = self.ids.make('graph', 'function', *key)
+        current = self.node('function', f'def {statement.name}(...)', statement)
+        self.connect(incoming, current)
+        self.graph_references.append(GraphReference(
+            source_graph_id=self.graph_id,
+            source_node_id=current,
+            target_graph_id=target_graph_id))
+        return [(current, 'next')]
 
     def build_loop_control(
         self, statement: ast.Break | ast.Continue, incoming: Predecessors,
@@ -258,9 +300,49 @@ class _FunctionBuilder:
                 self.edge(match, self.exception_end(), 'exception')
             # Handler operations use the enclosing exception context, never the
             # same try's dispatch. A handler failure cannot enter a sibling handler.
-            handler_exits.extend(self.block(handler.body, body_entry))
+            was_in_handler = self.in_handler
+            self.in_handler = True
+            try:
+                handler_exits.extend(self.block(handler.body, body_entry))
+            finally:
+                self.in_handler = was_in_handler
         if unmatched:
             unhandled = self.node('statement', 'Unhandled exception')
             self.connect(unmatched, unhandled)
             self.edge(unhandled, self.exception_end(), 'unhandled')
         return normal + handler_exits
+
+
+class _ModuleBuilder(_FunctionBuilder):
+    def __init__(self, tree: ast.Module, file: FileInput, ids: RevisionIds) -> None:
+        self.tree = tree
+        self.file = file
+        self.ids = ids
+        self.graph_id = ids.make('graph', 'module', file.file_id)
+        self.graph_type = 'module'
+        self.nodes: list[FlowNode] = []
+        self.edges: list[FlowEdge] = []
+        self.mappings: list[SourceMapping] = []
+        self.diagnostics: list[Diagnostic] = []
+        self.graph_references: list[GraphReference] = []
+        self.loops: list[_Loop] = []
+        self.node_count = 0
+        self.exception_target: str | None = None
+        self.exceptional_end: str | None = None
+        self.in_handler = False
+        self.track_exceptions = any(isinstance(node, ast.Try) for node in ast.walk(tree))
+
+    def graph(self, status: str, empty: bool = False) -> GraphModel:
+        return GraphModel(graph_id=self.graph_id, graph_type='module', status=status,
+                          file_id=self.file.file_id, function_id=None,
+                          nodes=[] if empty else self.nodes, edges=[] if empty else self.edges)
+
+    def build(self) -> CFGResult:
+        start = self.node('start', 'Start')
+        self.end = self.node('end', 'End')
+        remaining = self.block(self.tree.body, [(start, 'next')])
+        self.connect(remaining, self.end)
+        if not any(edge.target_id == self.end for edge in self.edges):
+            self.nodes = [n for n in self.nodes if n.node_id != self.end]
+            self.mappings = [m for m in self.mappings if m.node_id != self.end]
+        return CFGResult(self.graph('complete'), self.mappings, self.diagnostics, self.graph_references)

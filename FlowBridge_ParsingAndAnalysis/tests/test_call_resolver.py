@@ -79,7 +79,7 @@ class CallResolverTests(unittest.TestCase):
                 self.assertEqual(result.call_references[0].resolution, 'unresolved')
 
     def test_incomplete_scope_blocks_optimistic_resolution(self):
-        result, _ = resolve([('main.py', 'def f():\n    pass\ndef main():\n    try:\n        pass\n    except:\n        pass\n    f()')])
+        result, _ = resolve([('main.py', 'def f():\n    pass\ndef main():\n    _ = [x for x in []]\n    f()')])
         self.assertEqual(result.call_references[0].resolution, 'unresolved')
 
     def test_determinism_and_revision_isolation(self):

@@ -17,7 +17,8 @@ remains separate in reference/. See DATA_MODELS.md for the implemented foundatio
 5. `SymbolTable` indexes declarations/bindings by lexical scope. `CallResolver`
    combines these indexes with a project module index to resolve only supported calls.
 6. `CFGBuilder.build(function, file_input, ids)` creates nodes and edges with source
-   locations immediately attached. It returns a graph and diagnostics.
+   locations immediately attached. `build_module(tree, file_input, ids)` builds
+   a separate module CFG for top-level execution. Both return graphs and diagnostics.
 7. `ProjectGraphBuilder.build(files, functions, graphs)` constructs overview graphs
    and navigation references to existing graphs only.
 8. `ParsingAnalysisService.analyze_project(project_input)` assembles ProjectAnalysis
@@ -55,6 +56,13 @@ files may still be analyzed when another file fails. Unsupported functions have
 an explicit unsupported graph status and no misleading executable CFG. Module-level
 control flow is recognized and diagnosed where unsupported; initial file views
 are structural overviews, not module execution CFGs.
+
+November 6 update: supported top-level statements now get a separate module CFG;
+file overviews retain their structural role and link to that graph. Function
+definition nodes link to function views. This supersedes earlier module-execution
+deferrals below. The service publishes a file's functions, symbols, graphs,
+mappings, and references together after construction succeeds; a failed file
+retains a failed file overview and diagnostic without corrupting valid siblings.
 
 No uploaded imports are executed. Paths are metadata used for module indexing,
 not instructions to read arbitrary local files. No database or caching layer is planned.

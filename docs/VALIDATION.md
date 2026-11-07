@@ -4,11 +4,53 @@ Module owner: Justin Bean
 
 Initial verification: November 1, 2026 (America/Chicago)
 
-Latest verification: November 4, 2026 (America/Chicago)
+Latest verification: November 6, 2026 (America/Chicago)
 
 Repository base: `jerphan/CodeToChart`, commit `9fdaf1fa0c898b709bbf443647dcb1f7fb2950e7`
 
 Original implementation branch: `codex/code-manager`
+
+## Parser update integration verification, November 6
+
+Harsha's `d7d74ec` adds bounded module CFGs, annotated/augmented assignments,
+try/loop-else lexical traversal, module calls, and unused End-node pruning.
+The additive `graphType: module` value is documented for diagram consumers.
+
+Actual results: **219 backend pytest cases and 273 parser unittest cases passed
+(492 total)**. Backend lint and source/wheel builds passed. File, ZIP, and mocked
+GitHub handoffs exercise module/function graphs, navigation, resolved calls,
+revision isolation, and original-source retrieval with CRLF/tabs retained.
+
+Review regressions corrected nested module-return acceptance, guessed call
+targets when unsupported try clauses hide bindings, and partial file state after
+CFG construction failure. No Code Manager acquisition or Source Mapping changes.
+Browser end-to-end and intended-user validation remain **NOT RUN**.
+
+## Source Mapping integration verification, November 5
+
+Grace's lookup method names and graph/node lookup behavior are retained. Mapping
+updates now validate a complete replacement before committing it, track one
+project/revision, and reject older revisions. The print-only demonstration is
+replaced by collected pytest assertions. Code Manager's acquisition methods and
+Harsha's parser algorithms are unchanged.
+
+| Check | Actual result |
+| --- | --- |
+| Code Manager, Source Mapping, and integration pytest suite | **217 passed**, including 27 additional cases |
+| Harsha's parser unittest suite | **219 passed** |
+| File/ZIP/mocked-GitHub → parser → mapping → original source | Passed for revision 0 and revision 7, nested duplicate basenames, CRLF, tabs, and encoding declarations |
+| Source Mapping updates | Invalid/duplicate updates preserve previous data; wrong-project and older-revision outputs rejected |
+| Source-selection API | Returns matching file/range; missing nodes/projects and mismatched revisions return 404; invalid requests return 400 |
+| Unicode source locations | Original text retained and UTF-8 byte-column range verified |
+| Backend lint | Passed |
+| Source distribution and wheel build | Passed |
+| Installed wheel outside the checkout | Source Mapping import, pipeline lookup, API source selection, and bytecode exclusion passed |
+| Intended-user and browser end-to-end validation | **NOT RUN**; graph display and highlighting still need UI integration |
+
+Run `uv run python scripts/check_modules.py` for all 436 tests. The existing
+HTTPX/Starlette TestClient deprecation warning remains; it does not fail the suite.
+The project continues to use `uv.lock`; an unrelated Poetry lock and tracked
+bytecode caches are excluded from the integration.
 
 ## Combined module verification, November 4
 
@@ -185,9 +227,9 @@ and rate limits before presenting; keep the local ZIP scenario available.
   demo only. Capacity errors are explicit rather than silently evicting projects.
 - Imports support documented size/count budgets and public default branches.
   Submodules, Git LFS downloads, private repositories, and nested archives are not fetched.
-- No parser/UI/source-mapping/diagram integration is claimed complete. The handoff
-  documents the next calls and ownership boundaries.
+- Code Manager, Parsing & Analysis, and backend Source Mapping are connected.
+  Diagram rendering and browser source highlighting still require integration.
 - Intended-user validation is still required. Fill in the checklist with observed
   results and actual feedback before writing Stage 3 user-validation conclusions.
-- Review the `codex/code-manager` branch before merging it into `main`. Keep the
-  exact shared contract when connecting the other team modules.
+- Keep the shared project/file identity and matching revision contracts when
+  connecting the UI and diagram modules.

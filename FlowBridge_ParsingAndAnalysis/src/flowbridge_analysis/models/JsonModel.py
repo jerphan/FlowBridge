@@ -8,7 +8,7 @@ from typing import Literal, Union, get_args, get_origin, get_type_hints
 
 AnalysisStatus = Literal['success', 'partial', 'failed']
 GraphStatus = Literal['complete', 'unsupported', 'failed']
-ViewType = Literal['project', 'file', 'function']
+ViewType = Literal['project', 'file', 'function', 'module']
 NodeType = Literal['file', 'function', 'start', 'end', 'statement', 'condition',
                    'loop', 'return', 'break', 'continue', 'exceptionDispatch', 'handler', 'raise']
 EdgeType = Literal['next', 'true', 'false', 'back', 'break', 'continue', 'return', 'exception', 'unhandled']

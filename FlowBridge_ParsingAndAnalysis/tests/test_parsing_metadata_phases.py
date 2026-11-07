@@ -129,12 +129,12 @@ class PhaseFourTests(unittest.TestCase):
         self.assertEqual([call.direct_name for call in result.call_sites], ['use'])
         self.assertFalse(result.symbol_table.scope(scope).is_complete)
 
-    def test_loop_else_and_try_remain_incomplete(self) -> None:
+    def test_loop_else_and_try_are_complete(self) -> None:
         for body in ('for x in xs:\n        work()\n    else:\n        finish()',
                      'try:\n        work()\n    except:\n        recover()'):
             result = inspect('def f(xs):\n    ' + body)
-            self.assertFalse(result.symbol_table.scope(result.functions[0].scope_id).is_complete)
-            self.assertTrue(any(item.code == 'INCOMPLETE_SCOPE' for item in result.diagnostics))
+            self.assertTrue(result.symbol_table.scope(result.functions[0].scope_id).is_complete)
+            self.assertFalse(any(item.code == 'INCOMPLETE_SCOPE' for item in result.diagnostics))
 
     def test_identical_names_are_separate_across_scopes_and_files(self) -> None:
         source = 'def f(x):\n    result = x\n    return result\ndef g(x):\n    result = x\n    return result'

@@ -1,5 +1,6 @@
 # These models are shared with the parser and source-mapping layer.
 
+from dataclasses import dataclass
 from typing import Self
 from uuid import UUID, uuid4
 
@@ -89,3 +90,39 @@ class PyProject(BaseModel):
 # Keep the names from the UML as aliases.
 pyProject = PyProject
 sourceFile = SourceFile
+
+
+# Data models for Source Mapping and Source Location.
+@dataclass
+class SourceLocation:
+    fileId: str
+    startLine: int
+    endLine: int
+    startColumn: int
+    endColumn: int
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.fileId, str) or not self.fileId.strip():
+            raise ValueError("fileId must be nonblank.")
+        coordinates = (self.startLine, self.endLine, self.startColumn, self.endColumn)
+        if any(type(value) is not int for value in coordinates):
+            raise ValueError("Source coordinates must be integers.")
+        if min(self.startLine, self.endLine) < 1 or min(self.startColumn, self.endColumn) < 0:
+            raise ValueError("Source lines start at 1 and columns start at 0.")
+        if (self.endLine, self.endColumn) < (self.startLine, self.startColumn):
+            raise ValueError("Source end must not precede its start.")
+
+
+@dataclass
+class SourceMapping:
+    graphId: str
+    nodeId: str
+    location: SourceLocation
+
+    def __post_init__(self) -> None:
+        if any(
+            not isinstance(value, str) or not value.strip() for value in (self.graphId, self.nodeId)
+        ):
+            raise ValueError("graphId and nodeId must be nonblank.")
+        if not isinstance(self.location, SourceLocation):
+            raise ValueError("A source mapping needs a SourceLocation.")
