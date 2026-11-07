@@ -1,4 +1,3 @@
-"use client";
 import {ChangeEvent, FormEvent, useState, useEffect, useRef} from 'react';
 import "../App.css";
 import axios, {AxiosError} from 'axios';
@@ -86,8 +85,8 @@ export default function LinkUploader({onProjectLoaded, projectName=""}: linkUplo
             return;
         }
         dialogRef.current.hasAttribute("open")
-        ?dialogRef.current.close()
-        :dialogRef.current.showModal();
+            ?dialogRef.current.close()
+            :dialogRef.current.showModal();
     };
 
     return (
@@ -95,7 +94,7 @@ export default function LinkUploader({onProjectLoaded, projectName=""}: linkUplo
             <label htmlFor = "URLupload">
                 <img src="linkIcon.png" alt="Upload Icon" className="toolIcon"/>
             </label>
-            <button type="button" onClick={openDialog} className="toolButton"></button>
+            <button id = "URLupload" type="button" onClick={openDialog} className="toolButton"></button>
             <dialog ref={dialogRef}>
                 <form method = "dialog" onSubmit={handleSubmit}>
                     <div>

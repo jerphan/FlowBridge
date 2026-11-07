@@ -4,7 +4,7 @@ import StartButton from "./components/StartButton";
 import ProjectViewer from "./components/ProjectViewer";
 import GitHubUploader from "./components/GitHubUploader"
 import DiagramManager from "./components/DiagramManager"
-import {pyProject, sourceFile} from "./types/types";
+import {flowchartJSON, pyProject, sourceFile} from "./types/types";
 import axios from "axios";
 
 const api = axios.create({
@@ -14,10 +14,12 @@ const api = axios.create({
 function app(){
     const [project, setProject] = useState<pyProject | null>(null);
     const [selectedFile, setSelectedFile] = useState<sourceFile | null>(null);
+    const [flowChart, setFlowchart] = useState<flowchartJSON | null>(null);
 
     const handleProjectLoaded = (project : pyProject) =>{
         setProject(project);
         setSelectedFile(project.files[0]);
+        setFlowchart(null);
     }
 
     return <>
@@ -31,7 +33,7 @@ function app(){
                     <img src="./FlowBridgeIcon.png" alt="Logo Icon" className="logoIcon"/>
                     <span className="brandName">FlowBridge</span>
                 </div>
-                    <StartButton/>
+                    <StartButton project={project} selectedFile={selectedFile} onFlowChartLoaded={(loadedFlowchart) => setFlowchart(loadedFlowchart)}/>
                 <div className="headingRight">
                     <div className="user-profile">
                         <div>
@@ -70,7 +72,7 @@ function app(){
                     <section className="card">
                         <div className="cardHeader">FlowChart</div>
                         <div className="cardBody">
-                            <DiagramManager/>
+                            <DiagramManager flowchart = {flowChart} selectedFile={selectedFile}/>
                         </div>
                     </section>
                 </main>
