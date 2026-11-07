@@ -1,6 +1,9 @@
 import {useState} from "react";
 import FileUploader from "./components/FileUploader";
 import StartButton from "./components/StartButton";
+import ProjectViewer from "./components/ProjectViewer";
+import GitHubUploader from "./components/GitHubUploader"
+import DiagramManager from "./components/DiagramManager"
 import {pyProject, sourceFile} from "./types/types";
 import axios from "axios";
 
@@ -16,7 +19,7 @@ function app(){
         setProject(project);
         setSelectedFile(project.files[0]);
     }
-    
+
     return <>
             <head>
                 <meta charSet="UTF-8"/>
@@ -46,6 +49,9 @@ function app(){
                         <div>
                             <FileUploader onProjectLoaded={handleProjectLoaded}/>
                         </div>
+                        <div>
+                            <GitHubUploader onProjectLoaded={handleProjectLoaded}/>
+                        </div>
                         <img src="ExportButton.png" alt="Export Icon" className="toolIcon"/>
                     </div>
                     <div className="toolbar-bottom">
@@ -57,19 +63,14 @@ function app(){
                         <div className="cardHeader">
                             Source Code
                         </div>
-                            <iframe 
-                                src="https://onecompiler.com/embed/python?hideResult=true&hideRun=true&listenToEvents=true&codeChangeEvent=true" 
-                                width="100%" 
-                                height="100%" 
-                                id="codeEditor">
-                            </iframe>
+                            <ProjectViewer project = {project} onSelectFile={(file) => setSelectedFile(file)}/>
                         <div className="cardBody"></div>
                     </section>
 
                     <section className="card">
                         <div className="cardHeader">FlowChart</div>
-                        <div className="cardBody flowchartBody">
-                            <img src="ExampleScreenShot.jpg" alt="Flowchart" className="flowchartImage"/>
+                        <div className="cardBody">
+                            <DiagramManager/>
                         </div>
                     </section>
                 </main>

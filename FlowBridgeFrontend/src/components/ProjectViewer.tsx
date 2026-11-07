@@ -68,9 +68,9 @@ export default function ProjectViewer({project, onSelectFile} : projectViewerPro
                     if(activeFile != null){
                         return (
                         <li key = {file.fileName}>
-                            
                             <button type="button" className = "fileListCard" onClick = {() => handleFileClicked(file)}>
-                                {file.fileName}
+                                <header>Path: {file.filePath}</header>
+                                Name: {file.fileName}
                             </button>
                         </li>
                         );
@@ -82,7 +82,7 @@ export default function ProjectViewer({project, onSelectFile} : projectViewerPro
             {activeFile ? (
                 <SourceFileCard file={activeFile} />
             ) : (
-                <div className="pyProjectNoMatches">Select a file to view its content.</div>
+                <div>Upload a file to begin.</div>
             )}
             </div>
         </div>

@@ -6,9 +6,10 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 html, #root{
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
 }
 body {
     background-color: #f4f6f8;
@@ -177,4 +178,88 @@ body {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+/* CSS for the ProjectViewer */
+.projectFileExplorer{
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 1fr 5fr;
+    height: 100vh;
+}
+
+.projectFileList{
+    list-style: none;
+    border-right: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.projectFileDetail{
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px 10px;
+    transition: background-color 0.15s;
+}
+
+.fileListCard{
+    width: 100%;
+    text-align: left;
+    background: #d0e1fd;
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.fileListTitle{
+    display: flex;
+    font-size: 13px;
+    color: #000000;
+}
+
+.fileCard{
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 100vh;
+    max-width: 100vh;
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 10px 0;
+    overflow-y: auto;
+}
+
+.fileCardBody{
+    display: flex;
+}
+
+.filePreview{
+    max-height: 100vh;
+    margin: 0;
+    font-size: 13px;
+}
+
+.fileCodeLine{
+    display: flex;
+    padding: 0 12px;
+}
+
+.fileLineNumber{
+    user-select: none;
+    width: 36px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-right: 12px;
+    color: #64748b;
+}
+
+.fileLineText{
+    white-space: pre;
 }
