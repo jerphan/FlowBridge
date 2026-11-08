@@ -7,7 +7,8 @@ from .CFGBuilder import CFGBuilder
 from .CallResolver import CallResolver
 from .ProjectGraphBuilder import ProjectGraphBuilder
 from .RevisionIds import RevisionIds
-from .models import ProjectAnalysis, FileMetadata, Diagnostic
+from .models import ProjectAnalysis, FileMetadata, FileInput, Diagnostic
+from .ASTAnalyzer import ASTAnalysis
 
 
 def _has_module_execution(tree: ast.Module) -> bool:
@@ -48,6 +49,7 @@ class ParsingAnalysisService:
         mappings = []
         module_graphs = []
         module_graph_refs = []
+        parsed_trees: dict[str, ast.Module] = {}
         for file in project.files:
             parsed = PythonParser().parse(file)
             diagnostics.extend(parsed.diagnostics)
@@ -57,6 +59,7 @@ class ParsingAnalysisService:
             files.append(metadata)
             if parsed.tree is None:
                 continue
+            parsed_trees[file.file_id] = parsed.tree
             try:
                 # ASTAnalyzer already invokes FeatureValidator; retain those diagnostics
                 # once here rather than independently validating the same module again.
@@ -89,7 +92,43 @@ class ParsingAnalysisService:
                     severity='error', code='INTERNAL_ANALYSIS_ERROR', file_id=file.file_id,
                     message=f'Unexpected error analyzing file {file.file_name}: {type(ex).__name__}: {ex}'))
         calls = CallResolver().resolve(project.files, analyses)
-        hierarchy = ProjectGraphBuilder().build(files, functions, graphs, ids, module_graphs=module_graphs)
+        import_dependencies = self._extract_import_dependencies(project.files, analyses)
+
+        # Build complete File View CFGs for each file
+        functions_by_id = {fn.function_id: fn for fn in functions}
+        file_graphs = []
+        file_graph_refs = []
+        for file in project.files:
+            tree = parsed_trees.get(file.file_id)
+            if tree is None:
+                continue
+            local_functions = {
+                stmt.name: stmt
+                for stmt in tree.body
+                if isinstance(stmt, ast.FunctionDef)
+            }
+            try:
+                built_file = CFGBuilder().build_file(
+                    tree, file, ids,
+                    local_functions=local_functions,
+                    functions_by_id=functions_by_id,
+                    call_references=calls.call_references,
+                )
+                file_graphs.append(built_file.graph)
+                mappings.extend(built_file.source_mappings)
+                diagnostics.extend(built_file.diagnostics)
+                file_graph_refs.extend(built_file.graph_references)
+            except Exception as ex:
+                diagnostics.append(Diagnostic(
+                    severity='error', code='INTERNAL_ANALYSIS_ERROR', file_id=file.file_id,
+                    message=f'Unexpected error building file view for {file.file_name}: {type(ex).__name__}: {ex}'))
+
+        hierarchy = ProjectGraphBuilder().build(
+            files, functions, graphs, ids,
+            module_graphs=module_graphs,
+            import_dependencies=import_dependencies,
+            file_graphs=file_graphs
+        )
         # Exact duplicates only are removed: graph-specific diagnostics remain
         # distinct from module inspection diagnostics because they identify views.
         unique_diagnostics = []
@@ -104,9 +143,71 @@ class ParsingAnalysisService:
             revision_id=project.revision_id, status='partial' if partial else 'success',
             files=files, functions=functions, graphs=hierarchy.graphs, symbols=symbols,
             call_references=calls.call_references, source_mappings=mappings + hierarchy.source_mappings,
-            graph_references=hierarchy.graph_references + module_graph_refs, diagnostics=unique_diagnostics)
+            graph_references=hierarchy.graph_references + module_graph_refs + file_graph_refs, diagnostics=unique_diagnostics)
         self._check_mapping_coverage(result)
         return result
+
+    @staticmethod
+    def _extract_import_dependencies(
+        files: list[FileInput], analyses: list[ASTAnalysis]
+    ) -> list[tuple[str, str]]:
+        from pathlib import PurePosixPath
+
+        modules: dict[str, str] = {}
+        for file in files:
+            path = PurePosixPath(file.file_path.replace('\\', '/'))
+            if not path.name or path.suffix != '.py':
+                continue
+            parts = list(path.with_suffix('').parts)
+            if not parts or not all(p.isidentifier() for p in parts):
+                continue
+            if parts[-1] == '__init__':
+                parts.pop()
+            if parts:
+                mod_name = '.'.join(parts)
+                modules[mod_name] = file.file_id
+
+        dependencies: list[tuple[str, str]] = []
+        seen: set[tuple[str, str]] = set()
+        for analysis in analyses:
+            source_file_id = analysis.file_id
+            source_file = next((f for f in files if f.file_id == source_file_id), None)
+            source_parts: list[str] = []
+            if source_file and source_file.file_path:
+                try:
+                    p = PurePosixPath(source_file.file_path.replace('\\', '/'))
+                    if p.name and p.suffix:
+                        source_parts = list(p.with_suffix('').parts)[:-1]
+                    else:
+                        source_parts = list(p.parts)[:-1]
+                except ValueError:
+                    source_parts = []
+
+            for imp in analysis.imports:
+                target_file_id = None
+                if imp.level == 0:
+                    if imp.module in modules:
+                        target_file_id = modules[imp.module]
+                    elif imp.member and f"{imp.module}.{imp.member}" in modules:
+                        target_file_id = modules[f"{imp.module}.{imp.member}"]
+                else:
+                    base = list(source_parts)
+                    lvl = imp.level - 1
+                    while lvl > 0 and base:
+                        base.pop()
+                        lvl -= 1
+                    rel_mod = '.'.join(base + ([imp.module] if imp.module else []))
+                    if rel_mod in modules:
+                        target_file_id = modules[rel_mod]
+                    elif imp.member and f"{rel_mod}.{imp.member}" in modules:
+                        target_file_id = modules[f"{rel_mod}.{imp.member}"]
+
+                if target_file_id and target_file_id != source_file_id:
+                    pair = (source_file_id, target_file_id)
+                    if pair not in seen:
+                        seen.add(pair)
+                        dependencies.append(pair)
+        return dependencies
 
     @staticmethod
     def _valid_identity(payload: str | dict[str, object]) -> tuple[str | None, str | None, int | None]:
