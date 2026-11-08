@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 662.0 802.0" width="662.0" height="802.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 752.0 802.0" width="752.0" height="802.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -32,35 +32,35 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="331.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — import_patterns.py</text>
-  <path d="M 326.0 102.0 L 326.0 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 326.0 220.0 L 326.0 290.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 326.0 338.0 L 326.0 408.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 326.0 456.0 L 326.0 526.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 326.0 580.0 L 326.0 650.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDBd" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDBd">
-    <rect x="271.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="326.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="376.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — import_patterns.py</text>
+  <path d="M 376.0 102.0 L 376.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 376.0 220.0 L 376.0 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 376.0 338.0 L 376.0 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 376.0 456.0 L 376.0 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 376.0 580.0 L 376.0 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDBd" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDBd">
+    <rect x="321.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="376.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDFd" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDFd">
-    <rect x="271.0" y="650.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="326.0" y="671.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDFd" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDFd">
+    <rect x="321.0" y="650.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="376.0" y="671.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDJd" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDJd" data-file-id="ee1e93f9-da78-4998-8c2e-1d93373527dc" data-start-line="1" data-end-line="1">
-    <rect x="70.0" y="172.0" width="512.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="326.0" y="196.0" class="node-text">&quot;&quot;&quot;Import alias and module-qualified call resolution.&quot;&quot;&quot;</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDJd" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDJd" data-file-id="e2013fac-275f-4316-adda-709cfc664b90" data-start-line="1" data-end-line="1">
+    <rect x="120.0" y="172.0" width="512.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="376.0" y="196.0" class="node-text">&quot;&quot;&quot;Import alias and module-qualified call resolution.&quot;&quot;&quot;</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDNd" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDNd" data-file-id="ee1e93f9-da78-4998-8c2e-1d93373527dc" data-start-line="2" data-end-line="2">
-    <rect x="159.2" y="290.0" width="333.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="326.0" y="314.0" class="node-text">import core.math_ops as math_module</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDNd" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDNd" data-file-id="e2013fac-275f-4316-adda-709cfc664b90" data-start-line="2" data-end-line="2">
+    <rect x="209.2" y="290.0" width="333.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="376.0" y="314.0" class="node-text">import core.math_ops as math_module</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDRd" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDRd" data-file-id="ee1e93f9-da78-4998-8c2e-1d93373527dc" data-start-line="3" data-end-line="3">
-    <rect x="163.5" y="408.0" width="325.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="326.0" y="432.0" class="node-text">from core import validation as val</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDRd" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDRd" data-file-id="e2013fac-275f-4316-adda-709cfc664b90" data-start-line="3" data-end-line="3">
+    <rect x="213.5" y="408.0" width="325.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="376.0" y="432.0" class="node-text">from core import validation as val</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDVd" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVmxNV1U1TTJZNUxXUmhOemd0TkRrNU9DMDRZekpsTFRGa09UTXpOek0xTWpka1l5SmQiLDVd" data-file-id="ee1e93f9-da78-4998-8c2e-1d93373527dc" data-start-line="6" data-end-line="9" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJlZTFlOTNmOS1kYTc4LTQ5OTgtOGMyZS0xZDkzMzczNTI3ZGMiLDYsMCwicnVuX2FsaWFzZXMiXQ')">
-    <rect x="251.0" y="526.0" width="150.0" height="54.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="326.0" y="547.0" class="node-text" font-weight="600" fill="#00796b">⚡ run_aliases</text>
-    <text x="326.0" y="565.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDVd" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltVXlNREV6Wm1GakxUSTNOV1l0TkRNeE5pMWhaR1JoTFRjd09XTm1ZelkyTkdJNU1DSmQiLDVd" data-file-id="e2013fac-275f-4316-adda-709cfc664b90" data-start-line="6" data-end-line="9" class="clickable" onclick="onNodeDrillDown('fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJlMjAxM2ZhYy0yNzVmLTQzMTYtYWRkYS03MDljZmM2NjRiOTAiLDYsMCwicnVuX2FsaWFzZXMiXQ')">
+    <rect x="301.0" y="526.0" width="150.0" height="54.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="376.0" y="547.0" class="node-text" font-weight="600" fill="#00796b">⚡ run_aliases</text>
+    <text x="376.0" y="565.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
   </g>
 </svg>

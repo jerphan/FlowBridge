@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 466.0 572.0" width="466.0" height="572.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 556.0 572.0" width="556.0" height="572.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -32,26 +32,26 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="233.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — local_wrapper() (validation.py)</text>
-  <path d="M 228.0 102.0 L 228.0 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 228.0 226.0 L 228.0 296.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 228.0 350.0 L 228.0 420.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwwXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwwXQ">
-    <rect x="173.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="228.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="278.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — local_wrapper() (validation.py)</text>
+  <path d="M 278.0 102.0 L 278.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 278.0 226.0 L 278.0 296.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 278.0 350.0 L 278.0 420.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwwXQ" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwwXQ">
+    <rect x="223.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="278.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwxXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwxXQ">
-    <rect x="173.0" y="420.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="228.0" y="441.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwxXQ" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwxXQ">
+    <rect x="223.0" y="420.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="278.0" y="441.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwyXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwyXQ" data-file-id="3d7883dd-52b3-42ab-a331-86554b39e5cf" data-start-line="21" data-end-line="21" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIzZDc4ODNkZC01MmIzLTQyYWItYTMzMS04NjU1NGIzOWU1Y2YiLDMsMCwicGFyc2VfaW50ZWdlciJd')">
-    <rect x="95.5" y="172.0" width="265.0" height="54.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="228.0" y="193.0" class="node-text" font-weight="600" fill="#00796b">⚡ value = parse_integer(raw)</text>
-    <text x="228.0" y="211.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwyXQ" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwyXQ" data-file-id="8c2e0cd1-11f5-4154-9317-e7a611139558" data-start-line="21" data-end-line="21" class="clickable" onclick="onNodeDrillDown('fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCI4YzJlMGNkMS0xMWY1LTQxNTQtOTMxNy1lN2E2MTExMzk1NTgiLDMsMCwicGFyc2VfaW50ZWdlciJd')">
+    <rect x="145.5" y="172.0" width="265.0" height="54.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="278.0" y="193.0" class="node-text" font-weight="600" fill="#00796b">⚡ value = parse_integer(raw)</text>
+    <text x="278.0" y="211.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwzXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l6WkRjNE9ETmtaQzAxTW1JekxUUXlZV0l0WVRNek1TMDROalUxTkdJek9XVTFZMllpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwzXQ" data-file-id="3d7883dd-52b3-42ab-a331-86554b39e5cf" data-start-line="22" data-end-line="22" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIzZDc4ODNkZC01MmIzLTQyYWItYTMzMS04NjU1NGIzOWU1Y2YiLDE0LDAsImVuc3VyZV9ub25uZWdhdGl2ZSJd')">
-    <rect x="70.0" y="296.0" width="316.0" height="54.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="228.0" y="317.0" class="node-text" font-weight="600" fill="#00796b">⚡ return ensure_nonnegative(value)</text>
-    <text x="228.0" y="335.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwzXQ" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WXpKbE1HTmtNUzB4TVdZMUxUUXhOVFF0T1RNeE55MWxOMkUyTVRFeE16azFOVGdpTERJd0xEQXNJbXh2WTJGc1gzZHlZWEJ3WlhJaVhRIiwzXQ" data-file-id="8c2e0cd1-11f5-4154-9317-e7a611139558" data-start-line="22" data-end-line="22" class="clickable" onclick="onNodeDrillDown('fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCI4YzJlMGNkMS0xMWY1LTQxNTQtOTMxNy1lN2E2MTExMzk1NTgiLDE0LDAsImVuc3VyZV9ub25uZWdhdGl2ZSJd')">
+    <rect x="120.0" y="296.0" width="316.0" height="54.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="278.0" y="317.0" class="node-text" font-weight="600" fill="#00796b">⚡ return ensure_nonnegative(value)</text>
+    <text x="278.0" y="335.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
   </g>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400.0 440.0" width="400.0" height="440.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.0 440.0" width="480.0" height="440.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -32,19 +32,19 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="200.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — lonely_function() (orphan_file.py)</text>
-  <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 200.0 218.0 L 200.0 288.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0pqWmprM01URmtNaTFtWXpSaExUUXhPR0V0WVRjNVl5MHdaRFl5Tm1Wak1HTXdNalFpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMF0" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0pqWmprM01URmtNaTFtWXpSaExUUXhPR0V0WVRjNVl5MHdaRFl5Tm1Wak1HTXdNalFpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMF0">
-    <rect x="145.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="240.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — lonely_function() (orphan_file.py)</text>
+  <path d="M 240.0 102.0 L 240.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 240.0 218.0 L 240.0 288.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0Tm1WbU16YzJZeTA1TldZd0xUUXhNbVl0WWpGbE5pMWxNelUzTldFNVpUVmtZVGdpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMF0" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0Tm1WbU16YzJZeTA1TldZd0xUUXhNbVl0WWpGbE5pMWxNelUzTldFNVpUVmtZVGdpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMF0">
+    <rect x="185.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="240.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0pqWmprM01URmtNaTFtWXpSaExUUXhPR0V0WVRjNVl5MHdaRFl5Tm1Wak1HTXdNalFpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMV0" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0pqWmprM01URmtNaTFtWXpSaExUUXhPR0V0WVRjNVl5MHdaRFl5Tm1Wak1HTXdNalFpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMV0">
-    <rect x="145.0" y="288.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="200.0" y="309.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0Tm1WbU16YzJZeTA1TldZd0xUUXhNbVl0WWpGbE5pMWxNelUzTldFNVpUVmtZVGdpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMV0" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0Tm1WbU16YzJZeTA1TldZd0xUUXhNbVl0WWpGbE5pMWxNelUzTldFNVpUVmtZVGdpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMV0">
+    <rect x="185.0" y="288.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="240.0" y="309.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0pqWmprM01URmtNaTFtWXpSaExUUXhPR0V0WVRjNVl5MHdaRFl5Tm1Wak1HTXdNalFpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMl0" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0pqWmprM01URmtNaTFtWXpSaExUUXhPR0V0WVRjNVl5MHdaRFl5Tm1Wak1HTXdNalFpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMl0" data-file-id="cf9711d2-fc4a-418a-a79c-0d626ec0c024" data-start-line="4" data-end-line="4">
-    <rect x="80.0" y="172.0" width="240.0" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
-    <text x="200.0" y="195.0" class="node-text" fill="#bf360c">return &quot;no import edges&quot;</text>
+  <g id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0Tm1WbU16YzJZeTA1TldZd0xUUXhNbVl0WWpGbE5pMWxNelUzTldFNVpUVmtZVGdpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMl0" data-node-id="fb1_WyI4YmI1MzllNS0yZDNjLTQxMmEtYTgzMC02MjUwZTRjMjUyMGQiLDEsIm5vZGUiLCJmYjFfV3lJNFltSTFNemxsTlMweVpETmpMVFF4TW1FdFlUZ3pNQzAyTWpVd1pUUmpNalV5TUdRaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0Tm1WbU16YzJZeTA1TldZd0xUUXhNbVl0WWpGbE5pMWxNelUzTldFNVpUVmtZVGdpTERNc01Dd2liRzl1Wld4NVgyWjFibU4wYVc5dUlsMCIsMl0" data-file-id="86ef376c-95f0-412f-b1e6-e3575a9e5da8" data-start-line="4" data-end-line="4">
+    <rect x="120.0" y="172.0" width="240.0" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="240.0" y="195.0" class="node-text" fill="#bf360c">return &quot;no import edges&quot;</text>
   </g>
 </svg>

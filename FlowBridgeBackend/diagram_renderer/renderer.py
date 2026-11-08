@@ -92,9 +92,14 @@ class DiagramRenderer:
         # Label with dynamic pill background width
         lbl = edge.label or (edge.edge_type if edge.edge_type in ("true", "false") else None)
         if lbl and len(pts) >= 2:
-            mid_idx = len(pts) // 2
-            mx = (pts[mid_idx - 1][0] + pts[mid_idx][0]) / 2.0
-            my = (pts[mid_idx - 1][1] + pts[mid_idx][1]) / 2.0 - 5.0
+            if edge.edge_type in ("true", "false") and len(pts) >= 3:
+                # Place branch label clearly along the initial step-out
+                mx = (pts[0][0] + pts[1][0]) / 2.0
+                my = (pts[0][1] + pts[1][1]) / 2.0 - 7.0
+            else:
+                mid_idx = len(pts) // 2
+                mx = (pts[mid_idx - 1][0] + pts[mid_idx][0]) / 2.0
+                my = (pts[mid_idx - 1][1] + pts[mid_idx][1]) / 2.0 - 5.0
             rect_w = max(36.0, len(lbl) * 7.5 + 16.0)
             edge_svg += f'\n  <rect x="{mx - rect_w / 2.0:.1f}" y="{my - 9:.1f}" width="{rect_w:.1f}" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>'
             edge_svg += f'\n  <text x="{mx:.1f}" y="{my + 3:.1f}" class="edge-label">{html.escape(lbl)}</text>'
