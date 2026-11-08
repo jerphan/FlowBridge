@@ -1,0 +1,725 @@
+{
+  "full_project": {
+    "status": "partial",
+    "files_count": 15,
+    "file_statuses": {
+      "isolated_top_level.py": "complete",
+      "main.py": "complete",
+      "orphan_file.py": "complete",
+      "core/__init__.py": "complete",
+      "core/edge_conditions.py": "complete",
+      "core/math_ops.py": "complete",
+      "core/nested_exceptions.py": "complete",
+      "core/validation.py": "complete",
+      "services/__init__.py": "complete",
+      "services/import_patterns.py": "complete",
+      "services/recovery.py": "complete",
+      "services/reporting.py": "complete",
+      "services/unresolved_calls.py": "complete",
+      "services/unsupported_classes.py": "unsupported",
+      "services/workflow.py": "complete"
+    },
+    "functions_count": 26,
+    "graphs_count": 46,
+    "graph_references_count": 77,
+    "call_references_count": 55,
+    "call_resolution_breakdown": {
+      "resolved": 26,
+      "unresolved": 17,
+      "builtin": 12
+    },
+    "diagnostics_count": 41,
+    "diagnostics": [
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_0",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 19
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 8
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 9
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 39
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_10",
+        "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 12
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "f_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "f_13",
+        "message": "services.unsupported_classes: nested/conditional/async/class declaration body omitted",
+        "line": 4
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_14",
+        "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 14
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_0",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 19
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 19
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 8
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 9
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 39
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_10",
+        "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 12
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "f_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_14",
+        "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 14
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_0",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
+      },
+      {
+        "severity": "warning",
+        "code": "UNREACHABLE_HANDLER",
+        "file_id": "f_1",
+        "message": "No modeled exceptional path reaches this handler; nodes omitted.",
+        "line": 18
+      },
+      {
+        "severity": "warning",
+        "code": "UNREACHABLE_HANDLER",
+        "file_id": "f_1",
+        "message": "No modeled exceptional path reaches this handler; nodes omitted.",
+        "line": 20
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_4",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 19
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 8
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 9
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_6",
+        "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 39
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_10",
+        "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 12
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "f_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "f_14",
+        "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 14
+      }
+    ]
+  },
+  "individual_files": {
+    "isolated_top_level.py": {
+      "status": "complete",
+      "graphs_count": 3,
+      "node_types": [
+        "condition",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "handler",
+        "loop",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "back",
+        "exception",
+        "false",
+        "next",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 0
+    },
+    "main.py": {
+      "status": "complete",
+      "graphs_count": 5,
+      "node_types": [
+        "condition",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "loop",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "back",
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 13
+    },
+    "orphan_file.py": {
+      "status": "complete",
+      "graphs_count": 3,
+      "node_types": [
+        "end",
+        "file",
+        "function",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "next",
+        "return"
+      ],
+      "diagnostics": [],
+      "call_references": 0
+    },
+    "core/__init__.py": {
+      "status": "complete",
+      "graphs_count": 2,
+      "node_types": [
+        "end",
+        "file",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "next"
+      ],
+      "diagnostics": [],
+      "call_references": 0
+    },
+    "core/edge_conditions.py": {
+      "status": "complete",
+      "graphs_count": 5,
+      "node_types": [
+        "break",
+        "condition",
+        "continue",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "loop",
+        "raise",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "back",
+        "break",
+        "continue",
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 5
+    },
+    "core/math_ops.py": {
+      "status": "complete",
+      "graphs_count": 7,
+      "node_types": [
+        "break",
+        "condition",
+        "continue",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "loop",
+        "raise",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "back",
+        "break",
+        "continue",
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 3
+    },
+    "core/nested_exceptions.py": {
+      "status": "complete",
+      "graphs_count": 5,
+      "node_types": [
+        "condition",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "loop",
+        "raise",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "back",
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 8
+    },
+    "core/validation.py": {
+      "status": "complete",
+      "graphs_count": 5,
+      "node_types": [
+        "condition",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "raise",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 7
+    },
+    "services/__init__.py": {
+      "status": "complete",
+      "graphs_count": 2,
+      "node_types": [
+        "end",
+        "file",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "next"
+      ],
+      "diagnostics": [],
+      "call_references": 0
+    },
+    "services/import_patterns.py": {
+      "status": "complete",
+      "graphs_count": 3,
+      "node_types": [
+        "end",
+        "file",
+        "function",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "next",
+        "return"
+      ],
+      "diagnostics": [],
+      "call_references": 2
+    },
+    "services/recovery.py": {
+      "status": "complete",
+      "graphs_count": 6,
+      "node_types": [
+        "condition",
+        "continue",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "loop",
+        "raise",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "continue",
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 4
+    },
+    "services/reporting.py": {
+      "status": "complete",
+      "graphs_count": 3,
+      "node_types": [
+        "condition",
+        "end",
+        "file",
+        "function",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "false",
+        "next",
+        "return",
+        "true"
+      ],
+      "diagnostics": [],
+      "call_references": 1
+    },
+    "services/unresolved_calls.py": {
+      "status": "complete",
+      "graphs_count": 3,
+      "node_types": [
+        "condition",
+        "end",
+        "file",
+        "function",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "false",
+        "next",
+        "return",
+        "true"
+      ],
+      "diagnostics": [],
+      "call_references": 3
+    },
+    "services/unsupported_classes.py": {
+      "status": "unsupported",
+      "graphs_count": 4,
+      "node_types": [
+        "end",
+        "file",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "next",
+        "return"
+      ],
+      "diagnostics": [
+        "UNSUPPORTED_FEATURE",
+        "INCOMPLETE_SCOPE",
+        "UNSUPPORTED_FEATURE",
+        "UNSUPPORTED_FEATURE"
+      ],
+      "call_references": 4
+    },
+    "services/workflow.py": {
+      "status": "complete",
+      "graphs_count": 4,
+      "node_types": [
+        "condition",
+        "end",
+        "exceptionDispatch",
+        "file",
+        "function",
+        "handler",
+        "return",
+        "start",
+        "statement"
+      ],
+      "edge_types": [
+        "exception",
+        "false",
+        "next",
+        "return",
+        "true",
+        "unhandled"
+      ],
+      "diagnostics": [
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS",
+        "CONSERVATIVE_EXCEPTIONS"
+      ],
+      "call_references": 5
+    }
+  },
+  "renderer": {
+    "status": "success",
+    "rendered_graphs_count": 42,
+    "clickable_nodes_count": 77
+  }
+}

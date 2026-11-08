@@ -47,7 +47,7 @@ export interface SourceLocation {
 
 export interface FlowNode {
   nodeId: string;
-  nodeType: "start" | "end" | "statement" | "condition" | "function" | "loop" | "return" | "file";
+  nodeType: "start" | "end" | "statement" | "condition" | "function" | "loop" | "return" | "file" | "break" | "continue" | "exceptionDispatch" | "handler" | "raise";
   label: string;
   sourceLocation?: SourceLocation;
 }
@@ -56,13 +56,13 @@ export interface FlowEdge {
   edgeId: string;
   sourceId: string;
   targetId: string;
-  edgeType: "next" | "true" | "false" | "return";
+  edgeType: "next" | "true" | "false" | "return" | "back" | "break" | "continue" | "exception" | "unhandled";
   label?: string;
 }
 
 export interface GraphModel {
   graphId: string;
-  graphType: "project" | "file" | "function";
+  graphType: "project" | "file" | "function" | "module";
   status: "complete" | "failed";
   fileId?: string;
   functionId?: string;
@@ -123,7 +123,7 @@ export interface SourceMappingPayload {
 export interface BreadcrumbItem {
   id: string;
   label: string;
-  type: "project" | "file" | "function";
+  type: "project" | "file" | "function" | "module";
   fileId?: string;
   functionId?: string;
 }

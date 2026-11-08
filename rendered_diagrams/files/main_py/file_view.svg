@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 839.5 678.0" width="839.5" height="678.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1229.5 3050.0" width="1229.5" height="3050.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -24,30 +24,218 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="419.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — main.py</text>
-  <path d="M 200.0 102.0 L 200.0 137.0 L 379.8 137.0 L 379.8 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 379.8 220.0 L 379.8 290.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 379.8 338.0 L 379.8 408.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 379.8 456.0 L 379.8 526.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDBd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDBd">
+  <text x="614.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — main.py</text>
+  <path d="M 200.0 102.0 L 200.0 137.0 L 401.0 137.0 L 401.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 220.0 L 401.0 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 338.0 L 401.0 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 456.0 L 401.0 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 574.0 L 401.0 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 692.0 L 401.0 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 810.0 L 401.0 880.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 928.0 L 401.0 998.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1046.0 L 401.0 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1164.0 L 401.0 1234.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1288.0 L 401.0 1358.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="383.0" y="1309.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="401.0" y="1320.0" class="edge-label">true</text>
+  <path d="M 401.0 1406.0 L 401.0 1476.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1524.0 L 401.0 1594.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1642.0 L 401.0 1712.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1760.0 L 401.0 1830.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1878.0 L 401.0 1948.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1996.0 L 401.0 2031.0 L 303.5 2031.0 L 303.5 2066.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="334.2" y="2017.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="352.2" y="2028.0" class="edge-label">true</text>
+  <path d="M 303.5 2114.0 L 303.5 2208.0 L 154.5 2208.0 L 154.5 2302.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 154.5 2350.0 L 154.5 2385.0 L 426.2 2385.0 L 426.2 2420.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 426.2 2468.0 L 426.2 2621.0 L 401.5 2621.0 L 401.5 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 426.2 2468.0 L 426.2 2503.0 L 290.5 2503.0 L 290.5 2538.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="340.4" y="2489.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="358.4" y="2500.0" class="edge-label">true</text>
+  <path d="M 290.5 2586.0 L 290.5 2680.0 L 401.5 2680.0 L 401.5 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 290.5 2586.0 L 290.5 2680.0 L 580.2 2680.0 L 580.2 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 580.2 2822.0 L 580.2 2857.0 L 644.8 2857.0 L 644.8 2892.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 426.2 2468.0 L 426.2 2503.0 L 604.5 2503.0 L 604.5 2538.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="497.4" y="2489.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="515.4" y="2500.0" class="edge-label">false</text>
+  <path d="M 604.5 2586.0 L 604.5 2680.0 L 401.5 2680.0 L 401.5 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 604.5 2586.0 L 604.5 2621.0 L 205.5 2621.0 L 205.5 2656.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="387.0" y="2607.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="405.0" y="2618.0" class="edge-label">true</text>
+  <path d="M 205.5 2704.0 L 205.5 2739.0 L 401.5 2739.0 L 401.5 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 205.5 2704.0 L 205.5 2739.0 L 580.2 2739.0 L 580.2 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 604.5 2586.0 L 604.5 2621.0 L 485.5 2621.0 L 485.5 2656.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="527.0" y="2607.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="545.0" y="2618.0" class="edge-label">false</text>
+  <path d="M 485.5 2704.0 L 485.5 2739.0 L 401.5 2739.0 L 401.5 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 303.5 2114.0 L 303.5 2149.0 L 282.2 2149.0 L 282.2 2184.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 282.2 2232.0 L 282.2 2267.0 L 154.5 2267.0 L 154.5 2302.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 282.2 2232.0 L 282.2 2267.0 L 498.2 2267.0 L 498.2 2302.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 498.2 2350.0 L 498.2 2562.0 L 580.2 2562.0 L 580.2 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1996.0 L 401.0 2031.0 L 553.8 2031.0 L 553.8 2066.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="459.4" y="2017.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="477.4" y="2028.0" class="edge-label">false</text>
+  <path d="M 553.8 2114.0 L 553.8 2149.0 L 575.0 2149.0 L 575.0 2184.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 575.0 2232.0 L 575.0 2267.0 L 918.5 2267.0 L 918.5 2302.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 918.5 2350.0 L 918.5 2385.0 L 714.8 2385.0 L 714.8 2420.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 714.8 2468.0 L 714.8 2503.0 L 888.8 2503.0 L 888.8 2538.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 888.8 2586.0 L 888.8 2621.0 L 854.8 2621.0 L 854.8 2656.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 854.8 2704.0 L 854.8 2739.0 L 753.5 2739.0 L 753.5 2774.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 753.5 2822.0 L 753.5 2857.0 L 494.8 2857.0 L 494.8 2892.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 401.0 1288.0 L 401.0 2090.0 L 494.8 2090.0 L 494.8 2892.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="429.9" y="2076.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="447.9" y="2087.0" class="edge-label">false</text>
+  <path d="M 704.8 2916.0 L 749.8 2916.0 L 749.8 1972.0 L 461.0 1972.0" class="edge-line edge-back" marker-end="url(#arrow)" />
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDBd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDBd">
     <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
     <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDFd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDFd">
-    <rect x="329.8" y="526.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="379.8" y="547.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDFd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDFd">
+    <rect x="444.8" y="2892.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="494.8" y="2913.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDJd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDJd" data-file-id="26e9c6d1-0e80-4dfa-9ae2-e98a903a108f" data-start-line="2" data-end-line="2">
-    <rect x="60.0" y="172.0" width="639.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="379.8" y="196.0" class="node-text">from app.controllers.user_controller import handle_login, handle_signup</text>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDJd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDJd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="1" data-end-line="1">
+    <rect x="60.0" y="172.0" width="682.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="196.0" class="node-text">&quot;&quot;&quot;Entry point: top-level statements, imports, calls and exception paths.&quot;&quot;&quot;</text>
   </g>
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDNd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDNd" data-file-id="26e9c6d1-0e80-4dfa-9ae2-e98a903a108f" data-start-line="3" data-end-line="3">
-    <rect x="106.8" y="290.0" width="546.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="379.8" y="314.0" class="node-text">from app.controllers.order_controller import handle_checkout</text>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDNd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDNd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="2" data-end-line="2">
+    <rect x="89.8" y="290.0" width="622.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="314.0" class="node-text">from core.math_ops import safe_divide, classify_number, recursive_sum</text>
   </g>
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDRd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqSTJaVGxqTm1ReExUQmxPREF0TkdSbVlTMDVZV1V5TFdVNU9HRTVNRE5oTVRBNFppSmQiLDRd" data-file-id="26e9c6d1-0e80-4dfa-9ae2-e98a903a108f" data-start-line="5" data-end-line="11" class="clickable" onclick="onNodeDrillDown('fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIyNmU5YzZkMS0wZTgwLTRkZmEtOWFlMi1lOThhOTAzYTEwOGYiLDUsMCwicnVuX2FwcCJd')">
-    <rect x="319.8" y="408.0" width="120.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="379.8" y="426.0" class="node-text" font-weight="600" fill="#00796b">⚡ run_app</text>
-    <text x="379.8" y="444.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDRd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDRd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="3" data-end-line="3">
+    <rect x="208.8" y="408.0" width="384.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="432.0" class="node-text">from core.validation import parse_integer</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDVd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDVd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="4" data-end-line="4">
+    <rect x="204.5" y="526.0" width="393.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="550.0" class="node-text">from services.workflow import run_workflow</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDZd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDZd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="5" data-end-line="5">
+    <rect x="191.8" y="644.0" width="418.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="668.0" class="node-text">from services.recovery import retry_operation</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDdd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDdd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="6" data-end-line="6">
+    <rect x="196.0" y="762.0" width="410.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="786.0" class="node-text">from services.reporting import create_report</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDhd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDhd" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="8" data-end-line="8">
+    <rect x="191.8" y="880.0" width="418.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="904.0" class="node-text">APP_NAME = &quot;FlowBridge exception stress test&quot;</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDld" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDld" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="11" data-end-line="26" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIxNmZhYjQ2Yi0xZGY3LTQ5MWMtYjdlZC05NTZjMjhiNjdjMmMiLDExLDAsImJvb3RzdHJhcCJd')">
+    <rect x="341.0" y="998.0" width="120.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1016.0" class="node-text" font-weight="600" fill="#00796b">⚡ bootstrap</text>
+    <text x="401.0" y="1034.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDEwXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDEwXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="29" data-end-line="34" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIxNmZhYjQ2Yi0xZGY3LTQ5MWMtYjdlZC05NTZjMjhiNjdjMmMiLDI5LDAsIm1haW4iXQ')">
+    <rect x="341.0" y="1116.0" width="120.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1134.0" class="node-text" font-weight="600" fill="#00796b">⚡ main</text>
+    <text x="401.0" y="1152.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDExXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDExXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="37" data-end-line="37">
+    <polygon points="401.0,1234.0 518.5,1261.0 401.0,1288.0 283.5,1261.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1261.0" class="node-text" fill="#e65100" font-weight="600">__name__ == &quot;__main__&quot;</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDEyXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDEyXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="38" data-end-line="38" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIxNmZhYjQ2Yi0xZGY3LTQ5MWMtYjdlZC05NTZjMjhiNjdjMmMiLDI5LDAsIm1haW4iXQ')">
+    <rect x="336.2" y="1358.0" width="129.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1376.0" class="node-text" font-weight="600" fill="#00796b">⚡ Call main()</text>
+    <text x="401.0" y="1394.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDEzXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDEzXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="30" data-end-line="30" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCIxNmZhYjQ2Yi0xZGY3LTQ5MWMtYjdlZC05NTZjMjhiNjdjMmMiLDExLDAsImJvb3RzdHJhcCJd')">
+    <rect x="315.0" y="1476.0" width="172.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1494.0" class="node-text" font-weight="600" fill="#00796b">⚡ Call bootstrap()</text>
+    <text x="401.0" y="1512.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE0XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE0XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="12" data-end-line="12">
+    <rect x="247.0" y="1594.0" width="308.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1618.0" class="node-text">values = [&quot;8&quot;, &quot;0&quot;, &quot;bad&quot;, &quot;-3&quot;]</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE1XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE1XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="13" data-end-line="13">
+    <rect x="332.0" y="1712.0" width="138.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1736.0" class="node-text">results = []</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE2XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE2XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="14" data-end-line="14">
+    <rect x="319.2" y="1830.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1854.0" class="node-text">Iterate: values</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE3XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE3XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="14" data-end-line="14">
+    <rect x="341.0" y="1948.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="401.0" y="1972.0" class="node-text">Next: raw</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE4XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE4XQ">
+    <rect x="60.0" y="2302.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="154.5" y="2326.0" class="node-text">Exception dispatch</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE5XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDE5XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="16" data-end-line="16">
+    <rect x="170.8" y="2066.0" width="265.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="303.5" y="2090.0" class="node-text">number = parse_integer(raw)</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIwXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIwXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="17" data-end-line="17">
+    <rect x="128.2" y="2184.0" width="308.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="282.2" y="2208.0" class="node-text">score = safe_divide(100, number)</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIxXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIxXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="18" data-end-line="19">
+    <rect x="306.2" y="2420.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="426.2" y="2444.0" class="node-text">except ValueError as exc</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIyXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIyXQ">
+    <rect x="322.8" y="2774.0" width="157.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="401.5" y="2795.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIzXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDIzXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="19" data-end-line="19">
+    <rect x="136.5" y="2538.0" width="308.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="290.5" y="2562.0" class="node-text">results.append((raw, &quot;invalid&quot;))</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI0XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI0XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="20" data-end-line="21">
+    <rect x="484.5" y="2538.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="604.5" y="2562.0" class="node-text">except ZeroDivisionError</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI1XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI1XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="21" data-end-line="21">
+    <rect x="64.2" y="2656.0" width="282.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="205.5" y="2680.0" class="node-text">results.append((raw, &quot;zero&quot;))</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI2XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI2XQ">
+    <rect x="386.8" y="2656.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="485.5" y="2680.0" class="node-text">Unhandled exception</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI3XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI3XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="23" data-end-line="23">
+    <rect x="289.0" y="2302.0" width="418.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="498.2" y="2326.0" class="node-text">results.append((raw, classify_number(score)))</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI4XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI4XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="25" data-end-line="25">
+    <rect x="520.2" y="2774.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="580.2" y="2798.0" class="node-text">pass</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI5XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDI5XQ">
+    <rect x="584.8" y="2892.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="644.8" y="2916.0" class="node-text">Loop back</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMwXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMwXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="26" data-end-line="26">
+    <rect x="476.2" y="2066.0" width="155.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="553.8" y="2090.0" class="node-text" fill="#bf360c">return results</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMxXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMxXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="30" data-end-line="30">
+    <rect x="476.2" y="2184.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="575.0" y="2208.0" class="node-text">first = bootstrap()</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMyXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMyXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="31" data-end-line="31">
+    <rect x="747.5" y="2302.0" width="342.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="918.5" y="2326.0" class="node-text">second = run_workflow([1, -2, 0, 3])</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMzXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDMzXQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="32" data-end-line="32">
+    <rect x="586.2" y="2420.0" width="257.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="714.8" y="2444.0" class="node-text">third = retry_operation(3)</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDM0XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDM0XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="33" data-end-line="33">
+    <rect x="764.5" y="2538.0" width="248.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="888.8" y="2562.0" class="node-text">fourth = recursive_sum(4)</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDM1XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDM1XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="34" data-end-line="34">
+    <rect x="624.2" y="2656.0" width="461.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="854.8" y="2680.0" class="node-text" fill="#bf360c">return create_report(first, second, third, fourth)</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDM2XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqRTJabUZpTkRaaUxURmtaamN0TkRreFl5MWlOMlZrTFRrMU5tTXlPR0kyTjJNeVl5SmQiLDM2XQ" data-file-id="16fab46b-1df7-491c-b7ed-956c28b67c2c" data-start-line="38" data-end-line="38">
+    <rect x="680.2" y="2774.0" width="146.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="753.5" y="2798.0" class="node-text">print(main())</text>
   </g>
 </svg>

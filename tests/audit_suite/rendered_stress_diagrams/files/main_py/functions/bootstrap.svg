@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 847.5 1628.0" width="847.5" height="1628.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="423.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — bootstrap() (main.py)</text>
+  <path d="M 200.0 102.0 L 200.0 137.0 L 214.0 137.0 L 214.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 214.0 220.0 L 214.0 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 214.0 338.0 L 214.0 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 214.0 456.0 L 214.0 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 214.0 574.0 L 214.0 609.0 L 192.8 609.0 L 192.8 644.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="185.4" y="595.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="203.4" y="606.0" class="edge-label">true</text>
+  <path d="M 192.8 692.0 L 192.8 786.0 L 154.5 786.0 L 154.5 880.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 154.5 928.0 L 154.5 963.0 L 383.8 963.0 L 383.8 998.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 383.8 1046.0 L 383.8 1199.0 L 303.8 1199.0 L 303.8 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 383.8 1046.0 L 383.8 1081.0 L 243.8 1081.0 L 243.8 1116.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="295.8" y="1067.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="313.8" y="1078.0" class="edge-label">true</text>
+  <path d="M 243.8 1164.0 L 243.8 1258.0 L 303.8 1258.0 L 303.8 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 243.8 1164.0 L 243.8 1258.0 L 482.5 1258.0 L 482.5 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 482.5 1400.0 L 482.5 1435.0 L 383.8 1435.0 L 383.8 1470.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 383.8 1046.0 L 383.8 1081.0 L 557.8 1081.0 L 557.8 1116.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="452.8" y="1067.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="470.8" y="1078.0" class="edge-label">false</text>
+  <path d="M 557.8 1164.0 L 557.8 1258.0 L 303.8 1258.0 L 303.8 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 557.8 1164.0 L 557.8 1199.0 L 265.0 1199.0 L 265.0 1234.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="393.4" y="1185.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="411.4" y="1196.0" class="edge-label">true</text>
+  <path d="M 265.0 1282.0 L 265.0 1317.0 L 303.8 1317.0 L 303.8 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 265.0 1282.0 L 265.0 1317.0 L 482.5 1317.0 L 482.5 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 557.8 1164.0 L 557.8 1199.0 L 545.0 1199.0 L 545.0 1234.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="533.4" y="1185.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="551.4" y="1196.0" class="edge-label">false</text>
+  <path d="M 545.0 1282.0 L 545.0 1317.0 L 303.8 1317.0 L 303.8 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 192.8 692.0 L 192.8 727.0 L 360.2 727.0 L 360.2 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 360.2 810.0 L 360.2 845.0 L 154.5 845.0 L 154.5 880.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 360.2 810.0 L 360.2 845.0 L 498.2 845.0 L 498.2 880.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 498.2 928.0 L 498.2 1140.0 L 482.5 1140.0 L 482.5 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 214.0 574.0 L 214.0 609.0 L 443.0 609.0 L 443.0 644.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="310.5" y="595.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="328.5" y="606.0" class="edge-label">false</text>
+  <path d="M 443.0 692.0 L 443.0 727.0 L 116.2 727.0 L 116.2 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 443.8 1494.0 L 488.8 1494.0 L 488.8 550.0 L 274.0 550.0" class="edge-line edge-back" marker-end="url(#arrow)" />
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwwXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwwXQ">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxXQ">
+    <rect x="66.2" y="762.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="116.2" y="783.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwyXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwyXQ" data-file-id="f_1" data-start-line="12" data-end-line="12">
+    <rect x="60.0" y="172.0" width="308.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="214.0" y="196.0" class="node-text">values = [&quot;8&quot;, &quot;0&quot;, &quot;bad&quot;, &quot;-3&quot;]</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwzXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwzXQ" data-file-id="f_1" data-start-line="13" data-end-line="13">
+    <rect x="145.0" y="290.0" width="138.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="214.0" y="314.0" class="node-text">results = []</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw0XQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw0XQ" data-file-id="f_1" data-start-line="14" data-end-line="14">
+    <rect x="132.2" y="408.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="214.0" y="432.0" class="node-text">Iterate: values</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw1XQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw1XQ" data-file-id="f_1" data-start-line="14" data-end-line="14">
+    <rect x="154.0" y="526.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="214.0" y="550.0" class="node-text">Next: raw</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw2XQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw2XQ">
+    <rect x="60.0" y="880.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="154.5" y="904.0" class="node-text">Exception dispatch</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw3XQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw3XQ" data-file-id="f_1" data-start-line="16" data-end-line="16" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfNyIsMywwLCJwYXJzZV9pbnRlZ2VyIl0')">
+    <rect x="60.0" y="644.0" width="265.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="192.8" y="662.0" class="node-text" font-weight="600" fill="#00796b">⚡ number = parse_integer(raw)</text>
+    <text x="192.8" y="680.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw4XQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw4XQ" data-file-id="f_1" data-start-line="17" data-end-line="17" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfNSIsNSwwLCJzYWZlX2RpdmlkZSJd')">
+    <rect x="206.2" y="762.0" width="308.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="360.2" y="780.0" class="node-text" font-weight="600" fill="#00796b">⚡ score = safe_divide(100, number)</text>
+    <text x="360.2" y="798.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw5XQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiw5XQ" data-file-id="f_1" data-start-line="18" data-end-line="19">
+    <rect x="263.8" y="998.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="383.8" y="1022.0" class="node-text">except ValueError as exc</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxMF0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxMF0">
+    <rect x="225.0" y="1352.0" width="157.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="303.8" y="1373.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxMV0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxMV0" data-file-id="f_1" data-start-line="19" data-end-line="19">
+    <rect x="89.8" y="1116.0" width="308.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="243.8" y="1140.0" class="node-text">results.append((raw, &quot;invalid&quot;))</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxMl0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxMl0" data-file-id="f_1" data-start-line="20" data-end-line="21">
+    <rect x="437.8" y="1116.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="557.8" y="1140.0" class="node-text">except ZeroDivisionError</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxM10" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxM10" data-file-id="f_1" data-start-line="21" data-end-line="21">
+    <rect x="123.8" y="1234.0" width="282.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="265.0" y="1258.0" class="node-text">results.append((raw, &quot;zero&quot;))</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxNF0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxNF0">
+    <rect x="446.2" y="1234.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="545.0" y="1258.0" class="node-text">Unhandled exception</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxNV0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxNV0" data-file-id="f_1" data-start-line="23" data-end-line="23">
+    <rect x="289.0" y="880.0" width="418.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="498.2" y="904.0" class="node-text">results.append((raw, classify_number(score)))</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxNl0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxNl0" data-file-id="f_1" data-start-line="25" data-end-line="25">
+    <rect x="422.5" y="1352.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="482.5" y="1376.0" class="node-text">pass</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxN10" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxN10">
+    <rect x="323.8" y="1470.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="383.8" y="1494.0" class="node-text">Loop back</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxOF0" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVNJc01URXNNQ3dpWW05dmRITjBjbUZ3SWwwIiwxOF0" data-file-id="f_1" data-start-line="26" data-end-line="26">
+    <rect x="365.5" y="644.0" width="155.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="443.0" y="668.0" class="node-text" fill="#bf360c">return results</text>
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 712.0 796.0" width="712.0" height="796.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="356.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — import_patterns.py</text>
+  <path d="M 200.0 102.0 L 200.0 137.0 L 316.0 137.0 L 316.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 316.0 220.0 L 316.0 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 316.0 338.0 L 316.0 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 316.0 456.0 L 316.0 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 316.0 574.0 L 316.0 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDBd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDBd">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDFd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDFd">
+    <rect x="266.0" y="644.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="316.0" y="665.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDJd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDJd" data-file-id="f_9" data-start-line="1" data-end-line="1">
+    <rect x="60.0" y="172.0" width="512.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="316.0" y="196.0" class="node-text">&quot;&quot;&quot;Import alias and module-qualified call resolution.&quot;&quot;&quot;</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDNd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDNd" data-file-id="f_9" data-start-line="2" data-end-line="2">
+    <rect x="149.2" y="290.0" width="333.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="316.0" y="314.0" class="node-text">import core.math_ops as math_module</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDRd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDRd" data-file-id="f_9" data-start-line="3" data-end-line="3">
+    <rect x="153.5" y="408.0" width="325.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="316.0" y="432.0" class="node-text">from core import validation as val</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDVd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVpsODVJbDAiLDVd" data-file-id="f_9" data-start-line="6" data-end-line="9" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfOSIsNiwwLCJydW5fYWxpYXNlcyJd')">
+    <rect x="251.2" y="526.0" width="129.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="316.0" y="544.0" class="node-text" font-weight="600" fill="#00796b">⚡ run_aliases</text>
+    <text x="316.0" y="562.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+</svg>

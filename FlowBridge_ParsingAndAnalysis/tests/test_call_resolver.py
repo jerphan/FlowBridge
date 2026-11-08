@@ -82,6 +82,47 @@ class CallResolverTests(unittest.TestCase):
         result, _ = resolve([('main.py', 'def f():\n    pass\ndef main():\n    _ = [x for x in []]\n    f()')])
         self.assertEqual(result.call_references[0].resolution, 'unresolved')
 
+    def test_relative_imports_and_submodule_calls(self):
+        # 1. from core import validation as val; val.parse_integer("10")
+        sources_1 = [
+            ('core/validation.py', 'def parse_integer(s):\n    return int(s)'),
+            ('services/main.py', 'from core import validation as val\ndef run():\n    return val.parse_integer("10")'),
+        ]
+        res_1, an_1 = resolve(sources_1)
+        call_1 = next(c for c in res_1.call_references if 'val.parse_integer' in c.expression)
+        self.assertEqual(call_1.resolution, 'resolved')
+        self.assertEqual(call_1.target_function_id, an_1[0].functions[0].function_id)
+
+        # 2. Relative import from sibling module: from . import helper; helper.work()
+        sources_2 = [
+            ('pkg/helper.py', 'def work():\n    return 42'),
+            ('pkg/main.py', 'from . import helper\ndef run():\n    return helper.work()'),
+        ]
+        res_2, an_2 = resolve(sources_2)
+        call_2 = res_2.call_references[0]
+        self.assertEqual(call_2.resolution, 'resolved')
+        self.assertEqual(call_2.target_function_id, an_2[0].functions[0].function_id)
+
+        # 3. Relative import direct function: from .helper import work; work()
+        sources_3 = [
+            ('pkg/helper.py', 'def work():\n    return 42'),
+            ('pkg/main.py', 'from .helper import work\ndef run():\n    return work()'),
+        ]
+        res_3, an_3 = resolve(sources_3)
+        call_3 = res_3.call_references[0]
+        self.assertEqual(call_3.resolution, 'resolved')
+        self.assertEqual(call_3.target_function_id, an_3[0].functions[0].function_id)
+
+        # 4. Multi-level relative import: from ..core import math_ops as m; m.add(1, 2)
+        sources_4 = [
+            ('core/math_ops.py', 'def add(a, b):\n    return a + b'),
+            ('pkg/main.py', 'from ..core import math_ops as m\ndef run():\n    return m.add(1, 2)'),
+        ]
+        res_4, an_4 = resolve(sources_4)
+        call_4 = res_4.call_references[0]
+        self.assertEqual(call_4.resolution, 'resolved')
+        self.assertEqual(call_4.target_function_id, an_4[0].functions[0].function_id)
+
     def test_determinism_and_revision_isolation(self):
         sources = [('main.py', 'def f():\n    f()')]
         a, _ = resolve(sources)

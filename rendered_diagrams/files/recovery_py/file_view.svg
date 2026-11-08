@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400.0 200.0" width="400.0" height="200.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 788.5 914.0" width="788.5" height="914.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -24,5 +24,43 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="200.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — recovery.py</text>
+  <text x="394.2" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — recovery.py</text>
+  <path d="M 200.0 102.0 L 200.0 137.0 L 354.2 137.0 L 354.2 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 354.2 220.0 L 354.2 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 354.2 338.0 L 354.2 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 354.2 456.0 L 354.2 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 354.2 574.0 L 354.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 354.2 692.0 L 354.2 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDBd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDBd">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDFd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDFd">
+    <rect x="304.2" y="762.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="354.2" y="783.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDJd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDJd" data-file-id="c4d21a93-1f00-4117-a56d-ca20b5116593" data-start-line="1" data-end-line="1">
+    <rect x="60.0" y="172.0" width="588.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="354.2" y="196.0" class="node-text">&quot;&quot;&quot;Retry loops, exceptions, and local function call expansion.&quot;&quot;&quot;</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDNd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDNd" data-file-id="c4d21a93-1f00-4117-a56d-ca20b5116593" data-start-line="3" data-end-line="6" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJjNGQyMWE5My0xZjAwLTQxMTctYTU2ZC1jYTIwYjUxMTY1OTMiLDMsMCwidW5zdGFibGVfb3BlcmF0aW9uIl0')">
+    <rect x="259.8" y="290.0" width="189.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="354.2" y="308.0" class="node-text" font-weight="600" fill="#00796b">⚡ unstable_operation</text>
+    <text x="354.2" y="326.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDRd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDRd" data-file-id="c4d21a93-1f00-4117-a56d-ca20b5116593" data-start-line="9" data-end-line="21" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJjNGQyMWE5My0xZjAwLTQxMTctYTU2ZC1jYTIwYjUxMTY1OTMiLDksMCwicmV0cnlfb3BlcmF0aW9uIl0')">
+    <rect x="272.5" y="408.0" width="163.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="354.2" y="426.0" class="node-text" font-weight="600" fill="#00796b">⚡ retry_operation</text>
+    <text x="354.2" y="444.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDVd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDVd" data-file-id="c4d21a93-1f00-4117-a56d-ca20b5116593" data-start-line="24" data-end-line="27" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJjNGQyMWE5My0xZjAwLTQxMTctYTU2ZC1jYTIwYjUxMTY1OTMiLDI0LDAsIm11dHVhbF9hIl0')">
+    <rect x="294.2" y="526.0" width="120.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="354.2" y="544.0" class="node-text" font-weight="600" fill="#00796b">⚡ mutual_a</text>
+    <text x="354.2" y="562.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDZd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltTTBaREl4WVRrekxURm1NREF0TkRFeE55MWhOVFprTFdOaE1qQmlOVEV4TmpVNU15SmQiLDZd" data-file-id="c4d21a93-1f00-4117-a56d-ca20b5116593" data-start-line="30" data-end-line="33" class="clickable" onclick="onNodeDrillDown('fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJjNGQyMWE5My0xZjAwLTQxMTctYTU2ZC1jYTIwYjUxMTY1OTMiLDMwLDAsIm11dHVhbF9iIl0')">
+    <rect x="294.2" y="644.0" width="120.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="354.2" y="662.0" class="node-text" font-weight="600" fill="#00796b">⚡ mutual_b</text>
+    <text x="354.2" y="680.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
 </svg>

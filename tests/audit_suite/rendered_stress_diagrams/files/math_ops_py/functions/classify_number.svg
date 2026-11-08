@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 553.5 814.0" width="553.5" height="814.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="276.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — classify_number() (math_ops.py)</text>
+  <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 226.0 L 200.0 261.0 L 150.2 261.0 L 150.2 296.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="157.1" y="247.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="175.1" y="258.0" class="edge-label">true</text>
+  <path d="M 150.2 344.0 L 150.2 503.0 L 236.8 503.0 L 236.8 662.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 226.0 L 200.0 261.0 L 347.0 261.0 L 347.0 296.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="255.5" y="247.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="273.5" y="258.0" class="edge-label">false</text>
+  <path d="M 347.0 350.0 L 347.0 385.0 L 150.2 385.0 L 150.2 420.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="230.6" y="371.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="248.6" y="382.0" class="edge-label">true</text>
+  <path d="M 150.2 468.0 L 150.2 565.0 L 236.8 565.0 L 236.8 662.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 347.0 350.0 L 347.0 385.0 L 330.0 385.0 L 330.0 420.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="320.5" y="371.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="338.5" y="382.0" class="edge-label">false</text>
+  <path d="M 330.0 474.0 L 330.0 509.0 L 139.2 509.0 L 139.2 544.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="216.6" y="495.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="234.6" y="506.0" class="edge-label">true</text>
+  <path d="M 139.2 592.0 L 139.2 627.0 L 236.8 627.0 L 236.8 662.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 330.0 474.0 L 334.2 544.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="314.1" y="495.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="332.1" y="506.0" class="edge-label">false</text>
+  <path d="M 334.2 592.0 L 334.2 627.0 L 236.8 627.0 L 236.8 662.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDBd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDBd">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDFd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDFd">
+    <rect x="186.8" y="662.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="236.8" y="683.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDJd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDJd" data-file-id="f_5" data-start-line="12" data-end-line="12">
+    <polygon points="200.0,172.0 265.0,199.0 200.0,226.0 135.0,199.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="199.0" class="node-text" fill="#e65100" font-weight="600">value &lt; 0</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDNd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDNd" data-file-id="f_5" data-start-line="13" data-end-line="13">
+    <rect x="60.0" y="296.0" width="180.5" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="150.2" y="320.0" class="node-text" fill="#bf360c">return &quot;negative&quot;</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDRd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDRd" data-file-id="f_5" data-start-line="14" data-end-line="14">
+    <polygon points="347.0,296.0 413.5,323.0 347.0,350.0 280.5,323.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="347.0" y="323.0" class="node-text" fill="#e65100" font-weight="600">value == 0</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDVd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDVd" data-file-id="f_5" data-start-line="15" data-end-line="15">
+    <rect x="77.0" y="420.0" width="146.5" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="150.2" y="444.0" class="node-text" fill="#bf360c">return &quot;zero&quot;</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDZd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDZd" data-file-id="f_5" data-start-line="16" data-end-line="16">
+    <polygon points="330.0,420.0 396.5,447.0 330.0,474.0 263.5,447.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="330.0" y="447.0" class="node-text" fill="#e65100" font-weight="600">value &lt; 10</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDdd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDdd" data-file-id="f_5" data-start-line="17" data-end-line="17">
+    <rect x="61.8" y="544.0" width="155.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="139.2" y="568.0" class="node-text" fill="#bf360c">return &quot;small&quot;</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDhd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTlNJc01URXNNQ3dpWTJ4aGMzTnBabmxmYm5WdFltVnlJbDAiLDhd" data-file-id="f_5" data-start-line="19" data-end-line="19">
+    <rect x="256.8" y="544.0" width="155.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="334.2" y="568.0" class="node-text" fill="#bf360c">return &quot;large&quot;</text>
+  </g>
+</svg>

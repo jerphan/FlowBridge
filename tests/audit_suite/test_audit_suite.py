@@ -98,6 +98,17 @@ class TestFlowBridgeParsingAnalysisAudit(unittest.TestCase):
         resolved_calls = [c for c in res.call_references if c.resolution == "resolved"]
         self.assertTrue(any(c.expression == "add(1, 2)" for c in resolved_calls))
 
+        # Phase 3 Verification: In Function View of main(), the call is a clickable function node
+        main_fn = next(f for f in res.functions if f.function_name == "main")
+        add_fn = next(f for f in res.functions if f.function_name == "add")
+        main_graph = res.graphs[main_fn.graph_id]
+        call_node = next(n for n in main_graph.nodes if "add(1, 2)" in n.label)
+        self.assertEqual(call_node.node_type, "function")
+        call_ref = next(r for r in res.graph_references
+                        if r.source_graph_id == main_graph.graph_id and r.source_node_id == call_node.node_id)
+        self.assertEqual(call_ref.target_graph_id, add_fn.graph_id)
+        self.assertEqual(call_node.source_location.start_line, 5)
+
     def test_category_e_cross_file_call_resolution(self):
         f_calc = FileInput(file_id="f_calc", file_name="calculator.py", file_path="calculator.py",
                            file_content="def add(a, b):\n    return a + b\n")
@@ -109,6 +120,16 @@ class TestFlowBridgeParsingAnalysisAudit(unittest.TestCase):
         self.assertIsNotNone(calc_call)
         self.assertEqual(calc_call.resolution, "resolved")
         self.assertIsNotNone(calc_call.target_function_id)
+
+        # Phase 3 Verification: In File View of main.py, the cross-file call has a function node and GraphReference
+        main_file = next(f for f in res.files if f.file_name == "main.py")
+        main_file_graph = res.graphs[main_file.graph_id]
+        call_node = next(n for n in main_file_graph.nodes if "add(1, 2)" in n.label)
+        self.assertEqual(call_node.node_type, "function")
+        ref = next(r for r in res.graph_references
+                   if r.source_graph_id == main_file_graph.graph_id and r.source_node_id == call_node.node_id)
+        self.assertEqual(ref.target_graph_id, calc_call.target_graph_id)
+        self.assertEqual(call_node.source_location.start_line, 2)
 
     def test_category_g_recursion_bounding(self):
         code = (

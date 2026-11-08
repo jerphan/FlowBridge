@@ -53,7 +53,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result.status, 'success')  # Absolute imports are supported metadata.
         self.assertEqual(result.call_references[0].resolution, 'resolved')
         self.assertIn(result.call_references[0].target_graph_id, result.graphs)
-        self.assertEqual(len(result.graph_references), 4)
+        self.assertEqual(len(result.graph_references), 5)
         self.check_integrity(result)
 
     def test_empty_file_and_project(self):

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 652.5 1504.0" width="652.5" height="1504.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="326.2" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — run_workflow() (workflow.py)</text>
+  <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 220.0 L 200.0 432.0 L 286.2 432.0 L 286.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 692.0 L 286.2 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 810.0 L 286.2 963.0 L 197.2 963.0 L 197.2 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 810.0 L 286.2 845.0 L 167.5 845.0 L 167.5 880.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="208.9" y="831.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="226.9" y="842.0" class="edge-label">true</text>
+  <path d="M 167.5 928.0 L 167.5 1022.0 L 197.2 1022.0 L 197.2 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 167.5 928.0 L 167.5 963.0 L 286.2 963.0 L 286.2 998.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 1046.0 L 286.2 1081.0 L 197.2 1081.0 L 197.2 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 1046.0 L 286.2 1081.0 L 385.0 1081.0 L 385.0 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 385.0 1164.0 L 385.0 1199.0 L 286.2 1199.0 L 286.2 1234.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 1282.0 L 286.2 1352.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 810.0 L 286.2 845.0 L 396.5 845.0 L 396.5 880.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="323.4" y="831.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="341.4" y="842.0" class="edge-label">false</text>
+  <path d="M 396.5 928.0 L 396.5 1022.0 L 197.2 1022.0 L 197.2 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 220.0 L 201.2 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 201.2 338.0 L 201.2 491.0 L 286.2 491.0 L 286.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 201.2 338.0 L 201.2 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 201.2 456.0 L 201.2 550.0 L 286.2 550.0 L 286.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 201.2 456.0 L 201.2 491.0 L 286.2 491.0 L 286.2 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 574.0 L 286.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 574.0 L 286.2 845.0 L 385.0 845.0 L 385.0 1116.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDBd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDBd">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDFd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDFd">
+    <rect x="236.2" y="1352.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="1373.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDJd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDJd">
+    <rect x="191.8" y="644.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="668.0" class="node-text">Exception dispatch</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDNd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDNd" data-file-id="f_14" data-start-line="15" data-end-line="15" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfNSIsMjgsMCwiYWNjdW11bGF0ZSJd')">
+    <rect x="71.5" y="172.0" width="257.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="190.0" class="node-text" font-weight="600" fill="#00796b">⚡ total = accumulate(values)</text>
+    <text x="200.0" y="208.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDRd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDRd" data-file-id="f_14" data-start-line="16" data-end-line="16" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfMTQiLDcsMCwiZm9ybWF0X3N0YXR1cyJd')">
+    <rect x="60.0" y="290.0" width="282.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="201.2" y="308.0" class="node-text" font-weight="600" fill="#00796b">⚡ status = format_status(total)</text>
+    <text x="201.2" y="326.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDVd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDVd" data-file-id="f_14" data-start-line="17" data-end-line="17" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfNyIsMTQsMCwiZW5zdXJlX25vbm5lZ2F0aXZlIl0')">
+    <rect x="106.8" y="408.0" width="189.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="201.2" y="426.0" class="node-text" font-weight="600" fill="#00796b">⚡ check_value(total)</text>
+    <text x="201.2" y="444.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDZd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDZd" data-file-id="f_14" data-start-line="18" data-end-line="18" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfNCIsMTUsMCwibmVzdGVkX2xvb3BfaGFuZGxlcnMiXQ')">
+    <rect x="60.0" y="526.0" width="452.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="544.0" class="node-text" font-weight="600" fill="#00796b">⚡ trace = nested_loop_handlers([[1, 0], [None, 4]])</text>
+    <text x="286.2" y="562.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDdd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDdd" data-file-id="f_14" data-start-line="19" data-end-line="21">
+    <rect x="196.0" y="762.0" width="180.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="786.0" class="node-text">except ValueError</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDhd" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDhd">
+    <rect x="118.5" y="1116.0" width="157.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="197.2" y="1137.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDld" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDld" data-file-id="f_14" data-start-line="20" data-end-line="20">
+    <rect x="77.2" y="880.0" width="180.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="167.5" y="904.0" class="node-text">status = &quot;failed&quot;</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDEwXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDEwXQ" data-file-id="f_14" data-start-line="21" data-end-line="21">
+    <rect x="225.8" y="998.0" width="121.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="1022.0" class="node-text">trace = []</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDExXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDExXQ">
+    <rect x="297.8" y="880.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="396.5" y="904.0" class="node-text">Unhandled exception</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDEyXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDEyXQ" data-file-id="f_14" data-start-line="23" data-end-line="23" class="clickable" onclick="onNodeDrillDown('fb1_WyJzdHJlc3NfZnVsbCIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsImZfNSIsNDMsMCwiY291bnRkb3duIl0')">
+    <rect x="316.0" y="1116.0" width="138.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="385.0" y="1134.0" class="node-text" font-weight="600" fill="#00796b">⚡ countdown(4)</text>
+    <text x="385.0" y="1152.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
+  </g>
+  <g id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDEzXQ" data-node-id="fb1_WyJzdHJlc3NfZnVsbCIsMSwibm9kZSIsImZiMV9XeUp6ZEhKbGMzTmZablZzYkNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJbVpmTVRRaUxERXpMREFzSW5KMWJsOTNiM0pyWm14dmR5SmQiLDEzXQ" data-file-id="f_14" data-start-line="24" data-end-line="24">
+    <rect x="174.8" y="1234.0" width="223.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="1258.0" class="node-text" fill="#bf360c">return (status, trace)</text>
+  </g>
+</svg>

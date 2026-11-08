@@ -11,9 +11,7 @@ class ExceptionSubsetTests(unittest.TestCase):
             ('recover()', 'Exceptional End', 'exception'), ('work()', 'pass', 'next'),
             ('recover()', 'pass', 'next'), ('pass', 'End', 'next')})
 
-    def test_nested_handler_try_rejected_without_paths(self):
+    def test_nested_handler_try_supported(self):
         result = build('def f():\n    try:\n        work()\n    except:\n        try:\n            recover()\n        except:\n            pass')
-        self.assertEqual(result.graph.status, 'unsupported')
-        self.assertEqual(result.graph.edges, [])
-        self.assertEqual(result.graph.nodes, [])
-        self.assertTrue(any(d.code == 'UNSUPPORTED_FEATURE' for d in result.diagnostics))
+        self.assertEqual(result.graph.status, 'complete')
+        self.assertIn('recover()', [n.label for n in result.graph.nodes])

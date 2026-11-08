@@ -4,11 +4,11 @@
     "files_count": 15,
     "file_statuses": {
       "isolated_top_level.py": [
-        "unsupported",
+        "complete",
         "isolated_top_level.py"
       ],
       "main.py": [
-        "unsupported",
+        "complete",
         "main.py"
       ],
       "orphan_file.py": [
@@ -20,19 +20,19 @@
         "services/__init__.py"
       ],
       "edge_conditions.py": [
-        "unsupported",
+        "complete",
         "core/edge_conditions.py"
       ],
       "math_ops.py": [
-        "unsupported",
+        "complete",
         "core/math_ops.py"
       ],
       "nested_exceptions.py": [
-        "unsupported",
+        "complete",
         "core/nested_exceptions.py"
       ],
       "validation.py": [
-        "unsupported",
+        "complete",
         "core/validation.py"
       ],
       "import_patterns.py": [
@@ -40,7 +40,7 @@
         "services/import_patterns.py"
       ],
       "recovery.py": [
-        "unsupported",
+        "complete",
         "services/recovery.py"
       ],
       "reporting.py": [
@@ -56,94 +56,38 @@
         "services/unsupported_classes.py"
       ],
       "workflow.py": [
-        "unsupported",
+        "complete",
         "services/workflow.py"
       ]
     },
     "diagnostics": [
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_0",
-        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_0",
-        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_1",
-        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 15
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_1",
-        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 15
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_1",
-        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 15
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_4",
-        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_4",
-        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 19
       },
       {
         "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_4",
-        "message": "core.edge_conditions.nested_loop_handlers: Raise subtree omitted from binding analysis",
-        "line": 21
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_4",
-        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 19
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_4",
-        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 5
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_4",
-        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 19
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_5",
-        "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 7
       },
       {
         "severity": "warning",
@@ -154,87 +98,24 @@
       },
       {
         "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_5",
-        "message": "core.math_ops.safe_divide: Raise subtree omitted from binding analysis",
-        "line": 7
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_5",
-        "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 7
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 8
       },
       {
         "severity": "warning",
         "code": "CONSERVATIVE_EXCEPTIONS",
-        "file_id": "file_5",
-        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
-        "line": 31
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
         "file_id": "file_6",
-        "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 8
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_6",
-        "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 29
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_6",
-        "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 39
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 9
       },
       {
         "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_6",
-        "message": "core.nested_exceptions.deeply_nested: Raise subtree omitted from binding analysis",
-        "line": 12
-      },
-      {
-        "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_6",
-        "message": "core.nested_exceptions.exception_in_finally: Raise subtree omitted from binding analysis",
-        "line": 31
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_6",
-        "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 8
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_6",
-        "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 29
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_6",
-        "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 39
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 6
       },
       {
         "severity": "warning",
@@ -244,101 +125,10 @@
         "line": 7
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
-        "line": 9
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 16
-      },
-      {
-        "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_7",
-        "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
-        "line": 6
-      },
-      {
-        "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_7",
-        "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
-        "line": 10
-      },
-      {
-        "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_7",
-        "message": "core.validation.ensure_nonnegative: Raise subtree omitted from binding analysis",
-        "line": 16
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 6
-      },
-      {
         "severity": "warning",
         "code": "CONSERVATIVE_EXCEPTIONS",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
-        "line": 7
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
-        "line": 9
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 16
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
         "file_id": "file_10",
-        "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_10",
-        "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 12
-      },
-      {
-        "severity": "warning",
-        "code": "INCOMPLETE_SCOPE",
-        "file_id": "file_10",
-        "message": "services.recovery.unstable_operation: Raise subtree omitted from binding analysis",
-        "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_10",
-        "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_10",
-        "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 12
       },
       {
@@ -356,60 +146,53 @@
         "line": 4
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_13",
-        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
-        "line": 4
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_14",
-        "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 14
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_14",
-        "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 14
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_0",
-        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 5
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_1",
-        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 15
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_4",
-        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 5
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_4",
-        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 19
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_5",
-        "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 7
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_4",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_4",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 19
       },
       {
         "severity": "warning",
@@ -419,32 +202,25 @@
         "line": 31
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_6",
-        "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 8
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_6",
-        "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
-        "line": 29
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 9
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_6",
-        "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 39
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 6
       },
       {
         "severity": "warning",
@@ -454,31 +230,10 @@
         "line": 7
       },
       {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
-        "line": 9
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_7",
-        "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 16
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_10",
-        "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
-        "line": 5
-      },
-      {
-        "severity": "error",
-        "code": "UNSUPPORTED_FEATURE",
-        "file_id": "file_10",
-        "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 12
       },
       {
@@ -489,10 +244,108 @@
         "line": 4
       },
       {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_14",
+        "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 14
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_0",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 15
+      },
+      {
+        "severity": "warning",
+        "code": "UNREACHABLE_HANDLER",
+        "file_id": "file_1",
+        "message": "No modeled exceptional path reaches this handler; nodes omitted.",
+        "line": 18
+      },
+      {
+        "severity": "warning",
+        "code": "UNREACHABLE_HANDLER",
+        "file_id": "file_1",
+        "message": "No modeled exceptional path reaches this handler; nodes omitted.",
+        "line": 20
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_4",
+        "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 5
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_4",
+        "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 19
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 8
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_6",
+        "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 9
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_6",
+        "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 39
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_10",
+        "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 12
+      },
+      {
         "severity": "error",
         "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
         "file_id": "file_14",
-        "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
         "line": 14
       }
     ],
@@ -505,15 +358,15 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzAiXQ": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 18,
+        "edges": 22
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzEiXQ": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 31,
+        "edges": 32
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzIiXQ": {
         "type": "file",
@@ -529,27 +382,27 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzQiXQ": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 15,
+        "edges": 17
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzUiXQ": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 9,
+        "edges": 8
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzYiXQ": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 7,
+        "edges": 6
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzciXQ": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 6,
+        "edges": 5
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzgiXQ": {
         "type": "file",
@@ -565,9 +418,9 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzEwIl0": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 7,
+        "edges": 6
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzExIl0": {
         "type": "file",
@@ -589,15 +442,15 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzE0Il0": {
         "type": "file",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 8,
+        "edges": 7
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xIiwxMSwwLCJib290c3RyYXAiXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 19,
+        "edges": 26
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xIiwyOSwwLCJtYWluIl0": {
         "type": "function",
@@ -613,9 +466,9 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV80IiwxNSwwLCJuZXN0ZWRfbG9vcF9oYW5kbGVycyJd": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 23,
+        "edges": 33
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV80IiwzNCwwLCJjYWxsX2ltcG9ydGVkX25lc3RlZCJd": {
         "type": "function",
@@ -625,9 +478,9 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81Iiw1LDAsInNhZmVfZGl2aWRlIl0": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 6,
+        "edges": 5
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81IiwxMSwwLCJjbGFzc2lmeV9udW1iZXIiXQ": {
         "type": "function",
@@ -655,33 +508,33 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV82Iiw1LDAsImRlZXBseV9uZXN0ZWQiXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 23,
+        "edges": 33
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV82IiwyOCwwLCJleGNlcHRpb25faW5fZmluYWxseSJd": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 8,
+        "edges": 9
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV82IiwzOCwwLCJleGNlcHRfd2l0aF9yZXR1cm4iXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 10,
+        "edges": 12
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV83IiwzLDAsInBhcnNlX2ludGVnZXIiXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 12,
+        "edges": 14
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV83IiwxNCwwLCJlbnN1cmVfbm9ubmVnYXRpdmUiXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 6,
+        "edges": 5
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV83IiwyMCwwLCJsb2NhbF93cmFwcGVyIl0": {
         "type": "function",
@@ -697,15 +550,15 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsMywwLCJ1bnN0YWJsZV9vcGVyYXRpb24iXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 6,
+        "edges": 5
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsOSwwLCJyZXRyeV9vcGVyYXRpb24iXQ": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 13,
+        "edges": 16
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsMjQsMCwibXV0dWFsX2EiXQ": {
         "type": "function",
@@ -745,27 +598,27 @@
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xNCIsMTMsMCwicnVuX3dvcmtmbG93Il0": {
         "type": "function",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 14,
+        "edges": 20
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfMCJd": {
         "type": "module",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 18,
+        "edges": 22
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfMSJd": {
         "type": "module",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 13,
+        "edges": 13
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfNCJd": {
         "type": "module",
-        "status": "unsupported",
-        "nodes": 0,
-        "edges": 0
+        "status": "complete",
+        "nodes": 15,
+        "edges": 17
       },
       "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfMTMiXQ": {
         "type": "module",
@@ -802,6 +655,20 @@
         "reason": "Binding is not a statically known callable",
         "file_id": "file_1",
         "target_fn": null
+      },
+      {
+        "expr": "results.append((raw, classify_number(score)))",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_1",
+        "target_fn": null
+      },
+      {
+        "expr": "classify_number(score)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsMTEsMCwiY2xhc3NpZnlfbnVtYmVyIl0"
       },
       {
         "expr": "bootstrap()",
@@ -853,16 +720,30 @@
         "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMSIsMjksMCwibWFpbiJd"
       },
       {
+        "expr": "TypeError(\"missing\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_4",
+        "target_fn": null
+      },
+      {
         "expr": "observed.append(10 // item)",
         "resolution": "unresolved",
-        "reason": "Incomplete lexical scope",
+        "reason": "Binding is not a statically known callable",
         "file_id": "file_4",
         "target_fn": null
       },
       {
         "expr": "observed.append(0)",
         "resolution": "unresolved",
-        "reason": "Incomplete lexical scope",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_4",
+        "target_fn": null
+      },
+      {
+        "expr": "observed.append(\"checked\")",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
         "file_id": "file_4",
         "target_fn": null
       },
@@ -872,6 +753,13 @@
         "reason": "Explicit import selects a unique module function",
         "file_id": "file_4",
         "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNiIsNSwwLCJkZWVwbHlfbmVzdGVkIl0"
+      },
+      {
+        "expr": "ZeroDivisionError(\"denominator is zero\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_5",
+        "target_fn": null
       },
       {
         "expr": "recursive_sum(n - 1)",
@@ -889,29 +777,92 @@
       },
       {
         "expr": "parse_integer(raw)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_6",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMywwLCJwYXJzZV9pbnRlZ2VyIl0"
+      },
+      {
+        "expr": "RuntimeError(\"special case\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "output.append(\"inner-finally\")",
         "resolution": "unresolved",
-        "reason": "Incomplete lexical scope",
+        "reason": "Binding is not a statically known callable",
         "file_id": "file_6",
         "target_fn": null
       },
       {
         "expr": "output.append(\"runtime-error\")",
         "resolution": "unresolved",
-        "reason": "Incomplete lexical scope",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "output.append(value)",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "output.append(\"outer-finally\")",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "ValueError(\"from try\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "RuntimeError(\"from finally\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
         "file_id": "file_6",
         "target_fn": null
       },
       {
         "expr": "raw.strip()",
         "resolution": "unresolved",
-        "reason": "Incomplete lexical scope",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_7",
+        "target_fn": null
+      },
+      {
+        "expr": "ValueError(\"empty\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
         "file_id": "file_7",
         "target_fn": null
       },
       {
         "expr": "int(text)",
-        "resolution": "unresolved",
-        "reason": "Incomplete lexical scope",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_7",
+        "target_fn": null
+      },
+      {
+        "expr": "ValueError(\"not an integer\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_7",
+        "target_fn": null
+      },
+      {
+        "expr": "ValueError(\"negative values are forbidden\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
         "file_id": "file_7",
         "target_fn": null
       },
@@ -938,9 +889,16 @@
       },
       {
         "expr": "val.parse_integer(\"12\")",
-        "resolution": "unresolved",
-        "reason": "Imported-object attribute calls are unsupported",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
         "file_id": "file_9",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMywwLCJwYXJzZV9pbnRlZ2VyIl0"
+      },
+      {
+        "expr": "OSError(\"temporary failure\")",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_10",
         "target_fn": null
       },
       {
@@ -1047,6 +1005,13 @@
         "reason": "Explicit import selects a unique module function",
         "file_id": "file_14",
         "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNCIsMTUsMCwibmVzdGVkX2xvb3BfaGFuZGxlcnMiXQ"
+      },
+      {
+        "expr": "countdown(4)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_14",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsNDMsMCwiY291bnRkb3duIl0"
       }
     ]
   },
@@ -1071,54 +1036,48 @@
       "calls": []
     },
     "core/edge_conditions.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 5
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 19
         },
         {
           "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.edge_conditions.nested_loop_handlers: Raise subtree omitted from binding analysis",
-          "line": 21
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 19
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 5
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 19
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 5
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function nested_loop_handlers (line 15): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 19
         }
       ],
@@ -1131,15 +1090,15 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 15,
+          "edges": 17
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 23,
+          "edges": 33
         },
         {
           "type": "function",
@@ -1149,21 +1108,31 @@
         },
         {
           "type": "module",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 15,
+          "edges": 17
         }
       ],
       "calls": [
         {
+          "expr": "TypeError(\"missing\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
           "expr": "observed.append(10 // item)",
           "resolution": "unresolved",
-          "reason": "Incomplete lexical scope"
+          "reason": "Binding is not a statically known callable"
         },
         {
           "expr": "observed.append(0)",
           "resolution": "unresolved",
-          "reason": "Incomplete lexical scope"
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "observed.append(\"checked\")",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
         },
         {
           "expr": "deeply_nested([\"1\", \"wrong\", \"7\"])",
@@ -1173,15 +1142,9 @@
       ]
     },
     "core/math_ops.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 7
-        },
-        {
           "severity": "warning",
           "code": "CONSERVATIVE_EXCEPTIONS",
           "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
@@ -1189,27 +1152,9 @@
         },
         {
           "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.math_ops.safe_divide: Raise subtree omitted from binding analysis",
-          "line": 7
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 7
-        },
-        {
-          "severity": "warning",
           "code": "CONSERVATIVE_EXCEPTIONS",
           "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 31
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 7
         },
         {
           "severity": "warning",
@@ -1227,15 +1172,15 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 9,
+          "edges": 8
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 6,
+          "edges": 5
         },
         {
           "type": "function",
@@ -1264,6 +1209,11 @@
       ],
       "calls": [
         {
+          "expr": "ZeroDivisionError(\"denominator is zero\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
           "expr": "recursive_sum(n - 1)",
           "resolution": "resolved",
           "reason": "Unique lexical function declaration"
@@ -1276,72 +1226,60 @@
       ]
     },
     "core/nested_exceptions.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 8
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
-          "line": 29
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 9
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 39
         },
         {
           "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.nested_exceptions.deeply_nested: Raise subtree omitted from binding analysis",
-          "line": 12
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 8
         },
         {
           "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.nested_exceptions.exception_in_finally: Raise subtree omitted from binding analysis",
-          "line": 31
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 9
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
-          "line": 8
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
-          "line": 29
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 39
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 8
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
-          "line": 29
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function deeply_nested (line 5): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 9
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function except_with_return (line 38): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 39
         }
       ],
@@ -1354,50 +1292,80 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 7,
+          "edges": 6
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 23,
+          "edges": 33
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 8,
+          "edges": 9
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 10,
+          "edges": 12
         }
       ],
       "calls": [
         {
           "expr": "parse_integer(raw)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "RuntimeError(\"special case\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
+          "expr": "output.append(\"inner-finally\")",
           "resolution": "unresolved",
-          "reason": "Incomplete lexical scope"
+          "reason": "Binding is not a statically known callable"
         },
         {
           "expr": "output.append(\"runtime-error\")",
           "resolution": "unresolved",
-          "reason": "Incomplete lexical scope"
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "output.append(value)",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "output.append(\"outer-finally\")",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "ValueError(\"from try\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
+          "expr": "RuntimeError(\"from finally\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
         }
       ]
     },
     "core/validation.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 6
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 7
         },
         {
           "severity": "warning",
@@ -1406,82 +1374,10 @@
           "line": 7
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
-          "line": 9
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 16
-        },
-        {
-          "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
-          "line": 6
-        },
-        {
-          "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
-          "line": 10
-        },
-        {
-          "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "core.validation.ensure_nonnegative: Raise subtree omitted from binding analysis",
-          "line": 16
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 6
-        },
-        {
           "severity": "warning",
           "code": "CONSERVATIVE_EXCEPTIONS",
           "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 7
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
-          "line": 9
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 16
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 6
-        },
-        {
-          "severity": "warning",
-          "code": "CONSERVATIVE_EXCEPTIONS",
-          "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
-          "line": 7
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
-          "line": 9
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 16
         }
       ],
       "graphs": [
@@ -1493,21 +1389,21 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 6,
+          "edges": 5
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 12,
+          "edges": 14
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 6,
+          "edges": 5
         },
         {
           "type": "function",
@@ -1520,12 +1416,27 @@
         {
           "expr": "raw.strip()",
           "resolution": "unresolved",
-          "reason": "Incomplete lexical scope"
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "ValueError(\"empty\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
         },
         {
           "expr": "int(text)",
-          "resolution": "unresolved",
-          "reason": "Incomplete lexical scope"
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
+          "expr": "ValueError(\"not an integer\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
+          "expr": "ValueError(\"negative values are forbidden\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
         },
         {
           "expr": "parse_integer(raw)",
@@ -1540,24 +1451,24 @@
       ]
     },
     "isolated_top_level.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 5
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 5
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "<module>: exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 5
         }
       ],
@@ -1570,44 +1481,44 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 18,
+          "edges": 22
         },
         {
           "type": "module",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 18,
+          "edges": 22
         }
       ],
       "calls": []
     },
     "main.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 15
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 15
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 15
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function bootstrap (line 11): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 15
         }
       ],
@@ -1620,15 +1531,15 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 37,
+          "edges": 45
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 19,
+          "edges": 26
         },
         {
           "type": "function",
@@ -1638,9 +1549,9 @@
         },
         {
           "type": "module",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 13,
+          "edges": 13
         }
       ],
       "calls": [
@@ -1663,6 +1574,16 @@
           "expr": "results.append((raw, \"zero\"))",
           "resolution": "unresolved",
           "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "results.append((raw, classify_number(score)))",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "classify_number(score)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
         },
         {
           "expr": "bootstrap()",
@@ -1782,48 +1703,24 @@
       ]
     },
     "services/recovery.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 5
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 12
         },
         {
           "severity": "warning",
-          "code": "INCOMPLETE_SCOPE",
-          "message": "services.recovery.unstable_operation: Raise subtree omitted from binding analysis",
-          "line": 5
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 5
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 12
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
-          "line": 5
-        },
-        {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function retry_operation (line 9): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 12
         }
       ],
@@ -1836,21 +1733,21 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 7,
+          "edges": 6
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 6,
+          "edges": 5
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 13,
+          "edges": 16
         },
         {
           "type": "function",
@@ -1866,6 +1763,11 @@
         }
       ],
       "calls": [
+        {
+          "expr": "OSError(\"temporary failure\")",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
         {
           "expr": "unstable_operation(attempts)",
           "resolution": "resolved",
@@ -2033,24 +1935,24 @@
       ]
     },
     "services/workflow.py": {
-      "status": "unsupported",
+      "status": "complete",
       "diagnostics": [
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 14
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 14
         },
         {
-          "severity": "error",
-          "code": "UNSUPPORTED_FEATURE",
-          "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function run_workflow (line 13): exception types are not inferred; ordered handler matches are possible alternatives.",
           "line": 14
         }
       ],
@@ -2063,9 +1965,9 @@
         },
         {
           "type": "file",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 8,
+          "edges": 7
         },
         {
           "type": "function",
@@ -2075,9 +1977,9 @@
         },
         {
           "type": "function",
-          "status": "unsupported",
-          "nodes": 0,
-          "edges": 0
+          "status": "complete",
+          "nodes": 14,
+          "edges": 20
         }
       ],
       "calls": [
@@ -2098,6 +2000,11 @@
         },
         {
           "expr": "nested_loop_handlers([[1, 0], [None, 4]])",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "countdown(4)",
           "resolution": "external",
           "reason": "Explicit module is outside the supplied snapshot"
         }
@@ -2496,7 +2403,7 @@
         }
       },
       "try_nested": {
-        "file_status": "unsupported",
+        "file_status": "complete",
         "diagnostics": [
           [
             "warning",
@@ -2504,9 +2411,9 @@
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
             "warning",
@@ -2514,9 +2421,9 @@
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
             "warning",
@@ -2524,9 +2431,9 @@
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ]
         ],
         "graph_statuses": {
@@ -2536,34 +2443,34 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            12,
+            17
           ]
         }
       },
       "try_except_else": {
-        "file_status": "unsupported",
+        "file_status": "complete",
         "diagnostics": [
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ]
         ],
         "graph_statuses": {
@@ -2573,36 +2480,20 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            9,
+            11
           ]
         }
       },
       "try_finally": {
-        "file_status": "unsupported",
-        "diagnostics": [
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
-          ]
-        ],
+        "file_status": "complete",
+        "diagnostics": [],
         "graph_statuses": {
           "project": [
             "complete",
@@ -2610,34 +2501,34 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            6,
+            5
           ]
         }
       },
       "try_except_else_finally": {
-        "file_status": "unsupported",
+        "file_status": "complete",
         "diagnostics": [
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ]
         ],
         "graph_statuses": {
@@ -2647,41 +2538,20 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            10,
+            12
           ]
         }
       },
       "raise_statement": {
-        "file_status": "unsupported",
-        "diagnostics": [
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
-          ],
-          [
-            "warning",
-            "INCOMPLETE_SCOPE",
-            "raise_statement.f: Raise subtree omitted from binding analysis"
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
-          ]
-        ],
+        "file_status": "complete",
+        "diagnostics": [],
         "graph_statuses": {
           "project": [
             "complete",
@@ -2689,19 +2559,19 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ]
         }
       },
       "raise_reraise": {
-        "file_status": "unsupported",
+        "file_status": "complete",
         "diagnostics": [
           [
             "warning",
@@ -2709,34 +2579,14 @@
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
-          ],
-          [
-            "warning",
-            "INCOMPLETE_SCOPE",
-            "raise_reraise.f: Raise subtree omitted from binding analysis"
-          ],
-          [
             "warning",
             "CONSERVATIVE_EXCEPTIONS",
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
-          ],
-          [
             "warning",
             "CONSERVATIVE_EXCEPTIONS",
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
           ]
         ],
         "graph_statuses": {
@@ -2746,14 +2596,14 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            8,
+            9
           ]
         }
       },
@@ -2795,24 +2645,8 @@
         }
       },
       "return_inside_finally": {
-        "file_status": "unsupported",
-        "diagnostics": [
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
-          ]
-        ],
+        "file_status": "complete",
+        "diagnostics": [],
         "graph_statuses": {
           "project": [
             "complete",
@@ -2820,14 +2654,14 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            6,
+            5
           ]
         }
       },
@@ -2874,7 +2708,7 @@
         }
       },
       "except_alias": {
-        "file_status": "unsupported",
+        "file_status": "complete",
         "diagnostics": [
           [
             "warning",
@@ -2882,29 +2716,14 @@
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled"
-          ],
-          [
             "warning",
             "CONSERVATIVE_EXCEPTIONS",
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
           ],
           [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled"
-          ],
-          [
             "warning",
             "CONSERVATIVE_EXCEPTIONS",
             "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
-          ],
-          [
-            "error",
-            "UNSUPPORTED_FEATURE",
-            "function f (line 1): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled"
           ]
         ],
         "graph_statuses": {
@@ -2914,14 +2733,14 @@
             0
           ],
           "file": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            3,
+            2
           ],
           "function": [
-            "unsupported",
-            0,
-            0
+            "complete",
+            8,
+            10
           ]
         }
       }
@@ -2985,8 +2804,16 @@
           "foo"
         ],
         [
+          "function",
+          "Call foo()"
+        ],
+        [
           "return",
           "return 42"
+        ],
+        [
+          "statement",
+          "x = foo()"
         ]
       ],
       "only_defs_nodes": [
@@ -3036,7 +2863,7 @@
           "End"
         ],
         [
-          "statement",
+          "function",
           "result = add(5, 4)"
         ],
         [
@@ -3062,8 +2889,20 @@
           "main"
         ],
         [
+          "function",
+          "Call main()"
+        ],
+        [
+          "function",
+          "Call add(5, 4)"
+        ],
+        [
           "return",
           "return a + b"
+        ],
+        [
+          "statement",
+          "result = add(5, 4)"
         ],
         [
           "statement",
@@ -3093,6 +2932,21 @@
         ],
         [
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDVd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDZd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDZd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDdd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDdd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDhd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDhd",
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDFd",
           "next"
         ]
@@ -3131,6 +2985,11 @@
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0"
         ],
         [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwibW9kdWxlIiwiZl9zaW5nbGUiXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpYlc5a2RXeGxJaXdpWmw5emFXNW5iR1VpWFEiLDRd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0"
+        ],
+        [
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0",
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsMSwwLCJhZGQiXQ"
@@ -3139,6 +2998,21 @@
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0",
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
           "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDRd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDVd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsMSwwLCJhZGQiXQ"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc05Dd3dMQ0p0WVdsdUlsMCIsMl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsMSwwLCJhZGQiXQ"
         ]
       ]
     },
@@ -3197,9 +3071,9 @@
         [
           "f_rel",
           "add(5, 4)",
-          "unresolved",
-          "Relative imports are unsupported",
-          null
+          "resolved",
+          "Explicit import selects a unique module function",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJmdW5jdGlvbiIsImZfY2FsYyIsMSwwLCJhZGQiXQ"
         ]
       ],
       "graph_references": [
@@ -3222,6 +3096,18 @@
         [
           "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ",
           "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX3JlbCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZfbWFpbiJd",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZfbW9kIl0",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZfYWxpYXMiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
         ],
         [
           "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX2NhbGMiXQ",
@@ -3270,7 +3156,15 @@
           "End"
         ],
         [
-          "statement",
+          "function",
+          "add(2, 3)"
+        ],
+        [
+          "function",
+          "subtract(10, 4)"
+        ],
+        [
+          "function",
           "res = multiply(add(2, 3), subtract(10, 4))"
         ],
         [
@@ -3304,8 +3198,36 @@
           "test_nested"
         ],
         [
+          "function",
+          "Call test_nested()"
+        ],
+        [
+          "function",
+          "Call add(2, 3)"
+        ],
+        [
+          "return",
+          "return x + y"
+        ],
+        [
+          "function",
+          "Call subtract(10, 4)"
+        ],
+        [
+          "return",
+          "return x - y"
+        ],
+        [
+          "function",
+          "Call multiply(add(2, 3), subtract(10, 4))"
+        ],
+        [
           "return",
           "return x * y"
+        ],
+        [
+          "statement",
+          "res = multiply(add(2, 3), subtract(10, 4))"
         ],
         [
           "return",
@@ -3326,6 +3248,10 @@
         [
           "function",
           "rec"
+        ],
+        [
+          "function",
+          "Call rec(5)"
         ],
         [
           "condition",

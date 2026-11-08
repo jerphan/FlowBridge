@@ -6,7 +6,7 @@ interface FlowchartCanvasProps {
   onNodeClick?: (nodeId: string) => void;
   title?: string;
   highlightedNodeId?: string | null;
-  viewType?: "project" | "file" | "function";
+  viewType?: "project" | "file" | "function" | "module";
 }
 
 export default function FlowchartCanvas({
