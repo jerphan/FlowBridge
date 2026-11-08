@@ -49,7 +49,11 @@ class ParsingAnalysisService:
         mappings = []
         module_graphs = []
         module_graph_refs = []
+        function_graph_refs = []
         parsed_trees: dict[str, ast.Module] = {}
+        file_metadata_by_id: dict[str, FileMetadata] = {}
+
+        # 1. Parse and extract AST analyses for all files
         for file in project.files:
             parsed = PythonParser().parse(file)
             diagnostics.extend(parsed.diagnostics)
@@ -57,6 +61,7 @@ class ParsingAnalysisService:
                 file_path=file.file_path, graph_id=ids.make('graph', 'file', file.file_id),
                 status='failed' if parsed.tree is None else 'complete')
             files.append(metadata)
+            file_metadata_by_id[file.file_id] = metadata
             if parsed.tree is None:
                 continue
             parsed_trees[file.file_id] = parsed.tree
@@ -70,32 +75,64 @@ class ParsingAnalysisService:
                 diagnostics.extend(analysis.diagnostics)
                 if any(d.severity == 'error' or d.code == 'INCOMPLETE_SCOPE' for d in analysis.diagnostics):
                     metadata.status = 'unsupported'
-                for statement in parsed.tree.body:
-                    if isinstance(statement, ast.FunctionDef):
-                        built = CFGBuilder().build(statement, file, ids)
-                        graphs.append(built.graph)
-                        mappings.extend(built.source_mappings)
-                        diagnostics.extend(built.diagnostics)
-                        if built.graph.status != 'complete':
-                            metadata.status = 'unsupported'
-                if _has_module_execution(parsed.tree):
-                    built_module = CFGBuilder().build_module(parsed.tree, file, ids)
-                    module_graphs.append(built_module.graph)
-                    mappings.extend(built_module.source_mappings)
-                    diagnostics.extend(built_module.diagnostics)
-                    module_graph_refs.extend(built_module.graph_references)
-                    if built_module.graph.status != 'complete':
-                        metadata.status = 'unsupported'
             except Exception as ex:
                 metadata.status = 'failed'
                 diagnostics.append(Diagnostic(
                     severity='error', code='INTERNAL_ANALYSIS_ERROR', file_id=file.file_id,
                     message=f'Unexpected error analyzing file {file.file_name}: {type(ex).__name__}: {ex}'))
+
+        # 2. Resolve calls and import relationships across the entire project
         calls = CallResolver().resolve(project.files, analyses)
         import_dependencies = self._extract_import_dependencies(project.files, analyses)
-
-        # Build complete File View CFGs for each file
         functions_by_id = {fn.function_id: fn for fn in functions}
+
+        # 3. Build Function CFGs and Module CFGs with resolved call information
+        for file in project.files:
+            tree = parsed_trees.get(file.file_id)
+            if tree is None:
+                continue
+            metadata = file_metadata_by_id.get(file.file_id)
+            local_functions = {
+                stmt.name: stmt
+                for stmt in tree.body
+                if isinstance(stmt, ast.FunctionDef)
+            }
+            try:
+                for statement in tree.body:
+                    if isinstance(statement, ast.FunctionDef):
+                        built = CFGBuilder().build(
+                            statement, file, ids,
+                            local_functions=local_functions,
+                            functions_by_id=functions_by_id,
+                            call_references=calls.call_references,
+                        )
+                        graphs.append(built.graph)
+                        mappings.extend(built.source_mappings)
+                        diagnostics.extend(built.diagnostics)
+                        function_graph_refs.extend(built.graph_references)
+                        if built.graph.status != 'complete' and metadata:
+                            metadata.status = 'unsupported'
+                if _has_module_execution(tree):
+                    built_module = CFGBuilder().build_module(
+                        tree, file, ids,
+                        local_functions=local_functions,
+                        functions_by_id=functions_by_id,
+                        call_references=calls.call_references,
+                    )
+                    module_graphs.append(built_module.graph)
+                    mappings.extend(built_module.source_mappings)
+                    diagnostics.extend(built_module.diagnostics)
+                    module_graph_refs.extend(built_module.graph_references)
+                    if built_module.graph.status != 'complete' and metadata:
+                        metadata.status = 'unsupported'
+            except Exception as ex:
+                if metadata:
+                    metadata.status = 'failed'
+                diagnostics.append(Diagnostic(
+                    severity='error', code='INTERNAL_ANALYSIS_ERROR', file_id=file.file_id,
+                    message=f'Unexpected error constructing CFGs for {file.file_name}: {type(ex).__name__}: {ex}'))
+
+        # 4. Build complete File View CFGs for each file
         file_graphs = []
         file_graph_refs = []
         for file in project.files:
@@ -123,6 +160,7 @@ class ParsingAnalysisService:
                     severity='error', code='INTERNAL_ANALYSIS_ERROR', file_id=file.file_id,
                     message=f'Unexpected error building file view for {file.file_name}: {type(ex).__name__}: {ex}'))
 
+        # 5. Build containment hierarchy
         hierarchy = ProjectGraphBuilder().build(
             files, functions, graphs, ids,
             module_graphs=module_graphs,
@@ -143,7 +181,7 @@ class ParsingAnalysisService:
             revision_id=project.revision_id, status='partial' if partial else 'success',
             files=files, functions=functions, graphs=hierarchy.graphs, symbols=symbols,
             call_references=calls.call_references, source_mappings=mappings + hierarchy.source_mappings,
-            graph_references=hierarchy.graph_references + module_graph_refs + file_graph_refs, diagnostics=unique_diagnostics)
+            graph_references=hierarchy.graph_references + module_graph_refs + file_graph_refs + function_graph_refs, diagnostics=unique_diagnostics)
         self._check_mapping_coverage(result)
         return result
 

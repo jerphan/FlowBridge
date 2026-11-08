@@ -205,12 +205,18 @@ class _FileAnalyzer:
                     expression=self._text(node), callee_expression=self._text(node.func),
                     direct_name=node.func.id if isinstance(node.func, ast.Name) else None))
             if isinstance(node, ast.Try):
+                for child in reversed(node.finalbody):
+                    pending.append(child)
+                for child in reversed(node.orelse):
+                    pending.append(child)
                 for handler in reversed(node.handlers):
                     pending.append(handler)
                 for child in reversed(node.body):
                     pending.append(child)
                 continue
             if isinstance(node, ast.ExceptHandler):
+                if node.name is not None:
+                    self._bind(node, scope_id, node.name, self._binding_kind(scope_id))
                 for child in reversed(node.body):
                     pending.append(child)
                 if node.type is not None:
@@ -218,7 +224,7 @@ class _FileAnalyzer:
                 continue
             if isinstance(node, ast.stmt) and not isinstance(node, (ast.Assign, ast.AnnAssign, ast.AugAssign,
                                                                  ast.Expr, ast.If, ast.Return, ast.Pass,
-                                                                 ast.Break, ast.Continue)):
+                                                                 ast.Break, ast.Continue, ast.Raise)):
                 self._incomplete(node, scope_id, f'{type(node).__name__} subtree omitted from binding analysis')
                 continue
             if isinstance(node, (ast.Yield, ast.YieldFrom, ast.Await, ast.NamedExpr)):

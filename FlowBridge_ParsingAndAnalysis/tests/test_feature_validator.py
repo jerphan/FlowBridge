@@ -39,18 +39,17 @@ class FeatureValidatorTests(unittest.TestCase):
         self.assertIn('FunctionDef', result.diagnostics[0].message)
         self.assertEqual(result.diagnostics[0].source_location.start_line, 2)
 
-    def test_unsupported_exception_forms(self):
+    def test_supported_exception_forms(self):
         statements = ['try:\n        x = 1\n    except Exception as error:\n        return 0',
-                      'try:\n        x = 1\n    finally:\n        x = 2']
+                      'try:\n        x = 1\n    finally:\n        x = 2',
+                      'raise ValueError()']
         for statement in statements:
             with self.subTest(statement=statement):
                 result = inspect_source('def f():\n    ' + statement + '\n')
-                self.assertFalse(result.is_supported)
-                self.assertIn('UNSUPPORTED_FEATURE', [item.code for item in result.diagnostics])
+                self.assertTrue(result.is_supported)
 
     def test_other_unsupported_statements(self):
-        for statement in ['raise ValueError()',
-                          'import os', 'global x', 'assert x', 'del x',
+        for statement in ['import os', 'global x', 'assert x', 'del x',
                           'with open("x") as f:\n        return f',
                           'match x:\n        case 1:\n            return 1']:
             with self.subTest(statement=statement):

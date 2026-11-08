@@ -118,18 +118,19 @@ class FeatureValidator:
                         pending.append(_Visit(child, scope, loop_depth=loop_depth, try_depth=try_depth))
                     continue
                 if isinstance(node, ast.Try):
-                    if try_depth or node.orelse or node.finalbody or not node.handlers:
-                        reject(node, scope, 'only non-nested try/except without else/finally is modeled')
+                    if not node.handlers and not node.finalbody:
+                        reject(node, scope, 'try statement must have at least one except or finally block')
                         continue
                     try_depth += 1
                     children = list(ast.iter_child_nodes(node))
                     for index, handler in enumerate(node.handlers):
                         if handler.type is None and index != len(node.handlers) - 1:
                             reject(handler, scope, 'bare except must be last')
-                    result.diagnostics.append(Diagnostic(
-                        severity='warning', code='CONSERVATIVE_EXCEPTIONS', file_id=file_id,
-                        source_location=ast_location(node, file_id),
-                        message=f'{scope}: exception types are not inferred; ordered handler matches are possible alternatives.'))
+                    if node.handlers:
+                        result.diagnostics.append(Diagnostic(
+                            severity='warning', code='CONSERVATIVE_EXCEPTIONS', file_id=file_id,
+                            source_location=ast_location(node, file_id),
+                            message=f'{scope}: exception types are not inferred; ordered handler matches are possible alternatives.'))
                     for child in reversed(children):
                         pending.append(_Visit(child, scope, loop_depth=loop_depth, try_depth=try_depth))
                     continue
@@ -157,26 +158,29 @@ class FeatureValidator:
                     reject(node, scope, 'break/continue requires an enclosing loop')
                 children = []
             elif isinstance(node, ast.Try):
-                if try_depth or node.orelse or node.finalbody or not node.handlers:
-                    reject(node, scope, 'only non-nested try/except without else/finally is modeled')
+                if not node.handlers and not node.finalbody:
+                    reject(node, scope, 'try statement must have at least one except or finally block')
                     continue
                 try_depth += 1
                 children = list(ast.iter_child_nodes(node))
                 for index, handler in enumerate(node.handlers):
                     if handler.type is None and index != len(node.handlers) - 1:
                         reject(handler, scope, 'bare except must be last')
-                result.diagnostics.append(Diagnostic(
-                    severity='warning', code='CONSERVATIVE_EXCEPTIONS', file_id=file_id,
-                    source_location=ast_location(node, file_id),
-                    message=f'{scope}: exception types are not inferred; ordered handler matches are possible alternatives.'))
+                if node.handlers:
+                    result.diagnostics.append(Diagnostic(
+                        severity='warning', code='CONSERVATIVE_EXCEPTIONS', file_id=file_id,
+                        source_location=ast_location(node, file_id),
+                        message=f'{scope}: exception types are not inferred; ordered handler matches are possible alternatives.'))
             elif isinstance(node, ast.ExceptHandler):
-                if node.name is not None:
-                    reject(node, scope, 'exception aliases require cleanup semantics not yet modeled')
-                    continue
-                simple_type = node.type is None or isinstance(node.type, ast.Name) or (
-                    isinstance(node.type, ast.Tuple) and all(isinstance(item, ast.Name) for item in node.type.elts))
-                if not simple_type:
-                    reject(node, scope, 'handler types must be names or tuples of names')
+                def _valid_exc_type(t: ast.AST | None) -> bool:
+                    if t is None or isinstance(t, (ast.Name, ast.Attribute)):
+                        return True
+                    if isinstance(t, ast.Tuple):
+                        return all(isinstance(item, (ast.Name, ast.Attribute)) for item in t.elts)
+                    return False
+
+                if not _valid_exc_type(node.type):
+                    reject(node, scope, 'handler types must be names, attributes, or tuples of them')
                     continue
                 children = list(ast.iter_child_nodes(node))
             elif isinstance(node, ast.Call):
@@ -199,7 +203,7 @@ class FeatureValidator:
 # Expressions are atomic for statement CFGs, but their children are still
 # inspected so a comprehension, lambda, yield or await cannot hide inside a call.
 _SUPPORTED_AST_TYPES = frozenset({
-    ast.Assign, ast.AnnAssign, ast.AugAssign, ast.Expr, ast.If, ast.Return, ast.Pass,
+    ast.Assign, ast.AnnAssign, ast.AugAssign, ast.Expr, ast.If, ast.Return, ast.Pass, ast.Raise,
     ast.Name, ast.Constant, ast.BinOp, ast.UnaryOp, ast.BoolOp, ast.Compare,
     ast.Call, ast.Attribute, ast.Subscript, ast.Slice, ast.List, ast.Tuple,
     ast.Set, ast.Dict, ast.Starred, ast.IfExp, ast.JoinedStr, ast.FormattedValue,

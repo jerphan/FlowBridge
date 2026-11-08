@@ -32,12 +32,18 @@ class _Loop:
 class CFGBuilder:
     """Build a fresh graph for a direct module-level function and its source snapshot."""
 
-    def build(self, function: ast.FunctionDef, file_input: FileInput, ids: RevisionIds) -> CFGResult:
+    def build(self, function: ast.FunctionDef, file_input: FileInput, ids: RevisionIds,
+              local_functions: dict[str, ast.FunctionDef] | None = None,
+              functions_by_id: dict[str, FunctionInfo] | None = None,
+              call_references: list[CallReference] | None = None) -> CFGResult:
         """Validate the entire function before constructing executable paths."""
         if not isinstance(function, ast.FunctionDef):
             raise TypeError('CFGBuilder requires an ast.FunctionDef')
         file_input.__post_init__()
-        worker = _FunctionBuilder(function, file_input, ids)
+        worker = _FunctionBuilder(function, file_input, ids,
+                                  local_functions=local_functions,
+                                  functions_by_id=functions_by_id,
+                                  call_references=call_references)
         features = FeatureValidator().validate(ast.Module(body=[function], type_ignores=[]), file_input.file_id)
         diagnostics = [replace(item, graph_id=worker.graph_id) for item in features.diagnostics]
         if function.col_offset != 0:
@@ -53,12 +59,18 @@ class CFGBuilder:
             return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
                 function, 'CFG_LIMIT', 'Function exceeds CFG construction recursion capacity.')])
 
-    def build_module(self, tree: ast.Module, file_input: FileInput, ids: RevisionIds) -> CFGResult:
+    def build_module(self, tree: ast.Module, file_input: FileInput, ids: RevisionIds,
+                     local_functions: dict[str, ast.FunctionDef] | None = None,
+                     functions_by_id: dict[str, FunctionInfo] | None = None,
+                     call_references: list[CallReference] | None = None) -> CFGResult:
         """Build a fresh execution CFG for top-level module statements."""
         if not isinstance(tree, ast.Module):
             raise TypeError('CFGBuilder.build_module requires an ast.Module')
         file_input.__post_init__()
-        worker = _ModuleBuilder(tree, file_input, ids)
+        worker = _ModuleBuilder(tree, file_input, ids,
+                                local_functions=local_functions,
+                                functions_by_id=functions_by_id,
+                                call_references=call_references)
         features = FeatureValidator().validate(tree, file_input.file_id)
         diagnostics = [replace(item, graph_id=worker.graph_id) for item in features.diagnostics]
         if any(item.severity == 'error' for item in diagnostics):
@@ -95,10 +107,20 @@ class CFGBuilder:
 
 
 class _FunctionBuilder:
-    def __init__(self, function: ast.FunctionDef, file: FileInput, ids: RevisionIds) -> None:
+    def __init__(self, function: ast.FunctionDef, file: FileInput, ids: RevisionIds,
+                 local_functions: dict[str, ast.FunctionDef] | None = None,
+                 functions_by_id: dict[str, FunctionInfo] | None = None,
+                 call_references: list[CallReference] | None = None) -> None:
         self.function = function
         self.file = file
         self.ids = ids
+        self.local_functions = local_functions or {}
+        self.functions_by_id = functions_by_id or {}
+        self.call_references = call_references or []
+        self.calls_by_loc = {
+            (c.location.start_line, c.location.start_column): c
+            for c in self.call_references if c.file_id == file.file_id
+        }
         key = (file.file_id, function.lineno, function.col_offset, function.name)
         self.function_id = ids.make('function', *key)
         self.graph_id = ids.make('graph', 'function', *key)
@@ -112,7 +134,7 @@ class _FunctionBuilder:
         self.exception_target: str | None = None
         self.exceptional_end: str | None = None
         self.in_handler = False
-        self.track_exceptions = any(isinstance(node, ast.Try) for node in ast.walk(function))
+        self.track_exceptions = any(isinstance(node, (ast.Try, ast.Raise)) for node in ast.walk(function))
 
     def graph(self, status: str, empty: bool = False) -> GraphModel:
         return GraphModel(graph_id=self.graph_id, view_type='function', status=status,
@@ -183,6 +205,70 @@ class _FunctionBuilder:
             incoming = self.statement(statement, incoming)
         return incoming
 
+    def _find_call(self, statement: ast.stmt) -> ast.Call | None:
+        if isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call):
+            return statement.value
+        if isinstance(statement, (ast.Assign, ast.AnnAssign)) and isinstance(statement.value, ast.Call):
+            return statement.value
+        if isinstance(statement, ast.Return) and isinstance(statement.value, ast.Call):
+            return statement.value
+        calls = [n for n in ast.walk(statement) if isinstance(n, ast.Call)]
+        if len(calls) == 1:
+            return calls[0]
+        return None
+
+    def _top_nested_calls(self, node: ast.AST) -> list[ast.Call]:
+        if isinstance(node, ast.Call):
+            return [node]
+        calls = []
+        for child in ast.iter_child_nodes(node):
+            calls.extend(self._top_nested_calls(child))
+        return calls
+
+    def _resolve_target(self, call: ast.Call) -> FunctionInfo | None:
+        call_ref = self.calls_by_loc.get((call.lineno, call.col_offset))
+        if call_ref and call_ref.resolution == 'resolved' and call_ref.target_function_id:
+            return self.functions_by_id.get(call_ref.target_function_id)
+        if isinstance(call.func, ast.Name) and call.func.id in self.local_functions:
+            return next((f for f in self.functions_by_id.values()
+                         if f.file_id == self.file.file_id and f.function_name == call.func.id), None)
+        return None
+
+    def build_call(self, statement: ast.stmt, call: ast.Call, incoming: Predecessors) -> Predecessors:
+        target_fn = self._resolve_target(call)
+        is_ret = isinstance(statement, ast.Return)
+
+        if target_fn:
+            for arg in call.args:
+                for nested in self._top_nested_calls(arg):
+                    if nested is not call:
+                        nested_fn = self._resolve_target(nested)
+                        if nested_fn:
+                            nested_stmt = ast.Expr(value=nested)
+                            incoming = self.build_call(nested_stmt, nested, incoming)
+
+            node = self.node('function', self.text(statement), statement)
+            self.connect(incoming, node)
+            self.graph_references.append(GraphReference(
+                source_graph_id=self.graph_id,
+                source_node_id=node,
+                target_graph_id=target_fn.graph_id,
+            ))
+            can_raise = (self.exception_target is not None) or self.in_handler
+            if self.track_exceptions and can_raise:
+                self.edge(node, self.exception_target or self.exception_end(), 'exception')
+
+            if is_ret:
+                self.edge(node, self.end, 'return')
+                return []
+            return [(node, 'next')]
+
+        if is_ret:
+            return self.build_return(statement, incoming)
+        node = self.operation('statement', self.text(statement), statement, incoming,
+                              may_raise=not isinstance(statement, ast.Pass))
+        return [(node, 'next')]
+
     def statement(self, statement: ast.stmt, incoming: Predecessors) -> Predecessors:
         if isinstance(statement, ast.Try):
             return self.try_except(statement, incoming)
@@ -192,6 +278,10 @@ class _FunctionBuilder:
             return self.build_loop_control(statement, incoming)
         if isinstance(statement, ast.If):
             return self.build_if(statement, incoming)
+        if isinstance(statement, (ast.Assign, ast.AnnAssign, ast.Expr, ast.Return)):
+            call = self._find_call(statement)
+            if call is not None:
+                return self.build_call(statement, call, incoming)
         if isinstance(statement, ast.Return):
             return self.build_return(statement, incoming)
         if isinstance(statement, (ast.Assign, ast.AnnAssign, ast.AugAssign, ast.Expr, ast.Pass)):
@@ -204,7 +294,16 @@ class _FunctionBuilder:
             return [(current, 'next')]
         if isinstance(statement, ast.FunctionDef):
             return self.build_function_def(statement, incoming)
+        if isinstance(statement, ast.Raise):
+            return self.build_raise(statement, incoming)
         raise ValueError(f'Unexpected statement after feature validation: {type(statement).__name__}')
+
+    def build_raise(self, statement: ast.Raise, incoming: Predecessors) -> Predecessors:
+        current = self.node('raise', self.text(statement), statement)
+        self.connect(incoming, current)
+        target = self.exception_target or self.exception_end()
+        self.edge(current, target, 'exception')
+        return []
 
     def build_if(self, statement: ast.If, incoming: Predecessors) -> Predecessors:
         """Build separate branches and return only their normal outgoing paths."""
@@ -300,48 +399,69 @@ class _FunctionBuilder:
         self.exception_target = dispatch
         normal = self.block(statement.body, incoming)
         self.exception_target = outer_target
-        # If no protected operation can raise in our abstraction (e.g. try: pass),
-        # there is no executable entry into any handler. Do not invent one.
-        if not any(edge.target_id == dispatch for edge in self.edges):
-            self.nodes = [node for node in self.nodes if node.node_id != dispatch]
-            for handler in statement.handlers:
-                self.diagnostics.append(self.diagnostic(handler, 'UNREACHABLE_HANDLER',
-                    'No modeled exceptional path reaches this handler; nodes omitted.', 'warning'))
-            return normal
-        unmatched: Predecessors = [(dispatch, 'exception')]
+
         handler_exits: Predecessors = []
-        for handler in statement.handlers:
-            label = 'except' if handler.type is None else 'except ' + self.text(handler.type)
-            match = self.node('handler', label, handler)
-            self.connect(unmatched, match)
-            if handler.type is None:
-                body_entry: Predecessors = [(match, 'next')]
-                unmatched = []
+        if statement.handlers:
+            if not any(edge.target_id == dispatch for edge in self.edges):
+                self.nodes = [node for node in self.nodes if node.node_id != dispatch]
+                for handler in statement.handlers:
+                    self.diagnostics.append(self.diagnostic(handler, 'UNREACHABLE_HANDLER',
+                        'No modeled exceptional path reaches this handler; nodes omitted.', 'warning'))
             else:
-                body_entry = [(match, 'true')]
-                unmatched = [(match, 'false')]
-                # Looking up/validating the exception class may itself fail.
-                self.edge(match, self.exception_end(), 'exception')
-            # Handler operations use the enclosing exception context, never the
-            # same try's dispatch. A handler failure cannot enter a sibling handler.
-            was_in_handler = self.in_handler
-            self.in_handler = True
-            try:
-                handler_exits.extend(self.block(handler.body, body_entry))
-            finally:
-                self.in_handler = was_in_handler
-        if unmatched:
-            unhandled = self.node('statement', 'Unhandled exception')
-            self.connect(unmatched, unhandled)
-            self.edge(unhandled, self.exception_end(), 'unhandled')
-        return normal + handler_exits
+                unmatched: Predecessors = [(dispatch, 'exception')]
+                for handler in statement.handlers:
+                    label = 'except' if handler.type is None else 'except ' + self.text(handler.type)
+                    if handler.name:
+                        label += f' as {handler.name}'
+                    match = self.node('handler', label, handler)
+                    self.connect(unmatched, match)
+                    if handler.type is None:
+                        body_entry: Predecessors = [(match, 'next')]
+                        unmatched = []
+                    else:
+                        body_entry = [(match, 'true')]
+                        unmatched = [(match, 'false')]
+                        self.edge(match, self.exception_end(), 'exception')
+                    was_in_handler = self.in_handler
+                    self.in_handler = True
+                    try:
+                        handler_exits.extend(self.block(handler.body, body_entry))
+                    finally:
+                        self.in_handler = was_in_handler
+                if unmatched:
+                    unhandled = self.node('statement', 'Unhandled exception')
+                    self.connect(unmatched, unhandled)
+                    self.edge(unhandled, self.exception_end(), 'unhandled')
+        else:
+            if not any(edge.target_id == dispatch for edge in self.edges):
+                self.nodes = [node for node in self.nodes if node.node_id != dispatch]
+            else:
+                self.edge(dispatch, outer_target or self.exception_end(), 'exception')
+
+        if statement.orelse and normal:
+            normal = self.block(statement.orelse, normal)
+
+        surviving = normal + handler_exits
+        if statement.finalbody and surviving:
+            surviving = self.block(statement.finalbody, surviving)
+        return surviving
 
 
 class _ModuleBuilder(_FunctionBuilder):
-    def __init__(self, tree: ast.Module, file: FileInput, ids: RevisionIds) -> None:
+    def __init__(self, tree: ast.Module, file: FileInput, ids: RevisionIds,
+                 local_functions: dict[str, ast.FunctionDef] | None = None,
+                 functions_by_id: dict[str, FunctionInfo] | None = None,
+                 call_references: list[CallReference] | None = None) -> None:
         self.tree = tree
         self.file = file
         self.ids = ids
+        self.local_functions = local_functions or {}
+        self.functions_by_id = functions_by_id or {}
+        self.call_references = call_references or []
+        self.calls_by_loc = {
+            (c.location.start_line, c.location.start_column): c
+            for c in self.call_references if c.file_id == file.file_id
+        }
         self.graph_id = ids.make('graph', 'module', file.file_id)
         self.graph_type = 'module'
         self.nodes: list[FlowNode] = []
@@ -354,7 +474,7 @@ class _ModuleBuilder(_FunctionBuilder):
         self.exception_target: str | None = None
         self.exceptional_end: str | None = None
         self.in_handler = False
-        self.track_exceptions = any(isinstance(node, ast.Try) for node in ast.walk(tree))
+        self.track_exceptions = any(isinstance(node, (ast.Try, ast.Raise)) for node in ast.walk(tree))
 
     def graph(self, status: str, empty: bool = False) -> GraphModel:
         return GraphModel(graph_id=self.graph_id, graph_type='module', status=status,
@@ -406,7 +526,7 @@ class _FileFlowBuilder(_FunctionBuilder):
         self.exception_target: str | None = None
         self.exceptional_end: str | None = None
         self.in_handler = False
-        self.track_exceptions = any(isinstance(node, ast.Try) for node in ast.walk(tree))
+        self.track_exceptions = any(isinstance(node, (ast.Try, ast.Raise)) for node in ast.walk(tree))
         self.active_call_stack: set[str] = set()
         self.current_inlined_returns: list[tuple[str, EdgeType]] | None = None
 
@@ -464,19 +584,18 @@ class _FileFlowBuilder(_FunctionBuilder):
         return [(current, 'next')]
 
     def build_call(self, statement: ast.stmt, call: ast.Call, incoming: Predecessors) -> Predecessors:
-        call_ref = self.calls_by_loc.get((call.lineno, call.col_offset))
-        target_fn: FunctionInfo | None = None
-        callee_name: str | None = None
-        if isinstance(call.func, ast.Name):
-            callee_name = call.func.id
-
-        if call_ref and call_ref.resolution == 'resolved' and call_ref.target_function_id:
-            target_fn = self.functions_by_id.get(call_ref.target_function_id)
-        elif callee_name and callee_name in self.local_functions:
-            target_fn = next((f for f in self.functions_by_id.values()
-                             if f.file_id == self.file.file_id and f.function_name == callee_name), None)
-
+        target_fn = self._resolve_target(call)
         is_ret = isinstance(statement, ast.Return)
+        is_assign = isinstance(statement, (ast.Assign, ast.AnnAssign))
+
+        # Evaluate any nested calls in arguments first
+        for arg in call.args:
+            for nested in self._top_nested_calls(arg):
+                if nested is not call:
+                    nested_fn = self._resolve_target(nested)
+                    if nested_fn:
+                        nested_stmt = ast.Expr(value=nested)
+                        incoming = self.build_call(nested_stmt, nested, incoming)
 
         # Same-file function call -> Inline expansion with recursion guard
         if target_fn and target_fn.file_id == self.file.file_id and target_fn.function_name in self.local_functions:
@@ -497,13 +616,35 @@ class _FileFlowBuilder(_FunctionBuilder):
             saved_returns = self.current_inlined_returns
             self.current_inlined_returns = []
 
+            # Emit Call Entry Node
+            call_node = self.node('function', f'Call {self.text(call)}', call)
+            self.connect(incoming, call_node)
+            self.graph_references.append(GraphReference(
+                source_graph_id=self.graph_id,
+                source_node_id=call_node,
+                target_graph_id=target_fn.graph_id,
+            ))
+
             func_def = self.local_functions[target_fn.function_name]
-            body_exits = self.block(func_def.body, incoming)
-            exits = body_exits + self.current_inlined_returns
+            body_exits = self.block(func_def.body, [(call_node, 'next')])
+            raw_exits = body_exits + self.current_inlined_returns
 
             self.current_inlined_returns = saved_returns
             self.active_call_stack.remove(target_fn.function_id)
-            return exits
+
+            if is_assign and raw_exits:
+                assign_node = self.node('statement', self.text(statement), statement)
+                self.connect(raw_exits, assign_node)
+                return [(assign_node, 'next')]
+
+            if is_ret and raw_exits:
+                if self.current_inlined_returns is not None:
+                    return raw_exits
+                for src_id, edge_type in raw_exits:
+                    self.edge(src_id, self.end, 'return')
+                return []
+
+            return raw_exits
 
         # Cross-file imported call -> Clickable function-call node
         if target_fn and target_fn.file_id != self.file.file_id:
