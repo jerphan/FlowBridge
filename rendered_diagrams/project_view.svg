@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1415.5 683.0" width="1415.5" height="683.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 890.0 535.0" width="890.0" height="535.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -32,76 +32,80 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="707.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Project View — sample_10_files</text>
-  <path d="M 565.2 274.0 L 565.2 316.5 L 460.5 316.5 L 460.5 359.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="478.6" y="302.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="512.9" y="314.5" class="edge-label">imports</text>
-  <path d="M 565.2 274.0 L 565.2 316.5 L 197.8 316.5 L 197.8 359.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="347.2" y="302.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="381.5" y="314.5" class="edge-label">imports</text>
-  <path d="M 565.2 274.0 L 565.2 316.5 L 705.5 316.5 L 705.5 359.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="601.1" y="302.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="635.4" y="314.5" class="edge-label">imports</text>
-  <path d="M 811.0 274.0 L 811.0 316.5 L 950.5 316.5 L 950.5 359.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="846.5" y="302.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="880.8" y="314.5" class="edge-label">imports</text>
-  <path d="M 811.0 274.0 L 811.0 316.5 L 1195.5 316.5 L 1195.5 359.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="969.0" y="302.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="1003.2" y="314.5" class="edge-label">imports</text>
-  <path d="M 687.8 127.0 L 687.8 169.5 L 811.0 169.5 L 811.0 212.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="715.1" y="155.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="749.4" y="167.5" class="edge-label">imports</text>
-  <path d="M 687.8 127.0 L 687.8 169.5 L 565.2 169.5 L 565.2 212.0" class="edge-line edge-import" marker-end="url(#arrow-import)" />
-  <rect x="592.2" y="155.5" width="68.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="626.5" y="167.5" class="edge-label">imports</text>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI5YTA4ZmFhNi0wZjc3LTRmZjAtODQ2YS1iYTIxYTRiYWQ5YTUiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI5YTA4ZmFhNi0wZjc3LTRmZjAtODQ2YS1iYTIxYTRiYWQ5YTUiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjlhMDhmYWE2LTBmNzctNGZmMC04NDZhLWJhMjFhNGJhZDlhNSJd')">
-    <rect x="464.5" y="212.0" width="201.5" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="565.2" y="237.0" class="node-text" font-weight="600" fill="#0d47a1">📄 order_controller.py</text>
-    <text x="565.2" y="256.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <text x="445.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Project View — FlowBridge_Complex_Test_Project</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJhNTQ3ODAxOC1lYmNkLTQyMmQtYjM4Ni01NmY3ZDVjYjI4MzkiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJhNTQ3ODAxOC1lYmNkLTQyMmQtYjM4Ni01NmY3ZDVjYjI4MzkiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsImE1NDc4MDE4LWViY2QtNDIyZC1iMzg2LTU2ZjdkNWNiMjgzOSJd')">
+    <rect x="70.0" y="65.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="180.0" y="90.0" class="node-text" font-weight="600" fill="#0d47a1">📄 __init__.py</text>
+    <text x="180.0" y="109.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyNDkyNTEyMC0yOWIxLTRjYjUtODZiMy03YjdmYzEwNGQ5ZjgiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyNDkyNTEyMC0yOWIxLTRjYjUtODZiMy03YjdmYzEwNGQ5ZjgiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjI0OTI1MTIwLTI5YjEtNGNiNS04NmIzLTdiN2ZjMTA0ZDlmOCJd')">
-    <rect x="711.0" y="212.0" width="200.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="811.0" y="237.0" class="node-text" font-weight="600" fill="#0d47a1">📄 user_controller.py</text>
-    <text x="811.0" y="256.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI3NjhkMmU0Yy1iMmMyLTRjNmYtOTRmYS0yNDRlOThjM2I1YjMiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI3NjhkMmU0Yy1iMmMyLTRjNmYtOTRmYS0yNDRlOThjM2I1YjMiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjc2OGQyZTRjLWIyYzItNGM2Zi05NGZhLTI0NGU5OGMzYjViMyJd')">
+    <rect x="315.0" y="65.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="425.0" y="90.0" class="node-text" font-weight="600" fill="#0d47a1">📄 edge_conditions.py</text>
+    <text x="425.0" y="109.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJiN2Q1NWQzNi0xYjZmLTQ1YjYtYTg1Ni1jOTEyZDhhYWE2MjEiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJiN2Q1NWQzNi0xYjZmLTQ1YjYtYTg1Ni1jOTEyZDhhYWE2MjEiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsImI3ZDU1ZDM2LTFiNmYtNDViNi1hODU2LWM5MTJkOGFhYTYyMSJd')">
-    <rect x="587.8" y="65.0" width="200.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="687.8" y="90.0" class="node-text" font-weight="600" fill="#0d47a1">📄 main.py</text>
-    <text x="687.8" y="109.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJjZGE2MTk4Ni05OGFjLTRlMWEtYTU0NC0zZWVjYmVlZTEyOWMiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJjZGE2MTk4Ni05OGFjLTRlMWEtYTU0NC0zZWVjYmVlZTEyOWMiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsImNkYTYxOTg2LTk4YWMtNGUxYS1hNTQ0LTNlZWNiZWVlMTI5YyJd')">
+    <rect x="560.0" y="65.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="670.0" y="90.0" class="node-text" font-weight="600" fill="#0d47a1">📄 math_ops.py</text>
+    <text x="670.0" y="109.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI0MDNkYzkyYi1hNDkyLTQxMzgtODdhZS05Mzc3ZDBjZTIxMWQiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI0MDNkYzkyYi1hNDkyLTQxMzgtODdhZS05Mzc3ZDBjZTIxMWQiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjQwM2RjOTJiLWE0OTItNDEzOC04N2FlLTkzNzdkMGNlMjExZCJd')">
-    <rect x="455.2" y="541.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="565.2" y="566.0" class="node-text" font-weight="600" fill="#0d47a1">📄 order_model.py</text>
-    <text x="565.2" y="585.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI5MzM4YWYzZi00ZGFlLTQ1NmYtYjAzZC02YjMxMWM2YTNmOWQiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI5MzM4YWYzZi00ZGFlLTQ1NmYtYjAzZC02YjMxMWM2YTNmOWQiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjkzMzhhZjNmLTRkYWUtNDU2Zi1iMDNkLTZiMzExYzZhM2Y5ZCJd')">
+    <rect x="70.0" y="147.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="180.0" y="172.0" class="node-text" font-weight="600" fill="#0d47a1">📄 nested_exceptions.py</text>
+    <text x="180.0" y="191.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIxNzJlOThiZS03Y2U5LTQ1ODUtYTE1ZC05MDI3NWNlOGM2ZmYiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIxNzJlOThiZS03Y2U5LTQ1ODUtYTE1ZC05MDI3NWNlOGM2ZmYiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjE3MmU5OGJlLTdjZTktNDU4NS1hMTVkLTkwMjc1Y2U4YzZmZiJd')">
-    <rect x="700.2" y="541.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="810.2" y="566.0" class="node-text" font-weight="600" fill="#0d47a1">📄 user_model.py</text>
-    <text x="810.2" y="585.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIzZDc4ODNkZC01MmIzLTQyYWItYTMzMS04NjU1NGIzOWU1Y2YiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIzZDc4ODNkZC01MmIzLTQyYWItYTMzMS04NjU1NGIzOWU1Y2YiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjNkNzg4M2RkLTUyYjMtNDJhYi1hMzMxLTg2NTU0YjM5ZTVjZiJd')">
+    <rect x="315.0" y="147.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="425.0" y="172.0" class="node-text" font-weight="600" fill="#0d47a1">📄 validation.py</text>
+    <text x="425.0" y="191.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyOWJlOGZhZi0wMWQzLTQ1MDQtYjVkYy02MWY5ZTJjY2RkYTgiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyOWJlOGZhZi0wMWQzLTQ1MDQtYjVkYy02MWY5ZTJjY2RkYTgiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjI5YmU4ZmFmLTAxZDMtNDUwNC1iNWRjLTYxZjllMmNjZGRhOCJd')">
-    <rect x="850.5" y="359.0" width="200.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="950.5" y="384.0" class="node-text" font-weight="600" fill="#0d47a1">📄 auth_service.py</text>
-    <text x="950.5" y="403.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJiYWU2NmI3OC05ZDk1LTRjMDctOGE4ZS1hZGFlM2I0MTE1MTEiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJiYWU2NmI3OC05ZDk1LTRjMDctOGE4ZS1hZGFlM2I0MTE1MTEiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsImJhZTY2Yjc4LTlkOTUtNGMwNy04YThlLWFkYWUzYjQxMTUxMSJd')">
+    <rect x="560.0" y="147.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="670.0" y="172.0" class="node-text" font-weight="600" fill="#0d47a1">📄 isolated_top_level.py</text>
+    <text x="670.0" y="191.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI1ZWE3OTRiMy01N2RlLTQyZjAtYmQ3YS04N2M5MGRkOTBiOGYiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI1ZWE3OTRiMy01N2RlLTQyZjAtYmQ3YS04N2M5MGRkOTBiOGYiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjVlYTc5NGIzLTU3ZGUtNDJmMC1iZDdhLTg3YzkwZGQ5MGI4ZiJd')">
-    <rect x="80.0" y="359.0" width="235.5" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="197.8" y="384.0" class="node-text" font-weight="600" fill="#0d47a1">📄 notification_service.py</text>
-    <text x="197.8" y="403.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI4MWMxYTEyOC1lZjdmLTRiMTctOGM2ZS02OWJlMDFkMDhlZDQiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI4MWMxYTEyOC1lZjdmLTRiMTctOGM2ZS02OWJlMDFkMDhlZDQiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjgxYzFhMTI4LWVmN2YtNGIxNy04YzZlLTY5YmUwMWQwOGVkNCJd')">
+    <rect x="70.0" y="229.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="180.0" y="254.0" class="node-text" font-weight="600" fill="#0d47a1">📄 main.py</text>
+    <text x="180.0" y="273.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIzYTUwYmQ2Ny1lZjU1LTQ5MWUtOGM2OC01ZTRlNGRlNmFlOTAiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIzYTUwYmQ2Ny1lZjU1LTQ5MWUtOGM2OC01ZTRlNGRlNmFlOTAiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjNhNTBiZDY3LWVmNTUtNDkxZS04YzY4LTVlNGU0ZGU2YWU5MCJd')">
-    <rect x="360.5" y="359.0" width="200.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="460.5" y="384.0" class="node-text" font-weight="600" fill="#0d47a1">📄 payment_service.py</text>
-    <text x="460.5" y="403.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJjZjk3MTFkMi1mYzRhLTQxOGEtYTc5Yy0wZDYyNmVjMGMwMjQiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJjZjk3MTFkMi1mYzRhLTQxOGEtYTc5Yy0wZDYyNmVjMGMwMjQiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsImNmOTcxMWQyLWZjNGEtNDE4YS1hNzljLTBkNjI2ZWMwYzAyNCJd')">
+    <rect x="315.0" y="229.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="425.0" y="254.0" class="node-text" font-weight="600" fill="#0d47a1">📄 orphan_file.py</text>
+    <text x="425.0" y="273.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyZTgwYjY1Yy0wMDY2LTQ2MTktOWM2Zi02ODhmNzM0MjczMmIiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyZTgwYjY1Yy0wMDY2LTQ2MTktOWM2Zi02ODhmNzM0MjczMmIiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsIjJlODBiNjVjLTAwNjYtNDYxOS05YzZmLTY4OGY3MzQyNzMyYiJd')">
-    <rect x="605.5" y="359.0" width="200.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="705.5" y="384.0" class="node-text" font-weight="600" fill="#0d47a1">📄 formatters.py</text>
-    <text x="705.5" y="403.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyMTAzZDNlNy02MjFjLTRlM2UtOGVmZi04YjMzNGIxYzdkODgiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIyMTAzZDNlNy02MjFjLTRlM2UtOGVmZi04YjMzNGIxYzdkODgiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjIxMDNkM2U3LTYyMWMtNGUzZS04ZWZmLThiMzM0YjFjN2Q4OCJd')">
+    <rect x="560.0" y="229.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="670.0" y="254.0" class="node-text" font-weight="600" fill="#0d47a1">📄 __init__.py</text>
+    <text x="670.0" y="273.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
-  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJhZDcwMGI2MS04MzYxLTRkY2EtODNiMi03ZTg3YmRhY2FkMzEiXQ" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJhZDcwMGI2MS04MzYxLTRkY2EtODNiMi03ZTg3YmRhY2FkMzEiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsImdyYXBoIiwiZmlsZSIsImFkNzAwYjYxLTgzNjEtNGRjYS04M2IyLTdlODdiZGFjYWQzMSJd')">
-    <rect x="1095.5" y="359.0" width="200.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="1195.5" y="384.0" class="node-text" font-weight="600" fill="#0d47a1">📄 validators.py</text>
-    <text x="1195.5" y="403.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJlZTFlOTNmOS1kYTc4LTQ5OTgtOGMyZS0xZDkzMzczNTI3ZGMiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCJlZTFlOTNmOS1kYTc4LTQ5OTgtOGMyZS0xZDkzMzczNTI3ZGMiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsImVlMWU5M2Y5LWRhNzgtNDk5OC04YzJlLTFkOTMzNzM1MjdkYyJd')">
+    <rect x="70.0" y="311.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="180.0" y="336.0" class="node-text" font-weight="600" fill="#0d47a1">📄 import_patterns.py</text>
+    <text x="180.0" y="355.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  </g>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIzMmI1NTk0Ny1mZDhkLTRkYWItOWFmYS02YzRmOTg5ZjQzMzkiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIzMmI1NTk0Ny1mZDhkLTRkYWItOWFmYS02YzRmOTg5ZjQzMzkiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjMyYjU1OTQ3LWZkOGQtNGRhYi05YWZhLTZjNGY5ODlmNDMzOSJd')">
+    <rect x="315.0" y="311.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="425.0" y="336.0" class="node-text" font-weight="600" fill="#0d47a1">📄 recovery.py</text>
+    <text x="425.0" y="355.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  </g>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI3OGJlMzk1OS04NTIyLTQwOGMtODA5Yi1kNzU4MWRmZDMzMjgiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI3OGJlMzk1OS04NTIyLTQwOGMtODA5Yi1kNzU4MWRmZDMzMjgiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjc4YmUzOTU5LTg1MjItNDA4Yy04MDliLWQ3NTgxZGZkMzMyOCJd')">
+    <rect x="560.0" y="311.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="670.0" y="336.0" class="node-text" font-weight="600" fill="#0d47a1">📄 reporting.py</text>
+    <text x="670.0" y="355.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  </g>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI0YWNkZDM3NC0wYzY0LTRhMDctYTRkYS0yYmRiZTE2YzMxNjMiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI0YWNkZDM3NC0wYzY0LTRhMDctYTRkYS0yYmRiZTE2YzMxNjMiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjRhY2RkMzc0LTBjNjQtNGEwNy1hNGRhLTJiZGJlMTZjMzE2MyJd')">
+    <rect x="70.0" y="393.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="180.0" y="418.0" class="node-text" font-weight="600" fill="#0d47a1">📄 unresolved_calls.py</text>
+    <text x="180.0" y="437.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
+  </g>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIwOGVlNDAyMC0yNDk4LTRiYzEtYjg4My02MWFmYmRkMTI1ZDEiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCIwOGVlNDAyMC0yNDk4LTRiYzEtYjg4My02MWFmYmRkMTI1ZDEiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjA4ZWU0MDIwLTI0OTgtNGJjMS1iODgzLTYxYWZiZGQxMjVkMSJd')">
+    <rect x="315.0" y="393.0" width="220.0" height="62.0" rx="8" fill="#fff8e1" stroke="#f57c00" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="425.0" y="418.0" class="node-text" font-weight="600" fill="#e65100">⚠ unsupported_classes.py</text>
+    <text x="425.0" y="437.0" class="node-subtext" fill="#d84315">⚠ Unsupported Feature</text>
+  </g>
+  <g id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI0ZTU5N2Y3Yi1iYTQwLTRkMTktOThhNy1hZDQ0ZjRlNjQyZDgiXQ" data-node-id="fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsIm5vZGUiLCJmYjFfV3lKaVl6VXlOalF5TlMweU5tRmtMVFEyT1RrdE9HVmlPUzB4TTJFNU5XWXlORGRqWldFaUxERXNJbWR5WVhCb0lpd2ljSEp2YW1WamRDSmQiLCI0ZTU5N2Y3Yi1iYTQwLTRkMTktOThhNy1hZDQ0ZjRlNjQyZDgiXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJiYzUyNjQyNS0yNmFkLTQ2OTktOGViOS0xM2E5NWYyNDdjZWEiLDEsImdyYXBoIiwiZmlsZSIsIjRlNTk3ZjdiLWJhNDAtNGQxOS05OGE3LWFkNDRmNGU2NDJkOCJd')">
+    <rect x="560.0" y="393.0" width="220.0" height="62.0" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="670.0" y="418.0" class="node-text" font-weight="600" fill="#0d47a1">📄 workflow.py</text>
+    <text x="670.0" y="437.0" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>
   </g>
 </svg>

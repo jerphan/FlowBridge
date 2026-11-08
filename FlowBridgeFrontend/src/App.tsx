@@ -258,12 +258,9 @@ function App() {
     setHighlightedLines(null);
     setHighlightedNodeId(null);
 
-    // Default to the first file if available
-    if (uploadedProject.files && uploadedProject.files.length > 0) {
-      setActiveFile(uploadedProject.files[0]);
-    } else {
-      setActiveFile(null);
-    }
+    // Display the overall project view page rather than opening the first file
+    setActiveFile(null);
+    setActiveFunction(null);
   }
 
   // 2. Handle Generate Flowchart via StartButton
