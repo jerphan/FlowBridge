@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 877.5 1274.0" width="877.5" height="1274.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="438.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — accumulate() (math_ops.py)</text>
+  <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 220.0 L 200.0 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 338.0 L 200.0 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 456.0 L 200.0 491.0 L 184.2 491.0 L 184.2 526.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="174.1" y="477.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="192.1" y="488.0" class="edge-label">true</text>
+  <path d="M 184.2 574.0 L 184.2 609.0 L 167.2 609.0 L 167.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 167.2 692.0 L 167.2 727.0 L 178.2 727.0 L 178.2 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 178.2 810.0 L 178.2 907.0 L 309.8 907.0 L 309.8 1004.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 178.2 810.0 L 178.2 848.0 L 120.0 848.0 L 120.0 886.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="131.1" y="834.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="149.1" y="845.0" class="edge-label">true</text>
+  <path d="M 178.2 810.0 L 178.2 848.0 L 318.8 848.0 L 318.8 886.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="230.5" y="834.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="248.5" y="845.0" class="edge-label">false</text>
+  <path d="M 318.8 934.0 L 318.8 969.0 L 309.8 969.0 L 309.8 1004.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 184.2 574.0 L 184.2 609.0 L 379.2 609.0 L 379.2 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 379.2 692.0 L 375.0 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 375.0 816.0 L 375.0 851.0 L 517.5 851.0 L 517.5 886.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="428.2" y="837.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="446.2" y="848.0" class="edge-label">true</text>
+  <path d="M 517.5 934.0 L 517.5 969.0 L 497.5 969.0 L 497.5 1004.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 497.5 1052.0 L 497.5 1087.0 L 398.8 1087.0 L 398.8 1122.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 375.0 816.0 L 375.0 851.0 L 677.5 851.0 L 677.5 886.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="508.2" y="837.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="526.2" y="848.0" class="edge-label">false</text>
+  <path d="M 200.0 456.0 L 200.0 491.0 L 409.0 491.0 L 409.0 526.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="286.5" y="477.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="304.5" y="488.0" class="edge-label">false</text>
+  <path d="M 409.0 574.0 L 409.0 789.0 L 497.5 789.0 L 497.5 1004.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 737.5 910.0 L 782.5 910.0 L 782.5 432.0 L 264.8 432.0" class="edge-line edge-back" marker-end="url(#arrow)" />
+  <path d="M 180.0 910.0 L 309.8 910.0 L 309.8 432.0 L 264.8 432.0" class="edge-line edge-back" marker-end="url(#arrow)" />
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDBd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDBd">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDFd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDFd">
+    <rect x="348.8" y="1122.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="398.8" y="1143.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDJd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDJd" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="29" data-end-line="29">
+    <rect x="140.0" y="172.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="196.0" class="node-text">total = 0</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDNd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDNd" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="30" data-end-line="30">
+    <rect x="118.2" y="290.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="314.0" class="node-text">Iterate: values</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDRd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDRd" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="30" data-end-line="30">
+    <rect x="135.2" y="408.0" width="129.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="432.0" class="node-text">Next: value</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDVd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDVd">
+    <rect x="72.8" y="644.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="167.2" y="668.0" class="node-text">Exception dispatch</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDZd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDZd" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="32" data-end-line="32">
+    <rect x="60.0" y="526.0" width="248.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="184.2" y="550.0" class="node-text">ensure_nonnegative(value)</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDdd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDdd" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="33" data-end-line="34">
+    <rect x="88.0" y="762.0" width="180.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="178.2" y="786.0" class="node-text">except ValueError</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDhd" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDhd">
+    <rect x="231.0" y="1004.0" width="157.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="309.8" y="1025.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDld" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDld" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="34" data-end-line="34">
+    <rect x="60.0" y="886.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="120.0" y="910.0" class="node-text">continue</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDEwXQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDEwXQ">
+    <rect x="220.0" y="886.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="318.8" y="910.0" class="node-text">Unhandled exception</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDExXQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDExXQ" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="35" data-end-line="35">
+    <rect x="301.8" y="644.0" width="155.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="379.2" y="668.0" class="node-text">total += value</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDEyXQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDEyXQ" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="36" data-end-line="36">
+    <polygon points="375.0,762.0 441.5,789.0 375.0,816.0 308.5,789.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="375.0" y="789.0" class="node-text" fill="#e65100" font-weight="600">total &gt; 20</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDEzXQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDEzXQ" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="37" data-end-line="37">
+    <rect x="457.5" y="886.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="517.5" y="910.0" class="node-text">break</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDE0XQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDE0XQ">
+    <rect x="617.5" y="886.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="677.5" y="910.0" class="node-text">Loop back</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDE1XQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDE1XQ" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="39" data-end-line="39">
+    <rect x="348.5" y="526.0" width="121.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="409.0" y="550.0" class="node-text">total += 1</text>
+  </g>
+  <g id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDE2XQ" data-node-id="fb1_WyIzYTBlOTVlMi1kODNlLTRhOTMtYjRiZi1hNjEzNzQ1NDViYTgiLDEsIm5vZGUiLCJmYjFfV3lJellUQmxPVFZsTWkxa09ETmxMVFJoT1RNdFlqUmlaaTFoTmpFek56UTFORFZpWVRnaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l3TWpVMU5XTXhOaTB6TXpZeExUUmhZemN0WVRnMk15MHhNV1l6TkdFNFlUYzFaamNpTERJNExEQXNJbUZqWTNWdGRXeGhkR1VpWFEiLDE2XQ" data-file-id="02555c16-3361-4ac7-a863-11f34a8a75f7" data-start-line="40" data-end-line="40">
+    <rect x="428.5" y="1004.0" width="138.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="497.5" y="1028.0" class="node-text" fill="#bf360c">return total</text>
+  </g>
+</svg>

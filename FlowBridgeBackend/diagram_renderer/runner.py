@@ -92,6 +92,9 @@ class HierarchicalDiagramPipeline:
                         fn_svg_path = funcs_dir / f"{safe_fn_name}.svg"
                         fn_svg_path.write_text(fn_rendered.svg_content, encoding="utf-8")
 
+        self.rendered_graphs = rendered_graphs
+        self.model = model
+
         # 4. Generate Interactive Viewer
         html_viewer = self.renderer.generate_html_viewer(model.project_name, rendered_graphs)
         html_path = self.output_dir / "interactive_viewer.html"

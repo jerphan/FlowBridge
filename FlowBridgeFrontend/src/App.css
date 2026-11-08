@@ -5,7 +5,7 @@
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-html, #root{
+html, #root {
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -21,13 +21,15 @@ body {
 
 /* Navbar Styles */
 .heading {
-    height: 70px;
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #ddd;
+    height: 68px;
+    background-color: #ffffff;
+    border-bottom: 1.5px solid #e1e4e8;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    z-index: 100;
 }
 
 .headingLeft {
@@ -47,12 +49,12 @@ body {
 }
 
 .logoIcon {
-    width: 40px;
+    width: 38px;
     height: auto;
 }
 
 .brandName {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 800;
     color: #1a73e8;
     letter-spacing: -0.5px;
@@ -64,10 +66,17 @@ body {
     outline: none;
     height: fit-content;
     width: fit-content;
+    background: transparent;
+    transition: transform 0.15s ease;
+}
+
+.startButton:hover:not(:disabled) {
+    transform: scale(1.04);
 }
 
 .user-profile {
-    background-color: #d0e1fd;
+    background-color: #e8f0fe;
+    border: 1.5px solid #d2e3fc;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -75,6 +84,11 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.user-profile:hover {
+    background-color: #d2e3fc;
 }
 
 /* Workspace Layout */
@@ -82,46 +96,69 @@ body {
     display: flex;
     flex: 1;
     overflow: hidden;
-    padding: 16px;
+    padding: 14px 20px 20px 20px;
     gap: 16px;
+    height: calc(100vh - 68px);
 }
 
 /* Left Sidebar Toolbar */
 .sidebarLeft {
-    width: 60px;
-    background-color: #dcdcdc;
+    width: 58px;
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 18px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    flex-shrink: 0;
 }
 
 .toolbarTop, .toolbar-bottom {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
     align-items: center;
 }
 
 .toolIcon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     cursor: pointer;
     opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.sidebarIconButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background-color 0.15s;
+}
+
+.sidebarIconButton:hover:not(:disabled) .toolIcon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.sidebarIconButton:disabled {
+    cursor: not-allowed;
+}
+
+.loginIcon {
+    cursor: pointer;
+    opacity: 0.85;
     transition: opacity 0.2s;
 }
 
-.loginIcon{
-    width: flex;
-    height: flex;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-
-.toolButton{
+.toolButton {
     border: none;
     background: none;
     display: none;
@@ -130,51 +167,234 @@ body {
 /* Content Grid Area */
 .contentGrid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
     gap: 16px;
     flex: 1;
     height: 100%;
+    min-height: 0;
+    overflow: hidden;
 }
 
 /* Cards Layout */
 .card {
-    background-color: #dcdcdc;
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    height: 100%;
+    min-height: 0;
 }
 
 .cardHeader {
     background-color: #1a73e8;
     color: white;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 700;
     text-align: center;
-    padding: 12px;
-    margin: 8px;
+    padding: 10px 14px;
+    margin: 10px 10px 0 10px;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(26,115,232,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-shrink: 0;
 }
 
 .cardBody {
     flex: 1;
-    margin: 0 8px 8px 8px;
-    background-color: #d0d0d0;
+    margin: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
     border-radius: 8px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     overflow: hidden;
+    position: relative;
 }
 
 .flowchartBody {
     background-color: #ffffff;
-    padding: 10px;
+    padding: 0;
 }
 
 .flowchartImage {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+/* Sleek Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dark-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-track {
+  background: #252526;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #616161;
+}
+
+/* Source Code Dedicated Scroll Styling & Prominent Scrollbar */
+.sourceCodeScrollArea {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 #f1f5f9;
+}
+
+.sourceCodeScrollArea::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.sourceCodeScrollArea::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 5px;
+}
+
+.sourceCodeScrollArea::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 5px;
+  border: 2px solid #f1f5f9;
+}
+
+.sourceCodeScrollArea::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Scroll Navigation Controls */
+.scrollNavBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.scrollNavBtn:hover {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  border-color: #1a73e8;
+}
+
+.floatingScrollBtn {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  background-color: #1a73e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 20;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.floatingScrollBtn:hover {
+  background-color: #1557b0;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* FlowBridge Interactive Extensions */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.breadcrumbBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 3px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumbItem {
+  background: rgba(255, 255, 255, 0.22);
+  padding: 2px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.breadcrumbItem:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.breadcrumbActive {
+  background: #ffffff;
+  color: #1a73e8;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.breadcrumbSeparator {
+  opacity: 0.75;
+  font-size: 11px;
 }

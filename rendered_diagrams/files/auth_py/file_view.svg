@@ -28,20 +28,20 @@
   <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
   <path d="M 200.0 220.0 L 200.0 290.0" class="edge-line" marker-end="url(#arrow)" />
   <path d="M 200.0 338.0 L 200.0 408.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVJsOWhkWFJvSWwwIiwwXQ">
+  <g id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDBd" data-node-id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDBd">
     <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
     <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVJsOWhkWFJvSWwwIiwxXQ">
+  <g id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDFd" data-node-id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDFd">
     <rect x="150.0" y="408.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
     <text x="200.0" y="429.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVJsOWhkWFJvSWwwIiwyXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJQX0NPTVBMRVhfNSIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsIkZfYXV0aCIsMSwwLCJsb2dpbiJd')">
+  <g id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDJd" data-node-id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDJd" data-file-id="9be5cb46-4d8b-4e50-8fea-d25aadbbd89a" data-start-line="1" data-end-line="4" class="clickable" onclick="onNodeDrillDown('fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCI5YmU1Y2I0Ni00ZDhiLTRlNTAtOGZlYS1kMjVhYWRiYmQ4OWEiLDEsMCwibG9naW4iXQ')">
     <rect x="140.0" y="172.0" width="120.0" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
     <text x="200.0" y="190.0" class="node-text" font-weight="600" fill="#00796b">⚡ login</text>
     <text x="200.0" y="208.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>
   </g>
-  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1hV3hsSWl3aVJsOWhkWFJvSWwwIiwzXQ" class="clickable" onclick="onNodeDrillDown('fb1_WyJQX0NPTVBMRVhfNSIsMSwiZ3JhcGgiLCJmdW5jdGlvbiIsIkZfYXV0aCIsNiwwLCJnZXRfdXNlcl9yb2xlIl0')">
+  <g id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDNd" data-node-id="fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsIm5vZGUiLCJmYjFfV3lJeU9XUTRPVFk0T1MwM1lUTmpMVFJoWkdJdE9XVmtZaTFtWm1VM05UTm1ZVFF5WVRnaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqbGlaVFZqWWpRMkxUUmtPR0l0TkdVMU1DMDRabVZoTFdReU5XRmhaR0ppWkRnNVlTSmQiLDNd" data-file-id="9be5cb46-4d8b-4e50-8fea-d25aadbbd89a" data-start-line="6" data-end-line="9" class="clickable" onclick="onNodeDrillDown('fb1_WyIyOWQ4OTY4OS03YTNjLTRhZGItOWVkYi1mZmU3NTNmYTQyYTgiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCI5YmU1Y2I0Ni00ZDhiLTRlNTAtOGZlYS1kMjVhYWRiYmQ4OWEiLDYsMCwiZ2V0X3VzZXJfcm9sZSJd')">
     <rect x="126.8" y="290.0" width="146.5" height="48.0" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2" filter="url(#nodeShadow)"/>
     <text x="200.0" y="308.0" class="node-text" font-weight="600" fill="#00796b">⚡ get_user_role</text>
     <text x="200.0" y="326.0" class="node-subtext" fill="#00796b">🔍 Drill Down ➔</text>

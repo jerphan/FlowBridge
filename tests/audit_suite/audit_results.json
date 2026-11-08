@@ -1,0 +1,3389 @@
+{
+  "full_stress_project": {
+    "status": "partial",
+    "files_count": 15,
+    "file_statuses": {
+      "isolated_top_level.py": [
+        "unsupported",
+        "isolated_top_level.py"
+      ],
+      "main.py": [
+        "unsupported",
+        "main.py"
+      ],
+      "orphan_file.py": [
+        "complete",
+        "orphan_file.py"
+      ],
+      "__init__.py": [
+        "complete",
+        "services/__init__.py"
+      ],
+      "edge_conditions.py": [
+        "unsupported",
+        "core/edge_conditions.py"
+      ],
+      "math_ops.py": [
+        "unsupported",
+        "core/math_ops.py"
+      ],
+      "nested_exceptions.py": [
+        "unsupported",
+        "core/nested_exceptions.py"
+      ],
+      "validation.py": [
+        "unsupported",
+        "core/validation.py"
+      ],
+      "import_patterns.py": [
+        "complete",
+        "services/import_patterns.py"
+      ],
+      "recovery.py": [
+        "unsupported",
+        "services/recovery.py"
+      ],
+      "reporting.py": [
+        "complete",
+        "services/reporting.py"
+      ],
+      "unresolved_calls.py": [
+        "complete",
+        "services/unresolved_calls.py"
+      ],
+      "unsupported_classes.py": [
+        "unsupported",
+        "services/unsupported_classes.py"
+      ],
+      "workflow.py": [
+        "unsupported",
+        "services/workflow.py"
+      ]
+    },
+    "diagnostics": [
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_0",
+        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_0",
+        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 15
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 15
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 15
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 19
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_4",
+        "message": "core.edge_conditions.nested_loop_handlers: Raise subtree omitted from binding analysis",
+        "line": 21
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 19
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 19
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_5",
+        "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_5",
+        "message": "core.math_ops.safe_divide: Raise subtree omitted from binding analysis",
+        "line": 7
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_5",
+        "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 8
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 29
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 39
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_6",
+        "message": "core.nested_exceptions.deeply_nested: Raise subtree omitted from binding analysis",
+        "line": 12
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_6",
+        "message": "core.nested_exceptions.exception_in_finally: Raise subtree omitted from binding analysis",
+        "line": 31
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 8
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 29
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 39
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 6
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
+        "line": 9
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 16
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_7",
+        "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
+        "line": 6
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_7",
+        "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
+        "line": 10
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_7",
+        "message": "core.validation.ensure_nonnegative: Raise subtree omitted from binding analysis",
+        "line": 16
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 6
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
+        "line": 9
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 16
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_10",
+        "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_10",
+        "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 12
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_10",
+        "message": "services.recovery.unstable_operation: Raise subtree omitted from binding analysis",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_10",
+        "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_10",
+        "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 12
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "warning",
+        "code": "INCOMPLETE_SCOPE",
+        "file_id": "file_13",
+        "message": "services.unsupported_classes: nested/conditional/async/class declaration body omitted",
+        "line": 4
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_14",
+        "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 14
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_14",
+        "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 14
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_0",
+        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_1",
+        "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 15
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_4",
+        "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 19
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_5",
+        "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 7
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_5",
+        "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 31
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 8
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 29
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_6",
+        "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 39
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 6
+      },
+      {
+        "severity": "warning",
+        "code": "CONSERVATIVE_EXCEPTIONS",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+        "line": 7
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
+        "line": 9
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_7",
+        "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 16
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_10",
+        "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
+        "line": 5
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_10",
+        "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 12
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_13",
+        "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+        "line": 4
+      },
+      {
+        "severity": "error",
+        "code": "UNSUPPORTED_FEATURE",
+        "file_id": "file_14",
+        "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+        "line": 14
+      }
+    ],
+    "graphs": {
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ": {
+        "type": "project",
+        "status": "complete",
+        "nodes": 15,
+        "edges": 15
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzAiXQ": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzEiXQ": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzIiXQ": {
+        "type": "file",
+        "status": "complete",
+        "nodes": 4,
+        "edges": 3
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzMiXQ": {
+        "type": "file",
+        "status": "complete",
+        "nodes": 3,
+        "edges": 2
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzQiXQ": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzUiXQ": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzYiXQ": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzciXQ": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzgiXQ": {
+        "type": "file",
+        "status": "complete",
+        "nodes": 3,
+        "edges": 2
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzkiXQ": {
+        "type": "file",
+        "status": "complete",
+        "nodes": 6,
+        "edges": 5
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzEwIl0": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzExIl0": {
+        "type": "file",
+        "status": "complete",
+        "nodes": 5,
+        "edges": 4
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzEyIl0": {
+        "type": "file",
+        "status": "complete",
+        "nodes": 4,
+        "edges": 3
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzEzIl0": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmaWxlXzE0Il0": {
+        "type": "file",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xIiwxMSwwLCJib290c3RyYXAiXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xIiwyOSwwLCJtYWluIl0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 7,
+        "edges": 6
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8yIiwzLDAsImxvbmVseV9mdW5jdGlvbiJd": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 3,
+        "edges": 2
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV80IiwxNSwwLCJuZXN0ZWRfbG9vcF9oYW5kbGVycyJd": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV80IiwzNCwwLCJjYWxsX2ltcG9ydGVkX25lc3RlZCJd": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 3,
+        "edges": 2
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81Iiw1LDAsInNhZmVfZGl2aWRlIl0": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81IiwxMSwwLCJjbGFzc2lmeV9udW1iZXIiXQ": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 9,
+        "edges": 11
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81IiwyMiwwLCJyZWN1cnNpdmVfc3VtIl0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 5,
+        "edges": 5
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81IiwyOCwwLCJhY2N1bXVsYXRlIl0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 17,
+        "edges": 20
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV81Iiw0MywwLCJjb3VudGRvd24iXQ": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 11,
+        "edges": 13
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV82Iiw1LDAsImRlZXBseV9uZXN0ZWQiXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV82IiwyOCwwLCJleGNlcHRpb25faW5fZmluYWxseSJd": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV82IiwzOCwwLCJleGNlcHRfd2l0aF9yZXR1cm4iXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV83IiwzLDAsInBhcnNlX2ludGVnZXIiXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV83IiwxNCwwLCJlbnN1cmVfbm9ubmVnYXRpdmUiXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV83IiwyMCwwLCJsb2NhbF93cmFwcGVyIl0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 4,
+        "edges": 3
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV85Iiw2LDAsInJ1bl9hbGlhc2VzIl0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 5,
+        "edges": 4
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsMywwLCJ1bnN0YWJsZV9vcGVyYXRpb24iXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsOSwwLCJyZXRyeV9vcGVyYXRpb24iXQ": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsMjQsMCwibXV0dWFsX2EiXQ": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 5,
+        "edges": 5
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMCIsMzAsMCwibXV0dWFsX2IiXQ": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 5,
+        "edges": 5
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMSIsNSwwLCJjcmVhdGVfcmVwb3J0Il0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 8,
+        "edges": 8
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMiIsMywwLCJpbnZva2VfZHluYW1pYyJd": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 6,
+        "edges": 6
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xMyIsMTUsMCwidXNlX29iamVjdCJd": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 4,
+        "edges": 3
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xNCIsNywwLCJmb3JtYXRfc3RhdHVzIl0": {
+        "type": "function",
+        "status": "complete",
+        "nodes": 5,
+        "edges": 5
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZmlsZV8xNCIsMTMsMCwicnVuX3dvcmtmbG93Il0": {
+        "type": "function",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfMCJd": {
+        "type": "module",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfMSJd": {
+        "type": "module",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfNCJd": {
+        "type": "module",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      },
+      "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJncmFwaCIsIm1vZHVsZSIsImZpbGVfMTMiXQ": {
+        "type": "module",
+        "status": "unsupported",
+        "nodes": 0,
+        "edges": 0
+      }
+    },
+    "calls": [
+      {
+        "expr": "parse_integer(raw)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMywwLCJwYXJzZV9pbnRlZ2VyIl0"
+      },
+      {
+        "expr": "safe_divide(100, number)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsNSwwLCJzYWZlX2RpdmlkZSJd"
+      },
+      {
+        "expr": "results.append((raw, \"invalid\"))",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_1",
+        "target_fn": null
+      },
+      {
+        "expr": "results.append((raw, \"zero\"))",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_1",
+        "target_fn": null
+      },
+      {
+        "expr": "bootstrap()",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMSIsMTEsMCwiYm9vdHN0cmFwIl0"
+      },
+      {
+        "expr": "run_workflow([1, -2, 0, 3])",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTQiLDEzLDAsInJ1bl93b3JrZmxvdyJd"
+      },
+      {
+        "expr": "retry_operation(3)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTAiLDksMCwicmV0cnlfb3BlcmF0aW9uIl0"
+      },
+      {
+        "expr": "recursive_sum(4)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsMjIsMCwicmVjdXJzaXZlX3N1bSJd"
+      },
+      {
+        "expr": "create_report(first, second, third, fourth)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTEiLDUsMCwiY3JlYXRlX3JlcG9ydCJd"
+      },
+      {
+        "expr": "print(main())",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_1",
+        "target_fn": null
+      },
+      {
+        "expr": "main()",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_1",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMSIsMjksMCwibWFpbiJd"
+      },
+      {
+        "expr": "observed.append(10 // item)",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_4",
+        "target_fn": null
+      },
+      {
+        "expr": "observed.append(0)",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_4",
+        "target_fn": null
+      },
+      {
+        "expr": "deeply_nested([\"1\", \"wrong\", \"7\"])",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_4",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNiIsNSwwLCJkZWVwbHlfbmVzdGVkIl0"
+      },
+      {
+        "expr": "recursive_sum(n - 1)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_5",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsMjIsMCwicmVjdXJzaXZlX3N1bSJd"
+      },
+      {
+        "expr": "ensure_nonnegative(value)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_5",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMTQsMCwiZW5zdXJlX25vbm5lZ2F0aXZlIl0"
+      },
+      {
+        "expr": "parse_integer(raw)",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "output.append(\"runtime-error\")",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_6",
+        "target_fn": null
+      },
+      {
+        "expr": "raw.strip()",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_7",
+        "target_fn": null
+      },
+      {
+        "expr": "int(text)",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_7",
+        "target_fn": null
+      },
+      {
+        "expr": "parse_integer(raw)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_7",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMywwLCJwYXJzZV9pbnRlZ2VyIl0"
+      },
+      {
+        "expr": "ensure_nonnegative(value)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_7",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMTQsMCwiZW5zdXJlX25vbm5lZ2F0aXZlIl0"
+      },
+      {
+        "expr": "math_module.safe_divide(8, 2)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_9",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsNSwwLCJzYWZlX2RpdmlkZSJd"
+      },
+      {
+        "expr": "val.parse_integer(\"12\")",
+        "resolution": "unresolved",
+        "reason": "Imported-object attribute calls are unsupported",
+        "file_id": "file_9",
+        "target_fn": null
+      },
+      {
+        "expr": "unstable_operation(attempts)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_10",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTAiLDMsMCwidW5zdGFibGVfb3BlcmF0aW9uIl0"
+      },
+      {
+        "expr": "mutual_b(depth - 1)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_10",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTAiLDMwLDAsIm11dHVhbF9iIl0"
+      },
+      {
+        "expr": "mutual_a(depth - 1)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_10",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTAiLDI0LDAsIm11dHVhbF9hIl0"
+      },
+      {
+        "expr": "classify(fourth)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_11",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsMTEsMCwiY2xhc3NpZnlfbnVtYmVyIl0"
+      },
+      {
+        "expr": "globals()",
+        "resolution": "builtin",
+        "reason": "Unshadowed standard Python builtin",
+        "file_id": "file_12",
+        "target_fn": null
+      },
+      {
+        "expr": "globals().get(function_name)",
+        "resolution": "unresolved",
+        "reason": "Dynamic callee expression",
+        "file_id": "file_12",
+        "target_fn": null
+      },
+      {
+        "expr": "selected(payload)",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_12",
+        "target_fn": null
+      },
+      {
+        "expr": "CalculationEngine(2)",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_13",
+        "target_fn": null
+      },
+      {
+        "expr": "engine.calculate(10, 5)",
+        "resolution": "unresolved",
+        "reason": "Binding is not a statically known callable",
+        "file_id": "file_13",
+        "target_fn": null
+      },
+      {
+        "expr": "print(use_object())",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_13",
+        "target_fn": null
+      },
+      {
+        "expr": "use_object()",
+        "resolution": "unresolved",
+        "reason": "Incomplete lexical scope",
+        "file_id": "file_13",
+        "target_fn": null
+      },
+      {
+        "expr": "accumulate(values)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_14",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNSIsMjgsMCwiYWNjdW11bGF0ZSJd"
+      },
+      {
+        "expr": "format_status(total)",
+        "resolution": "resolved",
+        "reason": "Unique lexical function declaration",
+        "file_id": "file_14",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfMTQiLDcsMCwiZm9ybWF0X3N0YXR1cyJd"
+      },
+      {
+        "expr": "check_value(total)",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_14",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNyIsMTQsMCwiZW5zdXJlX25vbm5lZ2F0aXZlIl0"
+      },
+      {
+        "expr": "nested_loop_handlers([[1, 0], [None, 4]])",
+        "resolution": "resolved",
+        "reason": "Explicit import selects a unique module function",
+        "file_id": "file_14",
+        "target_fn": "fb1_WyJmdWxsX3N0cmVzc19wcm9qIiwxLCJmdW5jdGlvbiIsImZpbGVfNCIsMTUsMCwibmVzdGVkX2xvb3BfaGFuZGxlcnMiXQ"
+      }
+    ]
+  },
+  "stress_individual_files": {
+    "core/__init__.py": {
+      "status": "complete",
+      "diagnostics": [],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "complete",
+          "nodes": 3,
+          "edges": 2
+        }
+      ],
+      "calls": []
+    },
+    "core/edge_conditions.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 19
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.edge_conditions.nested_loop_handlers: Raise subtree omitted from binding analysis",
+          "line": 21
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 19
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 19
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function nested_loop_handlers (line 15): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 19
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 3,
+          "edges": 2
+        },
+        {
+          "type": "module",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        }
+      ],
+      "calls": [
+        {
+          "expr": "observed.append(10 // item)",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "observed.append(0)",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "deeply_nested([\"1\", \"wrong\", \"7\"])",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        }
+      ]
+    },
+    "core/math_ops.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 7
+        },
+        {
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 31
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.math_ops.safe_divide: Raise subtree omitted from binding analysis",
+          "line": 7
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 7
+        },
+        {
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 31
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function safe_divide (line 5): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 7
+        },
+        {
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function accumulate (line 28): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 31
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 9,
+          "edges": 11
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 5,
+          "edges": 5
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 17,
+          "edges": 20
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 11,
+          "edges": 13
+        }
+      ],
+      "calls": [
+        {
+          "expr": "recursive_sum(n - 1)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        },
+        {
+          "expr": "ensure_nonnegative(value)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        }
+      ]
+    },
+    "core/nested_exceptions.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 8
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 29
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 39
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.nested_exceptions.deeply_nested: Raise subtree omitted from binding analysis",
+          "line": 12
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.nested_exceptions.exception_in_finally: Raise subtree omitted from binding analysis",
+          "line": 31
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 8
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 29
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 39
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function deeply_nested (line 5): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 8
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function exception_in_finally (line 28): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 29
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function except_with_return (line 38): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 39
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        }
+      ],
+      "calls": [
+        {
+          "expr": "parse_integer(raw)",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "output.append(\"runtime-error\")",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        }
+      ]
+    },
+    "core/validation.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 6
+        },
+        {
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 7
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
+          "line": 9
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 16
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
+          "line": 6
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.validation.parse_integer: Raise subtree omitted from binding analysis",
+          "line": 10
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "core.validation.ensure_nonnegative: Raise subtree omitted from binding analysis",
+          "line": 16
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 6
+        },
+        {
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 7
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
+          "line": 9
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 16
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function parse_integer (line 3): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 6
+        },
+        {
+          "severity": "warning",
+          "code": "CONSERVATIVE_EXCEPTIONS",
+          "message": "function parse_integer (line 3): exception types are not inferred; ordered handler matches are possible alternatives.",
+          "line": 7
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function parse_integer (line 3): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled",
+          "line": 9
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function ensure_nonnegative (line 14): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 16
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 4,
+          "edges": 3
+        }
+      ],
+      "calls": [
+        {
+          "expr": "raw.strip()",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "int(text)",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "parse_integer(raw)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        },
+        {
+          "expr": "ensure_nonnegative(value)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        }
+      ]
+    },
+    "isolated_top_level.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 5
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "module",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        }
+      ],
+      "calls": []
+    },
+    "main.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 15
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 15
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 15
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function bootstrap (line 11): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 15
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 7,
+          "edges": 6
+        },
+        {
+          "type": "module",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        }
+      ],
+      "calls": [
+        {
+          "expr": "parse_integer(raw)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "safe_divide(100, number)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "results.append((raw, \"invalid\"))",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "results.append((raw, \"zero\"))",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "bootstrap()",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        },
+        {
+          "expr": "run_workflow([1, -2, 0, 3])",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "retry_operation(3)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "recursive_sum(4)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "create_report(first, second, third, fourth)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "print(main())",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
+          "expr": "main()",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        }
+      ]
+    },
+    "orphan_file.py": {
+      "status": "complete",
+      "diagnostics": [],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "complete",
+          "nodes": 4,
+          "edges": 3
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 3,
+          "edges": 2
+        }
+      ],
+      "calls": []
+    },
+    "services/__init__.py": {
+      "status": "complete",
+      "diagnostics": [],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "complete",
+          "nodes": 3,
+          "edges": 2
+        }
+      ],
+      "calls": []
+    },
+    "services/import_patterns.py": {
+      "status": "complete",
+      "diagnostics": [],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "complete",
+          "nodes": 6,
+          "edges": 5
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 5,
+          "edges": 4
+        }
+      ],
+      "calls": [
+        {
+          "expr": "math_module.safe_divide(8, 2)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "val.parse_integer(\"12\")",
+          "resolution": "unresolved",
+          "reason": "Imported-object attribute calls are unsupported"
+        }
+      ]
+    },
+    "services/recovery.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 12
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "services.recovery.unstable_operation: Raise subtree omitted from binding analysis",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 12
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function unstable_operation (line 3): Raise is unsupported: outside the documented statement/expression subset",
+          "line": 5
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function retry_operation (line 9): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 12
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 5,
+          "edges": 5
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 5,
+          "edges": 5
+        }
+      ],
+      "calls": [
+        {
+          "expr": "unstable_operation(attempts)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        },
+        {
+          "expr": "mutual_b(depth - 1)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        },
+        {
+          "expr": "mutual_a(depth - 1)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        }
+      ]
+    },
+    "services/reporting.py": {
+      "status": "complete",
+      "diagnostics": [],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "complete",
+          "nodes": 5,
+          "edges": 4
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 8,
+          "edges": 8
+        }
+      ],
+      "calls": [
+        {
+          "expr": "classify(fourth)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        }
+      ]
+    },
+    "services/unresolved_calls.py": {
+      "status": "complete",
+      "diagnostics": [],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "complete",
+          "nodes": 4,
+          "edges": 3
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 6,
+          "edges": 6
+        }
+      ],
+      "calls": [
+        {
+          "expr": "globals()",
+          "resolution": "builtin",
+          "reason": "Unshadowed standard Python builtin"
+        },
+        {
+          "expr": "globals().get(function_name)",
+          "resolution": "unresolved",
+          "reason": "Dynamic callee expression"
+        },
+        {
+          "expr": "selected(payload)",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        }
+      ]
+    },
+    "services/unsupported_classes.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+          "line": 4
+        },
+        {
+          "severity": "warning",
+          "code": "INCOMPLETE_SCOPE",
+          "message": "services.unsupported_classes: nested/conditional/async/class declaration body omitted",
+          "line": 4
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+          "line": 4
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "<module>: ClassDef is unsupported: outside the documented statement/expression subset",
+          "line": 4
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 4,
+          "edges": 3
+        },
+        {
+          "type": "module",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        }
+      ],
+      "calls": [
+        {
+          "expr": "CalculationEngine(2)",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "engine.calculate(10, 5)",
+          "resolution": "unresolved",
+          "reason": "Binding is not a statically known callable"
+        },
+        {
+          "expr": "print(use_object())",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        },
+        {
+          "expr": "use_object()",
+          "resolution": "unresolved",
+          "reason": "Incomplete lexical scope"
+        }
+      ]
+    },
+    "services/workflow.py": {
+      "status": "unsupported",
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 14
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 14
+        },
+        {
+          "severity": "error",
+          "code": "UNSUPPORTED_FEATURE",
+          "message": "function run_workflow (line 13): Try is unsupported: only non-nested try/except without else/finally is modeled",
+          "line": 14
+        }
+      ],
+      "graphs": [
+        {
+          "type": "project",
+          "status": "complete",
+          "nodes": 1,
+          "edges": 0
+        },
+        {
+          "type": "file",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        },
+        {
+          "type": "function",
+          "status": "complete",
+          "nodes": 5,
+          "edges": 5
+        },
+        {
+          "type": "function",
+          "status": "unsupported",
+          "nodes": 0,
+          "edges": 0
+        }
+      ],
+      "calls": [
+        {
+          "expr": "accumulate(values)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "format_status(total)",
+          "resolution": "resolved",
+          "reason": "Unique lexical function declaration"
+        },
+        {
+          "expr": "check_value(total)",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        },
+        {
+          "expr": "nested_loop_handlers([[1, 0], [None, 4]])",
+          "resolution": "external",
+          "reason": "Explicit module is outside the supplied snapshot"
+        }
+      ]
+    }
+  },
+  "categories": {
+    "A_basic_control_flow": {
+      "status": "success",
+      "diagnostics": [],
+      "nodes": [
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwwXQ",
+          "start",
+          "Start"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxXQ",
+          "end",
+          "End"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyXQ",
+          "statement",
+          "a = 1"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwzXQ",
+          "statement",
+          "b = 2"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw0XQ",
+          "condition",
+          "x > 0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw1XQ",
+          "statement",
+          "c = a + b"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw2XQ",
+          "condition",
+          "x == 0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw3XQ",
+          "statement",
+          "c = 0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw4XQ",
+          "statement",
+          "c = -1"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw5XQ",
+          "statement",
+          "total = 0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMF0",
+          "statement",
+          "Iterate: [1, 2, 3]"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMV0",
+          "loop",
+          "Next: i"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMl0",
+          "condition",
+          "i == 2"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxM10",
+          "continue",
+          "continue"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNF0",
+          "statement",
+          "total += i"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNV0",
+          "statement",
+          "Loop back"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNl0",
+          "loop",
+          "total > 0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxN10",
+          "statement",
+          "total -= 1"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOF0",
+          "condition",
+          "total == 1"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOV0",
+          "break",
+          "break"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMF0",
+          "statement",
+          "Loop back"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMV0",
+          "condition",
+          "x < -10"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMl0",
+          "return",
+          "return -999"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyM10",
+          "return",
+          "return total"
+        ]
+      ],
+      "edges": [
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwwXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyXQ",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwzXQ",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwzXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw0XQ",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw0XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw1XQ",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw0XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw2XQ",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw2XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw3XQ",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw2XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw4XQ",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw1XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw5XQ",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw3XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw5XQ",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw4XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw5XQ",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiw5XQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMF0",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMF0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMV0",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMV0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMl0",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxM10",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxM10",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMV0",
+          "continue"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNF0",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNF0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNV0",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNV0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMV0",
+          "back"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxMV0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNl0",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxN10",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxN10",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOF0",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOF0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOV0",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOF0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMF0",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMF0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNl0",
+          "back"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxNl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMV0",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxOV0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMV0",
+          "break"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMV0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMl0",
+          "true"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxXQ",
+          "return"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyMV0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyM10",
+          "false"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwyM10",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm5WdVkzUnBiMjRpTENKbVgzTnBibWRzWlNJc01pd3dMQ0owWlhOMFgyTnZiblJ5YjJ4ZlpteHZkeUpkIiwxXQ",
+          "return"
+        ]
+      ]
+    },
+    "B_exception_handling": {
+      "try_except_simple": {
+        "file_status": "complete",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "complete",
+            3,
+            2
+          ],
+          "function": [
+            "complete",
+            9,
+            11
+          ]
+        }
+      },
+      "try_except_module": {
+        "file_status": "complete",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "<module>: exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "<module>: exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "<module>: exception types are not inferred; ordered handler matches are possible alternatives."
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "complete",
+            8,
+            10
+          ],
+          "module": [
+            "complete",
+            8,
+            10
+          ]
+        }
+      },
+      "try_multiple_except": {
+        "file_status": "complete",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "complete",
+            3,
+            2
+          ],
+          "function": [
+            "complete",
+            11,
+            16
+          ]
+        }
+      },
+      "try_nested": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "try_except_else": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "try_finally": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "try_except_else_finally": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "raise_statement": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
+          ],
+          [
+            "warning",
+            "INCOMPLETE_SCOPE",
+            "raise_statement.f: Raise subtree omitted from binding analysis"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "raise_reraise": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
+          ],
+          [
+            "warning",
+            "INCOMPLETE_SCOPE",
+            "raise_reraise.f: Raise subtree omitted from binding analysis"
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Raise is unsupported: outside the documented statement/expression subset"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "return_inside_try": {
+        "file_status": "complete",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "complete",
+            3,
+            2
+          ],
+          "function": [
+            "complete",
+            10,
+            12
+          ]
+        }
+      },
+      "return_inside_finally": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): Try is unsupported: only non-nested try/except without else/finally is modeled"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      },
+      "break_inside_try": {
+        "file_status": "complete",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "warning",
+            "UNREACHABLE_HANDLER",
+            "No modeled exceptional path reaches this handler; nodes omitted."
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "complete",
+            3,
+            2
+          ],
+          "function": [
+            "complete",
+            5,
+            5
+          ]
+        }
+      },
+      "except_alias": {
+        "file_status": "unsupported",
+        "diagnostics": [
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled"
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled"
+          ],
+          [
+            "warning",
+            "CONSERVATIVE_EXCEPTIONS",
+            "function f (line 1): exception types are not inferred; ordered handler matches are possible alternatives."
+          ],
+          [
+            "error",
+            "UNSUPPORTED_FEATURE",
+            "function f (line 1): ExceptHandler is unsupported: exception aliases require cleanup semantics not yet modeled"
+          ]
+        ],
+        "graph_statuses": {
+          "project": [
+            "complete",
+            1,
+            0
+          ],
+          "file": [
+            "unsupported",
+            0,
+            0
+          ],
+          "function": [
+            "unsupported",
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "C_module_level_execution": {
+      "no_funcs_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "statement",
+          "x = 10"
+        ],
+        [
+          "statement",
+          "y = 20"
+        ],
+        [
+          "statement",
+          "print(x + y)"
+        ]
+      ],
+      "no_funcs_edges": [
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDBd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDRd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDRd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDFd",
+          "next"
+        ]
+      ],
+      "func_and_call_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "function",
+          "foo"
+        ],
+        [
+          "return",
+          "return 42"
+        ]
+      ],
+      "only_defs_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "function",
+          "a"
+        ],
+        [
+          "function",
+          "b"
+        ]
+      ],
+      "only_defs_edges": [
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDBd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDFd",
+          "next"
+        ]
+      ]
+    },
+    "D_same_file_calls": {
+      "function_view_main_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "statement",
+          "result = add(5, 4)"
+        ],
+        [
+          "statement",
+          "print(result)"
+        ]
+      ],
+      "file_view_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "function",
+          "add"
+        ],
+        [
+          "function",
+          "main"
+        ],
+        [
+          "return",
+          "return a + b"
+        ],
+        [
+          "statement",
+          "print(result)"
+        ]
+      ],
+      "file_view_edges": [
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDBd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDRd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDRd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDVd",
+          "next"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDVd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDFd",
+          "next"
+        ]
+      ],
+      "call_references": [
+        [
+          "add(5, 4)",
+          "resolved",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImZ1bmN0aW9uIiwiZl9zaW5nbGUiLDEsMCwiYWRkIl0"
+        ],
+        [
+          "print(result)",
+          "builtin",
+          null
+        ],
+        [
+          "main()",
+          "resolved",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImZ1bmN0aW9uIiwiZl9zaW5nbGUiLDQsMCwibWFpbiJd"
+        ]
+      ],
+      "graph_references": [
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwicHJvamVjdCJd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpY0hKdmFtVmpkQ0pkIiwiZl9zaW5nbGUiXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwibW9kdWxlIiwiZl9zaW5nbGUiXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpYlc5a2RXeGxJaXdpWmw5emFXNW5iR1VpWFEiLDJd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsMSwwLCJhZGQiXQ"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwibW9kdWxlIiwiZl9zaW5nbGUiXQ",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpYlc5a2RXeGxJaXdpWmw5emFXNW5iR1VpWFEiLDNd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDJd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsMSwwLCJhZGQiXQ"
+        ],
+        [
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZmlsZSIsImZfc2luZ2xlIl0",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsIm5vZGUiLCJmYjFfV3lKaGRXUnBkRjl6YVc1bmJHVWlMREVzSW1keVlYQm9JaXdpWm1sc1pTSXNJbVpmYzJsdVoyeGxJbDAiLDNd",
+          "fb1_WyJhdWRpdF9zaW5nbGUiLDEsImdyYXBoIiwiZnVuY3Rpb24iLCJmX3NpbmdsZSIsNCwwLCJtYWluIl0"
+        ]
+      ]
+    },
+    "E_imported_calls": {
+      "project_edges": [
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9tYWluIl0",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9jYWxjIl0",
+          "imports"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9tb2QiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9jYWxjIl0",
+          "imports"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9hbGlhcyJd",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9jYWxjIl0",
+          "imports"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9yZWwiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJub2RlIiwiZmIxX1d5SmxYMmx0Y0c5eWRGOXdjbTlxSWl3eExDSm5jbUZ3YUNJc0luQnliMnBsWTNRaVhRIiwiZl9jYWxjIl0",
+          "imports"
+        ]
+      ],
+      "calls": [
+        [
+          "f_main",
+          "add(5, 4)",
+          "resolved",
+          "Explicit import selects a unique module function",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJmdW5jdGlvbiIsImZfY2FsYyIsMSwwLCJhZGQiXQ"
+        ],
+        [
+          "f_main",
+          "print(result)",
+          "builtin",
+          "Unshadowed standard Python builtin",
+          null
+        ],
+        [
+          "f_mod",
+          "calculator.add(5, 4)",
+          "resolved",
+          "Explicit import selects a unique module function",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJmdW5jdGlvbiIsImZfY2FsYyIsMSwwLCJhZGQiXQ"
+        ],
+        [
+          "f_alias",
+          "calc.add(5, 4)",
+          "resolved",
+          "Explicit import selects a unique module function",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJmdW5jdGlvbiIsImZfY2FsYyIsMSwwLCJhZGQiXQ"
+        ],
+        [
+          "f_rel",
+          "add(5, 4)",
+          "unresolved",
+          "Relative imports are unsupported",
+          null
+        ]
+      ],
+      "graph_references": [
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX2NhbGMiXQ"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX21haW4iXQ"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX21vZCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX2FsaWFzIl0"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsInByb2plY3QiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX3JlbCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX2NhbGMiXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX21haW4iXQ",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX21vZCJd",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
+        ],
+        [
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZpbGUiLCJmX2FsaWFzIl0",
+          "fb1_WyJlX2ltcG9ydF9wcm9qIiwxLCJncmFwaCIsImZ1bmN0aW9uIiwiZl9jYWxjIiwxLDAsImFkZCJd"
+        ]
+      ]
+    },
+    "F_nested_calls": {
+      "calls_discovered": [
+        [
+          "multiply(add(2, 3), subtract(10, 4))",
+          "resolved"
+        ],
+        [
+          "add(2, 3)",
+          "resolved"
+        ],
+        [
+          "subtract(10, 4)",
+          "resolved"
+        ],
+        [
+          "test_nested()",
+          "resolved"
+        ]
+      ],
+      "fn_view_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "statement",
+          "res = multiply(add(2, 3), subtract(10, 4))"
+        ],
+        [
+          "return",
+          "return res"
+        ]
+      ],
+      "file_view_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "function",
+          "add"
+        ],
+        [
+          "function",
+          "subtract"
+        ],
+        [
+          "function",
+          "multiply"
+        ],
+        [
+          "function",
+          "test_nested"
+        ],
+        [
+          "return",
+          "return x * y"
+        ],
+        [
+          "return",
+          "return res"
+        ]
+      ]
+    },
+    "G_recursion": {
+      "file_view_nodes": [
+        [
+          "start",
+          "Start"
+        ],
+        [
+          "end",
+          "End"
+        ],
+        [
+          "function",
+          "rec"
+        ],
+        [
+          "condition",
+          "n <= 0"
+        ],
+        [
+          "return",
+          "return 0"
+        ],
+        [
+          "return",
+          "return n + rec(n - 1) (recursive)"
+        ]
+      ]
+    },
+    "H_classes": {
+      "project_status": "partial",
+      "file_statuses": {
+        "math_util.py": "complete",
+        "cls.py": "unsupported"
+      },
+      "diagnostics": [
+        [
+          "h_bad",
+          "UNSUPPORTED_FEATURE",
+          "<module>: ClassDef is unsupported: outside the documented statement/expression subset"
+        ],
+        [
+          "h_bad",
+          "INCOMPLETE_SCOPE",
+          "cls: nested/conditional/async/class declaration body omitted"
+        ],
+        [
+          "h_bad",
+          "UNSUPPORTED_FEATURE",
+          "<module>: ClassDef is unsupported: outside the documented statement/expression subset"
+        ],
+        [
+          "h_bad",
+          "UNSUPPORTED_FEATURE",
+          "<module>: ClassDef is unsupported: outside the documented statement/expression subset"
+        ]
+      ]
+    },
+    "I_syntax_errors": {
+      "project_status": "partial",
+      "file_statuses": {
+        "valid.py": "complete",
+        "syntax_err.py": "failed"
+      },
+      "diagnostics": [
+        [
+          "i_bad",
+          "SYNTAX_ERROR",
+          "expected ':'",
+          4
+        ]
+      ]
+    }
+  }
+}

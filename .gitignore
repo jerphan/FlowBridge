@@ -39,6 +39,7 @@ htmlcov/
 # Local pipeline generated results
 examples/pipeline_results/
 codemanager_output.json
+tests/temp_complex_project/
 
 # OS specific
 .DS_Store

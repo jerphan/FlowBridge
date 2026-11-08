@@ -92,8 +92,21 @@ class DiagramRenderer:
         label_text = html.escape(node.label)
         click_attr = f' class="clickable" onclick="onNodeDrillDown(\'{node.target_graph_id}\')"' if node.is_clickable else ""
 
+        loc_attrs = []
+        if node.source_location:
+            fid = node.source_location.get("fileId")
+            sline = node.source_location.get("startLine")
+            eline = node.source_location.get("endLine")
+            if fid:
+                loc_attrs.append(f'data-file-id="{fid}"')
+            if sline is not None:
+                loc_attrs.append(f'data-start-line="{sline}"')
+            if eline is not None:
+                loc_attrs.append(f'data-end-line="{eline}"')
+        loc_str = (" " + " ".join(loc_attrs)) if loc_attrs else ""
+
         node_body = []
-        node_body.append(f'  <g id="{node.node_id}"{click_attr}>')
+        node_body.append(f'  <g id="{node.node_id}" data-node-id="{node.node_id}"{loc_str}{click_attr}>')
 
         if node.node_type == "start":
             node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h/2.0:.1f}" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>')

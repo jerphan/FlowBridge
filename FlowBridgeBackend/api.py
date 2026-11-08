@@ -217,12 +217,38 @@ def create_app(
         analysis_result = pipeline.analyze_project(project, revision_id=revisionId)
         renderer_pipeline = HierarchicalDiagramPipeline()
         model = renderer_pipeline.run(analysis_result)
+        graphs_dict = {}
+        for rg in getattr(renderer_pipeline, "rendered_graphs", []):
+            graphs_dict[rg.graph_id] = {
+                "id": rg.graph_id,
+                "type": rg.graph_type,
+                "title": rg.title,
+                "svg": rg.svg_content,
+                "width": rg.width,
+                "height": rg.height,
+            }
+
+        from .SourceMapping import SourceMappingService
+        mapping_service = SourceMappingService()
+        source_index = mapping_service.build_project_index(
+            project_id=project.projectID,
+            flowchart_data=analysis_result["flowchart"],
+            project_files=project.files,
+        )
+
         return {
             "status": "success",
             "message": "Rendered hierarchical diagrams and interactive viewer.",
             "projectName": model.project_name,
+            "projectGraphId": model.project_graph_id,
             "fileCount": len(model.files),
             "viewerUrl": "/viewer/",
+            "graphs": graphs_dict,
+            "flowchart": analysis_result["flowchart"],
+            "nodeToChildGraph": model.node_to_child_graph,
+            "childGraphToParent": {k: list(v) for k, v in model.child_graph_to_parent.items()},
+            "graphToSourceFile": model.graph_to_source_file,
+            "sourceMapping": source_index.to_dict(),
         }
 
     return app
