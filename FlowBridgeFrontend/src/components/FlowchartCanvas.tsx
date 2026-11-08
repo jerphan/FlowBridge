@@ -19,6 +19,7 @@ export default function FlowchartCanvas({
 }: FlowchartCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentWrapperRef = useRef<HTMLDivElement>(null);
+  const prevSvgRef = useRef<string | null | undefined>(undefined);
 
   // Zoom and Pan states
   const [zoomLevel, setZoomLevel] = useState<number>(1);
@@ -83,9 +84,13 @@ export default function FlowchartCanvas({
     setPanOffset({ x: targetPanX, y: targetPanY });
   }, [viewType]);
 
-  // Initial fit when diagram loads or changes
+  // Initial fit ONLY when diagram SVG actually changes (never on node selection)
   useEffect(() => {
-    // Small timeout to allow DOM layout
+    if (prevSvgRef.current === svgContent) {
+      return;
+    }
+    prevSvgRef.current = svgContent;
+
     const timer = setTimeout(() => {
       handleFitToView();
     }, 40);

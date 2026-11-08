@@ -9,6 +9,7 @@ interface SourceCodeViewerProps {
   onSelectFile?: (file: SourceFile) => void;
   onLineClick?: (lineNumber: number, fileId: string) => void;
   onBackToProjectFiles?: () => void;
+  fileStatuses?: Record<string, string>;
 }
 
 function getFileId(f?: SourceFile | null, fallbackIdx = 0): string {
@@ -29,6 +30,7 @@ export default function SourceCodeViewer({
   onSelectFile,
   onLineClick,
   onBackToProjectFiles,
+  fileStatuses = {},
 }: SourceCodeViewerProps) {
   const lineRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const codeContainerRef = useRef<HTMLDivElement>(null);
@@ -99,45 +101,40 @@ export default function SourceCodeViewer({
     if (!targetEl) return;
 
     const container = codeContainerRef.current;
-    const containerRect = container.getBoundingClientRect();
-    const targetRect = targetEl.getBoundingClientRect();
+    const targetOffsetTop = targetEl.offsetTop;
+    const containerHeight = container.clientHeight;
 
-    // Check if line is already comfortably visible in the local container
-    const isVisible =
-      targetRect.top >= containerRect.top + 30 &&
-      targetRect.bottom <= containerRect.bottom - 30;
-
-    // Only scroll if outside visible bounds
-    if (!isVisible) {
-      const targetOffsetTop = targetEl.offsetTop;
-      const desiredScrollTop = Math.max(
-        0,
-        targetOffsetTop - container.clientHeight / 2 + targetEl.clientHeight / 2
-      );
-
-      // Local container scroll only: never scrolls parent, window, or flowchart!
-      container.scrollTo({
-        top: desiredScrollTop,
-        behavior: "smooth",
-      });
-    }
+    const scrollTarget = Math.max(0, targetOffsetTop - containerHeight / 3);
+    container.scrollTo({ top: scrollTarget, behavior: "smooth" });
   }, [highlightedLines]);
 
-  // Case 1: No project loaded yet -> show embedded editor placeholder
+  // Case 1: No project loaded yet -> show empty placeholder state
   if (!activeFile && allFiles.length === 0) {
     return (
-      <iframe
-        src="https://onecompiler.com/embed/python?hideResult=true&hideRun=true&listenToEvents=true&codeChangeEvent=true"
-        width="100%"
-        height="100%"
-        id="codeEditor"
-        title="Python Code Editor"
-        style={{ border: "none", width: "100%", height: "100%" }}
-      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          padding: "24px",
+          color: "#8c959f",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ fontSize: "36px", marginBottom: "12px" }}>📁</div>
+        <p style={{ margin: "0 0 6px 0", fontWeight: 600, color: "#495057", fontSize: "14px" }}>
+          No Python source file loaded
+        </p>
+        <p style={{ margin: 0, fontSize: "12px", color: "#6c757d", maxWidth: "260px" }}>
+          Upload a file, ZIP project, or import a GitHub repository using the left toolbar.
+        </p>
+      </div>
     );
   }
 
-  // Case 2: In Project View (no active file selected) -> Line-by-line independent scrollable list
+  // Case 2: In Project View (no single file selected) -> display all project files list
   if (!activeFile && allFiles.length > 0) {
     return (
       <div
@@ -151,51 +148,40 @@ export default function SourceCodeViewer({
           position: "relative",
         }}
       >
-        {/* Header Bar with Dedicated Scroll Down / Up Controls */}
+        {/* Header Bar with quick scroll controls */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             padding: "10px 16px",
-            borderBottom: "1px solid #e1e4e8",
             backgroundColor: "#f8f9fa",
+            borderBottom: "1px solid #dee2e6",
+            fontSize: "13px",
+            fontWeight: 600,
+            color: "#343a40",
             flexShrink: 0,
           }}
         >
-          <div>
-            <h4 style={{ margin: 0, color: "#1a73e8", fontWeight: 700, fontSize: "15px" }}>
-              Project Files ({allFiles.length})
-            </h4>
-            <span style={{ fontSize: "11px", color: "#6c757d" }}>
-              Scroll down to inspect all project files
-            </span>
-          </div>
-
-          {/* Quick Scroll Down / Scroll Up Buttons */}
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <span>📁 Project Files ({allFiles.length})</span>
+          <div style={{ display: "flex", gap: "6px" }}>
             <button
               onClick={() => handleScrollUp(filesContainerRef)}
-              title="Scroll Up"
-              className="scrollNavBtn"
               disabled={!canScrollUpFiles}
+              className="scrollNavBtn"
+              title="Scroll Up"
               style={{ opacity: canScrollUpFiles ? 1 : 0.4 }}
             >
               ▲ Up
             </button>
             <button
               onClick={() => handleScrollDown(filesContainerRef)}
-              title="Scroll Down"
+              disabled={!canScrollDownFiles}
               className="scrollNavBtn"
+              title="Scroll Down"
+              style={{ opacity: canScrollDownFiles ? 1 : 0.4 }}
             >
               ▼ Down
-            </button>
-            <button
-              onClick={() => handleScrollToBottom(filesContainerRef)}
-              title="Scroll to Bottom"
-              className="scrollNavBtn"
-            >
-              ⤓ Bottom
             </button>
           </div>
         </div>
@@ -227,6 +213,7 @@ export default function SourceCodeViewer({
             const fId = getFileId(f, i);
             const fName = getFileName(f, i);
             const fContent = f.fileContent || f.content || "";
+            const fStatus = fileStatuses[fId] || fileStatuses[fName];
 
             return (
               <div
@@ -257,9 +244,26 @@ export default function SourceCodeViewer({
                   <span style={{ fontSize: "16px" }}>📄</span>
                   <span style={{ fontWeight: 600, fontSize: "14px", color: "#212529" }}>{fName}</span>
                 </div>
-                <span style={{ fontSize: "12px", color: "#6c757d" }}>
-                  {f.byteSize || fContent.length} bytes
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  {fStatus === "unsupported" && (
+                    <span style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "10px", backgroundColor: "#fff3e0", color: "#e65100", fontWeight: 600 }}>
+                      ⚠ Unsupported
+                    </span>
+                  )}
+                  {fStatus === "failed" && (
+                    <span style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "10px", backgroundColor: "#ffebee", color: "#c62828", fontWeight: 600 }}>
+                      ✕ Failed
+                    </span>
+                  )}
+                  {fStatus === "complete" && (
+                    <span style={{ fontSize: "11px", padding: "2px 8px", borderRadius: "10px", backgroundColor: "#e8f5e9", color: "#2e7d32", fontWeight: 600 }}>
+                      ✓ Ready
+                    </span>
+                  )}
+                  <span style={{ fontSize: "12px", color: "#6c757d" }}>
+                    {f.byteSize || fContent.length} bytes
+                  </span>
+                </div>
               </div>
             );
           })}

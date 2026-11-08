@@ -45,6 +45,21 @@ export interface SourceLocation {
   endColumn: number;
 }
 
+export interface DiagnosticDto {
+  severity: "error" | "warning" | "info";
+  code: string;
+  message: string;
+  fileId?: string | null;
+  sourceLocation?: {
+    fileId?: string;
+    startLine: number;
+    startColumn?: number;
+    endLine: number;
+    endColumn?: number;
+  } | null;
+  graphId?: string | null;
+}
+
 export interface FlowNode {
   nodeId: string;
   nodeType: "start" | "end" | "statement" | "condition" | "function" | "loop" | "return" | "file" | "break" | "continue" | "exceptionDispatch" | "handler" | "raise";
@@ -63,7 +78,7 @@ export interface FlowEdge {
 export interface GraphModel {
   graphId: string;
   graphType: "project" | "file" | "function" | "module";
-  status: "complete" | "failed";
+  status: "complete" | "failed" | "unsupported";
   fileId?: string;
   functionId?: string;
   nodes: FlowNode[];

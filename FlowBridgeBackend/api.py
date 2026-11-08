@@ -249,6 +249,9 @@ def create_app(
             "childGraphToParent": {k: list(v) for k, v in model.child_graph_to_parent.items()},
             "graphToSourceFile": model.graph_to_source_file,
             "sourceMapping": source_index.to_dict(),
+            "diagnostics": analysis_result.get("analysis", {}).get("diagnostics", []),
+            "analysisFiles": analysis_result.get("analysis", {}).get("files", []),
+            "analysisStatus": analysis_result.get("status", "complete"),
         }
 
     return app

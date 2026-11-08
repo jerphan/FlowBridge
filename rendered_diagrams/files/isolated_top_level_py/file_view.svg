@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 899.0 1516.0" width="899.0" height="1516.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 877.0 1742.0" width="877.0" height="1742.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -8,6 +8,12 @@
     </marker>
     <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <marker id="arrow-exception" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d32f2f" />
+    </marker>
+    <marker id="arrow-import" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1565c0" />
     </marker>
     <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
       <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
@@ -19,116 +25,118 @@
     .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .edge-true { stroke: #2e7d32; }
     .edge-false { stroke: #c62828; }
-    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; stroke-width: 1.6; }
+    .edge-exception { stroke: #d32f2f; stroke-dasharray: 4,3; stroke-width: 1.8; }
+    .edge-import { stroke: #1565c0; stroke-width: 2.0; }
     .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="449.5" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — isolated_top_level.py</text>
-  <path d="M 200.0 102.0 L 200.0 137.0 L 409.5 137.0 L 409.5 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 409.5 220.0 L 409.5 290.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 409.5 338.0 L 409.5 408.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 409.5 456.0 L 409.5 526.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 409.5 574.0 L 409.5 644.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 409.5 692.0 L 409.5 727.0 L 297.5 727.0 L 297.5 762.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
-  <rect x="335.5" y="713.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
-  <text x="353.5" y="724.0" class="edge-label">true</text>
-  <path d="M 297.5 810.0 L 297.5 848.0 L 197.5 848.0 L 197.5 886.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 197.5 934.0 L 197.5 969.0 L 479.5 969.0 L 479.5 1004.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 479.5 1052.0 L 479.5 1146.0 L 329.5 1146.0 L 329.5 1240.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 479.5 1052.0 L 479.5 1087.0 L 290.8 1087.0 L 290.8 1122.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
-  <rect x="367.1" y="1073.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
-  <text x="385.1" y="1084.0" class="edge-label">true</text>
-  <path d="M 290.8 1170.0 L 290.8 1205.0 L 329.5 1205.0 L 329.5 1240.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 290.8 1170.0 L 290.8 1205.0 L 508.2 1205.0 L 508.2 1240.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 508.2 1288.0 L 508.2 1323.0 L 409.5 1323.0 L 409.5 1358.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 479.5 1052.0 L 479.5 1087.0 L 515.5 1087.0 L 515.5 1122.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
-  <rect x="479.5" y="1073.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
-  <text x="497.5" y="1084.0" class="edge-label">false</text>
-  <path d="M 515.5 1170.0 L 515.5 1205.0 L 329.5 1205.0 L 329.5 1240.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 297.5 810.0 L 297.5 1025.0 L 508.2 1025.0 L 508.2 1240.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 409.5 692.0 L 409.5 727.0 L 549.5 727.0 L 549.5 762.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
-  <rect x="461.5" y="713.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
-  <text x="479.5" y="724.0" class="edge-label">false</text>
-  <path d="M 549.5 816.0 L 549.5 851.0 L 413.8 851.0 L 413.8 886.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
-  <rect x="463.6" y="837.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
-  <text x="481.6" y="848.0" class="edge-label">true</text>
-  <path d="M 413.8 934.0 L 413.8 969.0 L 269.5 969.0 L 269.5 1004.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 549.5 816.0 L 549.5 851.0 L 625.8 851.0 L 625.8 886.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
-  <rect x="569.6" y="837.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
-  <text x="587.6" y="848.0" class="edge-label">false</text>
-  <path d="M 625.8 934.0 L 625.8 969.0 L 269.5 969.0 L 269.5 1004.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 469.5 1382.0 L 515.0 1382.0 L 515.0 668.0 L 470.0 668.0" class="edge-line edge-back" marker-end="url(#arrow)" />
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDBd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDBd">
-    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="438.5" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">File View — isolated_top_level.py</text>
+  <path d="M 419.5 102.0 L 419.5 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 220.0 L 419.5 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 338.0 L 419.5 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 456.0 L 419.5 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 574.0 L 419.5 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 692.0 L 419.5 727.0 L 305.0 727.0 L 305.0 762.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="339.2" y="713.0" width="46.0" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="362.2" y="725.0" class="edge-label">true</text>
+  <path d="M 305.0 810.0 L 305.0 849.0 L 202.5 849.0 L 202.5 888.0" class="edge-line edge-exception" marker-end="url(#arrow-exception)" />
+  <path d="M 202.5 936.0 L 202.5 971.0 L 419.5 971.0 L 419.5 1006.0" class="edge-line edge-exception" marker-end="url(#arrow-exception)" />
+  <path d="M 419.5 1054.0 L 419.5 1590.0" class="edge-line edge-exception" marker-end="url(#arrow-exception)" />
+  <path d="M 419.5 1054.0 L 419.5 1089.0 L 298.2 1089.0 L 298.2 1124.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="335.9" y="1075.0" width="46.0" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="358.9" y="1087.0" class="edge-label">true</text>
+  <path d="M 298.2 1172.0 L 298.2 1381.0 L 419.5 1381.0 L 419.5 1590.0" class="edge-line edge-exception" marker-end="url(#arrow-exception)" />
+  <path d="M 298.2 1172.0 L 298.2 1207.0 L 419.5 1207.0 L 419.5 1242.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 1290.0 L 419.5 1360.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 1054.0 L 419.5 1089.0 L 528.0 1089.0 L 528.0 1124.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="447.0" y="1075.0" width="53.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="473.8" y="1087.0" class="edge-label">false</text>
+  <path d="M 528.0 1172.0 L 528.0 1381.0 L 419.5 1381.0 L 419.5 1590.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 305.0 810.0 L 305.0 1026.0 L 419.5 1026.0 L 419.5 1242.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 419.5 692.0 L 419.5 727.0 L 562.0 727.0 L 562.0 762.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="464.0" y="713.0" width="53.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="490.8" y="725.0" class="edge-label">false</text>
+  <path d="M 562.0 818.0 L 562.0 853.0 L 423.8 853.0 L 423.8 888.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="469.9" y="839.0" width="46.0" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="492.9" y="851.0" class="edge-label">true</text>
+  <path d="M 423.8 936.0 L 419.5 1478.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 562.0 818.0 L 562.0 853.0 L 640.8 853.0 L 640.8 888.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="574.6" y="839.0" width="53.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="601.4" y="851.0" class="edge-label">false</text>
+  <path d="M 640.8 936.0 L 640.8 1207.0 L 419.5 1207.0 L 419.5 1478.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 479.5 1384.0 L 814.0 1384.0 L 814.0 668.0 L 480.0 668.0" class="edge-line edge-back" marker-end="url(#arrow)" />
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDBd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDBd">
+    <rect x="364.5" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDFd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDFd">
-    <rect x="219.5" y="1004.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="269.5" y="1025.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDFd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDFd">
+    <rect x="364.5" y="1478.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="1499.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDJd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDJd" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="1" data-end-line="1">
-    <rect x="60.0" y="172.0" width="699.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="409.5" y="196.0" class="node-text">&quot;&quot;&quot;No function definitions: module-level assignments, condition, loop, try.&quot;&quot;&quot;</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDJd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDJd" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="1" data-end-line="1">
+    <rect x="70.0" y="172.0" width="699.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="196.0" class="node-text">&quot;&quot;&quot;No function definitions: module-level assignments, condition, loop, try.&quot;&quot;&quot;</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDNd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDNd" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="2" data-end-line="2">
-    <rect x="306.5" y="290.0" width="206.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="409.5" y="314.0" class="node-text">items = [1, 2, 0, 4]</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDNd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDNd" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="2" data-end-line="2">
+    <rect x="316.5" y="290.0" width="206.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="314.0" class="node-text">items = [1, 2, 0, 4]</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDRd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDRd" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="3" data-end-line="3">
-    <rect x="327.8" y="408.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="409.5" y="432.0" class="node-text">accumulated = 0</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDRd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDRd" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="3" data-end-line="3">
+    <rect x="337.8" y="408.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="432.0" class="node-text">accumulated = 0</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDVd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDVd" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="4" data-end-line="4">
-    <rect x="332.0" y="526.0" width="155.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="409.5" y="550.0" class="node-text">Iterate: items</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDVd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDVd" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="4" data-end-line="4">
+    <rect x="342.0" y="526.0" width="155.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="550.0" class="node-text">Iterate: items</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDZd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDZd" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="4" data-end-line="4">
-    <rect x="349.0" y="644.0" width="121.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="409.5" y="668.0" class="node-text">Next: item</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDZd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDZd" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="4" data-end-line="4">
+    <rect x="359.0" y="644.0" width="121.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="668.0" class="node-text">Next: item</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDdd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDdd">
-    <rect x="103.0" y="886.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="197.5" y="910.0" class="node-text">Exception dispatch</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDdd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDdd">
+    <rect x="108.0" y="888.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="202.5" y="912.0" class="node-text">Exception dispatch</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDhd" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDhd" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="6" data-end-line="6">
-    <rect x="177.5" y="762.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="297.5" y="786.0" class="node-text">accumulated += 8 // item</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDhd" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDhd" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="6" data-end-line="6">
+    <rect x="185.0" y="762.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="305.0" y="786.0" class="node-text">accumulated += 8 // item</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDld" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDld" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="7" data-end-line="8">
-    <rect x="359.5" y="1004.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="479.5" y="1028.0" class="node-text">except ZeroDivisionError</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDld" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDld" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="7" data-end-line="8">
+    <rect x="299.5" y="1006.0" width="240.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="1030.0" class="node-text">except ZeroDivisionError</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDEwXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDEwXQ">
-    <rect x="250.8" y="1240.0" width="157.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="329.5" y="1261.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDEwXQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDEwXQ">
+    <rect x="337.8" y="1590.0" width="163.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="1611.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDExXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDExXQ" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="8" data-end-line="8">
-    <rect x="204.8" y="1122.0" width="172.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="290.8" y="1146.0" class="node-text">accumulated += 0</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDExXQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDExXQ" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="8" data-end-line="8">
+    <rect x="212.2" y="1124.0" width="172.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="298.2" y="1148.0" class="node-text">accumulated += 0</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDEyXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDEyXQ">
-    <rect x="416.8" y="1122.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="515.5" y="1146.0" class="node-text">Unhandled exception</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDEyXQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDEyXQ">
+    <rect x="429.2" y="1124.0" width="197.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="528.0" y="1148.0" class="node-text">Unhandled exception</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDEzXQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDEzXQ" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="10" data-end-line="10">
-    <rect x="448.2" y="1240.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="508.2" y="1264.0" class="node-text">pass</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDEzXQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDEzXQ" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="10" data-end-line="10">
+    <rect x="359.5" y="1242.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="1266.0" class="node-text">pass</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE0XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE0XQ">
-    <rect x="349.5" y="1358.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="409.5" y="1382.0" class="node-text">Loop back</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE0XQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE0XQ">
+    <rect x="359.5" y="1360.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="419.5" y="1384.0" class="node-text">Loop back</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE1XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE1XQ" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="11" data-end-line="11">
-    <polygon points="549.5,762.0 641.5,789.0 549.5,816.0 457.5,789.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="549.5" y="789.0" class="node-text" fill="#e65100" font-weight="600">accumulated &gt; 10</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE1XQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE1XQ" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="11" data-end-line="11">
+    <polygon points="562.0,762.0 654.0,790.0 562.0,818.0 470.0,790.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="562.0" y="790.0" class="node-text" fill="#e65100" font-weight="600">accumulated &gt; 10</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE2XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE2XQ" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="12" data-end-line="12">
-    <rect x="332.0" y="886.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="413.8" y="910.0" class="node-text">outcome = &quot;big&quot;</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE2XQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE2XQ" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="12" data-end-line="12">
+    <rect x="342.0" y="888.0" width="163.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="423.8" y="912.0" class="node-text">outcome = &quot;big&quot;</text>
   </g>
-  <g id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE3XQ" data-node-id="fb1_WyIxZDQ4MmZiZS05Y2M2LTRhYzItOWFhOS03MGZhZTg5OTMzMGQiLDEsIm5vZGUiLCJmYjFfV3lJeFpEUTRNbVppWlMwNVkyTTJMVFJoWXpJdE9XRmhPUzAzTUdaaFpUZzVPVE16TUdRaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0ltUTROVFkwTkdVekxUWmhOR0V0TkdFM1lpMDVNRFJtTFRRMFltTTRaREEyWm1Fd05DSmQiLDE3XQ" data-file-id="d85644e3-6a4a-4a7b-904f-44bc8d06fa04" data-start-line="14" data-end-line="14">
-    <rect x="535.5" y="886.0" width="180.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
-    <text x="625.8" y="910.0" class="node-text">outcome = &quot;small&quot;</text>
+  <g id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE3XQ" data-node-id="fb1_WyI4NDQ3NTVkZS02YjliLTQxOTQtOGEzNS03MDc2YzlmMGFhOTIiLDEsIm5vZGUiLCJmYjFfV3lJNE5EUTNOVFZrWlMwMllqbGlMVFF4T1RRdE9HRXpOUzAzTURjMll6bG1NR0ZoT1RJaUxERXNJbWR5WVhCb0lpd2labWxzWlNJc0lqaGhNakEwWm1NeUxXSXlOemN0TkdNeU5pMWlNVGczTFdZeVptSTJNMlV3T1dJMk55SmQiLDE3XQ" data-file-id="8a204fc2-b277-4c26-b187-f2fb63e09b67" data-start-line="14" data-end-line="14">
+    <rect x="550.5" y="888.0" width="180.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="640.8" y="912.0" class="node-text">outcome = &quot;small&quot;</text>
   </g>
 </svg>

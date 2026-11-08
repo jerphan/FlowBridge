@@ -21,6 +21,12 @@ class DiagramRenderer:
     <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
     </marker>
+    <marker id="arrow-exception" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d32f2f" />
+    </marker>
+    <marker id="arrow-import" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1565c0" />
+    </marker>
     <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
       <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
     </filter>
@@ -31,7 +37,9 @@ class DiagramRenderer:
     .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .edge-true { stroke: #2e7d32; }
     .edge-false { stroke: #c62828; }
-    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; stroke-width: 1.6; }
+    .edge-exception { stroke: #d32f2f; stroke-dasharray: 4,3; stroke-width: 1.8; }
+    .edge-import { stroke: #1565c0; stroke-width: 2.0; }
     .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
@@ -66,6 +74,12 @@ class DiagramRenderer:
         elif edge.edge_type == "false":
             marker = "url(#arrow-false)"
             cls += " edge-false"
+        elif edge.edge_type in ("exception", "exceptional"):
+            marker = "url(#arrow-exception)"
+            cls += " edge-exception"
+        elif edge.label == "imports":
+            marker = "url(#arrow-import)"
+            cls += " edge-import"
         elif edge.is_back_edge:
             cls += " edge-back"
 
@@ -75,14 +89,15 @@ class DiagramRenderer:
 
         edge_svg = f'  <path d="{path_d}" class="{cls}" marker-end="{marker}" />'
 
-        # Label
+        # Label with dynamic pill background width
         lbl = edge.label or (edge.edge_type if edge.edge_type in ("true", "false") else None)
         if lbl and len(pts) >= 2:
             mid_idx = len(pts) // 2
             mx = (pts[mid_idx - 1][0] + pts[mid_idx][0]) / 2.0
             my = (pts[mid_idx - 1][1] + pts[mid_idx][1]) / 2.0 - 5.0
-            edge_svg += f'\n  <rect x="{mx - 18:.1f}" y="{my - 9:.1f}" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>'
-            edge_svg += f'\n  <text x="{mx:.1f}" y="{my + 2:.1f}" class="edge-label">{html.escape(lbl)}</text>'
+            rect_w = max(36.0, len(lbl) * 7.5 + 16.0)
+            edge_svg += f'\n  <rect x="{mx - rect_w / 2.0:.1f}" y="{my - 9:.1f}" width="{rect_w:.1f}" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>'
+            edge_svg += f'\n  <text x="{mx:.1f}" y="{my + 3:.1f}" class="edge-label">{html.escape(lbl)}</text>'
 
         return edge_svg
 
@@ -128,11 +143,33 @@ class DiagramRenderer:
             node_body.append(f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#bf360c">{label_text}</text>')
 
         elif node.node_type == "file":
-            # File card shape
-            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>')
-            node_body.append(f'    <text x="{cx:.1f}" y="{cy - 5:.1f}" class="node-text" font-weight="600" fill="#0d47a1">📄 {label_text}</text>')
-            if node.is_clickable:
-                node_body.append(f'    <text x="{cx:.1f}" y="{cy + 13:.1f}" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>')
+            # File card shape with status badge indication
+            status = node.status or "complete"
+            if status == "unsupported":
+                fill = "#fff8e1"
+                stroke = "#f57c00"
+                icon = "⚠ "
+                title_color = "#e65100"
+                subtext = "⚠ Unsupported Feature"
+                sub_color = "#d84315"
+            elif status == "failed":
+                fill = "#ffebee"
+                stroke = "#d32f2f"
+                icon = "✕ "
+                title_color = "#c62828"
+                subtext = "✕ Analysis Failed"
+                sub_color = "#b71c1c"
+            else:
+                fill = "#e3f2fd"
+                stroke = "#1976d2"
+                icon = "📄 "
+                title_color = "#0d47a1"
+                subtext = "🔍 View File Flowchart ➔" if node.is_clickable else "📄 File Module"
+                sub_color = "#1565c0"
+
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy - 6:.1f}" class="node-text" font-weight="600" fill="{title_color}">{icon}{label_text}</text>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy + 13:.1f}" class="node-subtext" fill="{sub_color}">{subtext}</text>')
 
         elif node.node_type == "function":
             # Function block with drilldown indication
@@ -234,7 +271,6 @@ class DiagramRenderer:
       const graph = graphMap.get(graphId);
       if (!graph) return;
 
-      // Update stack
       const existingIdx = navStack.indexOf(graphId);
       if (existingIdx !== -1) {{
         navStack = navStack.slice(0, existingIdx + 1);
@@ -253,7 +289,6 @@ class DiagramRenderer:
       document.getElementById('svgContainer').innerHTML = g.svg;
       document.getElementById('levelIndicator').innerText = g.type.toUpperCase() + " VIEW";
 
-      // Render breadcrumbs
       const bc = document.getElementById('breadcrumbs');
       bc.innerHTML = navStack.map((gid, idx) => {{
         const item = graphMap.get(gid);

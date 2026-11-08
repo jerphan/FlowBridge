@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import axios from "axios";
 import UploadModal from "./components/UploadModal";
 import ExportModal from "./components/ExportModal";
@@ -11,6 +11,8 @@ import {
   PyProject,
   SourceFile,
   SourceMappingPayload,
+  DiagnosticDto,
+  FileMetadata,
 } from "./types/flowchart";
 import "./App.css";
 
@@ -34,7 +36,7 @@ interface RenderResponse {
   viewerUrl: string;
   graphs: Record<string, RenderedGraphDto>;
   flowchart: {
-    files: Array<{ fileId: string; fileName: string; graphId: string }>;
+    files: Array<{ fileId: string; fileName: string; graphId: string; status?: "complete" | "unsupported" | "failed" }>;
     functions: FunctionInfo[];
     graphs: Record<string, { graphId: string; nodes: Array<{ nodeId: string; sourceLocation?: { startLine: number; endLine: number; fileId?: string } }> }>;
   };
@@ -42,6 +44,19 @@ interface RenderResponse {
   childGraphToParent: Record<string, [string, string]>;
   graphToSourceFile: Record<string, string>;
   sourceMapping?: SourceMappingPayload;
+  diagnostics?: DiagnosticDto[];
+  analysisFiles?: FileMetadata[];
+  analysisStatus?: string;
+}
+
+interface ClassifiedDiagnostic {
+  category: "Unsupported Python Feature" | "Syntax Error" | "Analysis Error" | "Resolution Warning";
+  featureName: string;
+  message: string;
+  fileName: string;
+  line?: number;
+  severity: "error" | "warning" | "info";
+  tip?: string;
 }
 
 function getFileId(file?: SourceFile | null): string {
@@ -52,6 +67,129 @@ function getFileId(file?: SourceFile | null): string {
 function getFileName(file?: SourceFile | null): string {
   if (!file) return "";
   return file.fileName || file.filePath || file.path || "";
+}
+
+function classifyDiagnostic(diag: DiagnosticDto, fileName: string): ClassifiedDiagnostic {
+  const rawMsg = diag.message || "";
+  const code = diag.code || "";
+  const line = diag.sourceLocation?.startLine;
+
+  if (code === "UNSUPPORTED_FEATURE") {
+    if (rawMsg.includes("ClassDef") || rawMsg.toLowerCase().includes("class")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Class Definition",
+        message: "Class definitions and object-oriented programming are not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+        tip: "FlowBridge models procedural and functional control flow. Consider refactoring classes into standard functions and modules.",
+      };
+    }
+    if (rawMsg.includes("AsyncFunctionDef") || rawMsg.includes("async")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Asynchronous Function",
+        message: "Asynchronous functions (async def) and coroutines are not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+        tip: "Convert async def functions into standard synchronous functions.",
+      };
+    }
+    if (rawMsg.includes("Lambda") || rawMsg.toLowerCase().includes("lambda")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Lambda Expression",
+        message: "Anonymous lambda expressions are not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+        tip: "Define standard named functions using def instead.",
+      };
+    }
+    if (rawMsg.includes("Comp") || rawMsg.includes("GeneratorExp") || rawMsg.includes("comprehension")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Comprehension / Generator Expression",
+        message: "Comprehensions and generator expressions are not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+        tip: "Rewrite comprehensions as explicit for-loops to visualize their iterative control flow.",
+      };
+    }
+    if (rawMsg.includes("Yield") || rawMsg.toLowerCase().includes("yield")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Generator (yield)",
+        message: "Generator yield statements are not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+      };
+    }
+    if (rawMsg.includes("With") || rawMsg.toLowerCase().includes("with")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Context Manager (with)",
+        message: "Context manager statements (with / async with) are not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+      };
+    }
+    if (rawMsg.includes("Match") || rawMsg.toLowerCase().includes("match")) {
+      return {
+        category: "Unsupported Python Feature",
+        featureName: "Pattern Matching",
+        message: "Python pattern matching (match/case) is not currently supported by FlowBridge.",
+        fileName,
+        line,
+        severity: "error",
+      };
+    }
+    return {
+      category: "Unsupported Python Feature",
+      featureName: "Unsupported Syntax",
+      message: rawMsg,
+      fileName,
+      line,
+      severity: "error",
+    };
+  }
+
+  if (code === "SYNTAX_ERROR" || rawMsg.toLowerCase().includes("syntaxerror") || rawMsg.toLowerCase().includes("invalid syntax")) {
+    return {
+      category: "Syntax Error",
+      featureName: "Invalid Python Syntax",
+      message: rawMsg || "The Python file contains invalid syntax and could not be parsed.",
+      fileName,
+      line,
+      severity: "error",
+      tip: "Check the source code at the indicated line for syntax errors.",
+    };
+  }
+
+  if (code === "RESOLUTION_FAILED" || code === "UNRESOLVED_CALL" || diag.severity === "warning") {
+    return {
+      category: "Resolution Warning",
+      featureName: "Import / Call Resolution Warning",
+      message: rawMsg,
+      fileName,
+      line,
+      severity: "warning",
+    };
+  }
+
+  return {
+    category: "Analysis Error",
+    featureName: code || "Analysis Error",
+    message: rawMsg,
+    fileName,
+    line,
+    severity: diag.severity,
+  };
 }
 
 function App() {
@@ -69,6 +207,46 @@ function App() {
   // Modals state
   const [isUploadModalOpen, setIsUploadModalOpen] = useState<boolean>(false);
   const [isExportModalOpen, setIsExportModalOpen] = useState<boolean>(false);
+
+  // File statuses lookup
+  const fileStatuses = useMemo<Record<string, string>>(() => {
+    const map: Record<string, string> = {};
+    if (!renderData) return map;
+    
+    // Check analysisFiles
+    if (renderData.analysisFiles) {
+      for (const f of renderData.analysisFiles) {
+        if (f.fileId) map[f.fileId] = f.status;
+        if (f.fileName) map[f.fileName] = f.status;
+      }
+    }
+    // Check flowchart.files
+    if (renderData.flowchart?.files) {
+      for (const f of renderData.flowchart.files) {
+        if (f.fileId && f.status) map[f.fileId] = f.status;
+        if (f.fileName && f.status) map[f.fileName] = f.status;
+      }
+    }
+    return map;
+  }, [renderData]);
+
+  // Diagnostics for active file
+  const activeFileDiagnostics = useMemo<ClassifiedDiagnostic[]>(() => {
+    if (!renderData || !renderData.diagnostics || !activeFile) return [];
+    const fid = getFileId(activeFile);
+    const fname = getFileName(activeFile);
+    
+    return renderData.diagnostics
+      .filter((d) => d.fileId === fid || (d.sourceLocation && d.sourceLocation.fileId === fid))
+      .map((d) => classifyDiagnostic(d, fname));
+  }, [renderData, activeFile]);
+
+  const activeFileStatus = useMemo<string>(() => {
+    if (!activeFile) return "complete";
+    const fid = getFileId(activeFile);
+    const fname = getFileName(activeFile);
+    return fileStatuses[fid] || fileStatuses[fname] || (activeFileDiagnostics.some(d => d.severity === "error") ? "unsupported" : "complete");
+  }, [activeFile, fileStatuses, activeFileDiagnostics]);
 
   // 1. Handle Project Uploaded from UploadModal
   function handleProjectLoaded(uploadedProject: PyProject) {
@@ -238,6 +416,16 @@ function App() {
       );
       if (file) {
         setActiveFile(file);
+
+        // If file has error diagnostics, auto-highlight the problematic line in the editor
+        const fId = getFileId(file);
+        const diags = (renderData.diagnostics || []).filter(
+          (d) => d.fileId === fId || d.sourceLocation?.fileId === fId
+        );
+        const firstErr = diags.find((d) => d.severity === "error" && d.sourceLocation?.startLine);
+        if (firstErr && firstErr.sourceLocation) {
+          setHighlightedLines([firstErr.sourceLocation.startLine, firstErr.sourceLocation.startLine]);
+        }
       }
       setActiveFunction(null);
     } else if (type === "function") {
@@ -267,7 +455,17 @@ function App() {
     } else if (item.type === "file") {
       if (item.fileId && project) {
         const f = project.files.find((file) => getFileId(file) === item.fileId);
-        if (f) setActiveFile(f);
+        if (f) {
+          setActiveFile(f);
+          const fId = getFileId(f);
+          const diags = (renderData?.diagnostics || []).filter(
+            (d) => d.fileId === fId || d.sourceLocation?.fileId === fId
+          );
+          const firstErr = diags.find((d) => d.severity === "error" && d.sourceLocation?.startLine);
+          if (firstErr && firstErr.sourceLocation) {
+            setHighlightedLines([firstErr.sourceLocation.startLine, firstErr.sourceLocation.startLine]);
+          }
+        }
       }
       setActiveFunction(null);
     } else if (item.type === "function") {
@@ -291,8 +489,20 @@ function App() {
     setHighlightedLines(null);
     setHighlightedNodeId(null);
 
+    const fId = getFileId(file);
+
+    // If file has error diagnostics, auto-highlight the line
+    if (renderData?.diagnostics) {
+      const diags = renderData.diagnostics.filter(
+        (d) => d.fileId === fId || d.sourceLocation?.fileId === fId
+      );
+      const firstErr = diags.find((d) => d.severity === "error" && d.sourceLocation?.startLine);
+      if (firstErr && firstErr.sourceLocation) {
+        setHighlightedLines([firstErr.sourceLocation.startLine, firstErr.sourceLocation.startLine]);
+      }
+    }
+
     if (renderData) {
-      const fId = getFileId(file);
       const fMeta = renderData.flowchart.files.find((f) => f.fileId === fId);
       if (fMeta && renderData.graphs[fMeta.graphId]) {
         navigateToGraph(fMeta.graphId, fMeta.fileName, "file", fId);
@@ -310,6 +520,11 @@ function App() {
     activeGraphId && renderData?.graphs[activeGraphId]
       ? renderData.graphs[activeGraphId].title
       : "Flowchart";
+
+  // Check if viewing an unsupported or failed file
+  const isViewingUnsupportedFile = Boolean(
+    activeFile && (activeFileStatus === "unsupported" || activeFileStatus === "failed" || activeFileDiagnostics.some(d => d.severity === "error"))
+  );
 
   return (
     <>
@@ -395,6 +610,7 @@ function App() {
                 allFiles={project?.files || []}
                 onSelectFile={handleFileSelect}
                 onLineClick={handleLineClick}
+                fileStatuses={fileStatuses}
                 onBackToProjectFiles={() => {
                   setActiveFile(null);
                   setActiveFunction(null);
@@ -409,7 +625,7 @@ function App() {
             </div>
           </section>
 
-          {/* Right Card: Flowchart Canvas */}
+          {/* Right Card: Flowchart Canvas or Unsupported Feature Card */}
           <section className="card">
             <div className="cardHeader">
               <div style={{ fontSize: "16px", fontWeight: "bold" }}>FlowChart</div>
@@ -442,6 +658,171 @@ function App() {
                 <div style={{ color: "#d32f2f", textAlign: "center", padding: "20px" }}>
                   <p style={{ fontWeight: 600 }}>Error</p>
                   <p style={{ fontSize: "13px" }}>{errorMessage}</p>
+                </div>
+              ) : isViewingUnsupportedFile ? (
+                /* Dedicated Unsupported Python Feature / Diagnostic Display */
+                <div
+                  style={{
+                    padding: "28px 32px",
+                    height: "100%",
+                    overflowY: "auto",
+                    boxSizing: "border-box",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "20px",
+                    backgroundColor: "#fafbfc",
+                  }}
+                >
+                  {(() => {
+                    const primaryDiag = activeFileDiagnostics[0] || {
+                      category: "Unsupported Python Feature",
+                      featureName: "Unsupported Syntax",
+                      message: "This file contains unsupported Python constructs and cannot be rendered as a flowchart.",
+                      fileName: getFileName(activeFile),
+                      severity: "error",
+                    };
+                    const isUnsupported = primaryDiag.category === "Unsupported Python Feature";
+
+                    return (
+                      <>
+                        {/* Alert Header Banner */}
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "14px",
+                            padding: "16px 20px",
+                            borderRadius: "8px",
+                            backgroundColor: isUnsupported ? "#fff8e1" : "#ffebee",
+                            border: `1px solid ${isUnsupported ? "#ffb74d" : "#ef5350"}`,
+                            color: isUnsupported ? "#b78103" : "#c62828",
+                          }}
+                        >
+                          <span style={{ fontSize: "28px" }}>{isUnsupported ? "⚠" : "✕"}</span>
+                          <div>
+                            <div style={{ fontWeight: 700, fontSize: "17px" }}>{primaryDiag.category}</div>
+                            <div style={{ fontSize: "13px", opacity: 0.95, marginTop: "2px" }}>
+                              {isUnsupported
+                                ? "This file contains Python syntax or language constructs outside FlowBridge's supported subset."
+                                : "An error occurred while parsing and analyzing this Python file."}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Structured Error Details Card */}
+                        <div
+                          style={{
+                            backgroundColor: "#ffffff",
+                            border: "1px solid #dee2e6",
+                            borderRadius: "8px",
+                            padding: "22px 24px",
+                            boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "14px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "110px 1fr",
+                              rowGap: "12px",
+                              fontSize: "14px",
+                              alignItems: "center",
+                            }}
+                          >
+                            <span style={{ fontWeight: 600, color: "#6c757d" }}>File:</span>
+                            <span style={{ fontFamily: "monospace", color: "#1a73e8", fontWeight: 600 }}>
+                              {primaryDiag.fileName}
+                            </span>
+
+                            {primaryDiag.line !== undefined && (
+                              <>
+                                <span style={{ fontWeight: 600, color: "#6c757d" }}>Line:</span>
+                                <span style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
+                                  <span style={{ fontWeight: 700, color: "#d97706" }}>Line {primaryDiag.line}</span>
+                                  <button
+                                    onClick={() => {
+                                      if (primaryDiag.line) {
+                                        setHighlightedLines([primaryDiag.line, primaryDiag.line]);
+                                      }
+                                    }}
+                                    style={{
+                                      background: "#f0f7ff",
+                                      border: "1px solid #c8e1ff",
+                                      borderRadius: "4px",
+                                      padding: "3px 10px",
+                                      fontSize: "12px",
+                                      color: "#0366d6",
+                                      cursor: "pointer",
+                                      fontWeight: 600,
+                                    }}
+                                  >
+                                    Highlight in Editor
+                                  </button>
+                                </span>
+                              </>
+                            )}
+
+                            <span style={{ fontWeight: 600, color: "#6c757d" }}>Feature:</span>
+                            <span style={{ fontWeight: 600, color: "#212529" }}>{primaryDiag.featureName}</span>
+
+                            <span style={{ fontWeight: 600, color: "#6c757d" }}>Message:</span>
+                            <span style={{ color: "#212529", lineHeight: 1.5 }}>"{primaryDiag.message}"</span>
+                          </div>
+
+                          {primaryDiag.tip && (
+                            <div
+                              style={{
+                                marginTop: "8px",
+                                padding: "12px 16px",
+                                backgroundColor: "#f8f9fa",
+                                borderRadius: "6px",
+                                borderLeft: "4px solid #1a73e8",
+                                fontSize: "13px",
+                                color: "#495057",
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              <strong style={{ color: "#1a73e8" }}>Recommendation: </strong>
+                              {primaryDiag.tip}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Navigation Actions */}
+                        <div style={{ display: "flex", gap: "12px" }}>
+                          <button
+                            onClick={() => {
+                              setActiveFile(null);
+                              setActiveFunction(null);
+                              setHighlightedLines(null);
+                              setHighlightedNodeId(null);
+                              if (renderData) {
+                                setActiveGraphId(renderData.projectGraphId);
+                                setBreadcrumbs([{ id: renderData.projectGraphId, label: "Project View", type: "project" }]);
+                              }
+                            }}
+                            style={{
+                              padding: "9px 18px",
+                              backgroundColor: "#ffffff",
+                              border: "1px solid #ced4da",
+                              borderRadius: "6px",
+                              cursor: "pointer",
+                              fontSize: "13px",
+                              fontWeight: 600,
+                              color: "#495057",
+                              transition: "all 0.15s ease",
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#1a73e8")}
+                            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#ced4da")}
+                          >
+                            ← Return to Project View
+                          </button>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
               ) : (
                 <FlowchartCanvas

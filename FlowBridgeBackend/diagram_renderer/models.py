@@ -22,6 +22,7 @@ class HierarchicalFile:
     file_name: str
     file_path: str
     file_graph_id: str
+    status: str = "complete"
     functions: List[HierarchicalFunction] = field(default_factory=list)
 
 
@@ -32,6 +33,7 @@ class HierarchicalProjectModel:
     project_name: str
     project_graph_id: str
     files: List[HierarchicalFile] = field(default_factory=list)
+    file_statuses: Dict[str, str] = field(default_factory=dict)
     
     # Fast lookups
     node_to_child_graph: Dict[str, str] = field(default_factory=dict)
@@ -52,6 +54,7 @@ class RenderedNode:
     source_location: Optional[Dict[str, Any]] = None
     target_graph_id: Optional[str] = None
     is_clickable: bool = False
+    status: Optional[str] = None
 
 
 @dataclass
