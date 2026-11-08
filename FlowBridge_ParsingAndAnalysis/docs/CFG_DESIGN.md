@@ -1,5 +1,12 @@
 # CFG design and implemented semantics
 
+November 8 extension (D028): `build_module` provides the top-level module graph,
+and `build_file` provides file execution with bounded same-file call expansion.
+Expansion requires a resolved CallReference and has a recursion guard. Returned
+calls terminate their caller after the callee completes; unresolved/shadowed
+calls remain atomic. Cross-file calls use navigation references to function
+graphs. Original graph/node IDs and source spans remain shared across consumers.
+
 ## API and scope
 `CFGBuilder.build(function, file_input, ids) -> CFGResult` accepts a direct module
 FunctionDef from PythonParser, the exact FileInput snapshot and RevisionIds.

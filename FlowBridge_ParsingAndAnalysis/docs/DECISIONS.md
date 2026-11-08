@@ -1,5 +1,27 @@
 # Decisions
 
+## D028 — file execution views and diagram integration (2026-11-08)
+
+Decision: integrate the requested newer parser/renderer branches, retaining their
+commits and existing input/output field names. File graphs now contain bounded
+execution CFGs and same-file call expansion. Project edges labeled `imports` show
+dependencies. Cross-view navigation remains GraphReference data, not an execution
+edge between separate graphs. Module and function graphs remain selectable.
+This supersedes D027's structural-only file overview for successfully built file views.
+
+Expansion uses resolved CallReference targets only. Name-only fallback is rejected
+because a parameter or rebinding may shadow a global function. Returning an
+expanded call terminates the caller; it cannot reach subsequent statements.
+Failed initial file analysis is excluded from later file construction. A later
+file-view failure produces an empty failed view and partial file status while
+valid function and sibling graphs remain available.
+
+React Flow/Dagre provides the primary UI; the SVG pipeline provides isolated
+exports. Both retain canonical graph/node/file/project/revision identity and
+source-coordinate conventions. Export paths use file/function positions and a
+manifest rather than basenames. Uploads, parsing, and source lookup remain separate
+responsibilities. No source execution, persistence, or broader Python semantics.
+
 ## D027 — procedural module views and integration review (2026-11-06)
 
 Decision: incorporate Harsha's procedural-CFG update in the requested reviewed

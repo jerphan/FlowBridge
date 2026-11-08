@@ -2,8 +2,9 @@
 
 FlowBridge turns Python source into interactive diagrams. Code Manager and
 Parsing & Analysis are connected through a working backend pipeline. Source Mapping
-resolves graph nodes to original files and source ranges. The React interface still
-needs to display the returned graphs and highlights.
+resolves graph nodes to original files and source ranges. The React interface
+imports projects, displays their diagrams, highlights selected source, and opens
+project-scoped SVG exports.
 
 ## Module status
 
@@ -11,9 +12,9 @@ needs to display the returned graphs and highlights.
 | --- | --- |
 | Code Manager | Python, ZIP, and public GitHub imports; project storage and original-source retrieval. |
 | Parsing & Analysis | Connected to Code Manager; produces graph data, diagnostics, and source mappings for its [supported Python subset](FlowBridge_ParsingAndAnalysis/docs/PARSING_FEATURES.md). |
-| Diagram Manager | Graph data is available; layout, interactive rendering, view navigation, and export remain. |
-| Source Mapping / Connection Management | Backend lookup and original-file response implemented; browser node selection and code highlighting remain. |
-| User Interface | File/ZIP upload requests and a file-view component exist; GitHub input, Start/analyze, graph display, and highlights still need connecting. |
+| Diagram Manager | React Flow canvas with Dagre layout, labeled edges, project/file/module/function navigation, and SVG export. |
+| Source Mapping / Connection Management | Node clicks retrieve the original file/range and highlight it using the parser's UTF-8 coordinates. |
+| User Interface | Python/ZIP/GitHub imports, analysis, source/file selection, errors, diagram navigation, and export are connected. |
 
 ## Where to start
 
@@ -41,14 +42,15 @@ flowchart TD
     Outputs --> Mapping["SourceMappingLayer: graph and node IDs to source range"]
     Mapping --> Lookup["Source lookup API: original file and range"]
     Registry --> Lookup
-    Outputs -.-> Diagram["Remaining: interactive diagram UI"]
-    Diagram -.->|Select node| Lookup
-    Lookup -.-> Highlight
-    Highlight["Remaining: code highlighting in the browser"]
+    Outputs --> Diagram["React Flow and Dagre: diagrams and navigation"]
+    Diagram -->|Select node| Lookup
+    Lookup --> Highlight
+    Highlight["Original source highlighted in the browser"]
+    Outputs --> Export["SVG renderer: project and revision scoped exports"]
 ```
 
-Solid arrows are implemented backend behavior. Dotted arrows are remaining UI
-integration. The parser reads source as text and never runs uploaded code.
+The parser reads source as text and never runs uploaded code. Layout and rendering
+use its existing graph IDs; source lookup uses the same project and revision.
 
 ## Install and run
 
@@ -65,7 +67,20 @@ its `projectID`, then call `POST /api/projects/{projectID}/analyze`. The respons
 contains the full analysis, `flowchart`, and `mapping`.
 
 The demo stores projects in memory. Use one server worker; restarting clears
-them. Public GitHub imports work without a token.
+them and their temporary exports. Public GitHub imports work without a token.
+
+In a second terminal, use Node 22.12+ to start the UI:
+
+```powershell
+cd FlowBridgeFrontend
+npm ci
+npm run dev
+```
+
+Open <http://localhost:5173>. Import a project, click Start, and select a view.
+Click nodes to highlight source; double-click linked nodes to open their graph.
+Use Export diagrams, then Open SVG viewer, to navigate or download SVGs.
+`VITE_API_BASE_URL` optionally changes the default `http://localhost:8000` API URL.
 
 ## Verify or demonstrate
 
@@ -80,6 +95,19 @@ analysis, flowchart, and mapping JSON. Relative and absolute output folders work
 
 GitHub's **Backend checks** workflow runs both suites, checks backend lint,
 builds the package, and verifies the installed wheel outside the source checkout.
+Its frontend job runs a clean npm install, UI tests, production build, and browser
+check against the real local API with offline GitHub fixtures:
+
+```powershell
+cd FlowBridgeFrontend
+npm test
+npm run build
+npx playwright install chromium
+npm run test:browser
+```
+
+See the [diagram/UI handoff](docs/DIAGRAM_INTEGRATION.md) for test ports, export
+lifetime, source coordinates, and component responsibilities.
 
 ## HTTP contract
 
@@ -102,6 +130,7 @@ See the [route table and sample JSON](docs/CODE_MANAGER_HANDOFF.md#http-contract
 ## Team references
 
 - [Code Manager and backend handoff](docs/CODE_MANAGER_HANDOFF.md)
+- [Diagram, UI, and export integration](docs/DIAGRAM_INTEGRATION.md)
 - [Parser integration and consumer contracts](FlowBridge_ParsingAndAnalysis/docs/INTEGRATION_GUIDE.md)
 - [Verification evidence and user-validation checklist](docs/VALIDATION.md)
 - [Three slides of Code Manager talking points](docs/POWERPOINT_BULLETS.md)

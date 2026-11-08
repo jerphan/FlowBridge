@@ -1,5 +1,15 @@
 # Python parsing and feature support
 
+## File execution views — November 8
+
+File graphs contain their own CFG, preserving function definition navigation and
+expanding supported same-file calls only when CallResolver resolves the target.
+Shadowed/unresolved calls remain atomic; recursive expansion is guarded. A
+returned expanded call remains terminal. Cross-file calls are linked to function
+graphs instead of expanding another file's body. Module/function graphs remain
+separate views. This is a bounded static projection without runtime argument,
+definition-order, exception-type, or full Python execution simulation.
+
 ## Separate stages
 PythonParser.parse(FileInput) calls ast.parse(source, filename=path, mode='exec').
 The mode selects module grammar; it never executes uploaded code or reads that path.

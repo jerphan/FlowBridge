@@ -1,83 +1,76 @@
-import {useState} from "react";
-import FileUploader from "./components/FileUploader";
-import StartButton from "./components/StartButton";
-import ProjectViewer from "./components/ProjectViewer";
-import GitHubUploader from "./components/GitHubUploader"
-import DiagramManager from "./components/DiagramManager"
-import {flowchartJSON, pyProject, sourceFile} from "./types/types";
-import axios from "axios";
+import {useRef, useState} from 'react';
+import FileUploader from './components/FileUploader';
+import GitHubUploader from './components/GitHubUploader';
+import StartButton from './components/StartButton';
+import ProjectViewer from './components/ProjectViewer';
+import DiagramManager from './components/DiagramManager';
+import ExportButton from './components/ExportButton';
+import type {flowchartJSON, pyProject, sourceFile, sourceLocation, SourceSelection} from './types/types';
 
-const api = axios.create({
-    baseURL: "http://localhost:8000"
-})
+export default function App() {
+  const [project, setProject] = useState<pyProject | null>(null);
+  const [selectedFile, setSelectedFile] = useState<sourceFile | null>(null);
+  const [flowchart, setFlowchart] = useState<flowchartJSON | null>(null);
+  const [highlight, setHighlight] = useState<sourceLocation | null>(null);
+  const [fileViewRequest, setFileViewRequest] = useState(0);
+  const currentProject = useRef<string | null>(null);
+  const currentFlowchart = useRef<flowchartJSON | null>(null);
 
-function app(){
-    const [project, setProject] = useState<pyProject | null>(null);
-    const [selectedFile, setSelectedFile] = useState<sourceFile | null>(null);
-    const [flowChart, setFlowchart] = useState<flowchartJSON | null>(null);
+  function loadedProject(project: pyProject) {
+    currentProject.current = project.projectID;
+    currentFlowchart.current = null;
+    setProject(project); setSelectedFile(project.files[0] || null);
+    setFlowchart(null); setHighlight(null);
+    setFileViewRequest(count => count + 1);
+  }
 
-    const handleProjectLoaded = (project : pyProject) =>{
-        setProject(project);
-        setSelectedFile(project.files[0]);
-        setFlowchart(null);
-    }
+  function selectFile(file: sourceFile) {
+    setSelectedFile(file); setHighlight(null);
+    setFileViewRequest(count => count + 1);
+  }
 
-    return <>
-            <head>
-                <meta charSet="UTF-8"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <title>FlowBridge</title>
-            </head>
-            <header className="heading">
-                <div className="headingLeft">
-                    <img src="./FlowBridgeIcon.png" alt="Logo Icon" className="logoIcon"/>
-                    <span className="brandName">FlowBridge</span>
-                </div>
-                    <StartButton project={project} selectedFile={selectedFile} onFlowChartLoaded={(loadedFlowchart) => setFlowchart(loadedFlowchart)}/>
-                <div className="headingRight">
-                    <div className="user-profile">
-                        <div>
-                            <label htmlFor="loginButton">
-                                <img src="./ProfilePicture.png" alt="Profile Icon" className="loginIcon"/>
-                            </label>
-                            <input type="button" id="loginButton" className="toolButton"/>
-                        </div>
-                    </div>
-                </div>
-        </header>
-        <div className="workspace">
-                <aside className="sidebarLeft">
-                    <div className="toolbarTop">
-                        <div>
-                            <FileUploader onProjectLoaded={handleProjectLoaded}/>
-                        </div>
-                        <div>
-                            <GitHubUploader onProjectLoaded={handleProjectLoaded}/>
-                        </div>
-                        <img src="ExportButton.png" alt="Export Icon" className="toolIcon"/>
-                    </div>
-                    <div className="toolbar-bottom">
-                        <img src="SettingsIcon.png" alt="Settings Icon" className="toolIcon"/>
-                    </div>
-                </aside>
-                <main className="contentGrid">
-                    <section className="card">
-                        <div className="cardHeader">
-                            Source Code
-                        </div>
-                            <ProjectViewer project = {project} onSelectFile={(file) => setSelectedFile(file)}/>
-                        <div className="cardBody"></div>
-                    </section>
+  function selectSource(selection: SourceSelection) {
+    if (selection.projectId !== currentProject.current ||
+        selection.revisionId !== currentFlowchart.current?.revisionId) return;
+    setSelectedFile(selection.file); setHighlight(selection.location);
+  }
 
-                    <section className="card">
-                        <div className="cardHeader">FlowChart</div>
-                        <div className="cardBody">
-                            <DiagramManager flowchart = {flowChart} selectedFile={selectedFile}/>
-                        </div>
-                    </section>
-                </main>
-            </div>
-    </>;
+  function loadedFlowchart(flowchart: flowchartJSON) {
+    if (flowchart.projectId !== currentProject.current) return;
+    currentFlowchart.current = flowchart;
+    setFlowchart(flowchart);
+  }
+
+  return <>
+    <header className="heading">
+      <div className="headingLeft"><img src="FlowBridgeIcon.png" alt="" className="logoIcon" />
+        <h1 className="brandName">FlowBridge</h1></div>
+      <StartButton project={project} onFlowChartLoaded={loadedFlowchart} />
+      <ExportButton flowchart={flowchart} />
+    </header>
+    <div className="workspace">
+      <aside className="sidebarLeft" aria-label="Project imports">
+        <div className="toolbarTop">
+          <FileUploader onProjectLoaded={loadedProject} />
+          <GitHubUploader onProjectLoaded={loadedProject} />
+        </div>
+      </aside>
+      <main className="contentGrid">
+        <section className="card" aria-label="Source code">
+          <h2 className="cardHeader">{project?.projectName || 'Source code'}</h2>
+          <ProjectViewer project={project} selectedFileId={selectedFile?.fileID || null}
+            highlight={highlight} onSelectFile={selectFile} />
+        </section>
+        <section className="card" aria-label="Flowchart">
+          <h2 className="cardHeader">Flowchart</h2>
+          <div className="cardBody"><DiagramManager flowchart={flowchart} selectedFile={selectedFile}
+            fileViewRequest={fileViewRequest} onSourceSelected={selectSource}
+            onGraphFileSelected={fileId => {
+              const file = project?.files.find(file => file.fileID === fileId);
+              if (file) {setSelectedFile(file); setHighlight(null);}
+            }} /></div>
+        </section>
+      </main>
+    </div>
+  </>;
 }
-
-export default app;

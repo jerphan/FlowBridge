@@ -1,5 +1,23 @@
 # Testing
 
+## Diagram integration evidence — 2026-11-08
+
+The latest combined snapshot passes 284 parser unittest cases, 229 backend pytest
+cases, and 16 frontend Vitest cases. Six real-browser flows also pass against the
+local API with offline GitHub fixtures. The separate live public GitHub demo
+import returned 8 Python files, successful analysis, and a working source lookup.
+
+`test_file_flow_regressions.py` adds tests for a shadowed function parameter,
+returning an inlined call, and isolated file-view failure. All four initial-CFG
+failure subcases from the previous integration review now pass with file views
+enabled. Existing multi-level tests retain import links, cross-file navigation,
+recursion guards, distinct call-site identities, and source mapping checks.
+
+Shared export tests verify duplicate names, per-project/revision viewers, failed
+export isolation, safe uploaded text, and cleanup. Use the shared README commands
+and `docs/DIAGRAM_INTEGRATION.md` for frontend/browser setup. Earlier milestones
+below remain historical records.
+
 ## Working standards update — 2026-11-03
 Documentation-only update to AGENTS.md and PROGRESS.md, recorded here for clarity.
 No tests added or executed for this update, and no Python files changed.
@@ -7,7 +25,7 @@ At that earlier documentation-only update, the latest suite was 117 passing test
 See the Phases 9/10 execution section for current evidence.
 
 ## Current evidence
-273 active unittest tests pass on Python 3.12.14. Coverage includes validation,
+284 active unittest tests pass on Python 3.12.14. Coverage includes validation,
 IDs, parsing, feature checks, metadata/symbols, calls, exact CFG connectivity,
 hierarchy, models, projections and full-snapshot editing. See Phases 9/10 actual
 execution results below for baseline failures and final verification. Earlier

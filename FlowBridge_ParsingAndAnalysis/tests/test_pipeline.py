@@ -26,7 +26,8 @@ class PipelineTests(unittest.TestCase):
             self.assertIn(reference.source_node_id,
                           [n.node_id for n in result.graphs[reference.source_graph_id].nodes])
         for graph in result.graphs.values():
-            if graph.graph_type not in ('function', 'module'):
+            if graph.status != 'complete':
+                self.assertEqual(graph.nodes, [])
                 self.assertEqual(graph.edges, [])
 
     def test_calculator_projections(self):
@@ -79,7 +80,9 @@ class PipelineTests(unittest.TestCase):
         function = result.functions[0]
         self.assertEqual(result.graphs[function.graph_id].status, 'unsupported')
         self.assertEqual(result.graphs[function.graph_id].nodes, [])
-        self.assertEqual(len(result.graphs[result.files[0].graph_id].nodes), 2)
+        file_graph = result.graphs[result.files[0].graph_id]
+        self.assertEqual(file_graph.status, 'unsupported')
+        self.assertEqual(file_graph.nodes, [])
         self.check_integrity(result)
 
     def test_invalid_input_has_no_graphs(self):

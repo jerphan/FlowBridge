@@ -53,6 +53,11 @@ class SourceMappingNotFound(CodeManagerError):
     status = 404
 
 
+class DiagramRenderError(CodeManagerError):
+    code = "DIAGRAM_RENDER_FAILED"
+    status = 500
+
+
 class ImportLimitExceeded(CodeManagerError):
     code = "IMPORT_LIMIT_EXCEEDED"
     status = 413

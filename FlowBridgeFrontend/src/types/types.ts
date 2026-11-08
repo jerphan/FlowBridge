@@ -140,3 +140,19 @@ export interface flowchartJSON{
 }
 
 export type FlowchartJSON = flowchartJSON;
+
+export interface SourceSelection {
+    projectId: string;
+    revisionId: number;
+    location: sourceLocation;
+    file: sourceFile;
+}
+
+export interface RenderResult {
+    projectId: string;
+    revisionId: number;
+    status: 'success' | 'partial' | 'failed';
+    fileCount: number;
+    viewerUrl: string;
+    manifestUrl: string;
+}

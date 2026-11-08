@@ -30,16 +30,20 @@ class Phase1ProceduralTests(unittest.TestCase):
         self.assertEqual(result.status, 'success')
         self.assertEqual(len(result.diagnostics), 0)
 
-        # File graph exists and has 1 node for script execution
+        # File graph exists and has complete execution flow
         file_graph = result.graphs[result.files[0].graph_id]
         self.assertEqual(file_graph.graph_type, 'file')
-        self.assertEqual(len(file_graph.nodes), 1)
-        self.assertEqual(file_graph.nodes[0].label, 'script.py execution')
+        file_labels = [n.label for n in file_graph.nodes]
+        self.assertIn('Start', file_labels)
+        self.assertIn('x = 10', file_labels)
+        self.assertIn('y = 20', file_labels)
+        self.assertIn('print(x + y)', file_labels)
+        self.assertIn('End', file_labels)
+        self.assertTrue(len(file_graph.edges) >= 4)
 
         # Module graph exists and is complete
-        mod_graph_id = [ref.target_graph_id for ref in result.graph_references
-                        if ref.source_graph_id == file_graph.graph_id][0]
-        mod_graph = result.graphs[mod_graph_id]
+        mod_graph = [g for g in result.graphs.values() if g.graph_type == 'module'][0]
+        mod_graph_id = mod_graph.graph_id
         self.assertEqual(mod_graph.graph_type, 'module')
         self.assertEqual(mod_graph.status, 'complete')
 
@@ -85,12 +89,11 @@ class Phase1ProceduralTests(unittest.TestCase):
         self.assertEqual(call.target_function_id, result.functions[0].function_id)
         self.assertEqual(call.target_graph_id, result.functions[0].graph_id)
 
-        # File graph has nodes for both 'add' and 'main.py execution'
+        # File graph has nodes for add function and execution flow
         file_graph = result.graphs[result.files[0].graph_id]
-        self.assertEqual(len(file_graph.nodes), 2)
         node_labels = {n.label for n in file_graph.nodes}
         self.assertIn('add', node_labels)
-        self.assertIn('main.py execution', node_labels)
+        self.assertTrue(len(file_graph.nodes) >= 3)
 
         # Module graph has def add(...) statement with reference to function graph
         mod_graph = [g for g in result.graphs.values() if g.graph_type == 'module'][0]

@@ -211,6 +211,7 @@ See the [HTTP contract](#http-contract) for the exact payload.
 | `GET /api/projects/{projectID}/flowchart` | Project ID, optional `revisionId` query parameter | 200, flowchart JSON |
 | `GET /api/projects/{projectID}/mapping` | Project ID, optional `revisionId` query parameter | 200, source-mapping JSON |
 | `GET /api/projects/{projectID}/source-location` | Required `graphId` and `nodeId` query parameters, optional `revisionId` | 200, project/revision IDs, location, original file |
+| `POST /api/projects/{projectID}/render` | Project ID, optional nonnegative `revisionId` | 200, project-scoped SVG viewer and manifest URLs; preserves analysis status |
 
 The import response is the project itself:
 
@@ -347,6 +348,7 @@ passed the relative-path policy.
 | `PROJECT_NOT_FOUND` | 404 | Project not retained in this app instance |
 | `FILE_NOT_FOUND` | 404 | File not in the specified project |
 | `SOURCE_MAPPING_NOT_FOUND` | 404 | Node has no source range in the selected project/revision |
+| `DIAGRAM_RENDER_FAILED` | 500 | SVG export failed; existing viewers and original projects remain intact |
 | `IMPORT_LIMIT_EXCEEDED` | 413 | Configured size/count budget exceeded |
 | `NO_PYTHON_FILES` | 422 | Empty repository/archive or no eligible Python files |
 | `GITHUB_RATE_LIMITED` | 429 | Upstream primary/secondary rate-limit response |
@@ -387,9 +389,10 @@ const imported = await fetch("http://127.0.0.1:8000/api/projects/github", {
 New backend defaults allow local UI origins on ports 5173 and 3000 for localhost
 and 127.0.0.1. Set `create_app(cors_origins=("https://actual-ui-origin",))` when
 integrating another origin. The React/Vite frontend is in `FlowBridgeFrontend/`.
-Its file/ZIP requests use these routes, but the current app still displays a
-placeholder diagram and an embedded editor. The file-view component must be
-mounted and the Start button must call analysis.
+Its file/ZIP/GitHub controls, Start analysis, diagram views, source display,
+node highlighting, and SVG exports are connected. See
+[Diagram and UI integration](DIAGRAM_INTEGRATION.md) for the frontend components
+and browser checks. Code Manager's acquisition methods were not rewritten.
 
 ## Parser and source-mapping handoff
 
@@ -465,7 +468,7 @@ available independently at `GET /api/projects/{projectID}/files/{fileID}`.
 Mapping locations use one-based lines, zero-based UTF-8 byte columns, and
 exclusive end positions. Convert those columns to the editor's coordinates
 before highlighting; JavaScript string indexes are not UTF-8 byte offsets.
-Selecting nodes and applying highlights remain UI/connection-management work.
+The React source viewer performs this conversion when applying highlights.
 
 ## UML revisions
 
@@ -483,15 +486,12 @@ Selecting nodes and applying highlights remain UI/connection-management work.
 
 ## Remaining team integration work
 
-1. Finish UI input/state: add public GitHub input, mount the file viewer, surface
-   upload errors, and send the optional project name as `projectName`.
-2. Connect Start to analysis and retain matching project/revision outputs.
-3. Implement Diagram Manager layout, interactive rendering, view navigation, and export.
-4. Connect node clicks to source lookup, display the returned original file, and
-   convert UTF-8 byte columns before highlighting in the editor.
-5. Run browser integration tests once upload → diagram → node click → source
-   highlight works. Backend integration tests can run now.
-6. Conduct intended-user validation and record actual observations/feedback.
+The import → analysis → diagram → node selection → source-highlight path is
+connected and covered by automated browser checks. Conduct intended-user
+validation and record actual observations/feedback before claiming user acceptance.
+If editing is added, implement full-snapshot revision allocation and stale-result
+handling for edited text. Saved workspaces and account features remain separate
+team scope decisions.
 
 The current single-worker demo uses in-memory storage. Persistence and any
 authentication needed beyond that demo remain separate scope decisions.

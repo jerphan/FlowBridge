@@ -30,7 +30,8 @@ class ImportFeatureTests(unittest.TestCase):
         self.assertEqual(result.diagnostics, [])
         self.assertEqual(result.call_references[0].resolution, 'resolved')
         self.assertIn(result.call_references[0].target_graph_id, result.graphs)
-        self.assertTrue(all(not g.edges for g in result.graphs.values() if g.graph_type != 'function'))
+        project_graph = next(g for g in result.graphs.values() if g.graph_type == 'project')
+        self.assertTrue(len(project_graph.edges) >= 1)
 
     def test_external_import_does_not_imply_resolved_target(self):
         result = ParsingAnalysisService().analyze_project(payload(

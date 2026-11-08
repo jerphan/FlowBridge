@@ -1,5 +1,12 @@
 # Architecture
 
+Current November 8 integration: ProjectGraphBuilder receives built file CFGs and
+project import dependencies. FileFlowBuilder expands only resolved local calls
+with recursion guards; returned calls terminate their caller. The service retains
+initial file-failure isolation and marks later file-view failures explicitly.
+The primary React UI and optional SVG exports consume the same canonical data;
+neither performs parsing or regenerates IDs. See D028 for the current semantics.
+
 Status: typed models, JSON input validation and deterministic IDs are implemented.
 PythonParser, FeatureValidator, ASTAnalyzer, SymbolTable and CFGBuilder are implemented;
 CallResolver supports bounded lexical/import resolution; overview, service and consumer projections are implemented. See PARSING_FEATURES.md for precise APIs. Starter code

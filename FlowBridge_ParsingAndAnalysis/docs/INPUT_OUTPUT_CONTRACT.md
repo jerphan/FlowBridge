@@ -1,5 +1,12 @@
 # Input and output contract
 
+November 8 update (D028): successfully built `file` graphs contain execution nodes
+and edges, including bounded same-file call expansion. `project` edges labeled
+`imports` are dependencies. Cross-file calls use graphReferences to existing
+function graphs. Fields and ID/coordinate conventions are unchanged. Consumers
+must use actual edges and graph statuses instead of assuming file/project edge
+arrays are empty. Earlier dated overview-only descriptions below are superseded.
+
 Status: input models/validation and output model serialization are implemented.
 The input shape is unchanged. Output models follow the previously documented
 shape; automatic analysis and downstream projections are implemented. JSON keys

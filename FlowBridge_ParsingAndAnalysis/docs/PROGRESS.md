@@ -4,8 +4,9 @@
 Function and bounded module CFGs, assignments (including annotated/augmented),
 branches, loops/loop-else, basic try/except, lexical metadata, hierarchy, service,
 and consumer projections are implemented. The current parser suite passes
-273 tests on Python 3.12.14. The combined repository passes 219 backend tests
-and 273 parser tests. See the November 6 integration review below.
+284 tests on Python 3.12.14. The combined repository has 229 passing backend
+cases and 16 passing UI cases, with six browser flows verified. See the
+November 8 integration update below.
 
 The preceding CFG task changed CFGBuilder.py, FeatureValidator and package exports; added
 33 CFG tests and updated earlier feature/integration tests for the expanded subset.
@@ -45,6 +46,28 @@ incomplete. Starter code/tests remain reference-only.
 ## Next recommended task
 Harden compiler-context and resource validation, then verify consumer integration.
 Preserve incomplete lexical-analysis diagnostics for unsupported try clauses and aliases.
+
+## File views and diagram integration — 2026-11-08
+
+Integrated the latest project import links, file execution CFGs, bounded same-file
+call expansion, and cross-file graph navigation. File views now contain real
+execution edges; module/function views remain separately available. Project
+dependency edges carry the label `imports` and are not runtime sequence claims.
+
+Review corrections: expand only resolved calls, preserving parameter/rebinding
+shadowing; make a returned inlined call terminate its caller; publish parsed trees
+only after successful initial file analysis. File-view construction failures have
+an empty failed file view and partial status while valid functions/siblings remain.
+No input fields, IDs, source coordinates, or Code Manager acquisition changed.
+
+Verification: 284 parser tests passed, including all four previously failing
+initial-CFG failure subcases and three new file-flow regressions. Shared backend
+checks cover source lookup through the new file graphs. The React UI renders
+these graphs and follows graph/node tuples for original-source highlighting;
+SVG output uses the same identities. See D028 and the shared diagram handoff.
+
+Next: intended-user validation on the supported subset. Broader Python/compiler
+semantics and resource hardening remain explicitly outside the implemented subset.
 
 ## Parser update integration review — 2026-11-06
 

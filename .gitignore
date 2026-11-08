@@ -41,6 +41,12 @@ htmlcov/
 # Local pipeline generated results
 examples/pipeline_results/
 codemanager_output.json
+rendered_diagrams/
+
+# Frontend dependencies and test output
+node_modules/
+test-results/
+playwright-report/
 
 # OS specific
 .DS_Store

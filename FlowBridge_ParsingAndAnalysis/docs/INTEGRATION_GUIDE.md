@@ -1,5 +1,13 @@
 # Team integration guide
 
+November 8 update: file views now contain real execution edges with bounded
+same-file call expansion; project edges labeled `imports` show dependencies.
+Render actual edge arrays for all graph types. Follow graphReferences for
+cross-file/function navigation, using the graph/node tuple. The React UI now
+implements view selection, source lookup/highlighting, and optional SVG export;
+see the shared `docs/DIAGRAM_INTEGRATION.md`. D028 supersedes earlier statements
+that file/project views always have no edges.
+
 ## Justin: complete source snapshots
 Use Python 3.12+ with the installed package or src on PYTHONPATH. Justin supplies projectID, projectName and stable fileID values. The coordinating backend supplies revisionId; the adapter normalizes names. Send every current
 Python file on every request, including unchanged files. Omit deleted files;

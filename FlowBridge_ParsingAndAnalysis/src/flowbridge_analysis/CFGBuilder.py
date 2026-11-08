@@ -3,7 +3,8 @@ import ast
 from dataclasses import dataclass, field, replace
 
 from .RevisionIds import RevisionIds
-from .models import Diagnostic, EdgeType, FileInput, FlowEdge, FlowNode, GraphModel, GraphReference, NodeType, SourceMapping
+from .models import (CallReference, Diagnostic, EdgeType, FileInput, FlowEdge, FlowNode,
+                     FunctionInfo, GraphModel, GraphReference, NodeType, SourceMapping)
 from .PythonParser import ast_location
 from .FeatureValidator import FeatureValidator
 
@@ -68,6 +69,29 @@ class CFGBuilder:
         except RecursionError:
             return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
                 tree, 'CFG_LIMIT', 'Module exceeds CFG construction recursion capacity.')])
+
+    def build_file(self, tree: ast.Module, file_input: FileInput, ids: RevisionIds,
+                   local_functions: dict[str, ast.FunctionDef] | None = None,
+                   functions_by_id: dict[str, FunctionInfo] | None = None,
+                   call_references: list[CallReference] | None = None) -> CFGResult:
+        """Build a fresh execution CFG for an entire file with function inlining."""
+        if not isinstance(tree, ast.Module):
+            raise TypeError('CFGBuilder.build_file requires an ast.Module')
+        file_input.__post_init__()
+        worker = _FileFlowBuilder(tree, file_input, ids,
+                                  local_functions=local_functions or {},
+                                  functions_by_id=functions_by_id or {},
+                                  call_references=call_references or [])
+        features = FeatureValidator().validate(tree, file_input.file_id)
+        diagnostics = [replace(item, graph_id=worker.graph_id) for item in features.diagnostics]
+        if any(item.severity == 'error' for item in diagnostics):
+            return CFGResult(worker.graph('unsupported', empty=True), diagnostics=diagnostics)
+        worker.diagnostics.extend(diagnostics)
+        try:
+            return worker.build()
+        except RecursionError:
+            return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
+                tree, 'CFG_LIMIT', 'File exceeds CFG construction recursion capacity.')])
 
 
 class _FunctionBuilder:
@@ -346,3 +370,182 @@ class _ModuleBuilder(_FunctionBuilder):
             self.nodes = [n for n in self.nodes if n.node_id != self.end]
             self.mappings = [m for m in self.mappings if m.node_id != self.end]
         return CFGResult(self.graph('complete'), self.mappings, self.diagnostics, self.graph_references)
+
+
+class _FileFlowBuilder(_FunctionBuilder):
+    """Build complete file-level execution CFG with local function inlining and cross-file call links."""
+
+    def __init__(
+        self,
+        tree: ast.Module,
+        file: FileInput,
+        ids: RevisionIds,
+        local_functions: dict[str, ast.FunctionDef],
+        functions_by_id: dict[str, FunctionInfo],
+        call_references: list[CallReference],
+    ) -> None:
+        self.tree = tree
+        self.file = file
+        self.ids = ids
+        self.graph_id = ids.make('graph', 'file', file.file_id)
+        self.graph_type = 'file'
+        self.local_functions = local_functions
+        self.functions_by_id = functions_by_id
+        self.call_references = call_references
+        self.calls_by_loc = {
+            (c.location.start_line, c.location.start_column): c
+            for c in call_references if c.file_id == file.file_id
+        }
+        self.nodes: list[FlowNode] = []
+        self.edges: list[FlowEdge] = []
+        self.mappings: list[SourceMapping] = []
+        self.diagnostics: list[Diagnostic] = []
+        self.graph_references: list[GraphReference] = []
+        self.loops: list[_Loop] = []
+        self.node_count = 0
+        self.exception_target: str | None = None
+        self.exceptional_end: str | None = None
+        self.in_handler = False
+        self.track_exceptions = any(isinstance(node, ast.Try) for node in ast.walk(tree))
+        self.active_call_stack: set[str] = set()
+        self.current_inlined_returns: list[tuple[str, EdgeType]] | None = None
+
+    def graph(self, status: str, empty: bool = False) -> GraphModel:
+        return GraphModel(
+            graph_id=self.graph_id,
+            graph_type='file',
+            status=status,
+            file_id=self.file.file_id,
+            function_id=None,
+            nodes=[] if empty else self.nodes,
+            edges=[] if empty else self.edges,
+        )
+
+    def build(self) -> CFGResult:
+        start = self.node('start', 'Start')
+        self.end = self.node('end', 'End')
+        remaining = self.block(self.tree.body, [(start, 'next')])
+        self.connect(remaining, self.end)
+        if not any(edge.target_id == self.end for edge in self.edges):
+            self.nodes = [n for n in self.nodes if n.node_id != self.end]
+            self.mappings = [m for m in self.mappings if m.node_id != self.end]
+        return CFGResult(self.graph('complete'), self.mappings, self.diagnostics, self.graph_references)
+
+    def statement(self, statement: ast.stmt, incoming: Predecessors) -> Predecessors:
+        if isinstance(statement, ast.FunctionDef):
+            return self.build_function_def(statement, incoming)
+        if isinstance(statement, (ast.Assign, ast.AnnAssign, ast.Expr, ast.Return)):
+            call = self._find_call(statement)
+            if call is not None:
+                return self.build_call(statement, call, incoming)
+        return super().statement(statement, incoming)
+
+    def _find_call(self, statement: ast.stmt) -> ast.Call | None:
+        if isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call):
+            return statement.value
+        if isinstance(statement, (ast.Assign, ast.AnnAssign)) and isinstance(statement.value, ast.Call):
+            return statement.value
+        if isinstance(statement, ast.Return) and isinstance(statement.value, ast.Call):
+            return statement.value
+        calls = [n for n in ast.walk(statement) if isinstance(n, ast.Call)]
+        if len(calls) == 1:
+            return calls[0]
+        return None
+
+    def build_function_def(self, statement: ast.FunctionDef, incoming: Predecessors) -> Predecessors:
+        key = (self.file.file_id, statement.lineno, statement.col_offset, statement.name)
+        target_graph_id = self.ids.make('graph', 'function', *key)
+        current = self.node('function', statement.name, statement)
+        self.connect(incoming, current)
+        self.graph_references.append(GraphReference(
+            source_graph_id=self.graph_id,
+            source_node_id=current,
+            target_graph_id=target_graph_id))
+        return [(current, 'next')]
+
+    def build_call(self, statement: ast.stmt, call: ast.Call, incoming: Predecessors) -> Predecessors:
+        call_ref = self.calls_by_loc.get((call.lineno, call.col_offset))
+        target_fn: FunctionInfo | None = None
+        if call_ref and call_ref.resolution == 'resolved' and call_ref.target_function_id:
+            target_fn = self.functions_by_id.get(call_ref.target_function_id)
+
+        is_ret = isinstance(statement, ast.Return)
+
+        # Same-file function call -> Inline expansion with recursion guard
+        if target_fn and target_fn.file_id == self.file.file_id and target_fn.function_name in self.local_functions:
+            if target_fn.function_id in self.active_call_stack:
+                # Prevent infinite expansion on recursive calls
+                node_type = 'return' if is_ret else 'statement'
+                node = self.node(node_type, f'{self.text(statement)} (recursive)', statement)
+                self.connect(incoming, node)
+                if is_ret:
+                    if self.current_inlined_returns is not None:
+                        self.current_inlined_returns.append((node, 'next'))
+                    else:
+                        self.edge(node, self.end, 'return')
+                    return []
+                return [(node, 'next')]
+
+            self.active_call_stack.add(target_fn.function_id)
+            saved_returns = self.current_inlined_returns
+            self.current_inlined_returns = []
+
+            func_def = self.local_functions[target_fn.function_name]
+            body_exits = self.block(func_def.body, incoming)
+            exits = body_exits + self.current_inlined_returns
+
+            self.current_inlined_returns = saved_returns
+            self.active_call_stack.remove(target_fn.function_id)
+            if is_ret and exits:
+                # Returning a call also terminates its caller after the callee finishes.
+                current = self.node('return', self.text(statement), statement)
+                self.connect(exits, current)
+                if self.current_inlined_returns is not None:
+                    self.current_inlined_returns.append((current, 'next'))
+                else:
+                    self.edge(current, self.end, 'return')
+                return []
+            return exits
+
+        # Cross-file imported call -> Clickable function-call node
+        if target_fn and target_fn.file_id != self.file.file_id:
+            node = self.node('function', self.text(statement), statement)
+            self.connect(incoming, node)
+            self.graph_references.append(GraphReference(
+                source_graph_id=self.graph_id,
+                source_node_id=node,
+                target_graph_id=target_fn.graph_id,
+            ))
+            if is_ret:
+                if self.current_inlined_returns is not None:
+                    self.current_inlined_returns.append((node, 'next'))
+                else:
+                    self.edge(node, self.end, 'return')
+                return []
+            return [(node, 'next')]
+
+        # Builtin, external or unresolved call
+        node_type = 'return' if is_ret else 'statement'
+        node = self.operation(node_type, self.text(statement), statement, incoming,
+                              may_raise=not isinstance(statement, ast.Pass))
+        if is_ret:
+            if self.current_inlined_returns is not None:
+                self.current_inlined_returns.append((node, 'next'))
+            else:
+                self.edge(node, self.end, 'return')
+            return []
+        return [(node, 'next')]
+
+    def build_return(self, statement: ast.Return, incoming: Predecessors) -> Predecessors:
+        can_raise = (self.exception_target is not None) or self.in_handler
+        if self.track_exceptions and can_raise and statement.value is not None:
+            evaluated = self.operation('statement', 'Evaluate return: ' + self.text(statement.value),
+                                       statement.value, incoming)
+            incoming = [(evaluated, 'next')]
+        current = self.node('return', self.text(statement), statement)
+        self.connect(incoming, current)
+        if self.current_inlined_returns is not None:
+            self.current_inlined_returns.append((current, 'next'))
+            return []
+        self.edge(current, self.end, 'return')
+        return []

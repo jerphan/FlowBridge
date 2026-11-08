@@ -4,11 +4,36 @@ Module owner: Justin Bean
 
 Initial verification: November 1, 2026 (America/Chicago)
 
-Latest verification: November 6, 2026 (America/Chicago)
+Latest verification: November 8, 2026 (America/Chicago)
 
 Repository base: `jerphan/CodeToChart`, commit `9fdaf1fa0c898b709bbf443647dcb1f7fb2950e7`
 
 Original implementation branch: `codex/code-manager`
+
+## Diagram and UI fixes, November 8
+
+The integration combines Jerry's React interface with Harsha's latest parser and
+SVG renderer. Code Manager's import/read/registry methods and SourceMappingLayer
+remain unchanged. The Python lock is restored, TypeScript/dependencies aligned,
+and generated dependencies, bytecode, and SVG output are excluded from Git.
+
+| Check | Actual result |
+| --- | --- |
+| Backend pytest | 229 cases passed across the backend suite and focused export checks |
+| Parser unittest | 284 passed, including shadowed calls, terminal inlined returns, and file-failure regressions |
+| Frontend Vitest | 16 passed after a clean `npm ci` |
+| Production frontend build | Passed after a clean install |
+| Real browser and local API | Six flows passed: GitHub + Unicode highlighting; graph navigation/edges/source lookup; SVG export/download; failed-import retention; regular uploads/export isolation; ZIP uploads/duplicate names |
+| Live public GitHub import | HTTP 201; 8 Python files; analysis success with 17 graphs and no diagnostics; source lookup HTTP 200 |
+| Export integrity | Distinct duplicate-basename/function exports, project/revision separation, failed-render isolation, XML validity, safe viewer text, and shutdown cleanup passed |
+| Distribution build and isolated wheel | Passed; installed wheel provides file edges, source lookup, SVG viewing, duplicate-path exports, and excludes bytecode/dependencies |
+| Intended-user validation | **NOT RUN** |
+
+The repeatable browser check uses the real HTTP API with offline GitHub fixtures.
+The separate live public import above used the actual demo repository. The
+existing HTTPX/Starlette TestClient deprecation warning remains non-failing.
+CI now includes frontend tests/build/browser checks as well as backend tests,
+lint, package build, and installed-wheel checks. See DIAGRAM_INTEGRATION.md.
 
 ## Parser update integration verification, November 6
 

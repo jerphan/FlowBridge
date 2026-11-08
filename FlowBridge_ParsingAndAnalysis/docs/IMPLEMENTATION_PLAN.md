@@ -1,10 +1,11 @@
 # Phased implementation plan
 
-Current status: bounded phases 1–9 are integrated; full-snapshot reanalysis and
-final review pass 207 tests. Original numbering below differs from the later
-user phase sequence. Remaining hardening: resource/process limits, complete
-compiler checks, omitted lexical subtrees and consumer integration. Dated
-milestone sections preserve historical evidence. See FINAL_REVIEW.md.
+Current status: bounded analysis, full-snapshot reanalysis, file execution views,
+and diagram/source integration are verified with 284 parser tests. The shared
+backend, UI tests, and browser flow checks are described in the root validation
+record. Original numbering below differs from the later user phase sequence.
+Remaining work includes intended-user validation, resource/process limits, and
+broader compiler semantics. Dated milestones preserve historical evidence.
 
 ## Original Phase 0 — documentation baseline (historical, complete)
 Acceptance: inspect available files; create AGENTS plus all ten required docs;

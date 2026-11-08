@@ -16,9 +16,9 @@ Presenter: Justin Bean
 
 ## Slide 3 - Verification and team handoff
 
-- Passed 190 Code Manager/integration tests with 97% backend statement coverage; Harsha's separate 219 parser tests also pass.
+- Passed 229 backend/integration cases, 284 parser cases, 16 UI cases, and six browser flow checks.
 - Used FastAPI and pytest from the proposed backend stack, with working project/file retrieval endpoints.
-- Connected Code Manager to Harsha's parser; next are diagram rendering, UI wiring, and source highlighting. Intended-user validation remains NOT RUN.
+- Connected imports to parsing, diagrams, source highlights, and SVG exports. Intended-user validation remains NOT RUN.
 
 The automated test count is the verified result for this implementation snapshot.
 If the code changes, rerun tests and update these bullets with the new actual result.
