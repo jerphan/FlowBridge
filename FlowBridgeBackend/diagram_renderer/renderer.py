@@ -1,5 +1,4 @@
 """SVG Diagram Renderer and HTML Viewer Generator for FlowBridge."""
-
 import html
 
 from .models import RenderedEdge, RenderedGraph, RenderedNode
@@ -22,6 +21,12 @@ class DiagramRenderer:
     <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
     </marker>
+    <marker id="arrow-exception" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d32f2f" />
+    </marker>
+    <marker id="arrow-import" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1565c0" />
+    </marker>
     <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
       <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
     </filter>
@@ -32,7 +37,9 @@ class DiagramRenderer:
     .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .edge-true { stroke: #2e7d32; }
     .edge-false { stroke: #c62828; }
-    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; stroke-width: 1.6; }
+    .edge-exception { stroke: #d32f2f; stroke-dasharray: 4,3; stroke-width: 1.8; }
+    .edge-import { stroke: #1565c0; stroke-width: 2.0; }
     .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
@@ -67,6 +74,12 @@ class DiagramRenderer:
         elif edge.edge_type == "false":
             marker = "url(#arrow-false)"
             cls += " edge-false"
+        elif edge.edge_type in ("exception", "exceptional"):
+            marker = "url(#arrow-exception)"
+            cls += " edge-exception"
+        elif edge.label == "imports":
+            marker = "url(#arrow-import)"
+            cls += " edge-import"
         elif edge.is_back_edge:
             cls += " edge-back"
 
@@ -76,14 +89,15 @@ class DiagramRenderer:
 
         edge_svg = f'  <path d="{path_d}" class="{cls}" marker-end="{marker}" />'
 
-        # Label
+        # Label with dynamic pill background width
         lbl = edge.label or (edge.edge_type if edge.edge_type in ("true", "false") else None)
         if lbl and len(pts) >= 2:
             mid_idx = len(pts) // 2
             mx = (pts[mid_idx - 1][0] + pts[mid_idx][0]) / 2.0
             my = (pts[mid_idx - 1][1] + pts[mid_idx][1]) / 2.0 - 5.0
-            edge_svg += f'\n  <rect x="{mx - 18:.1f}" y="{my - 9:.1f}" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>'
-            edge_svg += f'\n  <text x="{mx:.1f}" y="{my + 2:.1f}" class="edge-label">{html.escape(lbl)}</text>'
+            rect_w = max(36.0, len(lbl) * 7.5 + 16.0)
+            edge_svg += f'\n  <rect x="{mx - rect_w / 2.0:.1f}" y="{my - 9:.1f}" width="{rect_w:.1f}" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>'
+            edge_svg += f'\n  <text x="{mx:.1f}" y="{my + 3:.1f}" class="edge-label">{html.escape(lbl)}</text>'
 
         return edge_svg
 
@@ -92,87 +106,90 @@ class DiagramRenderer:
         cx, cy = x + w / 2.0, y + h / 2.0
         label_text = html.escape(node.label)
         click_attr = (
-            f' class="clickable" data-target-graph="{html.escape(node.target_graph_id, quote=True)}"'
-            if node.is_clickable and node.target_graph_id
-            else ""
+            f' class="clickable" data-target-graph="{html.escape(node.target_graph_id or "", quote=True)}"'
+            if node.is_clickable else ""
         )
 
+        loc_attrs = []
+        if node.source_location:
+            fid = node.source_location.get("fileId")
+            sline = node.source_location.get("startLine")
+            eline = node.source_location.get("endLine")
+            if fid:
+                loc_attrs.append(f'data-file-id="{html.escape(str(fid), quote=True)}"')
+            if sline is not None:
+                loc_attrs.append(f'data-start-line="{html.escape(str(sline), quote=True)}"')
+            if eline is not None:
+                loc_attrs.append(f'data-end-line="{html.escape(str(eline), quote=True)}"')
+        loc_str = (" " + " ".join(loc_attrs)) if loc_attrs else ""
+
         node_body = []
-        node_body.append(f'  <g id="{html.escape(node.node_id, quote=True)}"{click_attr}>')
+        node_id = html.escape(node.node_id, quote=True)
+        node_body.append(f'  <g id="{node_id}" data-node-id="{node_id}"{loc_str}{click_attr}>')
 
         if node.node_type == "start":
-            node_body.append(
-                f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h / 2.0:.1f}" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>'
-            )
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#1b5e20" font-weight="600">{label_text}</text>'
-            )
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h/2.0:.1f}" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#1b5e20" font-weight="600">{label_text}</text>')
 
         elif node.node_type == "end":
-            node_body.append(
-                f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h / 2.0:.1f}" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>'
-            )
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#263238" font-weight="600">{label_text}</text>'
-            )
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h/2.0:.1f}" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#263238" font-weight="600">{label_text}</text>')
 
         elif node.node_type == "condition":
             # Diamond shape
-            pts = f"{cx:.1f},{y:.1f} {x + w:.1f},{cy:.1f} {cx:.1f},{y + h:.1f} {x:.1f},{cy:.1f}"
-            node_body.append(
-                f'    <polygon points="{pts}" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>'
-            )
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#e65100" font-weight="600">{label_text}</text>'
-            )
+            pts = f"{cx:.1f},{y:.1f} {x+w:.1f},{cy:.1f} {cx:.1f},{y+h:.1f} {x:.1f},{cy:.1f}"
+            node_body.append(f'    <polygon points="{pts}" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#e65100" font-weight="600">{label_text}</text>')
 
         elif node.node_type == "return":
             # Terminal return shape
-            node_body.append(
-                f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>'
-            )
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#bf360c">{label_text}</text>'
-            )
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text" fill="#bf360c">{label_text}</text>')
 
         elif node.node_type == "file":
-            # File card shape
-            node_body.append(
-                f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#nodeShadow)"/>'
-            )
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy - 5:.1f}" class="node-text" font-weight="600" fill="#0d47a1">📄 {label_text}</text>'
-            )
-            if node.is_clickable:
-                node_body.append(
-                    f'    <text x="{cx:.1f}" y="{cy + 13:.1f}" class="node-subtext" fill="#1565c0">🔍 View File Flowchart ➔</text>'
-                )
+            # File card shape with status badge indication
+            status = node.status or "complete"
+            if status == "unsupported":
+                fill = "#fff8e1"
+                stroke = "#f57c00"
+                icon = "⚠ "
+                title_color = "#e65100"
+                subtext = "⚠ Unsupported Feature"
+                sub_color = "#d84315"
+            elif status == "failed":
+                fill = "#ffebee"
+                stroke = "#d32f2f"
+                icon = "✕ "
+                title_color = "#c62828"
+                subtext = "✕ Analysis Failed"
+                sub_color = "#b71c1c"
+            else:
+                fill = "#e3f2fd"
+                stroke = "#1976d2"
+                icon = "📄 "
+                title_color = "#0d47a1"
+                subtext = "🔍 View File Flowchart ➔" if node.is_clickable else "📄 File Module"
+                sub_color = "#1565c0"
+
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy - 6:.1f}" class="node-text" font-weight="600" fill="{title_color}">{icon}{label_text}</text>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy + 13:.1f}" class="node-subtext" fill="{sub_color}">{subtext}</text>')
 
         elif node.node_type == "function":
             # Function block with drilldown indication
             fill = "#e0f2f1" if node.is_clickable else "#f3e5f5"
             stroke = "#00796b" if node.is_clickable else "#7b1fa2"
-            node_body.append(
-                f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2" filter="url(#nodeShadow)"/>'
-            )
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2" filter="url(#nodeShadow)"/>')
             icon = "⚡ "
             y_offset = -6 if node.is_clickable else 0
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy + y_offset:.1f}" class="node-text" font-weight="600" fill="{stroke}">{icon}{label_text}</text>'
-            )
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy + y_offset:.1f}" class="node-text" font-weight="600" fill="{stroke}">{icon}{label_text}</text>')
             if node.is_clickable:
-                node_body.append(
-                    f'    <text x="{cx:.1f}" y="{cy + 12:.1f}" class="node-subtext" fill="{stroke}">🔍 Drill Down ➔</text>'
-                )
+                node_body.append(f'    <text x="{cx:.1f}" y="{cy + 12:.1f}" class="node-subtext" fill="{stroke}">🔍 Drill Down ➔</text>')
 
         else:
             # Standard statement
-            node_body.append(
-                f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>'
-            )
-            node_body.append(
-                f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text">{label_text}</text>'
-            )
+            node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>')
+            node_body.append(f'    <text x="{cx:.1f}" y="{cy:.1f}" class="node-text">{label_text}</text>')
 
         node_body.append("  </g>")
         return "\n".join(node_body)
@@ -181,23 +198,15 @@ class DiagramRenderer:
         """Assembles all rendered SVGs into a single interactive browser viewer."""
         graphs_json = []
         for g in rendered_graphs:
-            graphs_json.append(
-                {
-                    "id": g.graph_id,
-                    "type": g.graph_type,
-                    "title": g.title,
-                    "svg": g.svg_content,
-                }
-            )
+            graphs_json.append({
+                "id": g.graph_id,
+                "type": g.graph_type,
+                "title": g.title,
+                "svg": g.svg_content,
+            })
 
         import json
-
-        graphs_payload = (
-            json.dumps(graphs_json)
-            .replace("<", "\\u003c")
-            .replace(">", "\\u003e")
-            .replace("&", "\\u0026")
-        )
+        graphs_payload = json.dumps(graphs_json).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
         return f"""<!DOCTYPE html>
 <html lang="en">
@@ -240,7 +249,6 @@ class DiagramRenderer:
   <header>
     <h3 style="margin:0;">FlowBridge Visualizer — {html.escape(project_name)}</h3>
     <span id="levelIndicator" style="font-size: 14px; opacity: 0.9;">Project View</span>
-    <select id="graphPicker" aria-label="Diagram view"></select>
   </header>
 
   <div class="breadcrumbs" id="breadcrumbs">
@@ -262,24 +270,11 @@ class DiagramRenderer:
 
     // Find root project graph or first graph
     let rootGraph = graphs.find(g => g.type === 'project') || graphs[0];
-    const picker = document.getElementById('graphPicker');
-    for (const graph of graphs) {{
-      const option = document.createElement('option');
-      option.value = graph.id;
-      option.textContent = graph.title;
-      picker.append(option);
-    }}
-    picker.addEventListener('change', () => navigateTo(picker.value));
-    document.getElementById('svgContainer').addEventListener('click', event => {{
-      const node = event.target.closest('[data-target-graph]');
-      if (node) onNodeDrillDown(node.getAttribute('data-target-graph'));
-    }});
 
     function navigateTo(graphId) {{
       const graph = graphMap.get(graphId);
       if (!graph) return;
 
-      // Update stack
       const existingIdx = navStack.indexOf(graphId);
       if (existingIdx !== -1) {{
         navStack = navStack.slice(0, existingIdx + 1);
@@ -297,26 +292,25 @@ class DiagramRenderer:
 
       document.getElementById('svgContainer').innerHTML = g.svg;
       document.getElementById('levelIndicator').innerText = g.type.toUpperCase() + " VIEW";
-      picker.value = currentId;
 
-      // Render breadcrumbs
       const bc = document.getElementById('breadcrumbs');
       bc.replaceChildren();
       navStack.forEach((gid, idx) => {{
         const item = graphMap.get(gid);
         const isLast = idx === navStack.length - 1;
         const name = item.title.split(' — ')[1] || item.title;
-        const crumb = document.createElement('button');
-        crumb.className = 'breadcrumb-item' + (isLast ? ' active' : '');
+        const crumb = document.createElement('span');
+        crumb.className = isLast ? 'breadcrumb-item active' : 'breadcrumb-item';
         crumb.textContent = name;
-        crumb.disabled = isLast;
-        crumb.addEventListener('click', () => navigateTo(gid));
-        bc.append(crumb);
+        if (!isLast) {{
+          crumb.addEventListener('click', () => navigateTo(gid));
+        }}
+        bc.appendChild(crumb);
         if (!isLast) {{
           const separator = document.createElement('span');
           separator.className = 'separator';
           separator.textContent = '/';
-          bc.append(separator);
+          bc.appendChild(separator);
         }}
       }});
     }}
@@ -326,6 +320,11 @@ class DiagramRenderer:
         navigateTo(targetGraphId);
       }}
     }}
+
+    document.getElementById('svgContainer').addEventListener('click', (event) => {{
+      const node = event.target.closest('[data-target-graph]');
+      if (node) onNodeDrillDown(node.dataset.targetGraph);
+    }});
 
     function exportCurrentSVG() {{
       const currentId = navStack[navStack.length - 1];
@@ -337,7 +336,7 @@ class DiagramRenderer:
       a.href = url;
       a.download = `${{g.title.replace(/[^a-zA-Z0-9]/g, '_')}}.svg`;
       a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 0);
+      URL.revokeObjectURL(url);
     }}
 
     if (rootGraph) {{

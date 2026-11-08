@@ -122,7 +122,8 @@ class MultiLevelViewsTests(unittest.TestCase):
         # Verify edge continuity: return connects to print(result), which connects to End
         label_map = {n.node_id: n.label for n in file_graph.nodes}
         edges = [(label_map[e.source_id], label_map[e.target_id]) for e in file_graph.edges]
-        self.assertIn(('return x + y', 'print(result)'), edges)
+        self.assertIn(('return x + y', 'result = calculate()'), edges)
+        self.assertIn(('result = calculate()', 'print(result)'), edges)
         self.assertIn(('print(result)', 'End'), edges)
 
     def test_file_view_multiple_local_calls(self):

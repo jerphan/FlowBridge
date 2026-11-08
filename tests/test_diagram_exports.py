@@ -25,6 +25,31 @@ def imported_file(client, source=b"def check():\n    return 1\n", name="Demo"):
     return response.json()
 
 
+def test_render_payload_and_original_source_lookup_agree(export_client):
+    source = 'message = "café 😀"\r\n'.encode()
+    project = imported_file(export_client, source)
+    url = f"/api/projects/{project['projectID']}"
+    response = export_client.post(url + "/render")
+    assert response.status_code == 200
+    rendered = response.json()
+    assert rendered["analysisStatus"] == rendered["status"] == "success"
+    assert set(rendered["graphs"]) == set(rendered["flowchart"]["graphs"])
+    file_graph = next(g for g in rendered["flowchart"]["graphs"].values() if g["graphType"] == "file")
+    node = next(n for n in file_graph["nodes"] if n["sourceLocation"])
+    indexed = rendered["sourceMapping"]["nodes"][node["nodeId"]]
+    original = export_client.get(url + "/source-location", params={
+        "graphId": file_graph["graphId"], "nodeId": node["nodeId"],
+    })
+    assert original.status_code == 200
+    selected = original.json()
+    assert selected["location"] == node["sourceLocation"]
+    assert indexed["span"]["fileId"] == selected["file"]["fileID"]
+    assert indexed["span"]["filePath"] == selected["file"]["filePath"]
+    assert selected["file"]["fileContent"].encode() == source
+    assert all('onclick=' not in graph["svg"] for graph in rendered["graphs"].values())
+    assert export_client.post(url + "/render").json() == rendered
+
+
 def test_duplicate_basenames_and_function_names_have_distinct_exports(export_client, make_zip):
     source = b"def check():\n    return 1\ndef check():\n    return 2\n"
     project = export_client.post(

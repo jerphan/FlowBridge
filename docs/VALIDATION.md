@@ -19,11 +19,11 @@ and generated dependencies, bytecode, and SVG output are excluded from Git.
 
 | Check | Actual result |
 | --- | --- |
-| Backend pytest | 229 cases passed across the backend suite and focused export checks |
-| Parser unittest | 284 passed, including shadowed calls, terminal inlined returns, and file-failure regressions |
-| Frontend Vitest | 16 passed after a clean `npm ci` |
+| Backend pytest | 238 passed, including source-index/API agreement and export checks |
+| Parser unittest | 301 passed, including finally transfers, relative imports, shadowed calls, terminal inlined returns, and failed-file isolation |
+| Frontend Vitest | 22 passed after a clean `npm ci` |
 | Production frontend build | Passed after a clean install |
-| Real browser and local API | Six flows passed: GitHub + Unicode highlighting; graph navigation/edges/source lookup; SVG export/download; failed-import retention; regular uploads/export isolation; ZIP uploads/duplicate names |
+| Real browser and local API | 13 scenarios passed: GitHub/file/ZIP imports; nodes/edges; drill-down; source highlighting; standalone viewer; SVG/PNG downloads; PDF print-page wiring; duplicate basenames; failed imports; syntax diagnostics; stale-render rejection. No browser JavaScript errors. |
 | Live public GitHub import | HTTP 201; 8 Python files; analysis success with 17 graphs and no diagnostics; source lookup HTTP 200 |
 | Export integrity | Distinct duplicate-basename/function exports, project/revision separation, failed-render isolation, XML validity, safe viewer text, and shutdown cleanup passed |
 | Distribution build and isolated wheel | Passed; installed wheel provides file edges, source lookup, SVG viewing, duplicate-path exports, and excludes bytecode/dependencies |
@@ -32,6 +32,9 @@ and generated dependencies, bytecode, and SVG output are excluded from Git.
 The repeatable browser check uses the real HTTP API with offline GitHub fixtures.
 The separate live public import above used the actual demo repository. The
 existing HTTPX/Starlette TestClient deprecation warning remains non-failing.
+The 561 backend/parser/UI cases are separate from the 13 browser scenarios.
+The native operating-system print dialog was not tested. The fresh installed
+wheel was tested outside the checkout, including CLI startup.
 CI now includes frontend tests/build/browser checks as well as backend tests,
 lint, package build, and installed-wheel checks. See DIAGRAM_INTEGRATION.md.
 

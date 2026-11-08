@@ -2,8 +2,8 @@
 
 ## Diagram integration evidence — 2026-11-08
 
-The latest combined snapshot passes 284 parser unittest cases, 229 backend pytest
-cases, and 16 frontend Vitest cases. Six real-browser flows also pass against the
+The latest combined snapshot passes 301 parser unittest cases, 238 backend pytest
+cases, and 22 frontend Vitest cases. Thirteen real-browser scenarios also pass against the
 local API with offline GitHub fixtures. The separate live public GitHub demo
 import returned 8 Python files, successful analysis, and a working source lookup.
 
@@ -12,6 +12,13 @@ returning an inlined call, and isolated file-view failure. All four initial-CFG
 failure subcases from the previous integration review now pass with file views
 enabled. Existing multi-level tests retain import links, cross-file navigation,
 recursion guards, distinct call-site identities, and source mapping checks.
+
+`test_finally_regressions.py` verifies cleanup before return, raise, break and
+continue in function and inlined file views; cleanup overriding returns;
+nested cleanup; independent normal/terminal continuations; and propagation from
+an inner unmatched handler to an outer handler. Relative package import tests
+now require complete file graphs. Failure injection also checks calls into a
+failed sibling file, without running any submitted source.
 
 Shared export tests verify duplicate names, per-project/revision viewers, failed
 export isolation, safe uploaded text, and cleanup. Use the shared README commands

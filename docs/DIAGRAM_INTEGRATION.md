@@ -1,103 +1,112 @@
 # Diagram and UI integration
 
-React Flow is the application's main diagram interface. Harsha's SVG renderer is
-the export path. Both consume the same parser graph IDs and source mappings;
-neither executes uploaded code. Existing Code Manager acquisition and Grace's
-SourceMappingLayer are unchanged.
+The application keeps Harsha's final SVG canvas, hierarchical layout, upload
+modal, diagnostic panels, breadcrumbs and export modal. The backend connects
+these to Code Manager and preserves Grace's source-location API.
 
 ## Components
 
-| File | Responsibility |
+| Component | Responsibility |
 | --- | --- |
-| `FlowBridgeFrontend/src/api.ts` | Shared API URL and user-facing request errors |
-| `components/GitHubUploader.tsx` | Native dialog, controlled URL, JSON import request, cancellation/errors |
-| `components/FileUploader.tsx` | Python/ZIP multipart requests with optional `projectName` |
-| `components/StartButton.tsx` | Analyze the current project and reject stale/mismatched responses |
-| `diagram.ts` | Dagre layout and graph-to-React-Flow node/edge conversion |
-| `components/DiagramManager.tsx` | All four graph types, Back/view selection, node lookup and drill-down |
-| `sourceRange.ts`, `components/ProjectViewer.tsx` | Original source display and UTF-8-byte to JavaScript-index highlighting |
-| `components/ExportButton.tsx` | Request exports and expose the returned viewer link |
-| `FlowBridgeBackend/diagram_renderer/` | SVG layout, export manifest, and standalone viewer |
+| `components/UploadModal.tsx` | Python/ZIP multipart requests and GitHub URL JSON requests; errors and cancellation |
+| `App.tsx` | Current project, rendering request, file identity, graph navigation and stale-response checks |
+| `components/StartButton.tsx` | Start generation and indicate its pending state |
+| `components/FlowchartCanvas.tsx` | Display SVGs, pan/zoom, graph-node clicks and highlights |
+| `components/SourceCodeViewer.tsx` | Display original decoded source and paths; connect source lines to graph nodes |
+| `components/ExportModal.tsx` | Download selected SVG/PNG or open a PDF print page |
+| `FlowBridgeBackend/api.py` | Import, analysis, original-source lookup and isolated render endpoints |
+| `FlowBridgeBackend/source_mapping.py` | Grace's canonical graph/node-to-source lookup |
+| `FlowBridgeBackend/SourceMapping/` | Derived node/line index used by the SVG interface |
+| `FlowBridgeBackend/diagram_renderer/` | Layout, SVG generation, manifest and standalone viewer |
 
-Frontend paths in this table are relative to `FlowBridgeFrontend/src/` unless stated otherwise.
+Frontend component paths are relative to `FlowBridgeFrontend/src/`.
+Earlier React Flow components remain available for compatibility; the main
+application uses the final SVG interface.
 
 ## Request flow
 
-1. Imports return one `PyProject`; failed imports leave the current UI project intact.
-   GitHub requests send `{ "url": "https://github.com/owner/repo" }`, with an optional
-   `projectName`. Python/ZIP requests send multipart `file` and optional `projectName`.
-2. Start calls `GET /api/projects/{projectID}/flowchart?revisionId=1`. Project and
-   revision identity must match before the UI accepts the response.
-3. Diagram Manager renders actual `nodes` and `edges` from the selected graph.
-   `edgeId`, `sourceId`, and `targetId` are preserved; labels such as true/false,
-   return, back, and imports remain visible. View selection covers project, file,
-   module, and function graphs. Failed/unsupported views display their status.
-4. A source-backed node calls `/source-location` with its graph/node IDs and
-   current revision. The returned original file becomes the source selection.
-   Python lines are one-based; columns are zero-based UTF-8 bytes with an exclusive
-   end. The UI converts these to UTF-16 string indexes, including emoji/Unicode.
-5. Double-click navigation follows `graphReferences` using the graph/node tuple.
-   Synthetic Start/End nodes have no source range. Project file nodes can open
-   their child graph directly.
+1. Python, ZIP and GitHub imports return the same `PyProject`. File IDs, relative
+   paths and original decoded source remain unchanged. Only Python source files
+   are collected; parsing support is a separate stage.
+2. GitHub sends `{ "url": "https://github.com/owner/repo" }`, with optional
+   `projectName`. Python/ZIP uploads send multipart `file` and `projectName`.
+   A failed or dismissed import does not replace the current project.
+3. Start sends `POST /api/projects/{projectID}/render?revisionId=1`. The pipeline
+   analyzes the snapshot, lays out the graphs, creates SVGs and derives a source
+   index. Uploaded Python is never executed.
+4. The response includes `projectId`, `revisionId`, `status`, `projectName`,
+   `projectGraphId`, `graphs`, `flowchart`, `sourceMapping`, navigation indexes,
+   `diagnostics`, `analysisFiles`, `analysisStatus`, `viewerUrl` and
+   `manifestUrl`. Each `graphs` entry has its ID, type, title, SVG and dimensions.
+   Backend module graphs remain available in the response alongside file views.
+5. Linked node clicks open file/function graphs; statement clicks highlight source
+   lines. Source-line clicks highlight a mapped node. File selection uses file IDs;
+   full relative paths distinguish files with identical basenames.
+6. Importing another project cancels the pending render. Responses must match the
+   current request, project ID and revision before they update the screen.
 
-The parser's new file CFG includes bounded same-file call expansion. Expansion
-requires a resolved CallReference: shadowed or unresolved calls remain atomic.
-`return other_function()` terminates its caller after expansion. Failed initial
-file analysis is not reused by file-view construction. A later file-view failure
-has an empty failed file graph while valid function/sibling views remain available.
+The existing `/analyze`, `/flowchart`, `/mapping`, original-file and
+`/source-location` routes remain available. Source lookup accepts the project,
+revision, graph ID and node ID, and returns the original file and source range.
+Python lines are one-based; columns are zero-based UTF-8 bytes with an exclusive
+end. The current SVG interface highlights whole source lines. Canonical mappings
+and graph references continue to identify nodes by their owning graph and node.
 
-## SVG exports
+## Parser behavior
 
-`POST /api/projects/{projectID}/render?revisionId=1` returns:
+File views retain bounded same-file call expansion. Only resolved calls can be
+expanded; shadowed calls remain atomic. Returning an expanded call ends its caller
+before following statements. Function-view calls retain the final branch's
+clickable function nodes and graph references.
 
-```json
-{
-  "projectId": "returned project ID",
-  "revisionId": 1,
-  "status": "success",
-  "fileCount": 3,
-  "viewerUrl": "/viewer/project-id/1/",
-  "manifestUrl": "/viewer/project-id/1/manifest.json"
-}
-```
+Try/except/else/finally and explicit raise are supported within the procedural
+subset. Cleanup runs before outgoing returns, exceptions, breaks and continues.
+Separate cleanup copies retain separate continuations; cleanup may override an
+earlier transfer. Nested unmatched exceptions reach enclosing handlers. Exception
+edges are conservative possible paths, not inferred runtime exception types.
 
-Use the actual returned URLs. Output is isolated per application, project, and
-revision. Completed exports publish together; an export failure cannot replace
-another project's viewer. The viewer route exists even without checked-in
-generated diagrams. Exports are temporary and are removed when the app shuts down.
+Direct relative package imports use the existing static resolver and are no
+longer rejected by feature validation. Star, future, conditional/local and dynamic
+imports retain their documented restrictions.
 
-Physical SVG filenames use file/function list positions, not uploaded basenames.
-This preserves `app/main.py` and `tests/main.py`, including duplicate function
-names. `manifest.json` maps every exported graph ID to its path and status, keeping
-the original file path as metadata. The viewer supports navigation and SVG downloads.
-Uploaded names/code remain text in SVG/HTML; embedded viewer data escapes script
-delimiters and breadcrumbs use DOM text nodes.
+Initial CFG failures discard that file's partial state and keep valid siblings.
+Later file-view failures produce an empty failed file graph while retaining valid
+function graphs. Analysis diagnostics and partial status are preserved.
+
+## Saved exports
+
+Use the returned `viewerUrl` and `manifestUrl`. Each application owns a temporary
+export directory; project and revision subdirectories prevent overwriting another
+project. A completed render and its response publish together and are immutable
+for that project/revision. Shutdown removes the temporary exports.
+
+Physical filenames use file/function positions. Duplicate basenames and repeated
+function names therefore produce distinct SVGs. The manifest records graph IDs,
+original relative paths and statuses. Generated diagrams are ignored by Git.
+
+SVGs use data attributes for navigation. React attaches its own click handlers;
+the standalone viewer delegates clicks to those attributes. Uploaded names and
+code remain text, including in viewer breadcrumbs and PDF titles.
 
 ## Run and test
 
-From the repository root, `uv sync --locked` then run the backend on port 8000.
-From `FlowBridgeFrontend`, `npm ci` then `npm run dev` uses the default API URL.
-Set `VITE_API_BASE_URL` before starting/building for a different API. Configure the
-backend's `cors_origins` when using a different UI origin.
+From the root: `uv sync --locked`, then
+`uv run uvicorn FlowBridgeBackend.api:app --host 127.0.0.1 --port 8000`.
+From `FlowBridgeFrontend`: `npm ci` and `npm run dev`.
+`VITE_API_BASE_URL` overrides the default API URL. Other UI origins require the
+matching backend `cors_origins`.
 
-`uv run python scripts/check_modules.py` runs backend pytest and parser unittest
-suites. `npm test` checks forms, cancellation/stale responses, layout, duplicate
-paths, and Unicode highlighting. `npm run build` checks TypeScript and Vite.
+Run `uv run python scripts/check_modules.py`, `npm test`, and `npm run build`.
+For real-browser checks, install Chromium with `npx playwright install chromium`,
+then run `npm run test:browser`. It starts an isolated API on 8877 and UI on 5188
+and exercises 13 scenarios with offline GitHub metadata/archive fixtures.
+Those ports must be free. Results go to ignored `test-results/`.
 
-For the browser check, run `npx playwright install chromium`, then `npm run test:browser`.
-It starts an isolated API on 8877 and UI on 5188, uses the real API with mocked
-GitHub archive responses, and checks GitHub/file/ZIP imports, edges, navigation,
-source highlights, failed imports, and SVG download/isolation. Those ports must
-be free. Browser results/failure screenshots go to ignored `test-results/`.
+The browser check uses the root `.venv` by default. `FLOWBRIDGE_PYTHON` can select
+another installed environment, and `FLOWBRIDGE_BROWSER_EXECUTABLE` can select an
+installed Chromium browser. PDF checking verifies the print page and headless
+rendering; the native operating-system print dialog is not automated.
 
-The check uses the root `.venv` Python by default. `FLOWBRIDGE_PYTHON` can point to
-another interpreter with the locked project installed. `FLOWBRIDGE_BROWSER_EXECUTABLE`
-can point to an installed Chromium browser instead of downloading Playwright's browser.
-
-## Boundaries
-
-The existing supported Python subset still applies; this is not runtime execution
-or complete Python name/exception analysis. Source snapshots and the registry are
-in memory. Editing with new revision allocation, saved workspaces/authentication,
-and intended-user validation remain separate work. Generated dependencies,
-bytecode, browser results, and diagram output are ignored by Git.
+Source snapshots remain in memory. Editing, saved workspaces, accounts and full
+Python runtime semantics are outside this integration. See `VALIDATION.md` for
+executed checks and the distinction between automated checks and user validation.

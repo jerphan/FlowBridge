@@ -323,3 +323,27 @@ FeatureValidator while retaining structural file views. Previously the blanket
 module-execution rejection contradicted the supported call-resolution subset.
 No public schema change or runtime importing. Relative/star/future/conditional/local
 import forms retain explicit restrictions. Missing targets remain nonresolved.
+
+## D029 — final renderer integration and error corrections (2026-11-08)
+
+The user requested retaining teammates' final changes while fixing the reviewed
+flow, identity, request ordering, export, installation and integration errors.
+Keep the final SVG interface/layout and function-call nodes. Accept the resolver's
+bounded direct relative imports without changing the public input or output fields.
+
+Finally cleanup runs before all outgoing transfers. Separate copies preserve each
+continuation, and a terminal cleanup transfer overrides the pending transfer.
+Alternatives rejected: skipping cleanup on terminal paths, or joining normal and
+return paths through one cleanup copy. Both produce incorrect reachable paths.
+Copies retain AST spans and receive distinct deterministic node/edge IDs.
+
+Construct CFGs per file before publishing them. On construction failure, discard
+that file's partial metadata/mappings and resolve remaining calls again, so valid
+siblings cannot point to missing function graphs. Keep later file-view failures
+isolated from valid function graphs. Retain conservative exception diagnostics.
+
+The SVG response adds the final branch's source index and diagram fields while
+preserving Grace's source-location endpoint, canonical graph/node tuple identity,
+original source, and project/revision identity. Export storage is application-owned
+and isolated by project/revision. Restore installed-package and compatibility
+imports. No uploaded code is executed or imported, and no database is introduced.

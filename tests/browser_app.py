@@ -15,8 +15,9 @@ archive = io.BytesIO()
 with zipfile.ZipFile(archive, "w") as files:
     sources = {
         "helper.py": b"def adjust(value):\r\n    if value > 0:\r\n        return value + 1\r\n    return 0\r\n",
-        "main.py": 'from helper import adjust\r\ntotal: int = adjust(2)\r\nmessage = "café 😀"\r\n'.encode(),
-        "nested/main.py": b"def nested():\n    return 2\n",
+        "app/main.py": 'from helper import adjust\r\nanswer = adjust(2)\r\nmessage = "café 😀"\r\n'.encode(),
+        "tools/main.py": b"def tool():\n    return 2\n",
+        "README.md": b"Only Python files should be imported.",
     }
     for name, source in sources.items():
         files.writestr(f"demo-repo-abcdef1/{name}", source)

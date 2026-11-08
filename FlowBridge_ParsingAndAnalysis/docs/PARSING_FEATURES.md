@@ -1,5 +1,17 @@
 # Python parsing and feature support
 
+## Current integration — November 8 (D029)
+
+Supported procedural features include nested try/except/else/finally, explicit
+raise, exception aliases, and direct relative package imports. Cleanup runs on
+normal and terminal paths; cleanup's terminal transfer can override the pending
+one. Function-view calls use resolved function nodes and graph references.
+File views retain bounded same-file expansion and terminal-return behavior.
+Exception types and complete Python runtime name resolution are not inferred.
+Classes, async, try-star, dynamic execution and star/future/local/conditional
+imports remain outside the subset. These statements supersede the earlier
+milestone restrictions below. Current evidence: 301 parser tests passed.
+
 ## File execution views — November 8
 
 File graphs contain their own CFG, preserving function definition navigation and

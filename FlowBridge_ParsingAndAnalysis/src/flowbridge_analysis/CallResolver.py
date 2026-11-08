@@ -33,6 +33,7 @@ class CallResolver:
         if not set(by_file).issubset({f.file_id for f in files}):
             raise ValueError('Analysis has no matching source file')
         modules: dict[str, list[ASTAnalysis | None]] = {}
+        file_packages: dict[str, list[str]] = {}
         for file in files:
             path = PurePosixPath(file.file_path.replace('\\', '/'))
             if not path.name or path.suffix != '.py':
@@ -40,6 +41,10 @@ class CallResolver:
             parts = list(path.with_suffix('').parts)
             if path.suffix != '.py' or not parts or not all(p.isidentifier() for p in parts):
                 continue
+            if path.name == '__init__.py':
+                file_packages[file.file_id] = list(parts[:-1]) if parts[-1] == '__init__' else list(parts)
+            else:
+                file_packages[file.file_id] = list(parts[:-1])
             if parts[-1] == '__init__':
                 parts.pop()
             if parts:
@@ -49,7 +54,7 @@ class CallResolver:
         for analysis in analyses:
             result.import_relationships.extend(analysis.imports)
             for call in analysis.call_sites:
-                status, reason, target = self._resolve_call(call, analysis, modules, functions)
+                status, reason, target = self._resolve_call(call, analysis, modules, functions, file_packages)
                 result.call_references.append(CallReference(
                     call_id=call.call_id, file_id=call.file_id,
                     caller_function_id=call.caller_function_id, location=call.location,
@@ -60,13 +65,13 @@ class CallResolver:
 
     def _resolve_call(self, call: CallSite, analysis: ASTAnalysis,
                       modules: dict[str, list[ASTAnalysis | None]],
-                      functions: dict[str, FunctionInfo]) -> tuple[str, str, FunctionInfo | None]:
+                      functions: dict[str, FunctionInfo],
+                      file_packages: dict[str, list[str]] | None = None) -> tuple[str, str, FunctionInfo | None]:
         # Only dotted identifiers are candidates. Subscripts, factories and other
         # computed callees cannot be resolved by lexical name lookup.
         parts = call.callee_expression.split('.')
         if not all(part.isidentifier() for part in parts):
             return 'unresolved', 'Dynamic callee expression', None
-
 
         lookup = analysis.symbol_table.lookup(call.scope_id, parts[0])
         if not lookup.is_complete:
@@ -91,21 +96,53 @@ class CallResolver:
         imported = imports[0]
         if not imported.is_module_level:
             return 'unresolved', 'Conditional and function-local imports are unsupported', None
-        if imported.level:
-            return 'unresolved', 'Relative imports are unsupported', None
-        if imported.member is not None:
-            if len(parts) != 1:
-                return 'unresolved', 'Imported-object attribute calls are unsupported', None
-            member = imported.member
+
+        # Resolve effective module for relative or absolute imports
+        is_relative = imported.level > 0
+        if is_relative:
+            packages = file_packages or {}
+            pkg = packages.get(analysis.file_id, [])
+            base = list(pkg)
+            steps = imported.level - 1
+            while steps > 0 and base:
+                base.pop()
+                steps -= 1
+            if steps > 0:
+                return 'unresolved', 'Attempted relative import beyond top-level package', None
+            if imported.module:
+                resolved_module = '.'.join(base + [imported.module]) if base else imported.module
+            else:
+                resolved_module = '.'.join(base)
         else:
-            # Unaliased dotted imports bind the first segment, while aliases bind
-            # the whole module. Require exactly that module followed by a member.
-            prefix = imported.module.split('.') if binding.import_target != imported.module else [binding.name]
+            resolved_module = imported.module
+
+        # Determine target module and member
+        if imported.member is not None:
+            submodule_candidate = f"{resolved_module}.{imported.member}" if resolved_module else imported.member
+            if submodule_candidate in modules:
+                # The imported member is itself a module (e.g. from core import validation as val)
+                target_module_name = submodule_candidate
+                if len(parts) != 2:
+                    return 'unresolved', 'Submodule attribute call requires single member access', None
+                member = parts[-1]
+            else:
+                # The imported member is a function or object inside resolved_module (e.g. from calc import add)
+                target_module_name = resolved_module
+                if len(parts) != 1:
+                    return 'unresolved', 'Imported-object attribute calls are unsupported', None
+                member = imported.member
+        else:
+            # Whole module import (e.g. import calc or import core.validation as val)
+            target_module_name = resolved_module
+            prefix = target_module_name.split('.') if binding.import_target != target_module_name else [binding.name]
             if parts[:-1] != prefix:
                 return 'unresolved', 'Unsupported module attribute chain', None
             member = parts[-1]
-        candidates = modules.get(imported.module, [])
+
+        candidates = modules.get(target_module_name, [])
         if not candidates:
+            if is_relative:
+                return 'unresolved', 'Relative module target not found in snapshot', None
             return 'external', 'Explicit module is outside the supplied snapshot', None
         if len(candidates) > 1:
             return 'ambiguous', 'Multiple files identify the imported module', None

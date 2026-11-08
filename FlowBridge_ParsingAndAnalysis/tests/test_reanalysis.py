@@ -181,7 +181,7 @@ class ReanalysisTests(unittest.TestCase):
         result = self.service.analyze_project(data)
         self.assertEqual(result.status, 'success')
         self.assertEqual(len(result.graphs), 7)
-        self.assertEqual(len(result.graph_references), 6)
+        self.assertEqual(len(result.graph_references), 8)
         resolved = [call for call in result.call_references if call.resolution == 'resolved']
         targets = {f.function_id: f.function_name for f in result.functions}
         self.assertEqual({targets[call.target_function_id] for call in resolved}, {'discounted', 'total_order'})

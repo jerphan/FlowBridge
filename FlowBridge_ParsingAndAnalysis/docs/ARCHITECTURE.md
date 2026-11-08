@@ -1,5 +1,11 @@
 # Architecture
 
+Current integration (D029, November 8): collect lexical metadata across the
+snapshot, resolve calls, then build function/module/file CFGs and projections.
+Publish each file's CFGs together. If construction fails, discard that file's
+partial state and resolve remaining calls again; valid siblings remain available.
+SVG layout, the React interface, and the derived line index remain outside analysis.
+
 Current November 8 integration: ProjectGraphBuilder receives built file CFGs and
 project import dependencies. FileFlowBuilder expands only resolved local calls
 with recursion guards; returned calls terminate their caller. The service retains

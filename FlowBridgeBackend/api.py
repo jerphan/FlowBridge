@@ -24,6 +24,7 @@ from .pipeline import FlowBridgePipeline
 from .registry import ProjectRegistry
 from .service import CodeManager
 from .source_mapping import SourceMappingLayer
+from .SourceMapping import SourceMappingService
 
 
 # These models describe the request and error JSON exchanged with the UI.
@@ -51,12 +52,24 @@ class SourceSelection(BaseModel):
 
 
 class RenderResponse(BaseModel):
+    message: str = "Rendered hierarchical diagrams and interactive viewer."
     projectId: str
     revisionId: int
     status: str
     fileCount: int
     viewerUrl: str
     manifestUrl: str
+    projectName: str
+    projectGraphId: str
+    graphs: dict[str, dict[str, Any]]
+    flowchart: dict[str, Any]
+    nodeToChildGraph: dict[str, str]
+    childGraphToParent: dict[str, tuple[str, str]]
+    graphToSourceFile: dict[str, str]
+    sourceMapping: dict[str, Any]
+    diagnostics: list[dict[str, Any]]
+    analysisFiles: list[dict[str, Any]]
+    analysisStatus: str
 
 
 def get_registry(request: Request) -> ProjectRegistry:
@@ -262,26 +275,58 @@ def create_app(
         project = registry.getProject(projectID)
         result = FlowBridgePipeline().analyze_project(project, revision_id=revisionId)
         destination = rendered_dir / project.projectID / str(revisionId)
+        prefix = f"/viewer/{project.projectID}/{revisionId}"
         try:
             with app.state.render_lock:
                 if not (destination / "index.html").is_file():
                     # Publish completed exports together; failed renders stay in a temporary folder.
                     with TemporaryDirectory(dir=rendered_dir) as staging:
-                        HierarchicalDiagramPipeline(output_dir=staging).run(result)
+                        renderer = HierarchicalDiagramPipeline(output_dir=staging)
+                        model = renderer.run(result)
+                        source_index = SourceMappingService().build_project_index(
+                            project_id=project.projectID,
+                            flowchart_data=result["flowchart"],
+                            project_files=project.files,
+                        )
+                        response = RenderResponse(
+                            projectId=project.projectID,
+                            revisionId=revisionId,
+                            status=result["status"],
+                            fileCount=len(project.files),
+                            viewerUrl=f"{prefix}/",
+                            manifestUrl=f"{prefix}/manifest.json",
+                            projectName=project.projectName,
+                            projectGraphId=model.project_graph_id,
+                            graphs={
+                                graph.graph_id: {
+                                    "id": graph.graph_id, "type": graph.graph_type,
+                                    "title": graph.title, "svg": graph.svg_content,
+                                    "width": graph.width, "height": graph.height,
+                                }
+                                for graph in renderer.rendered_graphs
+                            },
+                            flowchart=result["flowchart"],
+                            nodeToChildGraph={
+                                node: target for (_, node), target in model.node_to_child_graph.items()
+                            },
+                            childGraphToParent=model.child_graph_to_parent,
+                            graphToSourceFile=model.graph_to_source_file,
+                            sourceMapping=source_index.to_dict(),
+                            diagnostics=result["analysis"]["diagnostics"],
+                            analysisFiles=result["analysis"]["files"],
+                            analysisStatus=result["status"],
+                        )
+                        (Path(staging) / "response.json").write_text(
+                            response.model_dump_json(), encoding="utf-8"
+                        )
                         destination.parent.mkdir(exist_ok=True)
                         Path(staging).rename(destination)
         except (OSError, ValueError) as error:
             raise DiagramRenderError(
                 "The diagrams could not be exported. Please try again."
             ) from error
-        prefix = f"/viewer/{project.projectID}/{revisionId}"
-        return RenderResponse(
-            projectId=project.projectID,
-            revisionId=revisionId,
-            status=result["status"],
-            fileCount=len(project.files),
-            viewerUrl=f"{prefix}/",
-            manifestUrl=f"{prefix}/manifest.json",
+        return RenderResponse.model_validate_json(
+            (destination / "response.json").read_text(encoding="utf-8")
         )
 
     return app

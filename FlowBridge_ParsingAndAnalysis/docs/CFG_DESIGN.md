@@ -1,11 +1,19 @@
 # CFG design and implemented semantics
 
-November 8 extension (D028): `build_module` provides the top-level module graph,
+November 8 extension (D029): `build_module` provides the top-level module graph,
 and `build_file` provides file execution with bounded same-file call expansion.
 Expansion requires a resolved CallReference and has a recursion guard. Returned
 calls terminate their caller after the callee completes; unresolved/shadowed
 calls remain atomic. Cross-file calls use navigation references to function
 graphs. Original graph/node IDs and source spans remain shared across consumers.
+
+Try/except/else/finally and explicit raise are supported within the procedural
+subset. Cleanup runs on normal, return, exception, break and continue paths.
+`build_finally` collects transfers leaving a try, gives each continuation its own
+cleanup copy, then resumes only surviving exits. Cleanup's own terminal transfer
+overrides the earlier one. Copies share AST locations but receive distinct node
+and edge IDs. Nested unmatched exceptions propagate to the enclosing handler.
+Exception edges remain possible flows, not predictions of runtime exception types.
 
 ## API and scope
 `CFGBuilder.build(function, file_input, ids) -> CFGResult` accepts a direct module

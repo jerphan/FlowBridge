@@ -1,8 +1,10 @@
 """Supported static imports must not be rejected as runtime module statements."""
 import ast
 import unittest
-from flowbridge_analysis import FeatureValidator, ParsingAnalysisService
+
 from test_pipeline import payload
+
+from flowbridge_analysis import FeatureValidator, ParsingAnalysisService
 
 
 class ImportFeatureTests(unittest.TestCase):
@@ -13,7 +15,7 @@ class ImportFeatureTests(unittest.TestCase):
         self.assertEqual(result.diagnostics, [])
 
     def test_unsupported_import_forms_still_report_errors(self):
-        for source in ('from .calculator import add', 'from calculator import *',
+        for source in ('from calculator import *',
                        'from __future__ import annotations',
                        'def f():\n    import calculator',
                        'if flag:\n    from calculator import add'):
@@ -21,6 +23,22 @@ class ImportFeatureTests(unittest.TestCase):
                 result = FeatureValidator().validate(ast.parse(source), 'F')
                 self.assertFalse(result.is_supported)
                 self.assertTrue(any(d.code == 'UNSUPPORTED_FEATURE' for d in result.diagnostics))
+
+    def test_relative_package_imports_resolve_without_rejecting_the_file(self):
+        result = ParsingAnalysisService().analyze_project({
+            'projectId': 'package', 'projectName': 'Package', 'revisionId': 1,
+            'files': [
+                {'fileId': 'init', 'fileName': '__init__.py', 'filePath': 'pkg/__init__.py', 'fileContent': ''},
+                {'fileId': 'helper', 'fileName': 'helper.py', 'filePath': 'pkg/helper.py',
+                 'fileContent': 'def adjust(x):\n    return x + 1\n'},
+                {'fileId': 'main', 'fileName': 'main.py', 'filePath': 'pkg/main.py',
+                 'fileContent': 'from .helper import adjust\nanswer = adjust(2)\n'},
+            ],
+        })
+        self.assertEqual(result.status, 'success')
+        self.assertTrue(all(file.status == 'complete' for file in result.files))
+        self.assertEqual(result.call_references[0].resolution, 'resolved')
+        result.to_json()
 
     def test_cross_file_resolution_and_graphs_without_import_errors(self):
         result = ParsingAnalysisService().analyze_project(payload(

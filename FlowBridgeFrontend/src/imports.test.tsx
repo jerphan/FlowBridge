@@ -6,7 +6,7 @@ import {api} from './api';
 import GitHubUploader from './components/GitHubUploader';
 import FileUploader from './components/FileUploader';
 import StartButton from './components/StartButton';
-import type {pyProject, flowchartJSON} from './types/types';
+import type {pyProject} from './types/types';
 
 const project: pyProject = {projectID: 'p', projectName: 'Demo', files: []};
 const imported: AxiosResponse<pyProject> = {data: project, status: 201, statusText: 'Created',
@@ -66,14 +66,14 @@ it.each(['main.py', 'project.zip'])('sends %s to the right route with projectNam
   expect((post.mock.calls[0][1] as FormData).get('projectName')).toBe('Custom');
 });
 
-it('ignores analysis from an older project after switching imports', async () => {
-  let finish!: (result: AxiosResponse<flowchartJSON>) => void;
-  vi.spyOn(api, 'get').mockReturnValue(new Promise(resolve => {finish = resolve;}));
-  const loaded = vi.fn();
+it('disables the start button while generation is pending', async () => {
+  const start = vi.fn();
   const user = userEvent.setup();
-  const {rerender} = render(<StartButton project={project} onFlowChartLoaded={loaded} />);
-  await user.click(screen.getByRole('button', {name: 'Analyze project'}));
-  rerender(<StartButton project={{...project, projectID: 'new'}} onFlowChartLoaded={loaded} />);
-  await act(async () => {finish({...imported, data: {projectId: 'p', revisionId: 1} as flowchartJSON});});
-  expect(loaded).not.toHaveBeenCalled();
+  const {rerender} = render(<StartButton onClick={start} />);
+  await user.click(screen.getByRole('button'));
+  expect(start).toHaveBeenCalledOnce();
+  rerender(<StartButton onClick={start} isLoading />);
+  expect((screen.getByRole('button') as HTMLButtonElement).disabled).toBe(true);
+  await user.click(screen.getByRole('button'));
+  expect(start).toHaveBeenCalledOnce();
 });

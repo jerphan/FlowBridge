@@ -12,8 +12,8 @@ project-scoped SVG exports.
 | --- | --- |
 | Code Manager | Python, ZIP, and public GitHub imports; project storage and original-source retrieval. |
 | Parsing & Analysis | Connected to Code Manager; produces graph data, diagnostics, and source mappings for its [supported Python subset](FlowBridge_ParsingAndAnalysis/docs/PARSING_FEATURES.md). |
-| Diagram Manager | React Flow canvas with Dagre layout, labeled edges, project/file/module/function navigation, and SVG export. |
-| Source Mapping / Connection Management | Node clicks retrieve the original file/range and highlight it using the parser's UTF-8 coordinates. |
+| Diagram Manager | Harsha's SVG canvas and hierarchical layout, labeled edges, project/file/function drill-down, and SVG/PNG exports with a PDF print page. |
+| Source Mapping / Connection Management | Node and source-line selections use the same file IDs and spans; Grace's original-source lookup API remains available. |
 | User Interface | Python/ZIP/GitHub imports, analysis, source/file selection, errors, diagram navigation, and export are connected. |
 
 ## Where to start
@@ -42,8 +42,10 @@ flowchart TD
     Outputs --> Mapping["SourceMappingLayer: graph and node IDs to source range"]
     Mapping --> Lookup["Source lookup API: original file and range"]
     Registry --> Lookup
-    Outputs --> Diagram["React Flow and Dagre: diagrams and navigation"]
-    Diagram -->|Select node| Lookup
+    Outputs --> Diagram["SVG renderer and React canvas: diagrams and navigation"]
+    Outputs --> Index["Source index: nodes and source lines"]
+    Diagram -->|Select node or source line| Index
+    Index --> Highlight
     Lookup --> Highlight
     Highlight["Original source highlighted in the browser"]
     Outputs --> Export["SVG renderer: project and revision scoped exports"]
@@ -78,8 +80,9 @@ npm run dev
 ```
 
 Open <http://localhost:5173>. Import a project, click Start, and select a view.
-Click nodes to highlight source; double-click linked nodes to open their graph.
-Use Export diagrams, then Open SVG viewer, to navigate or download SVGs.
+Click linked nodes to open their graph, and statement nodes to highlight source.
+Use the file list and breadcrumbs to navigate. The export button offers SVG,
+PNG, and a PDF print page. The render API also returns a standalone viewer URL.
 `VITE_API_BASE_URL` optionally changes the default `http://localhost:8000` API URL.
 
 ## Verify or demonstrate

@@ -11,12 +11,13 @@ class GraphOrganizer:
     def organize(self, analysis_data: dict[str, Any]) -> HierarchicalProjectModel:
         # Determine data shape (ProjectAnalysis vs FlowchartOutput)
         flowchart_data = analysis_data.get("flowchart", analysis_data)
+        analysis_dict = analysis_data.get("analysis", {})
 
         project_id = flowchart_data.get("projectId") or "unknown_project"
         project_name = flowchart_data.get("projectName") or "Unnamed Project"
         graphs = flowchart_data.get("graphs", {})
         graph_refs = flowchart_data.get("graphReferences", [])
-        files_data = flowchart_data.get("files", [])
+        files_data = flowchart_data.get("files", analysis_dict.get("files", []))
         functions_data = flowchart_data.get("functions", [])
 
         # Find project-level graph
@@ -69,6 +70,7 @@ class GraphOrganizer:
             fname = f.get("fileName", "")
             fpath = f.get("filePath", fname)
             fgraph_id = f.get("graphId", "")
+            status = f.get("status", "complete")
 
             # If graphId not in file metadata, find file graph
             if not fgraph_id:
@@ -82,8 +84,11 @@ class GraphOrganizer:
                 file_name=fname,
                 file_path=fpath,
                 file_graph_id=fgraph_id,
+                status=status,
                 functions=functions_by_file.get(fid, []),
             )
             model.files.append(h_file)
+            model.file_statuses[fid] = status
+            model.file_statuses[fgraph_id] = status
 
         return model

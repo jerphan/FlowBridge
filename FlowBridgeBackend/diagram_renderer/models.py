@@ -25,6 +25,7 @@ class HierarchicalFile:
     file_name: str
     file_path: str
     file_graph_id: str
+    status: str = "complete"
     functions: list[HierarchicalFunction] = field(default_factory=list)
 
 
@@ -41,6 +42,7 @@ class HierarchicalProjectModel:
     node_to_child_graph: dict[tuple[str, str], str] = field(default_factory=dict)
     child_graph_to_parent: dict[str, tuple[str, str]] = field(default_factory=dict)
     graph_to_source_file: dict[str, str] = field(default_factory=dict)
+    file_statuses: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass
@@ -57,6 +59,7 @@ class RenderedNode:
     source_location: dict[str, Any] | None = None
     target_graph_id: str | None = None
     is_clickable: bool = False
+    status: str | None = None
 
 
 @dataclass

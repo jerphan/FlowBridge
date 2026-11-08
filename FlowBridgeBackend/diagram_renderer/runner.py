@@ -42,6 +42,7 @@ class HierarchicalDiagramPipeline:
                 graph_data=proj_data,
                 title=f"Project View — {model.project_name}",
                 child_lookup=model.node_to_child_graph,
+                file_statuses=model.file_statuses,
             )
             self.renderer.to_svg(proj_rendered)
             rendered_graphs.append(proj_rendered)
@@ -67,6 +68,7 @@ class HierarchicalDiagramPipeline:
                     graph_data=f_data,
                     title=f"File View — {f.file_path}",
                     child_lookup=model.node_to_child_graph,
+                    file_statuses=model.file_statuses,
                 )
                 self.renderer.to_svg(f_rendered)
                 rendered_graphs.append(f_rendered)
@@ -93,6 +95,7 @@ class HierarchicalDiagramPipeline:
                             graph_data=fn_data,
                             title=f"Function View — {fn.function_name}() ({f.file_path}:{fn.start_line})",
                             child_lookup=model.node_to_child_graph,
+                            file_statuses=model.file_statuses,
                         )
                         self.renderer.to_svg(fn_rendered)
                         rendered_graphs.append(fn_rendered)
@@ -128,6 +131,9 @@ class HierarchicalDiagramPipeline:
                         "path": svg_path.relative_to(self.output_dir).as_posix(),
                     }
                 )
+
+        self.rendered_graphs = rendered_graphs
+        self.model = model
 
         # 4. Generate Interactive Viewer
         html_viewer = self.renderer.generate_html_viewer(model.project_name, rendered_graphs)

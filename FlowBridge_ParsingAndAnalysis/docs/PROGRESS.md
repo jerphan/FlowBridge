@@ -2,10 +2,10 @@
 
 ## Actual implementation status
 Function and bounded module CFGs, assignments (including annotated/augmented),
-branches, loops/loop-else, basic try/except, lexical metadata, hierarchy, service,
+branches, loops/loop-else, nested try/except/else/finally, explicit raise, lexical metadata, hierarchy, service,
 and consumer projections are implemented. The current parser suite passes
-284 tests on Python 3.12.14. The combined repository has 229 passing backend
-cases and 16 passing UI cases, with six browser flows verified. See the
+301 tests on Python 3.12.14. The combined repository has 238 passing backend
+cases and 22 passing UI cases, with 13 browser scenarios verified. See the
 November 8 integration update below.
 
 The preceding CFG task changed CFGBuilder.py, FeatureValidator and package exports; added
@@ -33,11 +33,10 @@ alongside the new conservative-exception warning. Final run: zero failures/error
 See TESTING.md for the command and coverage.
 
 ## Remaining limitations
-ASTAnalyzer extracts supported try and loop-else bindings/calls. Unsupported
-try else/finally clauses and exception aliases keep their scopes incomplete.
-Exceptions are conservative
-may-flow, not inferred runtime types. No nested try, aliases, finally, try/else,
-try-star or explicit raise. Loop-else CFGs and lexical traversal are supported.
+ASTAnalyzer extracts try/except/else/finally and loop-else bindings/calls,
+including exception aliases. Exceptions remain conservative may-flow;
+runtime exception types are not inferred. Try-star, async, classes, closures,
+dynamic imports, and complete Python runtime name resolution remain unsupported.
 Expression-level short-circuit paths are
 atomic. Implicit exceptions are expanded only for functions containing try.
 Compiler-context validation, resource isolation and full source-bound checks remain
@@ -45,7 +44,16 @@ incomplete. Starter code/tests remain reference-only.
 
 ## Next recommended task
 Harden compiler-context and resource validation, then verify consumer integration.
-Preserve incomplete lexical-analysis diagnostics for unsupported try clauses and aliases.
+Preserve diagnostics for constructs outside the supported subset.
+
+## Final renderer integration — 2026-11-08 (D029)
+Kept the final renderer branch's interface, layout, resolved function-call nodes,
+relative import resolver, and source index. Corrected cleanup on return, exception,
+break and continue, with separate continuations and nested cleanup. A return in
+cleanup replaces the pending transfer. Shadowed calls cannot use name-only inlining.
+Nested module returns remain unsupported. File CFG construction is staged before
+publication; a failure cannot leave dangling metadata, calls, or navigation targets.
+The updated tests verify actual paths and serialize the resulting contracts.
 
 ## File views and diagram integration — 2026-11-08
 
