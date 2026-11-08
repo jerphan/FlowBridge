@@ -2,6 +2,7 @@
 
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Annotated, Any
 
 import httpx
@@ -85,6 +86,11 @@ def create_app(
     app.state.import_limits = import_limits or ImportLimits()
     app.state.github_settings = github_settings
     app.state.github_client = github_client
+
+    rendered_dir = Path(__file__).resolve().parents[1] / "rendered_diagrams"
+    if rendered_dir.is_dir():
+        from fastapi.staticfiles import StaticFiles
+        app.mount("/viewer", StaticFiles(directory=str(rendered_dir), html=True), name="viewer")
     app.add_middleware(
         CORSMiddleware,
         allow_origins=list(cors_origins),
@@ -199,6 +205,25 @@ def create_app(
         pipeline = FlowBridgePipeline()
         result = pipeline.analyze_project(project, revision_id=revisionId)
         return result["mapping"]
+
+    @app.post("/api/projects/{projectID}/render", responses=ERROR_RESPONSES)
+    def render_project_diagrams(
+        projectID: str, registry: Registry, revisionId: int = 1
+    ) -> dict[str, Any]:
+        """Run analysis and render hierarchical SVG and interactive viewer for the project."""
+        from .diagram_renderer.runner import HierarchicalDiagramPipeline
+        project = registry.getProject(projectID)
+        pipeline = FlowBridgePipeline()
+        analysis_result = pipeline.analyze_project(project, revision_id=revisionId)
+        renderer_pipeline = HierarchicalDiagramPipeline()
+        model = renderer_pipeline.run(analysis_result)
+        return {
+            "status": "success",
+            "message": "Rendered hierarchical diagrams and interactive viewer.",
+            "projectName": model.project_name,
+            "fileCount": len(model.files),
+            "viewerUrl": "/viewer/",
+        }
 
     return app
 

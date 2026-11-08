@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 779.5 1274.0" width="779.5" height="1274.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="389.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — process_payment() (payment_service.py)</text>
+  <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 226.0 L 200.0 438.0 L 154.5 438.0 L 154.5 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 154.5 698.0 L 154.5 733.0 L 349.8 733.0 L 349.8 768.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 349.8 816.0 L 349.8 886.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 349.8 934.0 L 349.8 969.0 L 265.0 969.0 L 265.0 1004.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 349.8 934.0 L 349.8 969.0 L 448.5 969.0 L 448.5 1004.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 448.5 1052.0 L 448.5 1087.0 L 349.8 1087.0 L 349.8 1122.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 226.0 L 200.0 261.0 L 167.2 261.0 L 167.2 296.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="165.6" y="247.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="183.6" y="258.0" class="edge-label">true</text>
+  <path d="M 167.2 344.0 L 167.2 497.0 L 154.5 497.0 L 154.5 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 167.2 344.0 L 167.2 379.0 L 197.0 379.0 L 197.0 414.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 197.0 462.0 L 197.0 792.0 L 349.8 792.0 L 349.8 1122.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 226.0 L 200.0 261.0 L 447.2 261.0 L 447.2 296.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="305.6" y="247.0" width="36" height="15" fill="#ffffff" rx="3" opacity="0.9"/>
+  <text x="323.6" y="258.0" class="edge-label">false</text>
+  <path d="M 447.2 344.0 L 447.2 497.0 L 154.5 497.0 L 154.5 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 447.2 344.0 L 447.2 379.0 L 404.8 379.0 L 404.8 414.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 404.8 462.0 L 404.8 556.0 L 154.5 556.0 L 154.5 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 404.8 462.0 L 404.8 497.0 L 320.0 497.0 L 320.0 532.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 320.0 580.0 L 320.0 615.0 L 154.5 615.0 L 154.5 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 320.0 580.0 L 320.0 615.0 L 464.2 615.0 L 464.2 650.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 464.2 698.0 L 464.2 910.0 L 349.8 910.0 L 349.8 1122.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMF0">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMV0">
+    <rect x="299.8" y="1122.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="349.8" y="1143.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMl0">
+    <rect x="60.0" y="650.0" width="189.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="154.5" y="674.0" class="node-text">Exception dispatch</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsM10">
+    <polygon points="200.0,172.0 270.8,199.0 200.0,226.0 129.2,199.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="199.0" class="node-text" fill="#e65100" font-weight="600">amount &lt;= 0</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsNF0">
+    <rect x="60.0" y="296.0" width="214.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="167.2" y="320.0" class="node-text">Evaluate return: None</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsNV0">
+    <rect x="132.2" y="414.0" width="129.5" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="197.0" y="438.0" class="node-text" fill="#bf360c">return None</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsNl0">
+    <rect x="314.5" y="296.0" width="265.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="447.2" y="320.0" class="node-text">fee = calculate_fee(amount)</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsN10">
+    <rect x="301.8" y="414.0" width="206.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="404.8" y="438.0" class="node-text">total = amount + fee</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsOF0">
+    <rect x="102.2" y="532.0" width="435.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="320.0" y="556.0" class="node-text">Evaluate return: f&#x27;Paid {total} for {order_id}&#x27;</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsOV0">
+    <rect x="289.0" y="650.0" width="350.5" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="464.2" y="674.0" class="node-text" fill="#bf360c">return f&#x27;Paid {total} for {order_id}&#x27;</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMTBd">
+    <rect x="289.8" y="768.0" width="120.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="349.8" y="792.0" class="node-text">except</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMTFd">
+    <rect x="242.5" y="886.0" width="214.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="349.8" y="910.0" class="node-text">Evaluate return: None</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMTJd">
+    <rect x="186.2" y="1004.0" width="157.5" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="265.0" y="1025.0" class="node-text" fill="#263238" font-weight="600">Exceptional End</text>
+  </g>
+  <g id="fb1_WyIwYzliZjAwNS1mMjU1LTRkNmUtOTZjMi0wMjVkYmFiODJmMTkiLDEsIm5vZGUiLCJmYjFfV3lJd1l6bGlaakF3TlMxbU1qVTFMVFJrTm1VdE9UWmpNaTB3TWpWa1ltRmlPREptTVRraUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0k0WmpFeE1UWmpPUzFrTjJVM0xUUXhZV0l0T0dVMk1TMWxNREF4TVRnNFpXSTJOV1lpTERJc01Dd2ljSEp2WTJWemMxOXdZWGx0Wlc1MElsMCIsMTNd">
+    <rect x="383.8" y="1004.0" width="129.5" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="448.5" y="1028.0" class="node-text" fill="#bf360c">return None</text>
+  </g>
+</svg>

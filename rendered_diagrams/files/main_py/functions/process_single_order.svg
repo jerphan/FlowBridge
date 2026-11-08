@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 703.5 1032.0" width="703.5" height="1032.0" class="flowbridge-diagram">
+<defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
+    </marker>
+    <marker id="arrow-true" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2e7d32" />
+    </marker>
+    <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <style>
+    .node-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; font-size: 13px; text-anchor: middle; dominant-baseline: middle; fill: #212529; }
+    .node-subtext { font-family: sans-serif; font-size: 11px; fill: #6c757d; text-anchor: middle; }
+    .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .edge-true { stroke: #2e7d32; }
+    .edge-false { stroke: #c62828; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
+    .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
+    .clickable:hover { filter: brightness(0.95); }
+  </style>
+  <text x="351.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — process_single_order() (main.py)</text>
+  <path d="M 200.0 102.0 L 200.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 220.0 L 200.0 290.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 200.0 338.0 L 200.0 373.0 L 286.2 373.0 L 286.2 408.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 286.2 456.0 L 286.2 491.0 L 311.8 491.0 L 311.8 526.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 311.8 574.0 L 311.8 644.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 311.8 692.0 L 311.8 762.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 311.8 810.0 L 311.8 880.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsMF0">
+    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsMV0">
+    <rect x="261.8" y="880.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="311.8" y="901.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsMl0">
+    <rect x="63.0" y="172.0" width="274.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="196.0" class="node-text">raw_amount = order[&#x27;amount&#x27;]</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsM10">
+    <rect x="97.0" y="290.0" width="206.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="200.0" y="314.0" class="node-text">tier = order[&#x27;tier&#x27;]</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsNF0">
+    <rect x="60.0" y="408.0" width="452.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="286.2" y="432.0" class="node-text">discounted = calculate_discount(raw_amount, tier)</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsNV0">
+    <rect x="60.0" y="526.0" width="503.5" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="311.8" y="550.0" class="node-text">final_price = apply_tax(discounted, CONFIG[&#x27;tax_rate&#x27;])</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsNl0">
+    <rect x="115.2" y="644.0" width="393.0" height="48.0" rx="6" fill="#f8f9fa" stroke="#495057" stroke-width="1.5" filter="url(#nodeShadow)"/>
+    <text x="311.8" y="668.0" class="node-text">display_str = format_currency(final_price)</text>
+  </g>
+  <g id="fb1_WyJQX0NPTVBMRVhfNSIsMSwibm9kZSIsImZiMV9XeUpRWDBOUFRWQk1SVmhmTlNJc01Td2laM0poY0dnaUxDSm1kVzVqZEdsdmJpSXNJa1pmYldGcGJpSXNNek1zTUN3aWNISnZZMlZ6YzE5emFXNW5iR1ZmYjNKa1pYSWlYUSIsN10">
+    <rect x="217.2" y="762.0" width="189.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="311.8" y="786.0" class="node-text" fill="#bf360c">return display_str</text>
+  </g>
+</svg>
