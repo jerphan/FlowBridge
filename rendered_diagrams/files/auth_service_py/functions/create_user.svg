@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 601.5 442.0" width="601.5" height="442.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551.5 440.0" width="551.5" height="440.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -8,6 +8,12 @@
     </marker>
     <marker id="arrow-false" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#c62828" />
+    </marker>
+    <marker id="arrow-exception" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d32f2f" />
+    </marker>
+    <marker id="arrow-import" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1565c0" />
     </marker>
     <filter id="nodeShadow" x="-5%" y="-5%" width="110%" height="115%">
       <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
@@ -19,24 +25,26 @@
     .edge-line { fill: none; stroke: #1a73e8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .edge-true { stroke: #2e7d32; }
     .edge-false { stroke: #c62828; }
-    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; }
+    .edge-back { stroke: #e65100; stroke-dasharray: 4,3; stroke-width: 1.6; }
+    .edge-exception { stroke: #d32f2f; stroke-dasharray: 4,3; stroke-width: 1.8; }
+    .edge-import { stroke: #1565c0; stroke-width: 2.0; }
     .edge-label { font-family: sans-serif; font-size: 11px; font-weight: 600; fill: #495057; text-anchor: middle; }
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="300.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — create_user() (auth_service.py)</text>
-  <path d="M 200.0 102.0 L 200.0 137.0 L 260.8 137.0 L 260.8 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 260.8 220.0 L 260.8 290.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prTW1SaE5EVTFOUzFtTldKa0xUUXpZekF0WVRNMk1DMHdOMlk1Tm1Jek5EZzNaVFlpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prTW1SaE5EVTFOUzFtTldKa0xUUXpZekF0WVRNMk1DMHdOMlk1Tm1Jek5EZzNaVFlpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd">
-    <rect x="150.0" y="60.0" width="100.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="200.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="275.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — create_user() (auth_service.py)</text>
+  <path d="M 270.8 102.0 L 270.8 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 270.8 218.0 L 270.8 288.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l5T1dKbE9HWmhaaTB3TVdRekxUUTFNRFF0WWpWa1l5MDJNV1k1WlRKalkyUmtZVGdpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l5T1dKbE9HWmhaaTB3TVdRekxUUTFNRFF0WWpWa1l5MDJNV1k1WlRKalkyUmtZVGdpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd">
+    <rect x="215.8" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="270.8" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prTW1SaE5EVTFOUzFtTldKa0xUUXpZekF0WVRNMk1DMHdOMlk1Tm1Jek5EZzNaVFlpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prTW1SaE5EVTFOUzFtTldKa0xUUXpZekF0WVRNMk1DMHdOMlk1Tm1Jek5EZzNaVFlpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd">
-    <rect x="210.8" y="290.0" width="100.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="260.8" y="311.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l5T1dKbE9HWmhaaTB3TVdRekxUUTFNRFF0WWpWa1l5MDJNV1k1WlRKalkyUmtZVGdpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l5T1dKbE9HWmhaaTB3TVdRekxUUTFNRFF0WWpWa1l5MDJNV1k1WlRKalkyUmtZVGdpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd">
+    <rect x="215.8" y="288.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="270.8" y="309.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prTW1SaE5EVTFOUzFtTldKa0xUUXpZekF0WVRNMk1DMHdOMlk1Tm1Jek5EZzNaVFlpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-node-id="fb1_WyJlYWE1M2JlZC1lZjZlLTRkN2UtOGI4MS0zNjFlNTU2ZWQ3ZjYiLDEsIm5vZGUiLCJmYjFfV3lKbFlXRTFNMkpsWkMxbFpqWmxMVFJrTjJVdE9HSTRNUzB6TmpGbE5UVTJaV1EzWmpZaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prTW1SaE5EVTFOUzFtTldKa0xUUXpZekF0WVRNMk1DMHdOMlk1Tm1Jek5EZzNaVFlpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-file-id="d2da4555-f5bd-43c0-a360-07f96b3487e6" data-start-line="8" data-end-line="8">
-    <rect x="60.0" y="172.0" width="401.5" height="48.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
-    <text x="260.8" y="196.0" class="node-text" fill="#bf360c">return {&#x27;email&#x27;: email, &#x27;status&#x27;: &#x27;active&#x27;}</text>
+  <g id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l5T1dKbE9HWmhaaTB3TVdRekxUUTFNRFF0WWpWa1l5MDJNV1k1WlRKalkyUmtZVGdpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-node-id="fb1_WyJmZWY3NWE5My1iYTdmLTQ5YmItOThjNy0yMjE1YjVmODU1MmQiLDEsIm5vZGUiLCJmYjFfV3lKbVpXWTNOV0U1TXkxaVlUZG1MVFE1WW1JdE9UaGpOeTB5TWpFMVlqVm1PRFUxTW1RaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0l5T1dKbE9HWmhaaTB3TVdRekxUUTFNRFF0WWpWa1l5MDJNV1k1WlRKalkyUmtZVGdpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-file-id="29be8faf-01d3-4504-b5dc-61f9e2ccdda8" data-start-line="8" data-end-line="8">
+    <rect x="70.0" y="172.0" width="401.5" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="270.8" y="195.0" class="node-text" fill="#bf360c">return {&#x27;email&#x27;: email, &#x27;status&#x27;: &#x27;active&#x27;}</text>
   </g>
 </svg>
