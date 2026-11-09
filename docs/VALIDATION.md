@@ -7,6 +7,10 @@ The final pass also integrates Harsha's cleanup (`aa080ce`), the updated README
 and Start New Project. His unrestricted CORS change failed the configured-origin
 regression, so the existing explicit-origin behavior is preserved. Required
 package/developer files remain; obsolete reference notes join the archive.
+Both active feature branch heads are recorded as merged. The parser merge keeps
+the verified finally, lexical-call and failed-file isolation fixes without
+changing the tested application tree. Six Markdown files remain; 28 historical
+notes are archived with verified byte hashes.
 
 ## Executed checks
 
