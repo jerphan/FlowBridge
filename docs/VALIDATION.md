@@ -3,6 +3,10 @@
 Verified November 9, 2026, on Windows with Python 3.12.14 and Node 22.17.1.
 This combines the final parser/interface integration with Harsha's November 8
 diagram-routing and project-selection changes (`73e96e3`).
+The final pass also integrates Harsha's cleanup (`aa080ce`), the updated README
+and Start New Project. His unrestricted CORS change failed the configured-origin
+regression, so the existing explicit-origin behavior is preserved. Required
+package/developer files remain; obsolete reference notes join the archive.
 
 ## Executed checks
 
