@@ -6,8 +6,29 @@ import ExportModal from './components/ExportModal';
 import {errorMessage, REQUEST_TIMEOUT_MS} from './api';
 import {filterSourceLine} from './sourceDisplay';
 import WorkspaceDialog from './components/WorkspaceDialog';
+import FlowchartCanvas from './components/FlowchartCanvas';
 
-afterEach(() => {vi.restoreAllMocks(); vi.unstubAllGlobals();});
+afterEach(() => {vi.restoreAllMocks(); vi.unstubAllGlobals(); vi.useRealTimers();});
+
+it('keeps the selected SVG node highlighted while zooming and panning', () => {
+  vi.useFakeTimers();
+  const click = vi.fn();
+  const {container} = render(<FlowchartCanvas svgContent='<svg><g id="statement"><rect/></g></svg>'
+    highlightedNodeId="statement" onNodeClick={click} />);
+  const node = () => container.querySelector('#statement')!;
+  const viewport = container.querySelector('svg')!.parentElement!;
+  const initialTransform = viewport.style.transform;
+  act(() => {vi.advanceTimersByTime(200);});
+  expect(viewport.style.transform).toBe(initialTransform);
+  expect(node().classList.contains('node-highlighted')).toBe(true);
+  fireEvent.click(screen.getByTitle('Zoom In'));
+  expect(node().classList.contains('node-highlighted')).toBe(true);
+  fireEvent.mouseDown(node(), {clientX: 100, clientY: 100});
+  fireEvent.mouseUp(node());
+  fireEvent.click(node());
+  expect(click).toHaveBeenCalledWith('statement');
+  expect(node().classList.contains('node-highlighted')).toBe(true);
+});
 
 it('filters UTF-8 comment ranges while keeping string hashes and original line numbers', () => {
   const text = 'message = "😀 # keep"  # hide';

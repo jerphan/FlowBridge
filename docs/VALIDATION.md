@@ -10,7 +10,7 @@ diagram-routing and project-selection changes (`73e96e3`).
 | --- | --- |
 | Backend pytest | 264 passed; no failures, errors or skips |
 | Parser unittest | 301 passed |
-| Frontend Vitest | 30 passed |
+| Frontend Vitest | 31 passed |
 | Production TypeScript/Vite build | Passed |
 | Real browser with production UI and local API | 27 scenarios passed; no page JavaScript errors |
 | Repeated ZIP imports | 24 sequential archives containing 10 Python files each, then 4 concurrent imports; imports returned 201, recent projects and health remained usable, expired IDs returned 404 |
@@ -21,7 +21,7 @@ diagram-routing and project-selection changes (`73e96e3`).
 | Source/wheel build | Passed |
 | Fresh installed wheel outside checkout | API import, display metadata, file edges, source lookup, SVG/viewer export, duplicate-path isolation and CLI startup passed |
 
-The unit/integration suites contain **595 tests**, separate from the 27 browser
+The unit/integration suites contain **596 tests**, separate from the 27 browser
 scenarios. Browser tests use the real application API with deterministic GitHub
 responses; the separate live import uses the actual public demo repository.
 The native operating-system print dialog was not automated. Browser-generated
@@ -45,6 +45,8 @@ PDFs verify the print document, page sizing and diagram content.
 - Selection uses file identity. Old renders cannot replace newer projects.
   Synthetic/unmapped selections clear previous highlights; source clicks prefer
   the narrowest matching range in the active graph.
+- Canvas fitting completes before the first paint, preventing a delayed viewport
+  change during node clicks. Selection remains highlighted through zoom and pan.
 - Settings and workspace buttons open working panels. Comment/docstring filtering
   preserves string literals, original source, UTF-8 ranges and original line numbers.
 - SVG/PNG/PDF export, duplicate export names, publication isolation, unsupported

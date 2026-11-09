@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 
 interface FlowchartCanvasProps {
   svgContent?: string | null;
@@ -84,17 +84,14 @@ export default function FlowchartCanvas({
     setPanOffset({ x: targetPanX, y: targetPanY });
   }, [viewType]);
 
-  // Initial fit ONLY when diagram SVG actually changes (never on node selection)
-  useEffect(() => {
+  // Fit before painting so the diagram cannot move during the first node click.
+  useLayoutEffect(() => {
     if (prevSvgRef.current === svgContent) {
       return;
     }
     prevSvgRef.current = svgContent;
 
-    const timer = setTimeout(() => {
-      handleFitToView();
-    }, 40);
-    return () => clearTimeout(timer);
+    handleFitToView();
   }, [svgContent, handleFitToView]);
 
   // Mouse wheel zoom (centered around current viewport, no jumping)
