@@ -597,10 +597,6 @@ function App() {
         />
 
         <div className="headingRight">
-          <button type="button" className="newProjectButton" onClick={handleNewProject}
-            title="Clear the workspace and import another project">
-            <span aria-hidden="true">+</span> Start New Project
-          </button>
           <div className="user-profile">
             <button type="button" className="workspaceButton" title="Current workspace" onClick={() => setPanel('workspace')}>
               <img src="./ProfilePicture.png" alt="Local session" className="loginIcon" />
