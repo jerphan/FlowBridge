@@ -19,6 +19,26 @@ def project(*sources):
 
 
 class ParserUpdateRegressions(unittest.TestCase):
+    def test_a_failed_import_target_cannot_leave_dangling_call_links(self):
+        original = CFGBuilder.build
+
+        def fail_helper(builder, tree, file_input, ids, **kwargs):
+            if file_input.file_name == "helper.py":
+                raise RuntimeError("simulated helper failure")
+            return original(builder, tree, file_input, ids, **kwargs)
+
+        with patch.object(CFGBuilder, "build", fail_helper):
+            result = ParsingAnalysisService().analyze_project(project(
+                ("main.py", "from helper import helper\ndef run():\n    return helper()\nvalue = run()\n"),
+                ("helper.py", "def helper():\n    return 1\n"),
+            ))
+        self.assertEqual(result.status, "partial")
+        self.assertFalse(any(fn.file_id == "helper.py" for fn in result.functions))
+        self.assertTrue(any(fn.function_name == "run" for fn in result.functions))
+        helper_call = next(call for call in result.call_references if call.expression == "helper()")
+        self.assertNotEqual(helper_call.resolution, "resolved")
+        result.to_json()
+
     def test_returns_in_module_containers_are_unsupported(self):
         sources = [
             "if True:\n    return 1\n",
@@ -38,7 +58,7 @@ class ParserUpdateRegressions(unittest.TestCase):
                 self.assertEqual(module.status, "unsupported")
                 self.assertEqual(module.nodes, [])
 
-    def test_omitted_try_bindings_do_not_resolve_to_a_wrong_global_function(self):
+    def test_try_bindings_do_not_resolve_to_a_wrong_global_function(self):
         bodies = [
             "    try:\n        pass\n    finally:\n        target = 2\n    return target()\n",
             "    try:\n        x = 1\n    except Exception:\n        pass\n"
@@ -49,11 +69,10 @@ class ParserUpdateRegressions(unittest.TestCase):
             with self.subTest(body=body):
                 source = "def target():\n    return 1\ndef run():\n" + body
                 result = ParsingAnalysisService().analyze_project(project(("main.py", source)))
-                self.assertEqual(result.status, "partial")
-                self.assertTrue(any(d.code == "INCOMPLETE_SCOPE" for d in result.diagnostics))
+                self.assertEqual(result.status, "success")
                 call = next(c for c in result.call_references if c.expression == "target()")
                 self.assertEqual(call.resolution, "unresolved")
-                self.assertEqual(call.reason, "Incomplete lexical scope")
+                self.assertEqual(call.reason, "Binding is not a statically known callable")
 
     def test_failed_cfg_construction_retains_valid_siblings_without_partial_file_state(self):
         good = ("good.py", "def good():\n    return 1\nvalue = good()\n")
@@ -65,13 +84,13 @@ class ParserUpdateRegressions(unittest.TestCase):
             original = getattr(CFGBuilder, method)
 
             def fail_one_file(
-                builder, tree, file_input, ids, failure_stage=method, original_build=original
+                builder, tree, file_input, ids, failure_stage=method, original_build=original, **kwargs
             ):
                 if file_input.file_name == "broken.py" and (
                     failure_stage == "build_module" or tree.name == "broken"
                 ):
                     raise RuntimeError("simulated CFG construction failure")
-                return original_build(builder, tree, file_input, ids)
+                return original_build(builder, tree, file_input, ids, **kwargs)
 
             for sources in ((good, bad), (bad, good)):
                 with self.subTest(method=method, first_file=sources[0][0]):

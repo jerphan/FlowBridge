@@ -2,7 +2,7 @@
 from dataclasses import dataclass, field
 from .RevisionIds import RevisionIds
 from .models import (FileInput, FileMetadata, FunctionInfo, GraphModel, FlowNode,
-                     GraphReference, GraphStatus, SourceLocation, SourceMapping)
+                     FlowEdge, GraphReference, GraphStatus, SourceLocation, SourceMapping)
 
 
 @dataclass
@@ -48,7 +48,9 @@ class ProjectGraphBuilder:
               function_graphs: dict[str, GraphModel] | list[GraphModel], ids: RevisionIds,
               file_statuses: dict[str, GraphStatus] | None = None,
               project_status: GraphStatus = 'complete',
-              module_graphs: dict[str, GraphModel] | list[GraphModel] | None = None) -> ProjectGraphResult:
+              module_graphs: dict[str, GraphModel] | list[GraphModel] | None = None,
+              import_dependencies: list[tuple[str, str]] | None = None,
+              file_graphs: dict[str, GraphModel] | list[GraphModel] | None = None) -> ProjectGraphResult:
         """Accept metadata or input files and validated existing function CFGs.
 
         Lists retain the service API; dictionaries retain the overview API.
@@ -67,6 +69,14 @@ class ProjectGraphBuilder:
                     raise ValueError('Duplicate module graph identity')
             else:
                 mod_map = dict(module_graphs)
+        fg_map: dict[str, GraphModel] = {}
+        if file_graphs:
+            if isinstance(file_graphs, list):
+                fg_map = {g.graph_id: g for g in file_graphs}
+                if len(fg_map) != len(file_graphs):
+                    raise ValueError('Duplicate file graph identity')
+            else:
+                fg_map = dict(file_graphs)
         file_ids = {file.file_id for file in files}
         if len(file_ids) != len(files):
             raise ValueError('Duplicate file identity')
@@ -94,9 +104,15 @@ class ProjectGraphBuilder:
             metadata = FileMetadata(file_id=file.file_id, file_name=file.file_name,
                 file_path=file.file_path, graph_id=file_graph_id, status=status)
             result.files.append(metadata)
-            overview = GraphModel(graph_id=file_graph_id, graph_type='file', file_id=file.file_id,
-                                  status='failed' if status == 'failed' else 'complete')
+
+            if file_graph_id in fg_map:
+                overview = fg_map[file_graph_id]
+                overview.status = 'failed' if status == 'failed' else overview.status
+            else:
+                overview = GraphModel(graph_id=file_graph_id, graph_type='file', file_id=file.file_id,
+                                      status='failed' if status == 'failed' else 'complete')
             result.file_graphs[file_graph_id] = overview
+
             # Noncomplete project graphs must be empty and cannot be reference sources.
             if project_status == 'complete':
                 node = FlowNode(node_id=ids.make('node', project.graph_id, file.file_id),
@@ -104,27 +120,47 @@ class ProjectGraphBuilder:
                 project.nodes.append(node)
                 result.graph_references.append(GraphReference(source_graph_id=project.graph_id,
                     source_node_id=node.node_id, target_graph_id=overview.graph_id))
-            owned_functions = functions_by_file.get(file.file_id, [])
-            if status == 'failed' and owned_functions:
-                raise ValueError('Failed file cannot own extracted functions')
-            for function in owned_functions:
-                location = SourceLocation(file_id=file.file_id, start_line=function.start_line,
-                    start_column=function.start_column, end_line=function.end_line,
-                    end_column=function.end_column)
-                node = FlowNode(node_id=ids.make('node', overview.graph_id, function.function_id),
-                    node_type='function', label=function.function_name, source_location=location)
-                overview.nodes.append(node)
-                result.source_mappings.append(SourceMapping(graph_id=overview.graph_id,
-                    node_id=node.node_id, location=location))
-                result.graph_references.append(GraphReference(source_graph_id=overview.graph_id,
-                    source_node_id=node.node_id, target_graph_id=function.graph_id))
-            mod_graph = next((g for g in mod_map.values() if g.file_id == file.file_id), None)
-            if mod_graph is not None and status != 'failed':
-                node = FlowNode(node_id=ids.make('node', overview.graph_id, 'module'),
-                                node_type='statement', label=f'{file.file_name} execution')
-                overview.nodes.append(node)
-                result.graph_references.append(GraphReference(source_graph_id=overview.graph_id,
-                    source_node_id=node.node_id, target_graph_id=mod_graph.graph_id))
+
+            if file_graph_id not in fg_map:
+                owned_functions = functions_by_file.get(file.file_id, [])
+                if status == 'failed' and owned_functions:
+                    raise ValueError('Failed file cannot own extracted functions')
+                for function in owned_functions:
+                    location = SourceLocation(file_id=file.file_id, start_line=function.start_line,
+                        start_column=function.start_column, end_line=function.end_line,
+                        end_column=function.end_column)
+                    node = FlowNode(node_id=ids.make('node', overview.graph_id, function.function_id),
+                        node_type='function', label=function.function_name, source_location=location)
+                    overview.nodes.append(node)
+                    result.source_mappings.append(SourceMapping(graph_id=overview.graph_id,
+                        node_id=node.node_id, location=location))
+                    result.graph_references.append(GraphReference(source_graph_id=overview.graph_id,
+                        source_node_id=node.node_id, target_graph_id=function.graph_id))
+                mod_graph = next((g for g in mod_map.values() if g.file_id == file.file_id), None)
+                if mod_graph is not None and status != 'failed':
+                    node = FlowNode(node_id=ids.make('node', overview.graph_id, 'module'),
+                                    node_type='statement', label=f'{file.file_name} execution')
+                    overview.nodes.append(node)
+                    result.graph_references.append(GraphReference(source_graph_id=overview.graph_id,
+                        source_node_id=node.node_id, target_graph_id=mod_graph.graph_id))
+
+        if project_status == 'complete' and import_dependencies:
+            seen_dep_edges: set[tuple[str, str]] = set()
+            for src_fid, tgt_fid in import_dependencies:
+                if src_fid in file_ids and tgt_fid in file_ids and src_fid != tgt_fid:
+                    edge_key = (src_fid, tgt_fid)
+                    if edge_key not in seen_dep_edges:
+                        seen_dep_edges.add(edge_key)
+                        src_node_id = ids.make('node', project.graph_id, src_fid)
+                        tgt_node_id = ids.make('node', project.graph_id, tgt_fid)
+                        project.edges.append(FlowEdge(
+                            edge_id=ids.make('edge', project.graph_id, len(project.edges)),
+                            source_id=src_node_id,
+                            target_id=tgt_node_id,
+                            edge_type='next',
+                            label='imports'
+                        ))
+
         for graph in result.graphs.values():
             graph.__post_init__()
         return result

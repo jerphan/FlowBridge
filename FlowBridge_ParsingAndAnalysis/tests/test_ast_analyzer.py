@@ -1,7 +1,7 @@
 """Function metadata, lexical scope boundaries and unresolved call extraction."""
 import json
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 from flowbridge_analysis import ASTAnalyzer, PythonParser, RevisionIds, validate_project
 from flowbridge_analysis.models import FileInput
@@ -89,12 +89,12 @@ class ASTAnalyzerTests(unittest.TestCase):
         result = analyze(source)
         function = result.functions[0]
         self.assertEqual((function.start_line, function.start_column, function.end_line, function.end_column),
-                         (1, 0, 5, len('    return résultat'.encode('utf-8'))))
+                         (1, 0, 5, len('    return résultat'.encode())))
         parameter = result.symbol_table.bindings(function.scope_id, 'é')[0]
-        self.assertEqual(parameter.location.start_column, len('def café('.encode('utf-8')))
+        self.assertEqual(parameter.location.start_column, len('def café('.encode()))
         call = result.call_sites[0]
         self.assertEqual((call.location.start_line, call.location.start_column, call.location.end_line),
-                         (2, len('    résultat = '.encode('utf-8')), 4))
+                         (2, len('    résultat = '.encode()), 4))
         self.assertEqual(call.expression, 'call(\n        é\n    )')
 
     def test_nested_function_body_not_misattributed(self):
@@ -126,7 +126,7 @@ class ASTAnalyzerTests(unittest.TestCase):
         self.assertEqual([(s.name, s.import_target) for s in symbols],
                          [('os', 'os'), ('pm', 'pkg.mod'), ('h', 'pkg.helper'), ('sibling', '.sibling')])
         self.assertTrue(all(s.kind == 'import' for s in symbols))
-        self.assertTrue(result.diagnostics)
+        self.assertEqual(result.diagnostics, [])
         self.assertFalse(analyze('from pkg import *').symbol_table.scopes[0].is_complete)
 
     def test_global_nonlocal_and_unsupported_scopes_stop_optimistic_lookup(self):

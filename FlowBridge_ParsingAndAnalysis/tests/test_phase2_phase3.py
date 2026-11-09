@@ -217,12 +217,22 @@ class Phase3TryExceptTests(unittest.TestCase):
         # Verify rec = 3 DOES have exception edge to Exceptional End
         self.assertIn(('rec = 3', 'Exceptional End', 'exception'), links)
 
-    def test_unsupported_exception_constructs_rejected(self):
+    def test_supported_exception_constructs(self):
         cases = [
             "def f():\n    try:\n        x = 1\n    finally:\n        x = 2\n",
             "def f():\n    try:\n        x = 1\n    except:\n        x = 2\n    else:\n        x = 3\n",
             "def f():\n    try:\n        x = 1\n    except Exception as e:\n        pass\n",
             "def f():\n    try:\n        try:\n            x = 1\n        except:\n            pass\n    except:\n        pass\n",
+        ]
+        for src in cases:
+            with self.subTest(src=src):
+                result = self.service.analyze_project(make_payload(('test.py', src)))
+                self.assertEqual(result.status, 'success')
+                self.assertFalse(any(d.severity == 'error' for d in result.diagnostics))
+
+    def test_unsupported_exception_constructs_rejected(self):
+        cases = [
+            "def f():\n    try:\n        x = 1\n    except* Exception:\n        pass\n",
         ]
         for src in cases:
             with self.subTest(src=src):

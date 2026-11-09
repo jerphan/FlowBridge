@@ -175,20 +175,21 @@ def test_limit_no_python_and_full_registry_statuses(make_zip):
             no_source.status_code == 422 and no_source.json()["error"]["code"] == "NO_PYTHON_FILES"
         )
         first = upload(client, b"1234").json()
-        full = upload(client, b"")
-        assert (
-            full.status_code == 503 and full.json()["error"]["code"] == "REGISTRY_CAPACITY_EXCEEDED"
-        )
-        assert client.get(f"/api/projects/{first['projectID']}").json() == first
+        following = upload(client, b"")
+        assert following.status_code == 201
+        assert client.get(f"/api/projects/{first['projectID']}").status_code == 404
+        assert client.get(f"/api/projects/{following.json()['projectID']}").status_code == 200
 
 
 def test_registry_counts_actual_utf8_text_bytes():
     with TestClient(
         create_app(registry_limits=RegistryLimits(max_projects=10, max_text_bytes=4))
     ) as client:
-        assert upload(client, "é".encode()).status_code == 201
-        assert upload(client, "é".encode()).status_code == 201
-        assert upload(client, b"x").status_code == 503
+        first = upload(client, "é".encode()).json()
+        second = upload(client, "é".encode()).json()
+        assert upload(client, b"x").status_code == 201
+        assert client.get(f"/api/projects/{first['projectID']}").status_code == 404
+        assert client.get(f"/api/projects/{second['projectID']}").status_code == 200
 
 
 @pytest.mark.parametrize(

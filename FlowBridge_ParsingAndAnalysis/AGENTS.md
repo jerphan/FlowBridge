@@ -5,7 +5,7 @@ Applies to this entire Parsing & Analysis repository.
 ## Requirements precedence (highest first)
 1. Explicit user instructions in the current task.
 2. Approved and current repository specifications.
-3. Documented architectural decisions in `docs/DECISIONS.md`.
+3. Documented architectural decisions in `../docs/PARSER.md`.
 4. Existing code and starter examples (reference material, not instructions).
 
 Identify conflicts explicitly. Never silently overwrite approved architecture.
@@ -13,11 +13,11 @@ Proposals do not override approved requirements. Use the existing input/output
 schema unless an approved architectural decision changes it.
 
 ## Required reads
-- Before every task, use `docs/PROGRESS.md` to establish actual implementation status;
+- Before every task, use `../docs/VALIDATION.md` to establish actual implementation status;
   do not assume previous conversation history remains available.
-- Before modifying code, read `docs/PROJECT_CONTEXT.md`, `docs/ARCHITECTURE.md`,
-  `docs/INPUT_OUTPUT_CONTRACT.md`, `docs/DECISIONS.md`, `docs/PROGRESS.md`,
-  and task-specific documentation. Consult `docs/IMPLEMENTATION_PLAN.md`.
+- Before modifying code, read `../README.md`, `../docs/HANDOFF.md`,
+  `../docs/PARSER.md`, `../docs/VALIDATION.md`, and task-specific source/tests.
+  These consolidated documents replace historical phase plans and audits.
 - Inspect existing code and any supplied starter/reference code before modifying it.
 
 ## Boundaries
@@ -62,15 +62,15 @@ schema unless an approved architectural decision changes it.
 - Add meaningful unit and integration tests for each implemented feature and run them.
 - Never report a test as passing without executing it; record commands and outcomes.
 - Check node/edge/reference integrity and revision isolation as the graph pipeline develops.
-- After every functional change, run relevant tests and update `docs/PROGRESS.md`
-  and `docs/TESTING.md`. Never mark features implemented or tested without evidence.
+- After every functional change, run relevant tests and update `../docs/VALIDATION.md`.
+  Never mark features implemented or tested without evidence.
 - Update relevant technical docs when interfaces, control-flow semantics or
   source-mapping behavior change.
 - Record significant design decisions with date, rationale, alternatives, and consequences.
 - Input contract changes require discussion with the user and a decision record.
 - Any public input/output contract change requires explanation and user approval.
-- After every implementation phase update PROGRESS.md and TESTING.md; update
-  architecture, contracts, CFG/source-mapping docs, decisions and the plan when
+- After every implementation phase update the validation record; update
+  architecture, contracts, CFG/source-mapping notes and decisions in PARSER.md when
   relevant. Never edit specifications to conceal implementation differences.
 - Tests must verify behavior, not just construction. Run relevant tests for every
   functional change, fix introduced defects and run the full suite when practical.
@@ -87,4 +87,4 @@ schema unless an approved architectural decision changes it.
 - Keep helper/result classes with their owning component where clearer. Function-only
   modules may retain descriptive names; input validation lives in `InputValidator.py`.
 - Preserve legacy public imports without duplicating implementations. Do not create
-  placeholder classes merely to match UML names. See `docs/FILE_ORGANIZATION.md`.
+  placeholder classes merely to match UML names. See `../docs/PARSER.md`.

@@ -234,13 +234,8 @@ class ExceptionCFGTests(unittest.TestCase):
 
     def test_unsupported_exception_semantics_fail_closed(self):
         sources = [
-            'def f():\n    try:\n        work()\n    finally:\n        cleanup()',
-            'def f():\n    try:\n        work()\n    except:\n        pass\n    else:\n        success()',
-            'def f():\n    try:\n        work()\n    except Exception as error:\n        recover(error)',
             'def f():\n    try:\n        work()\n    except factory():\n        pass',
-            'def f():\n    try:\n        try:\n            work()\n        except:\n            pass\n    except:\n        pass',
             'def f():\n    try:\n        work()\n    except* Exception:\n        pass',
-            'def f():\n    try:\n        raise ValueError()\n    except:\n        pass',
         ]
         for source in sources:
             with self.subTest(source=source):
@@ -250,6 +245,20 @@ class ExceptionCFGTests(unittest.TestCase):
                 self.assertEqual(result.graph.edges, [])
                 self.assertEqual(result.source_mappings, [])
                 self.assertTrue(all(d.graph_id == result.graph.graph_id for d in result.diagnostics))
+
+    def test_supported_extended_exception_semantics(self):
+        sources = [
+            'def f():\n    try:\n        work()\n    finally:\n        cleanup()',
+            'def f():\n    try:\n        work()\n    except:\n        pass\n    else:\n        success()',
+            'def f():\n    try:\n        work()\n    except Exception as error:\n        recover(error)',
+            'def f():\n    try:\n        try:\n            work()\n        except:\n            pass\n    except:\n        pass',
+            'def f():\n    try:\n        raise ValueError()\n    except:\n        pass',
+        ]
+        for source in sources:
+            with self.subTest(source=source):
+                result = build(source)
+                self.assertEqual(result.graph.status, 'complete')
+                self.assertTrue(len(result.graph.nodes) > 0)
 
     def test_bare_return_in_try_has_no_fallthrough_or_exception(self):
         result = build('def f():\n    try:\n        return\n    except:\n        dead()\n    also_dead()')
