@@ -33,7 +33,7 @@ flowchart TD
     Project --> Registry["Temporary project registry"]
     Registry --> Parser["Parsing and Analysis"]
     Parser --> Graphs["Graphs, diagnostics and mappings"]
-    Graphs --> Layout["Sugiyama-style layout and edge routing"]
+    Graphs --> Layout["Diagram layout layout and edge routing"]
     Layout --> Renderer["SVG renderer"]
     Renderer --> UI["React canvas and exports"]
     Graphs --> Mapping["Source Mapping"]
