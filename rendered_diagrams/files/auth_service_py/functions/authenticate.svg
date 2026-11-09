@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 674.0 566.0" width="674.0" height="566.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 764.0 566.0" width="764.0" height="566.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -32,34 +32,34 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="337.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — authenticate() (auth_service.py)</text>
-  <path d="M 332.0 102.0 L 332.0 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 332.0 228.0 L 332.0 263.0 L 244.8 263.0 L 244.8 298.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
-  <rect x="265.4" y="249.0" width="46.0" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="288.4" y="261.0" class="edge-label">true</text>
-  <path d="M 244.8 344.0 L 244.8 379.0 L 332.0 379.0 L 332.0 414.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 332.0 228.0 L 332.0 263.0 L 474.5 263.0 L 474.5 298.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
-  <rect x="376.5" y="249.0" width="53.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
-  <text x="403.2" y="261.0" class="edge-label">false</text>
-  <path d="M 474.5 344.0 L 474.5 379.0 L 332.0 379.0 L 332.0 414.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwwXQ" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwwXQ">
-    <rect x="277.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="332.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="382.0" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — authenticate() (auth_service.py)</text>
+  <path d="M 382.0 102.0 L 382.0 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 120.0 200.0 L 105.0 200.0 L 105.0 263.0 L 294.8 263.0 L 294.8 298.0" class="edge-line edge-true" marker-end="url(#arrow-true)" />
+  <rect x="89.5" y="184.0" width="46.0" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="112.5" y="196.0" class="edge-label">true</text>
+  <path d="M 294.8 344.0 L 294.8 379.0 L 363.7 379.0 L 363.7 414.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 644.0 200.0 L 659.0 200.0 L 659.0 263.0 L 524.5 263.0 L 524.5 298.0" class="edge-line edge-false" marker-end="url(#arrow-false)" />
+  <rect x="624.8" y="184.0" width="53.5" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>
+  <text x="651.5" y="196.0" class="edge-label">false</text>
+  <path d="M 524.5 344.0 L 524.5 379.0 L 400.3 379.0 L 400.3 414.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwwXQ" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwwXQ">
+    <rect x="327.0" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="382.0" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwxXQ" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwxXQ">
-    <rect x="277.0" y="414.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="332.0" y="435.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwxXQ" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwxXQ">
+    <rect x="327.0" y="414.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="382.0" y="435.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwyXQ" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwyXQ" data-file-id="d9285dd6-5491-438a-880d-19ec7b671dde" data-start-line="3" data-end-line="3">
-    <polygon points="332.0,172.0 594.0,200.0 332.0,228.0 70.0,200.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="332.0" y="200.0" class="node-text" fill="#e65100" font-weight="600">email == &#x27;alice@example.com&#x27; and password == &#x27;secret123&#x27;</text>
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwyXQ" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwyXQ" data-file-id="affdc5e9-9481-4a66-b74b-0a343ff06f47" data-start-line="3" data-end-line="3">
+    <polygon points="382.0,172.0 644.0,200.0 382.0,228.0 120.0,200.0" fill="#fff8e1" stroke="#f57f17" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="382.0" y="200.0" class="node-text" fill="#e65100" font-weight="600">email == &#x27;alice@example.com&#x27; and password == &#x27;secret123&#x27;</text>
   </g>
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwzXQ" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwzXQ" data-file-id="d9285dd6-5491-438a-880d-19ec7b671dde" data-start-line="4" data-end-line="4">
-    <rect x="124.8" y="298.0" width="240.0" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
-    <text x="244.8" y="321.0" class="node-text" fill="#bf360c">return &#x27;token_alice_xyz&#x27;</text>
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwzXQ" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiwzXQ" data-file-id="affdc5e9-9481-4a66-b74b-0a343ff06f47" data-start-line="4" data-end-line="4">
+    <rect x="174.8" y="298.0" width="240.0" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="294.8" y="321.0" class="node-text" fill="#bf360c">return &#x27;token_alice_xyz&#x27;</text>
   </g>
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiw0XQ" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiw0XQ" data-file-id="d9285dd6-5491-438a-880d-19ec7b671dde" data-start-line="5" data-end-line="5">
-    <rect x="409.8" y="298.0" width="129.5" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
-    <text x="474.5" y="321.0" class="node-text" fill="#bf360c">return None</text>
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiw0XQ" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERJc01Dd2lZWFYwYUdWdWRHbGpZWFJsSWwwIiw0XQ" data-file-id="affdc5e9-9481-4a66-b74b-0a343ff06f47" data-start-line="5" data-end-line="5">
+    <rect x="459.8" y="298.0" width="129.5" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="524.5" y="321.0" class="node-text" fill="#bf360c">return None</text>
   </g>
 </svg>

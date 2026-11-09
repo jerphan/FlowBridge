@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551.5 440.0" width="551.5" height="440.0" class="flowbridge-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 641.5 440.0" width="641.5" height="440.0" class="flowbridge-diagram">
 <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1a73e8" />
@@ -32,19 +32,19 @@
     .clickable { cursor: pointer; transition: transform 0.15s, filter 0.15s; }
     .clickable:hover { filter: brightness(0.95); }
   </style>
-  <text x="275.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — create_user() (auth_service.py)</text>
-  <path d="M 270.8 102.0 L 270.8 172.0" class="edge-line" marker-end="url(#arrow)" />
-  <path d="M 270.8 218.0 L 270.8 288.0" class="edge-line" marker-end="url(#arrow)" />
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd">
-    <rect x="215.8" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="270.8" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
+  <text x="320.8" y="28" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">Function View — create_user() (auth_service.py)</text>
+  <path d="M 320.8 102.0 L 320.8 172.0" class="edge-line" marker-end="url(#arrow)" />
+  <path d="M 320.8 218.0 L 320.8 288.0" class="edge-line" marker-end="url(#arrow)" />
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDBd">
+    <rect x="265.8" y="60.0" width="110.0" height="42.0" rx="21.0" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="320.8" y="81.0" class="node-text" fill="#1b5e20" font-weight="600">Start</text>
   </g>
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd">
-    <rect x="215.8" y="288.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
-    <text x="270.8" y="309.0" class="node-text" fill="#263238" font-weight="600">End</text>
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDFd">
+    <rect x="265.8" y="288.0" width="110.0" height="42.0" rx="21.0" fill="#eceff1" stroke="#455a64" stroke-width="2" filter="url(#nodeShadow)"/>
+    <text x="320.8" y="309.0" class="node-text" fill="#263238" font-weight="600">End</text>
   </g>
-  <g id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-node-id="fb1_WyI0OTQ4ZDM2Yy0zMWE4LTQzZDQtYTkzMi05NzgzMWVmMWExNzMiLDEsIm5vZGUiLCJmYjFfV3lJME9UUTRaRE0yWXkwek1XRTRMVFF6WkRRdFlUa3pNaTA1Tnpnek1XVm1NV0V4TnpNaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0prT1RJNE5XUmtOaTAxTkRreExUUXpPR0V0T0Rnd1pDMHhPV1ZqTjJJMk56RmtaR1VpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-file-id="d9285dd6-5491-438a-880d-19ec7b671dde" data-start-line="8" data-end-line="8">
-    <rect x="70.0" y="172.0" width="401.5" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
-    <text x="270.8" y="195.0" class="node-text" fill="#bf360c">return {&#x27;email&#x27;: email, &#x27;status&#x27;: &#x27;active&#x27;}</text>
+  <g id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-node-id="fb1_WyI3NjRmNTFjYi1lN2U4LTQyYzItYTFjYS0zZTUyYTlhNjc3YTciLDEsIm5vZGUiLCJmYjFfV3lJM05qUm1OVEZqWWkxbE4yVTRMVFF5WXpJdFlURmpZUzB6WlRVeVlUbGhOamMzWVRjaUxERXNJbWR5WVhCb0lpd2lablZ1WTNScGIyNGlMQ0poWm1aa1l6VmxPUzA1TkRneExUUmhOall0WWpjMFlpMHdZVE0wTTJabU1EWm1ORGNpTERjc01Dd2lZM0psWVhSbFgzVnpaWElpWFEiLDJd" data-file-id="affdc5e9-9481-4a66-b74b-0a343ff06f47" data-start-line="8" data-end-line="8">
+    <rect x="120.0" y="172.0" width="401.5" height="46.0" rx="6" fill="#fbe9e7" stroke="#d84315" stroke-width="1.8" filter="url(#nodeShadow)"/>
+    <text x="320.8" y="195.0" class="node-text" fill="#bf360c">return {&#x27;email&#x27;: email, &#x27;status&#x27;: &#x27;active&#x27;}</text>
   </g>
 </svg>

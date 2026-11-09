@@ -93,12 +93,11 @@ def create_app(
         app.mount("/viewer", StaticFiles(directory=str(rendered_dir), html=True), name="viewer")
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=list(cors_origins),
-        allow_credentials=False,
-        allow_methods=["GET", "POST"],
-        allow_headers=["Content-Type"],
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
     )
-
     @app.exception_handler(CodeManagerError)
     async def domain_error(request: Request, error: CodeManagerError) -> JSONResponse:
         return JSONResponse(error.payload(), status_code=error.status)

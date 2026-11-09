@@ -41,6 +41,9 @@ examples/pipeline_results/
 codemanager_output.json
 tests/temp_complex_project/
 
+# Node dependencies
+node_modules/
+
 # OS specific
 .DS_Store
 Thumbs.db
