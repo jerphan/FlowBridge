@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import axios from "axios";
+import {REQUEST_TIMEOUT_MS, errorMessage as requestError} from "../api";
 import { PyProject } from "../types/flowchart";
 
 interface UploadModalProps {
@@ -63,6 +64,7 @@ export default function UploadModal({
 
       const response = await axios.post<PyProject>(endpoint, formData, {
         signal: request.signal,
+        timeout: REQUEST_TIMEOUT_MS,
       });
 
       if (request.signal.aborted || pendingImport.current !== request) return;
@@ -71,11 +73,7 @@ export default function UploadModal({
     } catch (err: unknown) {
       if (request.signal.aborted || pendingImport.current !== request) return;
       console.error("Upload failed:", err);
-      const msg =
-        axios.isAxiosError(err) && err.response?.data?.error?.message
-          ? err.response.data.error.message
-          : "Failed to upload file. Please check file format and server status.";
-      setErrorMessage(msg);
+      setErrorMessage(requestError(err));
     } finally {
       if (pendingImport.current === request) {
         pendingImport.current = null;
@@ -108,6 +106,7 @@ export default function UploadModal({
         {
           headers: { "Content-Type": "application/json" },
           signal: request.signal,
+          timeout: REQUEST_TIMEOUT_MS,
         }
       );
 
@@ -117,11 +116,7 @@ export default function UploadModal({
     } catch (err: unknown) {
       if (request.signal.aborted || pendingImport.current !== request) return;
       console.error("GitHub import failed:", err);
-      const msg =
-        axios.isAxiosError(err) && err.response?.data?.error?.message
-          ? err.response.data.error.message
-          : "Failed to import from GitHub. Ensure the repository is public and accessible.";
-      setErrorMessage(msg);
+      setErrorMessage(requestError(err));
     } finally {
       if (pendingImport.current === request) {
         pendingImport.current = null;
@@ -215,7 +210,7 @@ export default function UploadModal({
               fontSize: "13px",
             }}
           >
-            📄 Python File (.py)
+            Python File (.py)
           </button>
           <button
             onClick={() => { setActiveTab("zip"); setErrorMessage(null); }}
@@ -231,7 +226,7 @@ export default function UploadModal({
               fontSize: "13px",
             }}
           >
-            📦 ZIP Project (.zip)
+            ZIP Project (.zip)
           </button>
           <button
             onClick={() => { setActiveTab("github"); setErrorMessage(null); }}
@@ -247,7 +242,7 @@ export default function UploadModal({
               fontSize: "13px",
             }}
           >
-            🐙 GitHub Repo
+            GitHub Repo
           </button>
         </div>
 
@@ -318,7 +313,7 @@ export default function UploadModal({
                       e.currentTarget.style.backgroundColor = "#fafafa";
                     }}
                   >
-                    <div style={{ fontSize: "36px", marginBottom: "8px" }}>📄</div>
+
                     <div style={{ fontWeight: 600, fontSize: "15px", color: "#212529" }}>
                       Click to choose a Python file
                     </div>
@@ -358,7 +353,7 @@ export default function UploadModal({
                       e.currentTarget.style.backgroundColor = "#fafafa";
                     }}
                   >
-                    <div style={{ fontSize: "36px", marginBottom: "8px" }}>📦</div>
+
                     <div style={{ fontWeight: 600, fontSize: "15px", color: "#212529" }}>
                       Click to choose a ZIP project archive
                     </div>

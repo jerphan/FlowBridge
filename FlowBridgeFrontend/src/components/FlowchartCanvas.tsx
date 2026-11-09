@@ -211,9 +211,31 @@ export default function FlowchartCanvas({
     );
   }
 
-  // If no SVG yet, show original screenshot placeholder
+  // If no SVG yet, show clean placeholder message
   if (!svgContent) {
-    return <img src="ExampleScreenShot.jpg" alt="Flowchart" className="flowchartImage" />;
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          padding: "32px",
+          color: "#8c959f",
+          textAlign: "center",
+          backgroundColor: "#ffffff",
+        }}
+      >
+
+        <p style={{ margin: "0 0 8px 0", fontWeight: 600, color: "#343a40", fontSize: "16px" }}>
+          No Flowchart Generated Yet
+        </p>
+        <p style={{ margin: 0, fontSize: "13px", color: "#6c757d", maxWidth: "340px", lineHeight: "1.5" }}>
+          Click the <strong style={{ color: "#1a73e8" }}>Start</strong> button in the top navigation bar to analyze the project and render control-flow diagrams.
+        </p>
+      </div>
+    );
   }
 
   return (

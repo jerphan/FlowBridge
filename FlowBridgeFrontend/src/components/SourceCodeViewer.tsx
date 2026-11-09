@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { FunctionInfo, SourceFile } from "../types/flowchart";
+import { FunctionInfo, SourceFile, SourceLocation } from "../types/flowchart";
+import {filterSourceLine} from "../sourceDisplay";
 
 interface SourceCodeViewerProps {
   activeFile?: SourceFile | null;
@@ -10,6 +11,7 @@ interface SourceCodeViewerProps {
   onLineClick?: (lineNumber: number, fileId: string) => void;
   onBackToProjectFiles?: () => void;
   fileStatuses?: Record<string, string>;
+  hiddenRanges?: SourceLocation[];
 }
 
 function getFileId(f?: SourceFile | null, fallbackIdx = 0): string {
@@ -31,6 +33,7 @@ export default function SourceCodeViewer({
   onLineClick,
   onBackToProjectFiles,
   fileStatuses = {},
+  hiddenRanges = [],
 }: SourceCodeViewerProps) {
   const lineRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const codeContainerRef = useRef<HTMLDivElement>(null);
@@ -123,7 +126,7 @@ export default function SourceCodeViewer({
           textAlign: "center",
         }}
       >
-        <div style={{ fontSize: "36px", marginBottom: "12px" }}>📁</div>
+
         <p style={{ margin: "0 0 6px 0", fontWeight: 600, color: "#495057", fontSize: "14px" }}>
           No Python source file loaded
         </p>
@@ -163,7 +166,7 @@ export default function SourceCodeViewer({
             flexShrink: 0,
           }}
         >
-          <span>📁 Project Files ({allFiles.length})</span>
+          <span>Project Files ({allFiles.length})</span>
           <div style={{ display: "flex", gap: "6px" }}>
             <button
               onClick={() => handleScrollUp(filesContainerRef)}
@@ -241,7 +244,7 @@ export default function SourceCodeViewer({
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <span style={{ fontSize: "16px" }}>📄</span>
+
                   <span style={{ fontWeight: 600, fontSize: "14px", color: "#212529" }}>{fName}</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -348,7 +351,7 @@ export default function SourceCodeViewer({
             </button>
           )}
           <span style={{ color: "#343a40", fontSize: "12px", fontWeight: 600 }}>
-            {activeFunction ? `⚡ ${activeFunction.functionName}()` : `📄 ${activeFName}`}
+            {activeFunction ? `${activeFunction.functionName}()` : `${activeFName}`}
           </span>
           <span style={{ color: "#6c757d", fontSize: "11px" }}>
             ({displayedLines.length} lines)
@@ -406,6 +409,8 @@ export default function SourceCodeViewer({
         <div style={{ minWidth: "max-content", width: "100%" }}>
           {displayedLines.map((lineText, idx) => {
             const actualLineNum = startIdx + idx + 1;
+            const displayedText = filterSourceLine(lineText, actualLineNum, hiddenRanges);
+            if (displayedText === null) return null;
             const isHighlighted =
               highlightedLines &&
               actualLineNum >= highlightedLines[0] &&
@@ -456,7 +461,7 @@ export default function SourceCodeViewer({
                     fontWeight: isHighlighted ? 600 : 400,
                   }}
                 >
-                  {lineText || " "}
+                  {displayedText || " "}
                 </span>
               </div>
             );

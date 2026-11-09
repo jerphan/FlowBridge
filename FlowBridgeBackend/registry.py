@@ -20,13 +20,16 @@ class ProjectRegistry:
         with self._lock:
             if snapshot.projectID in self._projects:
                 raise DuplicateFile("A project with that ID is already registered.")
-            if (
-                len(self._projects) >= self.limits.max_projects
-                or self._text_bytes + size > self.limits.max_text_bytes
-            ):
+            if size > self.limits.max_text_bytes:
                 raise RegistryCapacityExceeded(
-                    "Demo project storage is full. Restart the server to clear retained projects."
+                    "This project exceeds the session storage limit. Import a smaller project."
                 )
+            # Make room only after the new snapshot has passed validation and size checks.
+            while (len(self._projects) >= self.limits.max_projects
+                   or self._text_bytes + size > self.limits.max_text_bytes):
+                oldest = next(iter(self._projects))
+                removed = self._projects.pop(oldest)
+                self._text_bytes -= sum(len(file.fileContent.encode("utf-8")) for file in removed.files)
             self._projects[snapshot.projectID] = snapshot
             self._text_bytes += size
 
@@ -44,7 +47,10 @@ class ProjectRegistry:
     def _find(self, projectID: str) -> PyProject:
         project = self._projects.get(projectID)
         if project is None:
-            raise ProjectNotFound("No retained project has that ID.")
+            raise ProjectNotFound("No retained project has that ID. Re-import it to continue.")
+        # Accessed projects stay recent, so an active workspace is retained ahead of idle ones.
+        self._projects.pop(projectID)
+        self._projects[projectID] = project
         return project
 
     def clear(self) -> None:

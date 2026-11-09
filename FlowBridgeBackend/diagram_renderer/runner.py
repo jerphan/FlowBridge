@@ -40,7 +40,7 @@ class HierarchicalDiagramPipeline:
             proj_data = raw_graphs[model.project_graph_id]
             proj_rendered = self.layout_engine.layout(
                 graph_data=proj_data,
-                title=f"Project View — {model.project_name}",
+                title=f"Project View: {model.project_name}",
                 child_lookup=model.node_to_child_graph,
                 file_statuses=model.file_statuses,
             )
@@ -66,7 +66,7 @@ class HierarchicalDiagramPipeline:
                 f_data = raw_graphs[f.file_graph_id]
                 f_rendered = self.layout_engine.layout(
                     graph_data=f_data,
-                    title=f"File View — {f.file_path}",
+                    title=f"File View: {f.file_path}",
                     child_lookup=model.node_to_child_graph,
                     file_statuses=model.file_statuses,
                 )
@@ -93,7 +93,7 @@ class HierarchicalDiagramPipeline:
                         fn_data = raw_graphs[fn.function_graph_id]
                         fn_rendered = self.layout_engine.layout(
                             graph_data=fn_data,
-                            title=f"Function View — {fn.function_name}() ({f.file_path}:{fn.start_line})",
+                            title=f"Function View: {fn.function_name}() ({f.file_path}:{fn.start_line})",
                             child_lookup=model.node_to_child_graph,
                             file_statuses=model.file_statuses,
                         )

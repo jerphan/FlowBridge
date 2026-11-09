@@ -21,6 +21,12 @@ class CFGResult:
 # A pending path is a node plus the edge label to use when its successor is known.
 Predecessors = list[tuple[str, EdgeType]]
 
+MAX_GRAPH_NODES = 2500
+
+
+class _GraphLimitError(Exception):
+    """Stop call expansion before a small input creates an unusably large view."""
+
 
 @dataclass
 class _Loop:
@@ -54,6 +60,9 @@ class CFGBuilder:
         worker.diagnostics.extend(diagnostics)
         try:
             return worker.build()
+        except _GraphLimitError as error:
+            return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
+                function, 'CFG_LIMIT', str(error))])
         except RecursionError:
             # No partial graph escapes if recursive block construction hits a limit.
             return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
@@ -78,6 +87,9 @@ class CFGBuilder:
         worker.diagnostics.extend(diagnostics)
         try:
             return worker.build()
+        except _GraphLimitError as error:
+            return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
+                tree, 'CFG_LIMIT', str(error))])
         except RecursionError:
             return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
                 tree, 'CFG_LIMIT', 'Module exceeds CFG construction recursion capacity.')])
@@ -101,6 +113,9 @@ class CFGBuilder:
         worker.diagnostics.extend(diagnostics)
         try:
             return worker.build()
+        except _GraphLimitError as error:
+            return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
+                tree, 'CFG_LIMIT', str(error))])
         except RecursionError:
             return CFGResult(worker.graph('failed', empty=True), diagnostics=[worker.diagnostic(
                 tree, 'CFG_LIMIT', 'File exceeds CFG construction recursion capacity.')])
@@ -148,6 +163,11 @@ class _FunctionBuilder:
 
     def node(self, kind: NodeType, label: str, source: ast.AST | None = None) -> str:
         """Allocate a graph-owned ID and attach its AST span/mapping immediately."""
+        if self.node_count >= MAX_GRAPH_NODES:
+            raise _GraphLimitError(
+                f'Graph is too large to display (maximum {MAX_GRAPH_NODES} nodes per view). '
+                'Try a smaller file or project.'
+            )
         node_id = self.ids.make('node', self.graph_id, self.node_count)
         self.node_count += 1
         location = ast_location(source, self.file.file_id) if source is not None else None

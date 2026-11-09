@@ -1,1 +1,1 @@
-"""Reserved for source_mapping tests. No tests implemented; see docs/TESTING.md."""
+"""Canonical mapping coverage is recorded in the shared docs/VALIDATION.md."""

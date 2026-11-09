@@ -24,6 +24,10 @@ with zipfile.ZipFile(archive, "w") as files:
 
 
 def github_request(request):
+    if request.url.path == "/repos/demo/limited":
+        return httpx.Response(429)
+    if request.url.path == "/repos/demo/timeout":
+        raise httpx.ReadTimeout("Offline timeout fixture", request=request)
     if request.url.path == "/repos/demo/repo":
         return httpx.Response(
             200,
@@ -59,3 +63,21 @@ def fixture_ready():
 @app.get("/_browser_fixture/archive.zip")
 def fixture_archive():
     return Response(archive.getvalue(), media_type="application/zip")
+
+
+@app.get("/_browser_fixture/ten-files.zip")
+def ten_file_archive():
+    content = io.BytesIO()
+    with zipfile.ZipFile(content, "w") as files:
+        for index in range(10):
+            code = ("def compute(value):\n    total = 0\n    for number in range(value):\n"
+                    "        total += number\n    if total > 4:\n        return total\n"
+                    f"    return {index}\nresult = compute(5)\n")
+            files.writestr(f"folder{index}/main.py", code)
+    return Response(content.getvalue(), media_type="application/zip")
+
+
+@app.post("/_browser_fixture/clear")
+def clear_projects():
+    app.state.registry.clear()
+    return {"cleared": True}

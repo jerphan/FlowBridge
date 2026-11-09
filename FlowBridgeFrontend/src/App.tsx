@@ -1,10 +1,12 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import axios from "axios";
+import {REQUEST_TIMEOUT_MS, errorMessage as requestError} from "./api";
 import UploadModal from "./components/UploadModal";
 import ExportModal from "./components/ExportModal";
 import StartButton from "./components/StartButton";
 import SourceCodeViewer from "./components/SourceCodeViewer";
 import FlowchartCanvas from "./components/FlowchartCanvas";
+import WorkspaceDialog from "./components/WorkspaceDialog";
 import {
   BreadcrumbItem,
   FunctionInfo,
@@ -13,6 +15,7 @@ import {
   SourceMappingPayload,
   DiagnosticDto,
   FileMetadata,
+  SourceLocation,
 } from "./types/flowchart";
 import "./App.css";
 
@@ -207,6 +210,27 @@ function App() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const renderRequest = useRef<AbortController | null>(null);
   useEffect(() => () => renderRequest.current?.abort(), []);
+  const [panel, setPanel] = useState<'settings' | 'workspace' | null>(null);
+  const [hideComments, setHideComments] = useState(false);
+  const [commentRanges, setCommentRanges] = useState<Record<string, SourceLocation[]>>({});
+  const [displayError, setDisplayError] = useState<string | null>(null);
+  useEffect(() => {
+    if (!hideComments || !project) return;
+    const request = new AbortController();
+    setDisplayError(null);
+    axios.get<{projectId: string; files: Record<string, SourceLocation[]>}>(
+      `${API_BASE_URL}/api/projects/${project.projectID}/display`,
+      {signal: request.signal, timeout: REQUEST_TIMEOUT_MS},
+    ).then(({data}) => {
+      if (!request.signal.aborted && data.projectId === project.projectID) setCommentRanges(data.files);
+    }).catch(error => {
+      if (!request.signal.aborted) {
+        setDisplayError(requestError(error));
+        setHideComments(false);
+      }
+    });
+    return () => request.abort();
+  }, [hideComments, project]);
 
   // Modals state
   const [isUploadModalOpen, setIsUploadModalOpen] = useState<boolean>(false);
@@ -258,6 +282,7 @@ function App() {
     renderRequest.current = null;
     setIsLoading(false);
     setProject(uploadedProject);
+    setCommentRanges({});
     setRenderData(null);
     setActiveGraphId(null);
     setBreadcrumbs([]);
@@ -266,12 +291,9 @@ function App() {
     setHighlightedNodeId(null);
     setActiveFunction(null);
 
-    // Default to the first file if available
-    if (uploadedProject.files && uploadedProject.files.length > 0) {
-      setActiveFile(uploadedProject.files[0]);
-    } else {
-      setActiveFile(null);
-    }
+    // Display the overall project view page rather than opening the first file
+    setActiveFile(null);
+    setActiveFunction(null);
   }
 
   // 2. Handle Generate Flowchart via StartButton
@@ -294,7 +316,7 @@ function App() {
       const response = await axios.post<RenderResponse>(
         `${API_BASE_URL}/api/projects/${projectId}/render`,
         undefined,
-        { signal: request.signal }
+        { signal: request.signal, timeout: REQUEST_TIMEOUT_MS }
       );
 
       const data = response.data;
@@ -324,11 +346,7 @@ function App() {
     } catch (err: unknown) {
       if (request.signal.aborted || renderRequest.current !== request) return;
       console.error("Failed to generate diagrams:", err);
-      const msg =
-        axios.isAxiosError(err) && err.response?.data?.error?.message
-          ? err.response.data.error.message
-          : "Failed to generate diagrams. Check server logs.";
-      setErrorMessage(msg);
+      setErrorMessage(requestError(err));
     } finally {
       if (renderRequest.current === request) {
         renderRequest.current = null;
@@ -351,6 +369,7 @@ function App() {
     }
 
     setHighlightedNodeId(nodeId);
+    setHighlightedLines(null);
 
     // Source mapping lookup for node
     const nodeMapping = renderData.sourceMapping?.nodes?.[nodeId];
@@ -384,6 +403,7 @@ function App() {
     if (!renderData) return;
 
     setHighlightedLines([lineNumber, lineNumber]);
+    setHighlightedNodeId(null);
 
     // Check source mapping index for this line
     const fileIndex = renderData.sourceMapping?.files?.[fileId];
@@ -394,8 +414,13 @@ function App() {
       const activeNodes = candidateNodes.filter(
         (nid) => renderData.sourceMapping?.nodes?.[nid]?.graphId === activeGraphId
       );
-      const chosenNodeId = activeNodes.length > 0 ? activeNodes[0] : candidateNodes[0];
-      setHighlightedNodeId(chosenNodeId);
+      activeNodes.sort((left, right) => {
+        const a = renderData.sourceMapping!.nodes[left].span!;
+        const b = renderData.sourceMapping!.nodes[right].span!;
+        return (a.endLine - a.startLine) - (b.endLine - b.startLine)
+          || (a.endColumn - a.startColumn) - (b.endColumn - b.startColumn);
+      });
+      if (activeNodes.length) setHighlightedNodeId(activeNodes[0]);
     }
   }
 
@@ -562,13 +587,10 @@ function App() {
         />
 
         <div className="headingRight">
-          <div className="user-profile" title="User Profile">
-            <div>
-              <label htmlFor="loginButton">
-                <img src="./ProfilePicture.png" alt="Profile Icon" className="loginIcon" />
-              </label>
-              <input type="button" id="loginButton" className="toolButton" />
-            </div>
+          <div className="user-profile">
+            <button type="button" className="workspaceButton" title="Current workspace" onClick={() => setPanel('workspace')}>
+              <img src="./ProfilePicture.png" alt="Local session" className="loginIcon" />
+            </button>
           </div>
         </div>
       </header>
@@ -591,7 +613,7 @@ function App() {
               onClick={() => setIsExportModalOpen(true)}
               className="sidebarIconButton"
               title={activeSvg ? "Export Diagram (SVG, PNG, PDF)" : "Generate a diagram to export"}
-              disabled={!activeSvg}
+              disabled={!activeSvg || isViewingUnsupportedFile}
               style={{ opacity: activeSvg ? 1 : 0.4 }}
             >
               <img src="ExportButton.png" alt="Export Icon" className="toolIcon" />
@@ -601,8 +623,8 @@ function App() {
           <div className="toolbar-bottom">
             <button
               className="sidebarIconButton"
-              title="Settings"
-              onClick={() => alert("FlowBridge v1.0 — Ready & Connected to Backend.")}
+              title="Display settings"
+              onClick={() => setPanel('settings')}
             >
               <img src="SettingsIcon.png" alt="Settings Icon" className="toolIcon" />
             </button>
@@ -615,11 +637,11 @@ function App() {
           <section className="card">
             <div className="cardHeader">
               {activeFunction
-                ? `⚡ ${activeFunction.functionName}() (Lines ${activeFunction.startLine}-${activeFunction.endLine})`
+                ? `${activeFunction.functionName}() (Lines ${activeFunction.startLine}-${activeFunction.endLine})`
                 : activeFile
-                ? `📄 ${getFileName(activeFile)}`
+                ? `${getFileName(activeFile)}`
                 : project
-                ? `🌐 ${project.projectName || project.name}`
+                ? `${project.projectName || project.name}`
                 : "Source Code"}
             </div>
 
@@ -632,6 +654,7 @@ function App() {
                 onSelectFile={handleFileSelect}
                 onLineClick={handleLineClick}
                 fileStatuses={fileStatuses}
+                hiddenRanges={hideComments ? commentRanges[getFileId(activeFile)] || [] : []}
                 onBackToProjectFiles={() => {
                   setActiveFile(null);
                   setActiveFunction(null);
@@ -663,7 +686,6 @@ function App() {
                           onClick={() => handleBreadcrumbClick(b, idx)}
                           title={`Navigate to ${b.label}`}
                         >
-                          {b.type === "project" ? "🌐 " : b.type === "file" ? "📄 " : "⚡ "}
                           {b.label}
                         </span>
                         {!isLast && <span className="breadcrumbSeparator">›</span>}
@@ -861,6 +883,8 @@ function App() {
       </div>
 
       {/* Upload Modal */}
+      <WorkspaceDialog panel={panel} project={project} hideComments={hideComments} error={displayError}
+        onHideComments={setHideComments} onClose={() => setPanel(null)} />
       <UploadModal
         isOpen={isUploadModalOpen}
         onClose={() => setIsUploadModalOpen(false)}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -13,6 +13,8 @@ export default function ExportModal({
   svgContent,
   diagramTitle = "flowchart",
 }: ExportModalProps) {
+  const [exportError, setExportError] = useState<string | null>(null);
+  useEffect(() => {setExportError(null);}, [isOpen]);
   if (!isOpen) return null;
 
   const safeTitle = diagramTitle.toLowerCase().replace(/[^a-z0-9]+/g, "_");
@@ -36,25 +38,32 @@ export default function ExportModal({
   function handleExportPng() {
     if (!svgContent) return;
 
+    const doc = new DOMParser().parseFromString(svgContent, "image/svg+xml");
+    const svgEl = doc.querySelector("svg");
+    const viewBox = svgEl?.viewBox?.baseVal;
+    const width = (viewBox && viewBox.width > 0 ? viewBox.width : Number(svgEl?.getAttribute("width"))) || 1200;
+    const height = (viewBox && viewBox.height > 0 ? viewBox.height : Number(svgEl?.getAttribute("height"))) || 800;
+    const scaleFactor = 2;
+    if (width * scaleFactor > 16384 || height * scaleFactor > 16384 || width * height * 4 > 32_000_000) {
+      setExportError("This diagram is too large for PNG. Download the SVG version to keep the full diagram.");
+      return;
+    }
+
     const blob = new Blob([svgContent], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const img = new Image();
 
     img.onload = () => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(svgContent, "image/svg+xml");
-      const svgEl = doc.querySelector("svg");
-      const viewBox = svgEl?.viewBox?.baseVal;
-      const width = (viewBox && viewBox.width > 0 ? viewBox.width : svgEl?.clientWidth) || 1200;
-      const height = (viewBox && viewBox.height > 0 ? viewBox.height : svgEl?.clientHeight) || 800;
-
-      const scaleFactor = 2; // 2x resolution
       const canvas = document.createElement("canvas");
       canvas.width = width * scaleFactor;
       canvas.height = height * scaleFactor;
 
       const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+      if (!ctx) {
+        URL.revokeObjectURL(url);
+        setExportError("PNG export is unavailable in this browser. Download the SVG version instead.");
+        return;
+      }
 
       // Draw white background
       ctx.fillStyle = "#ffffff";
@@ -63,7 +72,11 @@ export default function ExportModal({
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       canvas.toBlob((pngBlob) => {
-        if (!pngBlob) return;
+        if (!pngBlob) {
+          URL.revokeObjectURL(url);
+          setExportError("The PNG could not be created. Download the SVG version instead.");
+          return;
+        }
         const pngUrl = URL.createObjectURL(pngBlob);
         const link = document.createElement("a");
         link.href = pngUrl;
@@ -76,6 +89,10 @@ export default function ExportModal({
         onClose();
       }, "image/png");
     };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      setExportError("The PNG could not be created. Download the SVG version instead.");
+    };
 
     img.src = url;
   }
@@ -84,6 +101,13 @@ export default function ExportModal({
   function handleExportPdf() {
     if (!svgContent) return;
     const printTitle = diagramTitle.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const svg = new DOMParser().parseFromString(svgContent, "image/svg+xml").querySelector("svg");
+    const box = svg?.viewBox?.baseVal;
+    const width = box?.width || Number(svg?.getAttribute("width")) || 1200;
+    const height = box?.height || Number(svg?.getAttribute("height")) || 800;
+    const scale = Math.min(1, 18000 / width, 18000 / height);
+    const pageWidth = Math.ceil(width * scale + 40);
+    const pageHeight = Math.ceil(height * scale + 40);
 
     const printWindow = window.open("", "_blank");
     if (!printWindow) {
@@ -95,44 +119,36 @@ export default function ExportModal({
       <!DOCTYPE html>
       <html>
         <head>
-          <title>${printTitle} — FlowBridge</title>
+          <title>${printTitle}: FlowBridge</title>
           <style>
             @page {
-              size: landscape;
-              margin: 10mm;
+              size: ${pageWidth}px ${pageHeight}px;
+              margin: 20px;
             }
-            body {
+            html, body {
               margin: 0;
               padding: 0;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              min-height: 100vh;
+              display: block;
               background-color: #ffffff;
               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             }
-            .header-banner {
-              text-align: center;
-              margin-bottom: 20px;
-              color: #1a73e8;
-              font-size: 20px;
-              font-weight: bold;
-            }
             .svg-wrap {
-              width: 100%;
-              max-width: 95vw;
-              display: flex;
-              justify-content: center;
+              width: ${width * scale}px;
+              height: ${height * scale}px;
+              overflow: hidden;
+              break-inside: avoid;
+              page-break-inside: avoid;
             }
-            svg {
-              max-width: 100%;
-              height: auto;
+            .svg-wrap svg {
+              display: block;
+              width: 100%;
+              height: 100%;
+              max-height: 100%;
+              overflow: hidden;
             }
           </style>
         </head>
         <body>
-          <div class="header-banner">${printTitle}</div>
           <div class="svg-wrap">${svgContent}</div>
           <script>
             window.onload = function() {
@@ -212,6 +228,7 @@ export default function ExportModal({
         </div>
 
         {/* Options List */}
+        {exportError && <p role="alert" style={{color: "#b42318", padding: "0 20px"}}>{exportError}</p>}
         <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
           {/* SVG Option */}
           <button
@@ -242,7 +259,7 @@ export default function ExportModal({
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <span style={{ fontSize: "22px" }}>🎨</span>
+              <span className="fileTypeBadge">SVG</span>
               <div>
                 <div style={{ fontWeight: 600, fontSize: "14px", color: "#212529" }}>
                   SVG Vector Image (.svg)
@@ -284,7 +301,7 @@ export default function ExportModal({
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <span style={{ fontSize: "22px" }}>🖼️</span>
+              <span className="fileTypeBadge">PNG</span>
               <div>
                 <div style={{ fontWeight: 600, fontSize: "14px", color: "#212529" }}>
                   High-Res PNG Image (.png)
@@ -326,13 +343,13 @@ export default function ExportModal({
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <span style={{ fontSize: "22px" }}>📄</span>
+              <span className="fileTypeBadge">PDF</span>
               <div>
                 <div style={{ fontWeight: 600, fontSize: "14px", color: "#212529" }}>
                   PDF Document (.pdf)
                 </div>
                 <div style={{ fontSize: "12px", color: "#6c757d" }}>
-                  Landscape PDF formatted for printing or sharing
+                  Diagram-sized PDF with selectable text and no blank cover page
                 </div>
               </div>
             </div>

@@ -64,6 +64,7 @@ it('ignores an old render even when the transport completes after cancellation',
   await upload('new.py');
   await act(async () => {complete({data: diagrams()});});
   expect((post.mock.calls[1][2]?.signal as AbortSignal).aborted).toBe(true);
+  fireEvent.click(screen.getByText('new.py'));
   expect(screen.getByText('new_value = 2')).toBeTruthy();
   expect(screen.queryByText('old diagram')).toBeNull();
   expect((screen.getByTitle('Generate Flowchart') as HTMLButtonElement).disabled).toBe(false);
@@ -76,7 +77,7 @@ it('rejects a render response for another project', async () => {
   render(<App />);
   await upload();
   fireEvent.click(screen.getByTitle('Generate Flowchart'));
-  expect(await screen.findByText('Failed to generate diagrams. Check server logs.')).toBeTruthy();
+  expect(await screen.findByText('The request could not be completed. Please try again.')).toBeTruthy();
   expect(screen.queryByText('old diagram')).toBeNull();
 });
 
@@ -88,6 +89,7 @@ it('shows a backend generation error while retaining the uploaded source', async
   await upload();
   fireEvent.click(screen.getByTitle('Generate Flowchart'));
   expect(await screen.findByText('Could not export diagrams.')).toBeTruthy();
+  fireEvent.click(screen.getByText('app/main.py'));
   expect(screen.getByText('one = 1')).toBeTruthy();
 });
 

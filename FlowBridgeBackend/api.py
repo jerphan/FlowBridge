@@ -23,6 +23,7 @@ from .models import PyProject, SourceFile, SourceLocation
 from .pipeline import FlowBridgePipeline
 from .registry import ProjectRegistry
 from .service import CodeManager
+from .source_display import comment_ranges
 from .source_mapping import SourceMappingLayer
 from .SourceMapping import SourceMappingService
 
@@ -49,6 +50,11 @@ class SourceSelection(BaseModel):
     revisionId: int
     location: SourceLocation
     file: SourceFile
+
+
+class SourceDisplay(BaseModel):
+    projectId: str
+    files: dict[str, list[SourceLocation]]
 
 
 class RenderResponse(BaseModel):
@@ -213,6 +219,14 @@ def create_app(
     @app.get("/api/projects/{projectID}/files/{fileID}", responses=ERROR_RESPONSES)
     def get_file(projectID: str, fileID: str, registry: Registry) -> SourceFile:
         return registry.getSourceFile(projectID, fileID)
+
+    @app.get("/api/projects/{projectID}/display", responses=ERROR_RESPONSES)
+    def get_source_display(projectID: str, registry: Registry) -> SourceDisplay:
+        project = registry.getProject(projectID)
+        return SourceDisplay(
+            projectId=project.projectID,
+            files={file.fileID: comment_ranges(file) for file in project.files},
+        )
 
     # Parsing and Analysis integration routes
     @app.post("/api/projects/{projectID}/analyze", responses=ERROR_RESPONSES)

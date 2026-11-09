@@ -5,7 +5,7 @@ import pytest
 
 from flowbridge import PyProject, SourceFile
 from flowbridge.config import RegistryLimits
-from flowbridge.errors import DuplicateFile, RegistryCapacityExceeded
+from flowbridge.errors import DuplicateFile, ProjectNotFound, RegistryCapacityExceeded
 from flowbridge.registry import ProjectRegistry
 
 
@@ -27,7 +27,7 @@ def test_registry_retains_isolated_validated_snapshots():
     retrieved.files.clear()
     assert len(registry.getProject(original.projectID).files) == 1
     with pytest.raises(RegistryCapacityExceeded):
-        registry.register(project("x"))
+        registry.register(project("xxxx"))
     registry.clear()
     registry.register(project("abc"))
 
@@ -56,4 +56,17 @@ def test_concurrent_capacity_check_and_register_is_atomic():
 
     with ThreadPoolExecutor(max_workers=2) as pool:
         results = list(pool.map(lambda _: register_one(), range(2)))
-    assert sorted(results) == [False, True]
+    assert sorted(results) == [True, True]
+
+
+def test_new_imports_expire_the_least_recent_project_instead_of_stopping_uploads():
+    registry = ProjectRegistry(RegistryLimits(max_projects=2))
+    first, second, third = project("first"), project("second"), project("third")
+    registry.register(first)
+    registry.register(second)
+    registry.getProject(first.projectID)
+    registry.register(third)
+    assert registry.getProject(first.projectID).projectName == "Demo"
+    assert registry.getProject(third.projectID).files[0].fileContent == "third"
+    with pytest.raises(ProjectNotFound):
+        registry.getProject(second.projectID)

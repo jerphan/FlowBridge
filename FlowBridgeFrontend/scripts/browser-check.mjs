@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
+import {spawn, spawnSync} from 'node:child_process';
 import {once} from 'node:events';
 import {fileURLToPath} from 'node:url';
 import {chromium} from 'playwright';
@@ -18,10 +18,15 @@ const env = {...process.env, PYTHONDONTWRITEBYTECODE: '1', FLOWBRIDGE_E2E_OUTPUT
   VITE_API_BASE_URL: apiBase,
   PYTHONPATH: [review, path.join(review, 'FlowBridge_ParsingAndAnalysis/src'), path.join(review, 'tests')].join(path.delimiter)};
 let serverLog = '';
+const preview = path.join(output, 'frontend');
+const build = spawnSync(process.execPath,
+  [path.join(frontend, 'node_modules/vite/bin/vite.js'), 'build', '--outDir', preview],
+  {cwd: frontend, env, windowsHide: true, encoding: 'utf8'});
+if (build.status !== 0) throw new Error(build.stderr || build.stdout || 'Browser-test build failed');
 const processes = [
   spawn(python, ['-m', 'uvicorn', 'browser_app:app', '--host', '127.0.0.1', '--port', '8877'],
     { cwd: output, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] }),
-  spawn(process.execPath, [path.join(frontend, 'node_modules/vite/bin/vite.js'), '--host', '127.0.0.1', '--port', '5188', '--strictPort'],
+  spawn(process.execPath, [path.join(frontend, 'node_modules/vite/bin/vite.js'), 'preview', '--outDir', preview, '--host', '127.0.0.1', '--port', '5188', '--strictPort'],
     { cwd: frontend, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] }),
 ];
 processes.forEach(proc => {
@@ -163,7 +168,7 @@ async function openExport(page) {
       const popup = await popupPromise;
       await popup.locator('svg').waitFor();
       await popup.waitForFunction(() => window.reviewPrintCalled === true);
-      await popup.pdf({ path: path.join(output, 'browser-print-preview.pdf'), landscape: true });
+      await popup.pdf({ path: path.join(artifacts, 'export-file.pdf'), preferCSSPageSize: true, printBackground: true });
       await popup.close();
       return 'Print-page wiring and headless PDF rendering verified; no native print dialog tested.';
     });
@@ -241,7 +246,170 @@ async function openExport(page) {
       assert.ok(!state.includes('old.py'), `Old render appears after new.py uploaded: ${state}`);
       await race.close();
     });
-    await page.screenshot({ path: path.join(output, 'final-ui.png') });
+    await check('Invalid ZIP input leaves the current project available', async () => {
+      const previous = await page.locator('main').innerText();
+      await openImport(page);
+      await page.getByRole('button', {name: /ZIP Project/}).click();
+      const response = page.waitForResponse(r => r.url().endsWith('/api/projects/zip'));
+      await page.locator('#modalZipInput').setInputFiles({name: 'invalid.zip', mimeType: 'application/zip', buffer: Buffer.from('not an archive')});
+      assert.equal((await response).status(), 400);
+      await page.getByRole('heading', {name: 'Import Project'}).locator('..').locator('..').getByRole('button', {name: '✕'}).click();
+      assert.equal(await page.locator('main').innerText(), previous);
+    });
+    await check('GitHub rejects a non-GitHub URL without replacing the project', async () => {
+      await openImport(page);
+      await page.getByRole('button', {name: /GitHub Repo/}).click();
+      await page.getByPlaceholder('https://github.com/username/repository').fill('https://example.com/demo/repo');
+      const response = page.waitForResponse(r => r.url().endsWith('/api/projects/github'));
+      await page.getByRole('button', {name: 'Import from GitHub', exact: true}).click();
+      assert.equal((await response).status(), 400);
+      await page.getByRole('heading', {name: 'Import Project'}).locator('..').locator('..').getByRole('button', {name: '✕'}).click();
+    });
+    for (const [repository, status] of [['limited', 429], ['timeout', 504]]) {
+      await check(`GitHub ${repository} failure is recoverable`, async () => {
+        await openImport(page);
+        await page.getByRole('button', {name: /GitHub Repo/}).click();
+        await page.getByPlaceholder('https://github.com/username/repository').fill(`https://github.com/demo/${repository}`);
+        const response = page.waitForResponse(r => r.url().endsWith('/api/projects/github'));
+        await page.getByRole('button', {name: 'Import from GitHub', exact: true}).click();
+        assert.equal((await response).status(), status);
+        assert.equal(await page.getByRole('heading', {name: 'Import Project'}).isVisible(), true);
+        await page.getByRole('heading', {name: 'Import Project'}).locator('..').locator('..').getByRole('button', {name: '✕'}).click();
+      });
+    }
+    await check('A server connection failure can be retried without re-uploading', async () => {
+      await uploadFile(page, 'recover.py', 'answer = 42\n');
+      await page.route('**/render', route => route.abort('connectionfailed'));
+      await page.locator('.startButton').click();
+      await page.getByText('Could not reach the backend. Check that it is running.', {exact: true}).waitFor();
+      assert.equal(await page.locator('.startButton').isEnabled(), true);
+      await page.unroute('**/render');
+      await generate(page);
+    });
+    await check('Empty Python files render and remain selectable', async () => {
+      await uploadFile(page, 'empty.py', '');
+      const data = await generate(page);
+      assert.equal(data.analysisStatus, 'success');
+      await page.locator('.sourceCodeScrollArea').getByText('empty.py', {exact: true}).click();
+      assert.ok(await page.locator('svg g[data-node-id]').count() >= 2);
+    });
+    await check('Selecting the same upload twice creates a fresh valid project each time', async () => {
+      const first = await uploadFile(page, 'repeat.py', 'value = 1\n');
+      const second = await uploadFile(page, 'repeat.py', 'value = 2\n');
+      assert.notEqual(first.projectID, second.projectID);
+      await generate(page);
+      await page.locator('.sourceCodeScrollArea').getByText('repeat.py', {exact: true}).click();
+      await page.locator('.sourceCodeScrollArea').getByText('value = 2', {exact: true}).waitFor();
+    });
+    await check('Oversized PNG export offers SVG while keeping the browser responsive', async () => {
+      await uploadFile(page, 'tall.py', Array.from({length: 160}, (_, i) => `value${i} = ${i}`).join('\n'));
+      const data = await generate(page);
+      await page.locator('.sourceCodeScrollArea').getByText('tall.py', {exact: true}).click();
+      await openExport(page);
+      await page.getByRole('button', {name: /High-Res PNG/}).click();
+      await page.getByRole('alert').getByText(/too large for PNG/).waitFor();
+      const download = page.waitForEvent('download');
+      await page.getByRole('button', {name: /SVG Vector/}).click();
+      assert.ok((await download).suggestedFilename().endsWith('.svg'));
+      const file = data.flowchart.files[0];
+      const raw = data.flowchart.graphs[file.graphId];
+      const start = raw.nodes.find(n => n.nodeType === 'start');
+      const statement = raw.nodes.find(n => n.sourceLocation);
+      await page.locator(`g[data-node-id="${statement.nodeId}"]`).click();
+      await page.locator(`g[data-node-id="${start.nodeId}"]`).click();
+      const line = page.locator('.sourceCodeScrollArea span[title^="Line 1:"]').locator('..');
+      assert.ok((await line.getAttribute('style')).includes('background-color: transparent'));
+    });
+    await check('Demo controls remain visible on presentation-sized screens', async () => {
+      for (const viewport of [{width: 1280, height: 720}, {width: 1366, height: 768}, {width: 1920, height: 1080}]) {
+        await page.setViewportSize(viewport);
+        await page.getByTitle('Fit to View', {exact: true}).click();
+        for (const button of [page.locator('.startButton'), page.locator('button[title^="Upload a Python file"]'), page.getByTitle('Fit to View', {exact: true})]) {
+          const box = await button.boundingBox();
+          assert.ok(box && box.x >= 0 && box.y >= 0 && box.x + box.width <= viewport.width && box.y + box.height <= viewport.height);
+        }
+      }
+    });
+    await check('Workspace button shows the real local session', async () => {
+      await page.getByTitle('Current workspace', {exact: true}).click();
+      await page.getByRole('dialog', {name: 'Current workspace'}).waitFor();
+      assert.ok((await page.getByRole('dialog').innerText()).includes('No sign-in or database'));
+      await page.getByRole('button', {name: 'Close panel'}).click();
+      assert.equal(await page.locator('#loginButton').count(), 0);
+    });
+    await check('Settings filters comments and docstrings without changing code or line numbers', async () => {
+      const code = '# heading\n"""Module notes."""\nvalue = "# keep"  # inline note\nanswer = 3\n';
+      const project = await uploadFile(page, 'comments.py', code);
+      await generate(page);
+      await page.locator('.sourceCodeScrollArea').getByText('comments.py', {exact: true}).click();
+      await page.getByTitle('Display settings', {exact: true}).click();
+      await page.getByRole('checkbox', {name: 'Hide source comments'}).check();
+      await page.getByRole('button', {name: 'Close panel'}).click();
+      await page.locator('.sourceCodeScrollArea').getByText('value = "# keep"', {exact: true}).waitFor();
+      assert.equal(await page.locator('.sourceCodeScrollArea span[title^="Line 1:"]').count(), 0);
+      assert.equal(await page.locator('.sourceCodeScrollArea span[title^="Line 4:"]').count(), 1);
+      const saved = await (await fetch(`${apiBase}/api/projects/${project.projectID}`)).json();
+      assert.equal(saved.files[0].fileContent, code);
+      await page.getByTitle('Display settings', {exact: true}).click();
+      await page.getByRole('checkbox', {name: 'Hide source comments'}).uncheck();
+      await page.getByRole('button', {name: 'Close panel'}).click();
+      await page.locator('.sourceCodeScrollArea').getByText('# heading', {exact: true}).waitFor();
+    });
+    await check('A tall function PDF contains its full diagram on the first page', async () => {
+      const code = 'def bootstrap():\n' + Array.from({length: 35}, (_, i) => `    value${i} = ${i}\n`).join('') + '    return value34\nbootstrap()\n';
+      await uploadFile(page, 'bootstrap.py', code);
+      const data = await generate(page);
+      const file = data.flowchart.files[0];
+      await page.locator('.sourceCodeScrollArea').getByText('bootstrap.py', {exact: true}).click();
+      const fn = data.flowchart.functions.find(fn => fn.functionName === 'bootstrap');
+      const link = data.flowchart.graphs[file.graphId].nodes.find(node => data.nodeToChildGraph[node.nodeId] === fn.graphId);
+      await page.locator(`g[data-node-id="${link.nodeId}"]`).click();
+      await openExport(page);
+      const popupPromise = page.waitForEvent('popup');
+      await page.getByRole('button', {name: /PDF/}).click();
+      const popup = await popupPromise;
+      await popup.locator('svg').waitFor();
+      await popup.waitForFunction(() => window.reviewPrintCalled === true);
+      await popup.pdf({path: path.join(artifacts, 'export-function.pdf'), preferCSSPageSize: true, printBackground: true});
+      await popup.close();
+    });
+    await check('More than ten ZIP imports keep the server and newest project usable', async () => {
+      const zip = Buffer.from(await (await fetch(`${apiBase}/_browser_fixture/ten-files.zip`)).arrayBuffer());
+      let first, latest;
+      for (let index = 0; index < 24; index++) {
+        const form = new FormData();
+        form.append('file', new Blob([zip], {type: 'application/zip'}), 'ten-files.zip');
+        const response = await fetch(`${apiBase}/api/projects/zip`, {method: 'POST', body: form});
+        assert.equal(response.status, 201);
+        latest = await response.json();
+        assert.equal(latest.files.length, 10);
+        if (!first) first = latest;
+        if ([0, 9, 10, 23].includes(index)) {
+          const render = await fetch(`${apiBase}/api/projects/${latest.projectID}/render`, {method: 'POST'});
+          assert.equal(render.status, 200);
+          assert.equal((await render.json()).analysisStatus, 'success');
+        }
+      }
+      assert.equal((await fetch(`${apiBase}/health`)).status, 200);
+      assert.equal((await fetch(`${apiBase}/api/projects/${first.projectID}`)).status, 404);
+      assert.equal((await fetch(`${apiBase}/api/projects/${latest.projectID}`)).status, 200);
+      const statuses = await Promise.all(Array.from({length: 4}, async () => {
+        const form = new FormData(); form.append('file', new Blob([zip]), 'parallel.zip');
+        return (await fetch(`${apiBase}/api/projects/zip`, {method: 'POST', body: form})).status;
+      }));
+      assert.deepEqual(statuses, [201, 201, 201, 201]);
+      return {sequentialArchives: 24, filesPerArchive: 10, concurrentArchives: 4};
+    });
+    await check('A cleared server session explains re-import and then recovers', async () => {
+      await fetch(`${apiBase}/_browser_fixture/clear`, {method: 'POST'});
+      const response = page.waitForResponse(r => r.url().endsWith('/render'));
+      await page.locator('.startButton').click();
+      assert.equal((await response).status(), 404);
+      await page.getByTitle('Generate Flowchart', {exact: true}).waitFor();
+      await uploadFile(page, 'reimport.py', 'restored = 1\n');
+      await generate(page);
+    });
+    await page.screenshot({ path: path.join(artifacts, 'presentation-final.png') });
     assert.deepEqual(report.pageErrors, []);
   } catch (error) {
     report.fatal = error.stack;

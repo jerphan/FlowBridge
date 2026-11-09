@@ -281,7 +281,7 @@ class SugiyamaDAGLayout:
             if not nodes_in_rank:
                 continue
             total_rank_w = sum(sizes[nid][0] for nid in nodes_in_rank) + (len(nodes_in_rank) - 1) * self.node_sep
-            max_graph_width = max(max_graph_width, total_rank_w + 140.0)
+            max_graph_width = max(max_graph_width, total_rank_w + 240.0)
 
         for r in range(max_rank + 1):
             nodes_in_rank = ranks.get(r, [])
@@ -302,6 +302,7 @@ class SugiyamaDAGLayout:
             current_y += max_h + self.rank_sep
 
         graph_height = current_y + 40.0
+        min_node_left = min((coords[0] for coords in node_coords.values()), default=40.0)
         max_node_right = max((coords[0] + sizes[nid][0] for nid, coords in node_coords.items()), default=max_graph_width)
 
         # 5. Build RenderedNodes
@@ -327,16 +328,42 @@ class SugiyamaDAGLayout:
                 )
             )
 
-        # 6. Route edges with dedicated parallel loop tracks
-        rendered_edges: list[RenderedEdge] = []
+        # 6. Anti-spaghetti channel routing with dedicated gutters and multi-port separation
         all_edges = acyclic_edges + back_edges
 
-        # Sort back-edges for deterministic lane assignment
-        loop_back_edges = [e for e in all_edges if e.get("edgeType") == "back" or (rank.get(e.get("targetId"), 0) <= rank.get(e.get("sourceId"), 0))]
-        back_edge_lanes: dict[str, int] = {}
-        for idx, be in enumerate(loop_back_edges):
-            be_id = be.get("edgeId", f"be_{idx}")
-            back_edge_lanes[be_id] = idx
+        # Group outgoing edges by source to calculate distinct exit ports
+        out_edges_by_src: dict[str, list[dict[str, Any]]] = {}
+        for e in all_edges:
+            out_edges_by_src.setdefault(e.get("sourceId"), []).append(e)
+
+        # Group incoming edges by target to calculate distinct entry ports
+        in_edges_by_tgt: dict[str, list[dict[str, Any]]] = {}
+        for e in all_edges:
+            in_edges_by_tgt.setdefault(e.get("targetId"), []).append(e)
+
+        # Classify edges into dedicated tracks
+        loop_back_edges = [
+            e for e in all_edges
+            if e.get("edgeType") == "back" or (rank.get(e.get("targetId"), 0) <= rank.get(e.get("sourceId"), 0))
+        ]
+
+        # Exception edges skipping ranks to outer left gutter
+        exc_gutter_edges = [
+            e for e in all_edges
+            if e.get("edgeType") in ("exception", "unhandled")
+            and (rank.get(e.get("targetId"), 0) > rank.get(e.get("sourceId"), 0) + 1)
+        ]
+
+        # Long-span forward edges (skipping > 1 rank)
+        long_fwd_edges = [
+            e for e in all_edges
+            if e not in loop_back_edges
+            and e not in exc_gutter_edges
+            and (rank.get(e.get("targetId"), 0) > rank.get(e.get("sourceId"), 0) + 1)
+        ]
+
+        rendered_edges: list[RenderedEdge] = []
+        center_x = max_graph_width / 2.0
 
         for e in all_edges:
             eid = e.get("edgeId", f"e_{len(rendered_edges)}")
@@ -349,28 +376,119 @@ class SugiyamaDAGLayout:
             tx, ty = node_coords[tgt_id]
             tw, th = sizes[tgt_id]
             etype = e.get("edgeType", "next")
-            is_back = (etype == "back") or (rank.get(tgt_id, 0) <= rank.get(src_id, 0))
+            is_back = e in loop_back_edges
 
-            if is_back:
-                # Dedicated parallel lane on the right outer track
-                lane_idx = back_edge_lanes.get(eid, 0)
-                lane_offset = 45.0 + (lane_idx * 28.0)
-                loop_x = max_node_right + lane_offset
+            src_node_type = next((n.get("nodeType") for n in raw_nodes if n["nodeId"] == src_id), "statement")
 
-                start_pt = (sx + sw, sy + sh / 2.0)
-                pt1 = (loop_x, sy + sh / 2.0)
-                pt2 = (loop_x, ty + th / 2.0)
-                end_pt = (tx + tw, ty + th / 2.0)
-                points = [start_pt, pt1, pt2, end_pt]
-            else:
-                # Top-to-bottom routing
-                start_pt = (sx + sw / 2.0, sy + sh)
-                end_pt = (tx + tw / 2.0, ty)
-                if abs(start_pt[0] - end_pt[0]) < 6.0:
-                    points = [start_pt, end_pt]
+            # --- CALCULATE DISTINCT ORIGIN PORT ---
+            src_out = out_edges_by_src.get(src_id, [e])
+            if src_node_type == "condition":
+                if etype == "true":
+                    start_pt = (sx, sy + sh / 2.0)  # Left tip of diamond
+                elif etype == "false":
+                    start_pt = (sx + sw, sy + sh / 2.0)  # Right tip of diamond
                 else:
-                    mid_y = (start_pt[1] + end_pt[1]) / 2.0
-                    points = [start_pt, (start_pt[0], mid_y), (end_pt[0], mid_y), end_pt]
+                    start_pt = (sx + sw / 2.0, sy + sh)
+            elif any(ed.get("edgeType") in ("true", "false") for ed in src_out):
+                # Branching node with true / false
+                if etype == "true":
+                    start_pt = (sx + sw * 0.25, sy + sh)
+                elif etype == "false":
+                    start_pt = (sx + sw * 0.75, sy + sh)
+                else:
+                    start_pt = (sx + sw / 2.0, sy + sh)
+            elif len(src_out) > 1:
+                # Distribute multiple forward exits evenly
+                k = src_out.index(e)
+                start_pt = (sx + sw * ((k + 1) / (len(src_out) + 1)), sy + sh)
+            else:
+                start_pt = (sx + sw / 2.0, sy + sh)
+
+            # --- CALCULATE DISTINCT TARGET PORT ---
+            tgt_in = in_edges_by_tgt.get(tgt_id, [e])
+            if len(tgt_in) > 1:
+                # Sort incoming edges by source X coordinate so they enter side-by-side cleanly
+                sorted_in = sorted(tgt_in, key=lambda ed: node_coords.get(ed.get("sourceId"), (0, 0))[0])
+                m = sorted_in.index(e)
+                end_pt = (tx + tw * ((m + 1) / (len(tgt_in) + 1)), ty)
+            else:
+                end_pt = (tx + tw / 2.0, ty)
+
+            # --- ROUTING LOGIC ---
+            if is_back:
+                # 1. Back-edges: dedicated parallel lanes on the RIGHT outer gutter
+                lane_idx = loop_back_edges.index(e)
+                lane_x = max_node_right + 45.0 + (lane_idx * 28.0)
+                down_y = sy + sh + 15.0
+                up_y = ty - 15.0
+                points = [
+                    start_pt,
+                    (start_pt[0], down_y),
+                    (lane_x, down_y),
+                    (lane_x, up_y),
+                    (end_pt[0], up_y),
+                    end_pt,
+                ]
+
+            elif e in exc_gutter_edges:
+                # 2. Long-span Exception edges: dedicated parallel lanes on the LEFT outer gutter
+                lane_idx = exc_gutter_edges.index(e)
+                lane_x = min_node_left - 40.0 - (lane_idx * 25.0)
+                down_y = sy + sh + 15.0
+                points = [
+                    start_pt,
+                    (start_pt[0], down_y),
+                    (lane_x, down_y),
+                    (lane_x, ty - 15.0),
+                    (end_pt[0], ty - 15.0),
+                    end_pt,
+                ]
+
+            elif e in long_fwd_edges:
+                # 3. Long-span Forward edges (> 1 rank): route in outer bypass channels
+                lane_idx = long_fwd_edges.index(e)
+                if start_pt[0] >= center_x:
+                    bypass_x = max_node_right + 20.0 + (lane_idx * 22.0)
+                else:
+                    bypass_x = min_node_left - 20.0 - (lane_idx * 22.0)
+
+                points = [
+                    start_pt,
+                    (start_pt[0], sy + sh + 15.0),
+                    (bypass_x, sy + sh + 15.0),
+                    (bypass_x, ty - 15.0),
+                    (end_pt[0], ty - 15.0),
+                    end_pt,
+                ]
+
+            else:
+                # 4. Adjacent Rank Edges (1-rank step): route cleanly within the inter-rank gap
+                if src_node_type == "condition":
+                    mid_y = (sy + sh + ty) / 2.0
+                    if etype == "true":
+                        points = [
+                            start_pt,
+                            (start_pt[0] - 15.0, start_pt[1]),
+                            (start_pt[0] - 15.0, mid_y),
+                            (end_pt[0], mid_y),
+                            end_pt,
+                        ]
+                    elif etype == "false":
+                        points = [
+                            start_pt,
+                            (start_pt[0] + 15.0, start_pt[1]),
+                            (start_pt[0] + 15.0, mid_y),
+                            (end_pt[0], mid_y),
+                            end_pt,
+                        ]
+                    else:
+                        points = [start_pt, (start_pt[0], mid_y), (end_pt[0], mid_y), end_pt]
+                else:
+                    if abs(start_pt[0] - end_pt[0]) < 6.0:
+                        points = [start_pt, end_pt]
+                    else:
+                        mid_y = (sy + sh + ty) / 2.0
+                        points = [start_pt, (start_pt[0], mid_y), (end_pt[0], mid_y), end_pt]
 
             rendered_edges.append(
                 RenderedEdge(
@@ -384,13 +502,25 @@ class SugiyamaDAGLayout:
                 )
             )
 
-        total_width = max(max_graph_width, max_node_right + len(loop_back_edges) * 28.0 + 80.0)
+        # Shift all coordinates to maintain positive margin if left gutter extends < 40px
+        left_ext = min((p[0] for ed in rendered_edges for p in ed.points), default=min_node_left)
+        right_ext = max((p[0] for ed in rendered_edges for p in ed.points), default=max_node_right)
+
+        if left_ext < 40.0:
+            shift_x = 40.0 - left_ext
+            for n in rendered_nodes:
+                n.x += shift_x
+            for ed in rendered_edges:
+                ed.points = [(p[0] + shift_x, p[1]) for p in ed.points]
+            total_width = right_ext + shift_x + 60.0
+        else:
+            total_width = right_ext + 60.0
 
         return RenderedGraph(
             graph_id=graph_id,
             graph_type=graph_type,
             title=title,
-            width=total_width,
+            width=max(max_graph_width, total_width),
             height=graph_height,
             nodes=rendered_nodes,
             edges=rendered_edges,

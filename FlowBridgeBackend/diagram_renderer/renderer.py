@@ -92,9 +92,14 @@ class DiagramRenderer:
         # Label with dynamic pill background width
         lbl = edge.label or (edge.edge_type if edge.edge_type in ("true", "false") else None)
         if lbl and len(pts) >= 2:
-            mid_idx = len(pts) // 2
-            mx = (pts[mid_idx - 1][0] + pts[mid_idx][0]) / 2.0
-            my = (pts[mid_idx - 1][1] + pts[mid_idx][1]) / 2.0 - 5.0
+            if edge.edge_type in ("true", "false") and len(pts) >= 3:
+                # Place branch label clearly along the initial step-out
+                mx = (pts[0][0] + pts[1][0]) / 2.0
+                my = (pts[0][1] + pts[1][1]) / 2.0 - 7.0
+            else:
+                mid_idx = len(pts) // 2
+                mx = (pts[mid_idx - 1][0] + pts[mid_idx][0]) / 2.0
+                my = (pts[mid_idx - 1][1] + pts[mid_idx][1]) / 2.0 - 5.0
             rect_w = max(36.0, len(lbl) * 7.5 + 16.0)
             edge_svg += f'\n  <rect x="{mx - rect_w / 2.0:.1f}" y="{my - 9:.1f}" width="{rect_w:.1f}" height="16" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8" rx="4" opacity="0.95"/>'
             edge_svg += f'\n  <text x="{mx:.1f}" y="{my + 3:.1f}" class="edge-label">{html.escape(lbl)}</text>'
@@ -166,9 +171,9 @@ class DiagramRenderer:
             else:
                 fill = "#e3f2fd"
                 stroke = "#1976d2"
-                icon = "📄 "
+                icon = ""
                 title_color = "#0d47a1"
-                subtext = "🔍 View File Flowchart ➔" if node.is_clickable else "📄 File Module"
+                subtext = "View File Flowchart ➔" if node.is_clickable else "File Module"
                 sub_color = "#1565c0"
 
             node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2" filter="url(#nodeShadow)"/>')
@@ -180,11 +185,11 @@ class DiagramRenderer:
             fill = "#e0f2f1" if node.is_clickable else "#f3e5f5"
             stroke = "#00796b" if node.is_clickable else "#7b1fa2"
             node_body.append(f'    <rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="2" filter="url(#nodeShadow)"/>')
-            icon = "⚡ "
+            icon = ""
             y_offset = -6 if node.is_clickable else 0
             node_body.append(f'    <text x="{cx:.1f}" y="{cy + y_offset:.1f}" class="node-text" font-weight="600" fill="{stroke}">{icon}{label_text}</text>')
             if node.is_clickable:
-                node_body.append(f'    <text x="{cx:.1f}" y="{cy + 12:.1f}" class="node-subtext" fill="{stroke}">🔍 Drill Down ➔</text>')
+                node_body.append(f'    <text x="{cx:.1f}" y="{cy + 12:.1f}" class="node-subtext" fill="{stroke}">Drill Down ➔</text>')
 
         else:
             # Standard statement
@@ -212,7 +217,7 @@ class DiagramRenderer:
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FlowBridge — {html.escape(project_name)}</title>
+  <title>FlowBridge: {html.escape(project_name)}</title>
   <style>
     body {{
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -247,7 +252,7 @@ class DiagramRenderer:
 </head>
 <body>
   <header>
-    <h3 style="margin:0;">FlowBridge Visualizer — {html.escape(project_name)}</h3>
+    <h3 style="margin:0;">FlowBridge Visualizer: {html.escape(project_name)}</h3>
     <span id="levelIndicator" style="font-size: 14px; opacity: 0.9;">Project View</span>
   </header>
 
@@ -298,7 +303,8 @@ class DiagramRenderer:
       navStack.forEach((gid, idx) => {{
         const item = graphMap.get(gid);
         const isLast = idx === navStack.length - 1;
-        const name = item.title.split(' — ')[1] || item.title;
+        const separatorIndex = item.title.indexOf(': ');
+        const name = separatorIndex < 0 ? item.title : item.title.slice(separatorIndex + 2);
         const crumb = document.createElement('span');
         crumb.className = isLast ? 'breadcrumb-item active' : 'breadcrumb-item';
         crumb.textContent = name;

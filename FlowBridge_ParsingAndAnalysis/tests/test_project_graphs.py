@@ -1,1 +1,1 @@
-"""Reserved for project_graphs tests. No tests implemented; see docs/TESTING.md."""
+"""Project graph coverage is recorded in the shared docs/VALIDATION.md."""
