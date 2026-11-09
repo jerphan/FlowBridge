@@ -1,6 +1,9 @@
 /* General Reset & Layout Setup */
 .fileTypeBadge { display: inline-block; min-width: 38px; padding: 6px; border-radius: 6px; background: #eaf2ff; color: #1a73e8; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-align: center; }
-.workspaceButton { border: 0; padding: 0; background: transparent; cursor: pointer; border-radius: 50%; }
+.workspaceButton { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #dbe4ef; padding: 0; background: #f7f9fc; cursor: pointer; border-radius: 50%; }
+/* The avatar image has transparent padding, so keep it clipped inside its button. */
+.workspaceButton .loginIcon { width: 100px; height: 100px; max-width: none; flex-shrink: 0; pointer-events: none; }
+.workspaceButton:hover { border-color: #a9c9f5; background: #edf4ff; }
 .workspaceButton:focus-visible { outline: 2px solid #1a73e8; outline-offset: 3px; }
 .workspaceDialog { position: fixed; inset: 0; margin: auto; padding: 0; border: 1px solid #d0d7de; border-radius: 12px; width: 440px; max-width: calc(100vw - 32px); color: #24292f; box-shadow: 0 12px 40px #0003; }
 .workspaceDialog::backdrop { background: #0007; backdrop-filter: blur(2px); }
@@ -26,7 +29,7 @@ html, #root {
   min-height: 100vh;
 }
 body {
-    background-color: #f4f6f8;
+    background-color: #f4f7fb;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -39,9 +42,10 @@ body {
     height: 68px;
     background-color: #ffffff;
     border-bottom: 1.5px solid #e1e4e8;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
     padding: 0 24px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     z-index: 100;
@@ -56,6 +60,31 @@ body {
 .headingRight {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.newProjectButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid #c7d9ef;
+    border-radius: 8px;
+    background: #f5f9ff;
+    color: #175eb8;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s;
+}
+
+.newProjectButton span { font-size: 20px; line-height: 1; font-weight: 400; }
+.newProjectButton:hover { background: #eaf3ff; border-color: #a9c9f5; }
+.newProjectButton:focus-visible, .sidebarIconButton:focus-visible, .startButton:focus-visible {
+    outline: 2px solid #1a73e8;
+    outline-offset: 3px;
 }
 
 .headingCenter {
@@ -90,20 +119,12 @@ body {
 }
 
 .user-profile {
-    background-color: #e8f0fe;
-    border: 1.5px solid #d2e3fc;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.user-profile:hover {
-    background-color: #d2e3fc;
 }
 
 /* Workspace Layout */
@@ -155,8 +176,13 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    width: 36px;
+    height: 36px;
     transition: background-color 0.15s;
 }
+
+.sidebarIconButton:hover:not(:disabled) { background-color: #edf4ff; }
+.sidebarIconButton[title="Display settings"] .toolIcon { filter: brightness(.65); opacity: 1; }
 
 .sidebarIconButton:hover:not(:disabled) .toolIcon {
     opacity: 1;
@@ -204,7 +230,7 @@ body {
 }
 
 .cardHeader {
-    background-color: #1a73e8;
+    background: linear-gradient(105deg, #176be4, #2380ed);
     color: white;
     font-size: 15px;
     font-weight: 700;

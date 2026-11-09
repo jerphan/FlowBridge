@@ -74,6 +74,8 @@ settings/session information. `ExportModal` saves the selected diagram.
 Old requests cannot replace new projects. Failed imports preserve the current
 workspace. Files are selected by ID and displayed with relative paths.
 Requests have a finite timeout and can be retried.
+Start New Project cancels the pending render request, clears the current view
+and opens import. It does not delete retained snapshots from the backend cache.
 
 Render returns project/revision/status, graph SVGs/dimensions, canonical flowchart,
 navigation/source indexes, diagnostics, file statuses and viewer/manifest URLs.

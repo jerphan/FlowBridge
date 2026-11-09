@@ -23,6 +23,7 @@ npm run dev
 ```
 
 Open [the UI](http://localhost:5173). Import a project and click Start.
+Use Start New Project in the header to clear the view and open another import.
 Click linked nodes to open file/function views; click statement nodes or source
 lines to highlight their connection. Use breadcrumbs to go back.
 The gear opens display settings, and the profile button shows the workspace.

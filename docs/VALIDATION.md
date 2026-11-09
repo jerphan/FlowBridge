@@ -10,9 +10,9 @@ diagram-routing and project-selection changes (`73e96e3`).
 | --- | --- |
 | Backend pytest | 264 passed; no failures, errors or skips |
 | Parser unittest | 301 passed |
-| Frontend Vitest | 31 passed |
+| Frontend Vitest | 33 passed |
 | Production TypeScript/Vite build | Passed |
-| Real browser with production UI and local API | 27 scenarios passed; no page JavaScript errors |
+| Real browser with production UI and local API | 29 scenarios passed; no page JavaScript errors |
 | Repeated ZIP imports | 24 sequential archives containing 10 Python files each, then 4 concurrent imports; imports returned 201, recent projects and health remained usable, expired IDs returned 404 |
 | PDF exports | File and tall function exports each contain one populated page with Start/End text; first-page renders visually inspected |
 | Live public GitHub import | HTTP 201; 8 Python files; successful analysis with 17 graphs, no diagnostics; original-file retrieval 200 |
@@ -21,7 +21,7 @@ diagram-routing and project-selection changes (`73e96e3`).
 | Source/wheel build | Passed |
 | Fresh installed wheel outside checkout | API import, display metadata, file edges, source lookup, SVG/viewer export, duplicate-path isolation and CLI startup passed |
 
-The unit/integration suites contain **596 tests**, separate from the 27 browser
+The unit/integration suites contain **598 tests**, separate from the 29 browser
 scenarios. Browser tests use the real application API with deterministic GitHub
 responses; the separate live import uses the actual public demo repository.
 The native operating-system print dialog was not automated. Browser-generated
@@ -49,6 +49,9 @@ PDFs verify the print document, page sizing and diagram content.
   change during node clicks. Selection remains highlighted through zoom and pan.
 - Settings and workspace buttons open working panels. Comment/docstring filtering
   preserves string literals, original source, UTF-8 ranges and original line numbers.
+- Start New Project clears the view and opens import, including during a pending
+  render. Late responses stay ignored. The avatar's focus outline stays inside
+  its 44-pixel button, and header actions fit all three tested viewports.
 - SVG/PNG/PDF export, duplicate export names, publication isolation, unsupported
   views, large-PNG fallback and application-shutdown cleanup are checked.
 - Browser checks include 1280x720, 1366x768 and 1920x1080 viewports, failed imports,
