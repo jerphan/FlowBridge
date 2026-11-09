@@ -276,12 +276,12 @@ function App() {
     return fileStatuses[fid] || fileStatuses[fname] || (activeFileDiagnostics.some(d => d.severity === "error") ? "unsupported" : "complete");
   }, [activeFile, fileStatuses, activeFileDiagnostics]);
 
-  // 1. Handle Project Uploaded from UploadModal
-  function handleProjectLoaded(uploadedProject: PyProject) {
+  // Clear the current view and cancel work that belongs to the previous project.
+  function resetWorkspace() {
     renderRequest.current?.abort();
     renderRequest.current = null;
     setIsLoading(false);
-    setProject(uploadedProject);
+    setProject(null);
     setCommentRanges({});
     setRenderData(null);
     setActiveGraphId(null);
@@ -289,11 +289,21 @@ function App() {
     setErrorMessage(null);
     setHighlightedLines(null);
     setHighlightedNodeId(null);
-    setActiveFunction(null);
-
-    // Display the overall project view page rather than opening the first file
     setActiveFile(null);
     setActiveFunction(null);
+    setDisplayError(null);
+    setIsExportModalOpen(false);
+    setPanel(null);
+  }
+
+  function handleProjectLoaded(uploadedProject: PyProject) {
+    resetWorkspace();
+    setProject(uploadedProject);
+  }
+
+  function handleNewProject() {
+    resetWorkspace();
+    setIsUploadModalOpen(true);
   }
 
   // 2. Handle Generate Flowchart via StartButton
@@ -587,6 +597,10 @@ function App() {
         />
 
         <div className="headingRight">
+          <button type="button" className="newProjectButton" onClick={handleNewProject}
+            title="Clear the workspace and import another project">
+            <span aria-hidden="true">+</span> Start New Project
+          </button>
           <div className="user-profile">
             <button type="button" className="workspaceButton" title="Current workspace" onClick={() => setPanel('workspace')}>
               <img src="./ProfilePicture.png" alt="Local session" className="loginIcon" />
@@ -672,7 +686,7 @@ function App() {
           {/* Right Card: Flowchart Canvas or Unsupported Feature Card */}
           <section className="card">
             <div className="cardHeader">
-              <div style={{ fontSize: "16px", fontWeight: "bold" }}>FlowChart</div>
+              <div style={{ fontSize: "16px", fontWeight: "bold" }}>Flowchart</div>
 
               {/* Breadcrumb Navigation Trail */}
               {breadcrumbs.length > 0 && (

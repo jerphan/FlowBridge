@@ -60,7 +60,7 @@ async function openImport(page) {
   await page.locator('button[title^="Upload a Python file"]').click();
 }
 async function uploadFile(page, name, code) {
-  await openImport(page);
+  if (!(await page.getByRole('heading', {name: 'Import Project', exact: true}).isVisible())) await openImport(page);
   await page.getByRole('button', { name: /Python File \(.py\)/ }).click();
   const response = page.waitForResponse(r => r.url().endsWith('/api/projects/file'));
   await page.locator('#modalFileInput').setInputFiles({ name, mimeType: 'text/x-python', buffer: Buffer.from(code) });
@@ -324,7 +324,7 @@ async function openExport(page) {
       for (const viewport of [{width: 1280, height: 720}, {width: 1366, height: 768}, {width: 1920, height: 1080}]) {
         await page.setViewportSize(viewport);
         await page.getByTitle('Fit to View', {exact: true}).click();
-        for (const button of [page.locator('.startButton'), page.locator('button[title^="Upload a Python file"]'), page.getByTitle('Fit to View', {exact: true})]) {
+        for (const button of [page.locator('.startButton'), page.getByRole('button', {name: 'Start New Project'}), page.getByTitle('Current workspace', {exact: true}), page.locator('button[title^="Upload a Python file"]'), page.getByTitle('Fit to View', {exact: true})]) {
           const box = await button.boundingBox();
           assert.ok(box && box.x >= 0 && box.y >= 0 && box.x + box.width <= viewport.width && box.y + box.height <= viewport.height);
         }
@@ -336,6 +336,15 @@ async function openExport(page) {
       assert.ok((await page.getByRole('dialog').innerText()).includes('No sign-in or database'));
       await page.getByRole('button', {name: 'Close panel'}).click();
       assert.equal(await page.locator('#loginButton').count(), 0);
+    });
+    await check('Workspace keyboard focus stays within a normal-sized header button', async () => {
+      await page.getByRole('button', {name: 'Start New Project'}).focus();
+      await page.keyboard.press('Tab');
+      const button = page.getByTitle('Current workspace', {exact: true});
+      const bounds = await button.boundingBox();
+      assert.ok(bounds && bounds.width <= 48 && bounds.height <= 48 && bounds.y >= 0);
+      assert.ok(await button.evaluate(element => element === document.activeElement && element.matches(':focus-visible')));
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     });
     await check('Settings filters comments and docstrings without changing code or line numbers', async () => {
       const code = '# heading\n"""Module notes."""\nvalue = "# keep"  # inline note\nanswer = 3\n';
@@ -408,6 +417,17 @@ async function openExport(page) {
       await page.getByTitle('Generate Flowchart', {exact: true}).waitFor();
       await uploadFile(page, 'reimport.py', 'restored = 1\n');
       await generate(page);
+    });
+    await check('Start New Project clears the old view and supports a fresh import', async () => {
+      await page.getByRole('button', {name: 'Start New Project'}).click();
+      await page.getByRole('heading', {name: 'Import Project', exact: true}).waitFor();
+      assert.ok(await page.locator('.startButton').isDisabled());
+      assert.equal(await page.locator('g[data-node-id]').count(), 0);
+      const project = await uploadFile(page, 'fresh.py', 'fresh_value = 2\n');
+      const data = await generate(page);
+      assert.equal(data.projectId, project.projectID);
+      await page.locator('.sourceCodeScrollArea').getByText('fresh.py', {exact: true}).click();
+      await page.locator('.sourceCodeScrollArea').getByText('fresh_value = 2', {exact: true}).waitFor();
     });
     await page.screenshot({ path: path.join(artifacts, 'presentation-final.png') });
     assert.deepEqual(report.pageErrors, []);

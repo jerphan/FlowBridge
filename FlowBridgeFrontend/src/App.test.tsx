@@ -38,6 +38,41 @@ async function upload(name = 'project.py') {
 
 afterEach(() => vi.restoreAllMocks());
 
+it('starts a new project with an empty workspace and opens import', async () => {
+  vi.spyOn(axios, 'post').mockResolvedValueOnce({data: project}).mockResolvedValueOnce({data: diagrams()});
+  render(<App />);
+  await upload();
+  fireEvent.click(screen.getByTitle('Generate Flowchart'));
+  await screen.findByText('old diagram');
+  fireEvent.click(screen.getByText('tools/main.py'));
+  expect(await screen.findByText('two = 2')).toBeTruthy();
+  fireEvent.click(screen.getByRole('button', {name: 'Start New Project'}));
+  expect(screen.getByRole('heading', {name: 'Import Project'})).toBeTruthy();
+  expect(screen.queryByText('two = 2')).toBeNull();
+  expect(screen.queryByText('two flow')).toBeNull();
+  expect((screen.getByTitle('Upload a file or zip first') as HTMLButtonElement).disabled).toBe(true);
+  expect((screen.getByTitle('Generate a diagram to export') as HTMLButtonElement).disabled).toBe(true);
+  fireEvent.click(screen.getByRole('button', {name: '✕'}));
+  expect(screen.queryByRole('heading', {name: 'Import Project'})).toBeNull();
+  expect(screen.getByText('No Flowchart Generated Yet')).toBeTruthy();
+});
+
+it('cancels a pending diagram when starting over and ignores its late response', async () => {
+  let complete!: (value: unknown) => void;
+  const post = vi.spyOn(axios, 'post').mockResolvedValueOnce({data: project})
+    .mockImplementationOnce(() => new Promise(resolve => {complete = resolve;}));
+  render(<App />);
+  await upload();
+  fireEvent.click(screen.getByTitle('Generate Flowchart'));
+  const pending = post.mock.calls[1][2]?.signal as AbortSignal;
+  fireEvent.click(screen.getByRole('button', {name: 'Start New Project'}));
+  expect(pending.aborted).toBe(true);
+  await act(async () => {complete({data: diagrams()});});
+  expect(screen.queryByText('old diagram')).toBeNull();
+  expect((screen.getByTitle('Upload a file or zip first') as HTMLButtonElement).disabled).toBe(true);
+  expect(screen.getByRole('heading', {name: 'Import Project'})).toBeTruthy();
+});
+
 it('uses file identity for duplicate basenames and displays their paths', async () => {
   vi.spyOn(axios, 'post').mockResolvedValueOnce({data: project}).mockResolvedValueOnce({data: diagrams()});
   render(<App />);
