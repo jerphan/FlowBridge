@@ -31,7 +31,7 @@ export default function WorkspaceDialog({panel, project, hideComments, error, on
           <dl><dt>Project</dt><dd>{project?.projectName || 'No project loaded'}</dd>
             <dt>Python files</dt><dd>{project?.files.length || 0}</dd>
             <dt>Storage</dt><dd>Temporary local session</dd></dl>
-          <p>No sign-in or database is needed. Inactive projects expire when memory is needed for new imports. Restarting the server clears the session.</p>
+          <p>No sign-in or database is needed. Inactive projects expire when memory is needed for new imports. Uploading a new project clears the session.</p>
         </>}
       </div>
     </section>
