@@ -155,7 +155,3 @@ file or ZIP available for GitHub outages or rate limits.
 - [Parser architecture and supported Python](docs/PARSER.md)
 - [Executed verification and current limitations](docs/VALIDATION.md)
 - [Archived plans, audits and reference notes](docs/archive/previous-project-notes.zip)
-
-Historical notes remain in the archive and Git history. The parser package's
-short README and developer guidance are retained. Source under its `reference/`
-directory is supplied learning material, not the production implementation.
